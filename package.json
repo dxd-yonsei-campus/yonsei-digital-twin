@@ -6,9 +6,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.astro src"
   },
   "dependencies": {
-    "astro": "^5.7.12"
+    "@typescript-eslint/parser": "^8.32.1",
+    "astro": "^5.7.12",
+    "eslint": "^9.26.0",
+    "eslint-plugin-astro": "^1.3.1"
   }
 }
