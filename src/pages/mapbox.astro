@@ -46,7 +46,10 @@ import "mapbox-gl/dist/mapbox-gl.css";
           id: "add-3d-buildings",
           source: "composite",
           "source-layer": "building",
-          filter: ["all", ["==", ["id"], 429077790]],
+          filter: [
+            "all",
+            ["in", ["id"], ["literal", [429077790, 180788744, 1178727816]]],
+          ],
           type: "fill-extrusion",
           minzoom: 15,
           paint: {
