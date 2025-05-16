@@ -6,6 +6,12 @@ import "mapbox-gl/dist/mapbox-gl.css";
 <Layout>
   <h1 class="sr-only">Mapbox</h1>
   <div id="map" class="h-screen w-screen"></div>
+  <button
+    id="toggle-osm-layer"
+    class="absolute top-4 left-4 z-10 bg-white p-2 rounded shadow hover:bg-gray-100"
+  >
+    Toggle OSM Layer
+  </button>
   <script>
     import mapboxgl from "mapbox-gl";
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
@@ -40,7 +46,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
           id: "add-3d-buildings",
           source: "composite",
           "source-layer": "building",
-          filter: ["==", "extrude", "true"],
+          filter: ["all", ["==", ["id"], 429077790]],
           type: "fill-extrusion",
           minzoom: 15,
           paint: {
@@ -73,5 +79,40 @@ import "mapbox-gl/dist/mapbox-gl.css";
         labelLayerId,
       );
     });
+
+    map.on("click", (e) => {
+      const features = map.queryRenderedFeatures(e.point, {
+        layers: ["add-3d-buildings"], // make sure this matches your layer name
+      });
+      console.log(features);
+
+      if (features.length) {
+        const building = features[0];
+        console.log("Building properties:", building.properties);
+
+        // Try to access an ID if it exists
+        const buildingId = building.id;
+        console.log("Building ID:", buildingId);
+      } else {
+        console.log("No building found at clicked point");
+      }
+    });
+
+    let osmLayerVisible = true;
+
+    function toggleOSMLayer() {
+      if (osmLayerVisible) {
+        map.setLayoutProperty("add-3d-buildings", "visibility", "none");
+      } else {
+        map.setLayoutProperty("add-3d-buildings", "visibility", "visible");
+      }
+      osmLayerVisible = !osmLayerVisible;
+    }
+
+    document
+      .getElementById("toggle-osm-layer")
+      ?.addEventListener("click", () => {
+        toggleOSMLayer();
+      });
   </script>
 </Layout>
