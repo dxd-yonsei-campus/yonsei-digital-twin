@@ -2194,7 +2194,7 @@
   {
     "id": 371403603,
     "name": "한국어학당",
-    "name:en": "Institute of Language Research & Education",
+    "name_en": "Institute of Language Research & Education (Korean Language Institute, KLI)",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565293,
     "longitude": 126.943563,
@@ -2212,6 +2212,33 @@
           [126.9434785, 37.5655593],
           [126.9434081, 37.5656451],
           [126.9432687, 37.5655771]
+        ]
+      ]
+    }
+  },
+  {
+    "id": 1178743320,
+    "name": "이윤제관",
+    "name_en": "Lee Youn Jae Hall",
+    "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
+    "latitude": 37.564644,
+    "longitude": 126.943725,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.9437484, 37.5649444],
+          [126.9433451, 37.5647655],
+          [126.943464, 37.5646069],
+          [126.9436682, 37.5647115],
+          [126.9437112, 37.5646631],
+          [126.9438473, 37.5645098],
+          [126.9441645, 37.5647324],
+          [126.9440471, 37.5648161],
+          [126.9439206, 37.5647464],
+          [126.9438568, 37.5648146],
+          [126.9437965, 37.5648856],
+          [126.9437484, 37.5649444]
         ]
       ]
     }
