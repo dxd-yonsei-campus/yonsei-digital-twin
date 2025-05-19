@@ -2079,6 +2079,28 @@
     }
   },
   {
+    "id": 472516998,
+    "name": "국제학사",
+    "name_en": "International House",
+    "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
+    "latitude": 37.566067,
+    "longitude": 126.943854,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.9435316, 37.5660862],
+          [126.943561, 37.566001],
+          [126.9439652, 37.5660887],
+          [126.944153, 37.5659399],
+          [126.9442415, 37.5660101],
+          [126.9440135, 37.5661908],
+          [126.9435316, 37.5660862]
+        ]
+      ]
+    }
+  },
+  {
     "id": 216487503,
     "name": "새천년관",
     "name_en": "New Millennium Hall",
