@@ -2104,6 +2104,7 @@
     "id": 216487503,
     "name": "새천년관",
     "name_en": "New Millennium Hall",
+    "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.566221,
     "longitude": 126.943121,
     "geometry": {
@@ -2127,6 +2128,25 @@
           [126.9434706, 37.5664284],
           [126.943476, 37.5664527],
           [126.9430862, 37.5665075]
+        ]
+      ]
+    }
+  },
+  {
+    "id": 472534641,
+    "name": "영빈관",
+    "name_en": "Presidential Reception Hall",
+    "latitude": 37.567022,
+    "longitude": 126.942939,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.9429738, 37.5671689],
+          [126.9427642, 37.5669789],
+          [126.9428676, 37.566863],
+          [126.9431687, 37.5670994],
+          [126.9429738, 37.5671689]
         ]
       ]
     }
