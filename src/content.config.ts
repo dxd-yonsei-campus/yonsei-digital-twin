@@ -7,6 +7,7 @@ const buildingsSchema = z.object({
   id: z.number(),
   name: z.string(),
   name_en: z.string(),
+  address: z.string().optional(),
   latitude: z.number(),
   longitude: z.number(),
   geometry: z.object({

@@ -3,6 +3,7 @@
     "id": 473006252,
     "name": "연세암병원",
     "name_en": "Yonsei Cancer Center",
+    "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560918,
     "longitude": 126.938647,
     "geometry": {
@@ -35,6 +36,7 @@
     "id": 324328456,
     "name": "연세대학교 의과대학 의학도서관",
     "name_en": "Yonsei University Medical Library (College of Medicine)",
+    "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560795,
     "longitude": 126.939862,
     "geometry": {
@@ -57,6 +59,7 @@
     "name_en": "Chejung Building",
     "latitude": 37.562035,
     "longitude": 126.93945,
+    "address": "South Korea, Seoul, Seodaemun-gu, Sinchon-dong",
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -91,6 +94,7 @@
     "id": 429249489,
     "name": "종합관",
     "name_en": "YUHS Administration Building",
+    "address": "103-2 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560762,
     "longitude": 126.940165,
     "geometry": {
@@ -126,6 +130,7 @@
     "id": 472648570,
     "name": "연대세브란스병원",
     "name_en": "Severance Hospital",
+    "address": "50-1 Yonsei-ro, Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562311,
     "longitude": 126.940876,
     "geometry": {
@@ -187,6 +192,7 @@
     "id": 429079067,
     "name": "재활병원",
     "name_en": "Rehabilitation Hospital",
+    "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.56304,
     "longitude": 126.940383,
     "geometry": {
@@ -221,6 +227,7 @@
     "id": 324328432,
     "name": "세브란스 어린이병원",
     "name_en": "Children's Hospital",
+    "address": "Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562519,
     "longitude": 126.939789,
     "geometry": {
@@ -259,6 +266,7 @@
     "id": 324328481,
     "name": "심장혈관병원",
     "name_en": "Cardiovascular Hospital",
+    "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562767,
     "longitude": 126.939555,
     "geometry": {
@@ -294,6 +302,7 @@
     "id": 473006250,
     "name": "광혜관",
     "name_en": "Kwanghye Building",
+    "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562368,
     "longitude": 126.939115,
     "geometry": {
