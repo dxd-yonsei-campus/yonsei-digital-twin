@@ -1542,6 +1542,25 @@
     }
   },
   {
+    "id": 472512287,
+    "name": "어린이생활지도연구원 연구동",
+    "name_en": "Child Development Research Institute (Research Building)",
+    "latitude": 37.564803,
+    "longitude": 126.941319,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.9416143, 37.5647779],
+          [126.9415629, 37.5648876],
+          [126.9412728, 37.5647817],
+          [126.9413265, 37.5646747],
+          [126.9416143, 37.5647779]
+        ]
+      ]
+    }
+  },
+  {
     "id": 216487503,
     "name": "새천년관",
     "name_en": "New Millennium Hall",
