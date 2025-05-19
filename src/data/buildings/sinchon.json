@@ -1891,6 +1891,28 @@
     }
   },
   {
+    "id": 246156121,
+    "name": "신학관",
+    "name_en": "H.G.Underwood Theology Hall",
+    "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
+    "latitude": 37.565871,
+    "longitude": 126.936679,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.9368782, 37.5655998],
+          [126.9369181, 37.5657252],
+          [126.9367426, 37.5657603],
+          [126.9368517, 37.5661031],
+          [126.9366603, 37.5661413],
+          [126.9365113, 37.5656731],
+          [126.9368782, 37.5655998]
+        ]
+      ]
+    }
+  },
+  {
     "id": 216487503,
     "name": "새천년관",
     "name_en": "New Millennium Hall",
