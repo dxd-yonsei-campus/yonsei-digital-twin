@@ -13,7 +13,7 @@ const buildingsSchema = z.object({
   geometry: z
     .object({
       type: z.string(),
-      coordinates: z.array(positionSchema),
+      coordinates: z.array(z.array(positionSchema)),
     })
     .optional(),
 });
