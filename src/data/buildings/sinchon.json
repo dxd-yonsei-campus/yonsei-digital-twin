@@ -1304,6 +1304,13 @@
     }
   },
   {
+    "id": "science-research-center",
+    "name": "과학 연구 센터",
+    "name_en": "Science Research Center",
+    "latitude": 37.563409,
+    "longitude": 126.934663
+  },
+  {
     "id": 180788744,
     "name": "노천극장",
     "name_en": "Amphitheater",
