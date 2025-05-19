@@ -614,6 +614,26 @@
     }
   },
   {
+    "id": 421415358,
+    "name": "산학협동연구관",
+    "name_en": "Industry-University Research Center",
+    "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
+    "latitude": 37.562737,
+    "longitude": 126.932347,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.9322124, 37.5629472],
+          [126.9319506, 37.5627427],
+          [126.9324173, 37.5623673],
+          [126.9326791, 37.5625718],
+          [126.9322124, 37.5629472]
+        ]
+      ]
+    }
+  },
+  {
     "id": 163525865,
     "name": "중앙도서관",
     "name_en": "Central Library",
