@@ -427,6 +427,14 @@
     }
   },
   {
+    "id": "avison-biomedical",
+    "name": "에비슨 의생명 연구센터",
+    "name_en": "Avison Biomedical Research Center",
+    "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
+    "latitude": 37.563929,
+    "longitude": 126.942488
+  },
+  {
     "id": 163525865,
     "name": "중앙도서관",
     "name_en": "Central Library",
