@@ -919,6 +919,26 @@
     }
   },
   {
+    "id": 429249496,
+    "name": "광혜원",
+    "name_en": "Garden of Yonsei (Gwanghyewon)",
+    "address": "107-10 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
+    "latitude": 37.562585,
+    "longitude": 126.938795,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.9386969, 37.5626681],
+          [126.9388397, 37.5625237],
+          [126.9389523, 37.5625936],
+          [126.9388096, 37.5627381],
+          [126.9386969, 37.5626681]
+        ]
+      ]
+    }
+  },
+  {
     "id": 163525865,
     "name": "중앙도서관",
     "name_en": "Central Library",
