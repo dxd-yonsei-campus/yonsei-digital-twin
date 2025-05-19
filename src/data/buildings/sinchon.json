@@ -1637,6 +1637,26 @@
     }
   },
   {
+    "id": 246156118,
+    "name": "스팀슨관",
+    "name_en": "Stimson Hall",
+    "address": "134 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
+    "latitude": 37.566072,
+    "longitude": 126.938189,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.9382414, 37.5659051],
+          [126.9383379, 37.5661888],
+          [126.9381768, 37.5662232],
+          [126.9380804, 37.5659395],
+          [126.9382414, 37.5659051]
+        ]
+      ]
+    }
+  },
+  {
     "id": 216487503,
     "name": "새천년관",
     "name_en": "New Millennium Hall",
