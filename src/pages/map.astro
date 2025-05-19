@@ -1,0 +1,122 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import "mapbox-gl/dist/mapbox-gl.css";
+---
+
+<Layout>
+  <h1 class="sr-only">Mapbox</h1>
+  <div id="map" class="h-screen w-screen"></div>
+  <button
+    id="toggle-osm-layer"
+    class="absolute top-4 left-4 z-10 bg-white p-2 rounded shadow hover:bg-gray-100"
+  >
+    Toggle OSM Layer
+  </button>
+  <script>
+    import mapboxgl from "mapbox-gl";
+    mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
+
+    const map = new mapboxgl.Map({
+      style: "mapbox://styles/mapbox/light-v11",
+      center: [126.9387, 37.5664],
+      zoom: 15.5,
+      pitch: 45,
+      bearing: -17.6,
+      container: "map",
+      antialias: true,
+    });
+
+    map.on("style.load", () => {
+      // Insert the layer beneath any symbol layer.
+      const layers = map.getStyle().layers;
+
+      const labelLayerId = layers.find(
+        (layer) =>
+          layer.type === "symbol" && layer.layout && layer.layout["text-field"],
+      )?.id;
+
+      if (!labelLayerId) {
+        return;
+      }
+
+      // The 'building' layer in the Mapbox Streets
+      // vector tileset contains building height data
+      // from OpenStreetMap.
+      map.addLayer(
+        {
+          id: "add-3d-buildings",
+          source: "composite",
+          "source-layer": "building",
+          filter: [
+            "all",
+            ["in", ["id"], ["literal", [429077790, 180788744, 1178727816]]],
+          ],
+          type: "fill-extrusion",
+          minzoom: 15,
+          paint: {
+            "fill-extrusion-color": "#aaa",
+
+            // Use an 'interpolate' expression to
+            // add a smooth transition effect to
+            // the buildings as the user zooms in.
+            "fill-extrusion-height": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              ["get", "height"],
+            ],
+            "fill-extrusion-base": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              ["get", "min_height"],
+            ],
+            "fill-extrusion-opacity": 1,
+          },
+        },
+        labelLayerId,
+      );
+    });
+
+    map.on("click", (e) => {
+      const features = map.queryRenderedFeatures(e.point, {
+        layers: ["add-3d-buildings"], // make sure this matches your layer name
+      });
+      console.log(features);
+
+      if (features.length) {
+        const building = features[0];
+        console.log("Building properties:", building.properties);
+
+        // Try to access an ID if it exists
+        const buildingId = building.id;
+        console.log("Building ID:", buildingId);
+      } else {
+        console.log("No building found at clicked point");
+      }
+    });
+
+    let osmLayerVisible = true;
+
+    function toggleOSMLayer() {
+      if (osmLayerVisible) {
+        map.setLayoutProperty("add-3d-buildings", "visibility", "none");
+      } else {
+        map.setLayoutProperty("add-3d-buildings", "visibility", "visible");
+      }
+      osmLayerVisible = !osmLayerVisible;
+    }
+
+    document
+      .getElementById("toggle-osm-layer")
+      ?.addEventListener("click", () => {
+        toggleOSMLayer();
+      });
+  </script>
+</Layout>

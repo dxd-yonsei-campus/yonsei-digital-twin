@@ -1,7 +1,25 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { Button, buttonVariants } from "@/components/ui/button";
 ---
 
 <Layout>
-  <h1>Yonsei Digital Twin</h1>
+  <main class="flex h-screen items-center justify-between max-w-5xl mx-auto">
+    <div>
+      <h1 class="text-4xl font-bold">Yonsei Digital Twin</h1>
+      <p class="mt-0.5">A digital twin of the Yonsei University Campus.</p>
+      <a
+        class:list={[buttonVariants({ variant: "default" }), "mt-4"]}
+        href="/map"
+      >
+        Sinchon Campus
+      </a>
+      <Button disabled> International Campus (Coming Soon) </Button>
+    </div>
+    <div
+      class="aspect-[3/2] rounded-lg border w-128 p-1.5 grid place-content-center"
+    >
+      Image of application
+    </div>
+  </main>
 </Layout>
