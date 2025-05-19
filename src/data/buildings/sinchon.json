@@ -1913,6 +1913,47 @@
     }
   },
   {
+    "id": 246156112,
+    "name": "외솔관",
+    "name_en": "Oesol Hall",
+    "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
+    "latitude": 37.566365,
+    "longitude": 126.937083,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.9372702, 37.5661753],
+          [126.9373089, 37.5662698],
+          [126.9373368, 37.5663379],
+          [126.9365964, 37.5665282],
+          [126.9365299, 37.5663657],
+          [126.9372702, 37.5661753]
+        ]
+      ]
+    }
+  },
+  {
+    "id": 246156114,
+    "name": "외솔관2",
+    "name_en": "Oesol Hall 2",
+    "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
+    "latitude": 37.566552,
+    "longitude": 126.93712,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.9372254, 37.5663828],
+          [126.93728, 37.5665101],
+          [126.9368781, 37.5666184],
+          [126.9368235, 37.5664912],
+          [126.9372254, 37.5663828]
+        ]
+      ]
+    }
+  },
+  {
     "id": 216487503,
     "name": "새천년관",
     "name_en": "New Millennium Hall",
