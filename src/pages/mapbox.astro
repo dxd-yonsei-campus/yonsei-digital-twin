@@ -27,6 +27,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
     });
 
     map.on("style.load", () => {
+      // Insert the layer beneath any symbol layer.
       const layers = map.getStyle().layers;
 
       const labelLayerId = layers.find(
