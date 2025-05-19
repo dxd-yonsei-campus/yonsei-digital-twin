@@ -1,6 +1,16 @@
 ---
-import Layout from "@/layouts/Layout.astro";
 import "mapbox-gl/dist/mapbox-gl.css";
+import Layout from "@/layouts/Layout.astro";
+import { getEntry } from "astro:content";
+
+const sinchonEntry = await getEntry("buildings", "sinchon");
+
+if (!sinchonEntry) {
+  throw new Error("Could not find sinchon buildings");
+}
+
+const { data: sinchonBuildings } = sinchonEntry;
+const sinchonBuildingIds = sinchonBuildings.map((building) => building.id);
 ---
 
 <Layout>
@@ -14,6 +24,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
   </button>
   <script>
     import mapboxgl from "mapbox-gl";
+    import sinchonBuildings from "src/data/buildings/sinchon.json";
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
     const map = new mapboxgl.Map({
@@ -39,6 +50,11 @@ import "mapbox-gl/dist/mapbox-gl.css";
         return;
       }
 
+      const sinchonBuildingIds = sinchonBuildings.map(
+        (building) => building.id,
+      );
+      console.log(sinchonBuildingIds);
+
       // The 'building' layer in the Mapbox Streets
       // vector tileset contains building height data
       // from OpenStreetMap.
@@ -47,10 +63,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
           id: "add-3d-buildings",
           source: "composite",
           "source-layer": "building",
-          filter: [
-            "all",
-            ["in", ["id"], ["literal", [429077790, 180788744, 1178727816]]],
-          ],
+          filter: ["all", ["in", ["id"], ["literal", sinchonBuildingIds]]],
           type: "fill-extrusion",
           minzoom: 15,
           paint: {
