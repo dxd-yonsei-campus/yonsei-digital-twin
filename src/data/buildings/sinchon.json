@@ -1617,6 +1617,26 @@
     }
   },
   {
+    "id": 246156115,
+    "name": "언더우드관",
+    "name_en": "Underwood Hall",
+    "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
+    "latitude": 37.566375,
+    "longitude": 126.938726,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.9384481, 37.5663782],
+          [126.9390011, 37.566261],
+          [126.9390462, 37.5663946],
+          [126.9384932, 37.5665119],
+          [126.9384481, 37.5663782]
+        ]
+      ]
+    }
+  },
+  {
     "id": 216487503,
     "name": "새천년관",
     "name_en": "New Millennium Hall",
