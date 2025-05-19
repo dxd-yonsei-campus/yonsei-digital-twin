@@ -1057,6 +1057,14 @@
     }
   },
   {
+    "id": "school-of-business",
+    "name": "연세대학교 경영관",
+    "name_en": "School of Business",
+    "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
+    "latitude": 37.564928,
+    "longitude": 126.939169
+  },
+  {
     "id": 163525865,
     "name": "중앙도서관",
     "name_en": "Central Library",
