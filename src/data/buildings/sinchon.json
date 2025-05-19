@@ -1092,6 +1092,7 @@
     "id": 163525865,
     "name": "중앙도서관",
     "name_en": "Central Library",
+    "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.5637,
     "longitude": 126.936923,
     "geometry": {
