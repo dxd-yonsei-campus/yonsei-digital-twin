@@ -173,7 +173,9 @@ import BuildingInformation from "@/components/BuildingInformation";
 
     buildingLayer.listen((layer) => {
       map.setLayoutProperty("osm-buildings", "visibility", "none");
+      map.setLayoutProperty("selected-building", "visibility", "none");
       if (layer === "osm") {
+        map.setLayoutProperty("selected-building", "visibility", "visible");
         map.setLayoutProperty("osm-buildings", "visibility", "visible");
       }
     });
