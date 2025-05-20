@@ -3,9 +3,15 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Layout from "@/layouts/Layout.astro";
 import { Button } from "@/components/ui/button";
 import { HomeIcon } from "lucide-react";
-import BuildingLayerToggle from "@/components/BuildingLayersToggle";
+import BuildingLayersToggle from "@/components/BuildingLayersToggle";
 import BuildingInformation from "@/components/BuildingInformation";
 import SearchBar from "@/components/SearchBar";
+
+declare global {
+  interface Window {
+    map: mapboxgl.Map;
+  }
+}
 ---
 
 <Layout>
@@ -16,7 +22,7 @@ import SearchBar from "@/components/SearchBar";
     class="bg-background/80 backdrop-blur-sm border-t absolute bottom-0 w-full py-2 px-4"
   >
     <div class="flex justify-between">
-      <BuildingLayerToggle client:load />
+      <BuildingLayersToggle client:load />
       <SearchBar client:load />
       <Button id="reset-view">
         <HomeIcon />
@@ -50,6 +56,9 @@ import SearchBar from "@/components/SearchBar";
       minZoom: 14,
       ...initialCamera,
     });
+
+    // Expose map instance to window
+    window.map = map;
 
     map.addControl(new mapboxgl.AttributionControl(), "top-left");
     map.addControl(new mapboxgl.ScaleControl(), "bottom-right");

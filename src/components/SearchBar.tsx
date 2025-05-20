@@ -11,6 +11,13 @@ import { SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import sinchonBuildings from "@/data/buildings/sinchon.json";
 import { selectedId } from "@/store";
+import type mapboxgl from "mapbox-gl";
+
+declare global {
+  interface Window {
+    map: mapboxgl.Map;
+  }
+}
 
 const SearchBar = () => {
   const [open, setOpen] = React.useState(false);
@@ -59,6 +66,19 @@ const SearchBar = () => {
       a.name_en.toLowerCase().localeCompare(b.name_en.toLowerCase()),
     );
 
+  const handleSelect = (building: (typeof sinchonBuildings)[0]) => {
+    selectedId.set(building.id);
+    toggleOpen();
+
+    window.map.flyTo({
+      center: [building.longitude, building.latitude],
+      zoom: 17,
+      pitch: 45,
+      bearing: 0,
+      duration: 2000,
+    });
+  };
+
   return (
     <>
       <Button
@@ -94,10 +114,7 @@ const SearchBar = () => {
                 <CommandItem
                   key={building.id}
                   value={String(building.id)}
-                  onSelect={() => {
-                    selectedId.set(building.id);
-                    toggleOpen();
-                  }}
+                  onSelect={() => handleSelect(building)}
                 >
                   <div className="flex flex-col">
                     <span>{building.name_en}</span>
