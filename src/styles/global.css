@@ -118,3 +118,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+.mapboxgl-ctrl-scale {
+  font-family: var(--font-sans);
+  margin-right: --spacing(4) !important;
+  height: 12px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

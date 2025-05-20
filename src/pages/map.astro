@@ -1,35 +1,49 @@
 ---
 import "mapbox-gl/dist/mapbox-gl.css";
 import Layout from "@/layouts/Layout.astro";
+import { Button } from "@/components/ui/button";
+import { HomeIcon } from "lucide-react";
 ---
 
 <Layout>
   <h1 class="sr-only">Yonsei Digital Twin Map</h1>
   <div id="map" class="h-screen w-screen"></div>
-  <button
-    id="toggle-osm-layer"
-    class="absolute top-4 left-4 z-10 bg-white p-2 rounded shadow hover:bg-gray-100"
-  >
-    Toggle OSM Layer
-  </button>
+  <div class="bg-background border-t absolute bottom-0 w-full py-2 px-4">
+    <div class="flex justify-between">
+      <Button id="toggle-osm">OSM Buildings</Button>
+      <Button id="reset-view">
+        <HomeIcon />
+        Sinchon
+      </Button>
+    </div>
+    <div class="flex justify-between mt-1.5 text-sm text-muted-foreground">
+      <div>Yonsei Digital Twin</div>
+    </div>
+  </div>
   <script>
     import mapboxgl from "mapbox-gl";
     import sinchonBuildings from "src/data/buildings/sinchon.json";
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
-    const map = new mapboxgl.Map({
-      style: "mapbox://styles/mapbox/light-v11",
-      center: [126.9384, 37.5652],
+    const sinchonCenter: [number, number] = [126.9384, 37.5647];
+    const initialCamera = {
+      center: sinchonCenter,
       zoom: 15.5,
       pitch: 45,
       bearing: -17.6,
+    };
+
+    const map = new mapboxgl.Map({
+      style: "mapbox://styles/mapbox/light-v11",
       container: "map",
       antialias: true,
       attributionControl: false,
       logoPosition: "top-right",
+      ...initialCamera,
     });
 
     map.addControl(new mapboxgl.AttributionControl(), "top-left");
+    map.addControl(new mapboxgl.ScaleControl(), "bottom-right");
 
     map.on("style.load", () => {
       // Insert the layer beneath any symbol layer.
@@ -119,10 +133,12 @@ import Layout from "@/layouts/Layout.astro";
       osmLayerVisible = !osmLayerVisible;
     }
 
-    document
-      .getElementById("toggle-osm-layer")
-      ?.addEventListener("click", () => {
-        toggleOSMLayer();
-      });
+    document.getElementById("toggle-osm")?.addEventListener("click", () => {
+      toggleOSMLayer();
+    });
+
+    document.getElementById("reset-view")?.addEventListener("click", () => {
+      map.flyTo(initialCamera);
+    });
   </script>
 </Layout>
