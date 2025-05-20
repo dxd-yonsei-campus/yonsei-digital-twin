@@ -3,8 +3,9 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Layout from "@/layouts/Layout.astro";
 import { Button } from "@/components/ui/button";
 import { HomeIcon } from "lucide-react";
-import BuildingLayerToggle from "@/components/BuildingLayersToggle";
+import BuildingLayersToggle from "@/components/BuildingLayersToggle";
 import BuildingInformation from "@/components/BuildingInformation";
+import SearchBar from "@/components/SearchBar";
 ---
 
 <Layout>
@@ -15,7 +16,8 @@ import BuildingInformation from "@/components/BuildingInformation";
     class="bg-background/80 backdrop-blur-sm border-t absolute bottom-0 w-full py-2 px-4"
   >
     <div class="flex justify-between">
-      <BuildingLayerToggle client:load />
+      <BuildingLayersToggle client:load />
+      <SearchBar client:load />
       <Button id="reset-view">
         <HomeIcon />
         Sinchon
@@ -28,7 +30,7 @@ import BuildingInformation from "@/components/BuildingInformation";
   <script>
     import { buildingLayer, selectedId } from "@/store";
     import mapboxgl from "mapbox-gl";
-    import sinchonBuildings from "src/data/buildings/sinchon.json";
+    import sinchonBuildings from "@/data/buildings/sinchon.json";
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
     const sinchonCenter: [number, number] = [126.9384, 37.5647];
@@ -48,6 +50,9 @@ import BuildingInformation from "@/components/BuildingInformation";
       minZoom: 14,
       ...initialCamera,
     });
+
+    // Expose map instance to window
+    window.map = map;
 
     map.addControl(new mapboxgl.AttributionControl(), "top-left");
     map.addControl(new mapboxgl.ScaleControl(), "bottom-right");
@@ -171,7 +176,9 @@ import BuildingInformation from "@/components/BuildingInformation";
     selectedId.listen((selectedId) => {
       if (selectedId) {
         map.setFilter("selected-building", ["==", ["id"], selectedId]);
-        map.setLayoutProperty("selected-building", "visibility", "visible");
+        if (buildingLayer.get() == "osm") {
+          map.setLayoutProperty("selected-building", "visibility", "visible");
+        }
       } else {
         map.setFilter("selected-building", ["==", ["id"], ""]);
         map.setLayoutProperty("selected-building", "visibility", "none");

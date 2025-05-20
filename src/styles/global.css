@@ -39,6 +39,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --breakpoint-xs: 468px;
 }
 
 :root {
@@ -116,6 +118,9 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  kbd {
+    @apply pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100;
   }
 }
 
