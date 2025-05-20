@@ -3,10 +3,10 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const HeroVideo = () => {
   return (
-    <Card className="relative overflow-hidden max-w-3xl py-2">
-      <CardContent className="px-2">
+    <Card className="relative overflow-hidden max-w-3xl py-1.5">
+      <CardContent className="px-1.5">
         <video
-          className="w-full aspect-video object-fill rounded-lg"
+          className="rounded-lg"
           src="/hero-video.mp4"
           autoPlay
           muted
