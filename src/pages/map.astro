@@ -107,6 +107,43 @@ import BuildingInformation from "@/components/BuildingInformation";
         },
         labelLayerId,
       );
+
+      map.addLayer(
+        {
+          id: "selected-building",
+          source: "composite",
+          "source-layer": "building",
+          type: "fill-extrusion",
+          filter: ["all", ["in", ["id"], ["literal", ""]]],
+          minzoom: 15,
+          layout: {
+            visibility: "none",
+          },
+          paint: {
+            "fill-extrusion-color": "#ff6b6b",
+            "fill-extrusion-height": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              ["get", "height"],
+            ],
+            "fill-extrusion-base": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              ["get", "min_height"],
+            ],
+            "fill-extrusion-opacity": 0.8,
+          },
+        },
+        labelLayerId,
+      );
     });
 
     map.on("click", (e) => {
@@ -122,8 +159,15 @@ import BuildingInformation from "@/components/BuildingInformation";
         // Try to access an ID if it exists
         const buildingId = building.id;
         selectedId.set(buildingId || "");
+
+        // Highlighted selected building
+        map.setFilter("selected-building", ["==", ["id"], buildingId]);
+        map.setLayoutProperty("selected-building", "visibility", "visible");
       } else {
         console.log("No building found at clicked point");
+        selectedId.set("");
+        // Clear the selected building layer filter
+        map.setFilter("selected-building", ["==", ["id"], ""]);
       }
     });
 
