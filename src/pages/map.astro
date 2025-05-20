@@ -159,10 +159,6 @@ import BuildingInformation from "@/components/BuildingInformation";
         // Try to access an ID if it exists
         const buildingId = building.id;
         selectedId.set(buildingId || "");
-
-        // Highlighted selected building
-        map.setFilter("selected-building", ["==", ["id"], buildingId]);
-        map.setLayoutProperty("selected-building", "visibility", "visible");
       } else {
         console.log("No building found at clicked point");
         selectedId.set("");
@@ -171,7 +167,10 @@ import BuildingInformation from "@/components/BuildingInformation";
     });
 
     selectedId.listen((selectedId) => {
-      if (!selectedId) {
+      if (selectedId) {
+        map.setFilter("selected-building", ["==", ["id"], selectedId]);
+        map.setLayoutProperty("selected-building", "visibility", "visible");
+      } else {
         map.setLayoutProperty("selected-building", "visibility", "none");
       }
     });
