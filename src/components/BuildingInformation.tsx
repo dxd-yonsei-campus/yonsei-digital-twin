@@ -17,7 +17,7 @@ const BuildingInformation = () => {
 
   return (
     <div className="rounded z-10 absolute top-12 left-0 px-4 w-108 max-w-full md:px-8">
-      <div className="bg-background border p-3 shadow-xs">
+      <div className="bg-background/80 backdrop-blur-sm border p-3 shadow-xs">
         <div className="flex justify-between gap-1">
           <div>
             <h2 className="font-bold text-lg/6">{selectedBuilding.name_en}</h2>
