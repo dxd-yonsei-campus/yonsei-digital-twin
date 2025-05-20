@@ -70,7 +70,7 @@ import BuildingLayerToggle from "@/components/BuildingLayersToggle";
       // from OpenStreetMap.
       map.addLayer(
         {
-          id: "add-3d-buildings",
+          id: "osm-buildings",
           source: "composite",
           "source-layer": "building",
           filter: ["all", ["in", ["id"], ["literal", sinchonBuildingIds]]],
@@ -109,7 +109,7 @@ import BuildingLayerToggle from "@/components/BuildingLayersToggle";
 
     map.on("click", (e) => {
       const features = map.queryRenderedFeatures(e.point, {
-        layers: ["add-3d-buildings"], // make sure this matches your layer name
+        layers: ["osm-buildings"], // make sure this matches your layer name
       });
       console.log(features);
 
@@ -126,10 +126,9 @@ import BuildingLayerToggle from "@/components/BuildingLayersToggle";
     });
 
     buildingLayer.listen((layer) => {
-      console.log(layer);
-      map.setLayoutProperty("add-3d-buildings", "visibility", "none");
+      map.setLayoutProperty("osm-buildings", "visibility", "none");
       if (layer === "osm") {
-        map.setLayoutProperty("add-3d-buildings", "visibility", "visible");
+        map.setLayoutProperty("osm-buildings", "visibility", "visible");
       }
     });
 
