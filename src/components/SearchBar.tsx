@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Command,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -13,7 +12,7 @@ import {
 import { SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const SearchBox = () => {
+const SearchBar = () => {
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -77,4 +76,4 @@ const SearchBox = () => {
   );
 };
 
-export default SearchBox;
+export default SearchBar;
