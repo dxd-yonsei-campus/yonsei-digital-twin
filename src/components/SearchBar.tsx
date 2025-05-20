@@ -27,11 +27,13 @@ const SearchBar = () => {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const filteredBuildings = sinchonBuildings.filter(
-    (building) =>
-      building.name_en.toLowerCase().includes(search.toLowerCase()) ||
-      building.name.toLowerCase().includes(search.toLowerCase()),
-  );
+  const filteredBuildings = sinchonBuildings
+    .filter((building) =>
+      building.name_en.toLowerCase().includes(search.toLowerCase()),
+    )
+    .sort((a, b) =>
+      a.name_en.toLowerCase().localeCompare(b.name_en.toLowerCase()),
+    );
 
   return (
     <>
@@ -59,10 +61,10 @@ const SearchBar = () => {
           onValueChange={setSearch}
         />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup
             heading={`Sinchon Campus [${filteredBuildings.length}]`}
           >
+            <CommandEmpty>No results for Sinchon campus.</CommandEmpty>
             {filteredBuildings.map((building) => {
               return (
                 <CommandItem key={building.id} value={String(building.id)}>
