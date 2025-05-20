@@ -99,7 +99,12 @@ const SearchBar = () => {
                     toggleOpen();
                   }}
                 >
-                  <span>{building.name_en}</span>
+                  <div className="flex flex-col">
+                    <span>{building.name_en}</span>
+                    <span className="text-muted-foreground text-xs">
+                      {building.name}
+                    </span>
+                  </div>
                 </CommandItem>
               );
             })}
