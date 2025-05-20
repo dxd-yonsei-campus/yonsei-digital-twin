@@ -3,6 +3,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Layout from "@/layouts/Layout.astro";
 import { Button } from "@/components/ui/button";
 import { HomeIcon } from "lucide-react";
+import BuildingLayerToggle from "@/components/BuildingLayersToggle";
 ---
 
 <Layout>
@@ -10,7 +11,7 @@ import { HomeIcon } from "lucide-react";
   <div id="map" class="h-screen w-screen"></div>
   <div class="bg-background border-t absolute bottom-0 w-full py-2 px-4">
     <div class="flex justify-between">
-      <Button id="toggle-osm">OSM Buildings</Button>
+      <BuildingLayerToggle client:load />
       <Button id="reset-view">
         <HomeIcon />
         Sinchon
@@ -21,6 +22,7 @@ import { HomeIcon } from "lucide-react";
     </div>
   </div>
   <script>
+    import { buildingLayer } from "@/store";
     import mapboxgl from "mapbox-gl";
     import sinchonBuildings from "src/data/buildings/sinchon.json";
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
@@ -68,7 +70,7 @@ import { HomeIcon } from "lucide-react";
       // from OpenStreetMap.
       map.addLayer(
         {
-          id: "add-3d-buildings",
+          id: "osm-buildings",
           source: "composite",
           "source-layer": "building",
           filter: ["all", ["in", ["id"], ["literal", sinchonBuildingIds]]],
@@ -107,7 +109,7 @@ import { HomeIcon } from "lucide-react";
 
     map.on("click", (e) => {
       const features = map.queryRenderedFeatures(e.point, {
-        layers: ["add-3d-buildings"], // make sure this matches your layer name
+        layers: ["osm-buildings"], // make sure this matches your layer name
       });
       console.log(features);
 
@@ -123,19 +125,11 @@ import { HomeIcon } from "lucide-react";
       }
     });
 
-    let osmLayerVisible = true;
-
-    function toggleOSMLayer() {
-      if (osmLayerVisible) {
-        map.setLayoutProperty("add-3d-buildings", "visibility", "none");
-      } else {
-        map.setLayoutProperty("add-3d-buildings", "visibility", "visible");
+    buildingLayer.listen((layer) => {
+      map.setLayoutProperty("osm-buildings", "visibility", "none");
+      if (layer === "osm") {
+        map.setLayoutProperty("osm-buildings", "visibility", "visible");
       }
-      osmLayerVisible = !osmLayerVisible;
-    }
-
-    document.getElementById("toggle-osm")?.addEventListener("click", () => {
-      toggleOSMLayer();
     });
 
     document.getElementById("reset-view")?.addEventListener("click", () => {
