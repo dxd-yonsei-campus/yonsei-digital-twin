@@ -16,22 +16,24 @@ const BuildingInformation = () => {
   }
 
   return (
-    <div className="bg-background rounded z-10 absolute top-12 left-8 border p-3 min-w-84 shadow-xs">
-      <div className="flex justify-between">
-        <div>
-          <h2 className="font-bold text-lg">{selectedBuilding.name_en}</h2>
-          <div className="text-sm text-muted-foreground">
-            {selectedBuilding.name}
+    <div className="rounded z-10 absolute top-12 left-0 px-4 w-108 max-w-full md:px-8">
+      <div className="bg-background border p-3 shadow-xs">
+        <div className="flex justify-between gap-1">
+          <div>
+            <h2 className="font-bold text-lg/6">{selectedBuilding.name_en}</h2>
+            <div className="text-sm text-muted-foreground">
+              {selectedBuilding.name}
+            </div>
           </div>
+          <Button
+            onClick={() => selectedId.set("")}
+            className="relative left-1.5 bottom-1.5 text-muted-foreground"
+            variant="ghost"
+            size="icon"
+          >
+            <XIcon />
+          </Button>
         </div>
-        <Button
-          onClick={() => selectedId.set("")}
-          className="relative left-1.5 bottom-1.5 text-muted-foreground"
-          variant="ghost"
-          size="icon"
-        >
-          <XIcon />
-        </Button>
       </div>
     </div>
   );
