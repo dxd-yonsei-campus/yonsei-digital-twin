@@ -31,22 +31,19 @@ import { BorderBeam } from "@/components/magicui/border-beam";
     <div
       class="aspect-video shadow-xs relative rounded-sm border w-156 max-w-full grid place-content-center overflow-hidden"
     >
-      <BorderBeam
-        className="from-transparent via-primary"
-        client:load
-        duration={8}
-        size={300}
-      />
+      <BorderBeam client:load duration={8} size={300} />
       <video
         class="w-full aspect-video"
         src="/hero-video.mp4"
         autoplay
         muted
-        loop></video>
+        loop
+      >
+      </video>
     </div>
   </main>
   <footer
-    class="fixed bottom-4 text-center px-4 w-full text-sm text-muted-foreground"
+    class="fixed bottom-4 text-center px-4 w-full text-sm text-muted-foreground/50"
   >
     &copy; Yonsei DXD Lab {new Date().getFullYear()}
   </footer>
