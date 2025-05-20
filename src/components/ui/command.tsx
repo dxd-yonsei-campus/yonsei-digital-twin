@@ -30,11 +30,13 @@ function Command({
 function CommandDialog({
   title = "Command Palette",
   description = "Search for a command to run...",
+  commandProps,
   children,
   ...props
 }: React.ComponentProps<typeof Dialog> & {
   title?: string;
   description?: string;
+  commandProps?: React.ComponentProps<typeof CommandPrimitive>;
 }) {
   return (
     <Dialog {...props}>

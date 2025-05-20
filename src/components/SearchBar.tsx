@@ -46,7 +46,13 @@ const SearchBar = () => {
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>
-      <CommandDialog open={open} onOpenChange={setOpen}>
+      <CommandDialog
+        commandProps={{
+          shouldFilter: false,
+        }}
+        open={open}
+        onOpenChange={setOpen}
+      >
         <CommandInput
           placeholder="Search for buildings..."
           value={search}
@@ -59,7 +65,7 @@ const SearchBar = () => {
           >
             {filteredBuildings.map((building) => {
               return (
-                <CommandItem key={building.id}>
+                <CommandItem key={building.id} value={String(building.id)}>
                   <span>{building.name_en}</span>
                 </CommandItem>
               );
