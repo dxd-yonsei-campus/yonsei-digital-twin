@@ -6,8 +6,6 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
-  CommandShortcut,
 } from "@/components/ui/command";
 import { SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,6 +13,7 @@ import sinchonBuildings from "@/data/buildings/sinchon.json";
 
 const SearchBar = () => {
   const [open, setOpen] = React.useState(false);
+  const [search, setSearch] = React.useState("");
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -27,6 +26,12 @@ const SearchBar = () => {
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
   }, []);
+
+  const filteredBuildings = sinchonBuildings.filter(
+    (building) =>
+      building.name_en.toLowerCase().includes(search.toLowerCase()) ||
+      building.name.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
     <>
@@ -42,13 +47,19 @@ const SearchBar = () => {
         </kbd>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Search for buildings..." />
+        <CommandInput
+          placeholder="Search for buildings..."
+          value={search}
+          onValueChange={setSearch}
+        />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading={`Sinchon Campus [${sinchonBuildings.length}]`}>
-            {sinchonBuildings.map((building) => {
+          <CommandGroup
+            heading={`Sinchon Campus [${filteredBuildings.length}]`}
+          >
+            {filteredBuildings.map((building) => {
               return (
-                <CommandItem>
+                <CommandItem key={building.id}>
                   <span>{building.name_en}</span>
                 </CommandItem>
               );
