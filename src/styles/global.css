@@ -121,7 +121,8 @@
 
 .mapboxgl-ctrl-scale {
   font-family: var(--font-sans);
-  height: 16px;
+  margin-right: --spacing(4) !important;
+  height: 12px;
   padding: 0;
   display: flex;
   justify-content: center;

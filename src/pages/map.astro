@@ -8,14 +8,17 @@ import { HomeIcon } from "lucide-react";
 <Layout>
   <h1 class="sr-only">Yonsei Digital Twin Map</h1>
   <div id="map" class="h-screen w-screen"></div>
-  <div
-    class="bg-background border-t absolute bottom-0 w-full py-2 px-4 flex justify-between"
-  >
-    <Button id="toggle-osm">OSM Buildings</Button>
-    <Button id="reset-view">
-      <HomeIcon />
-      Sinchon
-    </Button>
+  <div class="bg-background border-t absolute bottom-0 w-full py-2 px-4">
+    <div class="flex justify-between">
+      <Button id="toggle-osm">OSM Buildings</Button>
+      <Button id="reset-view">
+        <HomeIcon />
+        Sinchon
+      </Button>
+    </div>
+    <div class="flex justify-between mt-1.5 text-sm text-muted-foreground">
+      <div>Yonsei Digital Twin</div>
+    </div>
   </div>
   <script>
     import mapboxgl from "mapbox-gl";
