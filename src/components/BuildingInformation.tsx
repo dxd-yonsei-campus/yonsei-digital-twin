@@ -1,7 +1,7 @@
 import { selectedId } from "@/store";
 import { useStore } from "@nanostores/react";
-import sinchonBuildings from "src/data/buildings/sinchon.json";
-import { Button } from "./ui/button";
+import sinchonBuildings from "@/data/buildings/sinchon.json";
+import { Button } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
 
 const BuildingInformation = () => {
