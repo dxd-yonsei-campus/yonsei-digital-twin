@@ -115,6 +115,7 @@ import BuildingInformation from "@/components/BuildingInformation";
           "source-layer": "building",
           type: "fill-extrusion",
           minzoom: 15,
+          filter: ["all", ["in", ["id"], ""]],
           layout: {
             visibility: "none",
           },
@@ -170,6 +171,7 @@ import BuildingInformation from "@/components/BuildingInformation";
         map.setFilter("selected-building", ["==", ["id"], selectedId]);
         map.setLayoutProperty("selected-building", "visibility", "visible");
       } else {
+        map.setFilter("selected-building", ["==", ["id"], ""]);
         map.setLayoutProperty("selected-building", "visibility", "none");
       }
     });
