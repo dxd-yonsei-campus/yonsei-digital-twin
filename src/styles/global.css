@@ -134,6 +134,7 @@
 }
 
 .mapboxgl-ctrl.mapboxgl-ctrl-attrib {
+  border-bottom-right-radius: var(--radius-sm);
   color: var(--color-muted-foreground);
   background-color: var(--color-muted);
 
