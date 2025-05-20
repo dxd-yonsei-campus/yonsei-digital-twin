@@ -15,11 +15,16 @@ const SearchBar = () => {
   const [open, setOpen] = React.useState(false);
   const [search, setSearch] = React.useState("");
 
+  const toggleOpen = () => {
+    setSearch("");
+    setOpen((open) => !open);
+  };
+
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpen((open) => !open);
+        toggleOpen();
       }
     };
 
@@ -38,7 +43,7 @@ const SearchBar = () => {
   return (
     <>
       <Button
-        onClick={() => setOpen(true)}
+        onClick={toggleOpen}
         variant="outline"
         className="text-muted-foreground font-normal"
       >
