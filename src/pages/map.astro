@@ -11,7 +11,7 @@ import { HomeIcon } from "lucide-react";
   <div
     class="bg-background border-t absolute bottom-0 w-full py-2 px-4 flex justify-between"
   >
-    <Button id="toggle-osm">Toggle OSM Layer</Button>
+    <Button id="toggle-osm">OSM Buildings</Button>
     <Button id="reset-view">
       <HomeIcon />
       Sinchon
@@ -20,9 +20,9 @@ import { HomeIcon } from "lucide-react";
   <script>
     import mapboxgl from "mapbox-gl";
     import sinchonBuildings from "src/data/buildings/sinchon.json";
-    // mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
+    mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
-    const sinchonCenter: [number, number] = [126.9384, 37.5652];
+    const sinchonCenter: [number, number] = [126.9384, 37.5647];
     const initialCamera = {
       center: sinchonCenter,
       zoom: 15.5,
@@ -40,6 +40,7 @@ import { HomeIcon } from "lucide-react";
     });
 
     map.addControl(new mapboxgl.AttributionControl(), "top-left");
+    map.addControl(new mapboxgl.ScaleControl(), "bottom-right");
 
     map.on("style.load", () => {
       // Insert the layer beneath any symbol layer.
