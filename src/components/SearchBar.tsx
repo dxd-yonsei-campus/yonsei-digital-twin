@@ -67,8 +67,8 @@ const SearchBar = () => {
         className="text-muted-foreground font-normal"
       >
         <SearchIcon />
-        <span>Search buildings</span>
-        <kbd>
+        <span className="hidden xs:block">Search buildings</span>
+        <kbd className="hidden md:inline-flex">
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>
