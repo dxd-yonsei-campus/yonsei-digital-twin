@@ -166,8 +166,13 @@ import BuildingInformation from "@/components/BuildingInformation";
       } else {
         console.log("No building found at clicked point");
         selectedId.set("");
-        // Clear the selected building layer filter
         map.setFilter("selected-building", ["==", ["id"], ""]);
+      }
+    });
+
+    selectedId.listen((selectedId) => {
+      if (!selectedId) {
+        map.setLayoutProperty("selected-building", "visibility", "none");
       }
     });
 
