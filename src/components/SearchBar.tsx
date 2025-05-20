@@ -11,13 +11,6 @@ import { SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import sinchonBuildings from "@/data/buildings/sinchon.json";
 import { selectedId } from "@/store";
-import type mapboxgl from "mapbox-gl";
-
-declare global {
-  interface Window {
-    map: mapboxgl.Map;
-  }
-}
 
 const SearchBar = () => {
   const [open, setOpen] = React.useState(false);
