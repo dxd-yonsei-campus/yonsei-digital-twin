@@ -10,6 +10,7 @@ import {
 import { SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import sinchonBuildings from "@/data/buildings/sinchon.json";
+import { selectedId } from "@/store";
 
 const SearchBar = () => {
   const [open, setOpen] = React.useState(false);
@@ -27,7 +28,9 @@ const SearchBar = () => {
   }, []);
 
   const toggleOpen = () => {
-    setSearch("");
+    if (!open) {
+      setSearch("");
+    }
     setOpen((open) => !open);
   };
 
@@ -88,7 +91,14 @@ const SearchBar = () => {
             <CommandEmpty>No results for Sinchon campus.</CommandEmpty>
             {filteredBuildings.map((building) => {
               return (
-                <CommandItem key={building.id} value={String(building.id)}>
+                <CommandItem
+                  key={building.id}
+                  value={String(building.id)}
+                  onSelect={() => {
+                    selectedId.set(building.id);
+                    toggleOpen();
+                  }}
+                >
                   <span>{building.name_en}</span>
                 </CommandItem>
               );
