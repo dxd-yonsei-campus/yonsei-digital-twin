@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/command";
 import { SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import sinchonBuildings from "@/data/buildings/sinchon.json";
 
 const SearchBar = () => {
   const [open, setOpen] = React.useState(false);
@@ -41,34 +42,17 @@ const SearchBar = () => {
         </kbd>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
+        <CommandInput placeholder="Search for buildings..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
-            <CommandItem>
-              <span>Calendar</span>
-            </CommandItem>
-            <CommandItem>
-              <span>Search Emoji</span>
-            </CommandItem>
-            <CommandItem>
-              <span>Calculator</span>
-            </CommandItem>
-          </CommandGroup>
-          <CommandSeparator />
-          <CommandGroup heading="Settings">
-            <CommandItem>
-              <span>Profile</span>
-              <CommandShortcut>⌘P</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <span>Billing</span>
-              <CommandShortcut>⌘B</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <span>Settings</span>
-              <CommandShortcut>⌘S</CommandShortcut>
-            </CommandItem>
+          <CommandGroup heading={`Sinchon Campus [${sinchonBuildings.length}]`}>
+            {sinchonBuildings.map((building) => {
+              return (
+                <CommandItem>
+                  <span>{building.name_en}</span>
+                </CommandItem>
+              );
+            })}
           </CommandGroup>
         </CommandList>
       </CommandDialog>
