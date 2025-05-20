@@ -12,14 +12,26 @@ const ToggleGroupContext = React.createContext<
   variant: "default",
 });
 
-function ToggleGroup({
+type ToggleGroupProps<T extends string> = {
+  value?: T;
+  onValueChange?: (value: T) => void;
+  type: "single";
+  className?: string;
+  variant?: VariantProps<typeof toggleVariants>["variant"];
+  size?: VariantProps<typeof toggleVariants>["size"];
+  children?: React.ReactNode;
+};
+
+function ToggleGroup<T extends string>({
   className,
   variant,
   size,
   children,
+  type,
+  value,
+  onValueChange,
   ...props
-}: React.ComponentProps<typeof ToggleGroupPrimitive.Root> &
-  VariantProps<typeof toggleVariants>) {
+}: ToggleGroupProps<T>) {
   return (
     <ToggleGroupPrimitive.Root
       data-slot="toggle-group"
@@ -29,6 +41,9 @@ function ToggleGroup({
         "group/toggle-group flex w-fit items-center rounded-md data-[variant=outline]:shadow-xs",
         className,
       )}
+      type={type}
+      value={value}
+      onValueChange={onValueChange}
       {...props}
     >
       <ToggleGroupContext.Provider value={{ variant, size }}>
@@ -38,14 +53,22 @@ function ToggleGroup({
   );
 }
 
-function ToggleGroupItem({
+type ToggleGroupItemProps<T extends string> = {
+  value: T;
+  className?: string;
+  variant?: VariantProps<typeof toggleVariants>["variant"];
+  size?: VariantProps<typeof toggleVariants>["size"];
+  children?: React.ReactNode;
+};
+
+function ToggleGroupItem<T extends string>({
   className,
   children,
   variant,
   size,
+  value,
   ...props
-}: React.ComponentProps<typeof ToggleGroupPrimitive.Item> &
-  VariantProps<typeof toggleVariants>) {
+}: ToggleGroupItemProps<T>) {
   const context = React.useContext(ToggleGroupContext);
 
   return (
@@ -61,6 +84,7 @@ function ToggleGroupItem({
         "min-w-0 flex-1 shrink-0 rounded-none shadow-none first:rounded-l-md last:rounded-r-md focus:z-10 focus-visible:z-10 data-[variant=outline]:border-l-0 data-[variant=outline]:first:border-l",
         className,
       )}
+      value={value}
       {...props}
     >
       {children}

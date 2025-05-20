@@ -6,13 +6,13 @@ import { useStore } from "@nanostores/react";
 const BuildingLayerToggle = () => {
   const $buildingLayer = useStore(buildingLayer);
   return (
-    <ToggleGroup
+    <ToggleGroup<BuildingLayerType>
       variant="outline"
       value={$buildingLayer}
-      onValueChange={(val: BuildingLayerType) => buildingLayer.set(val)}
+      onValueChange={(val) => buildingLayer.set(val)}
       type="single"
     >
-      <ToggleGroupItem value="osm">OSM</ToggleGroupItem>
+      <ToggleGroupItem<BuildingLayerType> value="osm">OSM</ToggleGroupItem>
     </ToggleGroup>
   );
 };
