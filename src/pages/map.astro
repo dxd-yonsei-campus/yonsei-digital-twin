@@ -176,7 +176,9 @@ import SearchBar from "@/components/SearchBar";
     selectedId.listen((selectedId) => {
       if (selectedId) {
         map.setFilter("selected-building", ["==", ["id"], selectedId]);
-        map.setLayoutProperty("selected-building", "visibility", "visible");
+        if (buildingLayer.get() == "osm") {
+          map.setLayoutProperty("selected-building", "visibility", "visible");
+        }
       } else {
         map.setFilter("selected-building", ["==", ["id"], ""]);
         map.setLayoutProperty("selected-building", "visibility", "none");
