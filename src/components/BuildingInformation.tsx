@@ -7,13 +7,17 @@ const BuildingInformation = () => {
   const buildingData = sinchonBuildings.filter(
     (building) => building.id === $selectedId,
   );
-  const selectedBuilding =
-    buildingData.length >= 1 ? buildingData[0] : undefined;
+  const selectedBuilding = buildingData.length >= 1 ? buildingData[0] : null;
+
+  if (!selectedBuilding) {
+    return null;
+  }
+
   return (
     <div className="bg-background rounded z-10 absolute top-12 left-8 border p-3 min-w-84 shadow-xs">
-      <h2 className="font-bold text-lg">{selectedBuilding?.name_en}</h2>
+      <h2 className="font-bold text-lg">{selectedBuilding.name_en}</h2>
       <div className="text-sm text-muted-foreground">
-        {selectedBuilding?.name}
+        {selectedBuilding.name}
       </div>
     </div>
   );
