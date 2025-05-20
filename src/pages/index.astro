@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { BorderBeam } from "@/components/magicui/border-beam";
 ---
 
 <Layout>
@@ -22,15 +23,26 @@ import { Button, buttonVariants } from "@/components/ui/button";
         >
           Sinchon Campus
         </a>
-        <Button className="w-full sm:w-fit" disabled
-          >International Campus (Coming Soon)</Button
-        >
+        <Button className="w-full sm:w-fit" disabled>
+          International Campus (Coming Soon)
+        </Button>
       </div>
     </div>
     <div
-      class="aspect-[3/2] rounded-lg border w-132 max-w-full p-1.5 grid place-content-center"
+      class="aspect-[3/2] relative rounded-lg border w-132 max-w-full p-1.5 grid place-content-center overflow-hidden"
     >
-      Image of application
+      <BorderBeam
+        className="from-transparent via-primary"
+        client:load
+        duration={8}
+        size={300}
+      />
+      <span>Image of application</span>
     </div>
   </main>
+  <footer
+    class="fixed bottom-4 text-center px-4 w-full text-sm text-muted-foreground"
+  >
+    &copy; Yonsei DXD Lab {new Date().getFullYear()}
+  </footer>
 </Layout>
