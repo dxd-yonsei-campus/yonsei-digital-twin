@@ -83,8 +83,8 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --primary: oklch(0.5224 0.1855 257.01);
+  --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
@@ -120,6 +120,10 @@
 }
 
 .mapboxgl-ctrl-scale {
+  background: transparent;
+  color: var(--color-foreground);
+  border-width: 1px;
+  border-color: var(--color-foreground);
   font-family: var(--font-sans);
   margin-right: --spacing(4) !important;
   height: 12px;
@@ -127,4 +131,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib {
+  border-bottom-right-radius: var(--radius-sm);
+  color: var(--color-muted-foreground);
+  background-color: transparent;
+
+  a {
+    color: var(--color-muted-foreground);
+  }
 }
