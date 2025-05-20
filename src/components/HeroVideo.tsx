@@ -18,6 +18,12 @@ const HeroVideo = () => {
         size={400}
         className="from-transparent via-primary to-transparent"
       />
+      <BorderBeam
+        duration={8}
+        size={400}
+        delay={4}
+        className="from-transparent via-primary to-transparent"
+      />
     </Card>
   );
 };
