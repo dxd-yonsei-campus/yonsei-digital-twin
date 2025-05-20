@@ -1,3 +1,5 @@
 import { atom } from "nanostores";
 
-export const buildingLayer = atom<"" | "osm">("osm");
+export type BuildingLayerType = "" | "osm";
+
+export const buildingLayer = atom<BuildingLayerType>("osm");
