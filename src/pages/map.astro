@@ -2,9 +2,10 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import Layout from "@/layouts/Layout.astro";
 import { Button } from "@/components/ui/button";
-import { HomeIcon } from "lucide-react";
+import { HomeIcon, SearchIcon } from "lucide-react";
 import BuildingLayerToggle from "@/components/BuildingLayersToggle";
 import BuildingInformation from "@/components/BuildingInformation";
+import SearchBox from "@/components/SearchBox";
 ---
 
 <Layout>
@@ -16,6 +17,7 @@ import BuildingInformation from "@/components/BuildingInformation";
   >
     <div class="flex justify-between">
       <BuildingLayerToggle client:load />
+      <SearchBox client:load />
       <Button id="reset-view">
         <HomeIcon />
         Sinchon
@@ -29,7 +31,7 @@ import BuildingInformation from "@/components/BuildingInformation";
     import { buildingLayer, selectedId } from "@/store";
     import mapboxgl from "mapbox-gl";
     import sinchonBuildings from "src/data/buildings/sinchon.json";
-    mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
+    // mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
     const sinchonCenter: [number, number] = [126.9384, 37.5647];
     const initialCamera = {
