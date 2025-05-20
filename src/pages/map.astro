@@ -4,11 +4,13 @@ import Layout from "@/layouts/Layout.astro";
 import { Button } from "@/components/ui/button";
 import { HomeIcon } from "lucide-react";
 import BuildingLayerToggle from "@/components/BuildingLayersToggle";
+import BuildingInformation from "@/components/BuildingInformation";
 ---
 
 <Layout>
   <h1 class="sr-only">Yonsei Digital Twin Map</h1>
   <div id="map" class="h-screen w-screen"></div>
+  <BuildingInformation client:load />
   <div class="bg-background border-t absolute bottom-0 w-full py-2 px-4">
     <div class="flex justify-between">
       <BuildingLayerToggle client:load />
@@ -22,7 +24,7 @@ import BuildingLayerToggle from "@/components/BuildingLayersToggle";
     </div>
   </div>
   <script>
-    import { buildingLayer } from "@/store";
+    import { buildingLayer, selectedId } from "@/store";
     import mapboxgl from "mapbox-gl";
     import sinchonBuildings from "src/data/buildings/sinchon.json";
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
@@ -119,7 +121,7 @@ import BuildingLayerToggle from "@/components/BuildingLayersToggle";
 
         // Try to access an ID if it exists
         const buildingId = building.id;
-        console.log("Building ID:", buildingId);
+        selectedId.set(buildingId || "");
       } else {
         console.log("No building found at clicked point");
       }
