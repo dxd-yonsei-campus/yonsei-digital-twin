@@ -15,9 +15,25 @@ const SearchBar = () => {
   const [open, setOpen] = React.useState(false);
   const [search, setSearch] = React.useState("");
 
+  const listRef = React.useRef<HTMLDivElement>(null);
+
+  // https://github.com/pacocoursey/cmdk/issues/234#issuecomment-2105098199
+  const scrollUpWhenCleared = React.useCallback((value: string) => {
+    if (value === "") {
+      requestAnimationFrame(() => {
+        listRef.current?.scrollTo({ top: 0 });
+      });
+    }
+  }, []);
+
   const toggleOpen = () => {
     setSearch("");
     setOpen((open) => !open);
+  };
+
+  const handleSearch = (query: string) => {
+    scrollUpWhenCleared(query);
+    setSearch(query);
   };
 
   React.useEffect(() => {
@@ -63,9 +79,9 @@ const SearchBar = () => {
         <CommandInput
           placeholder="Search for buildings..."
           value={search}
-          onValueChange={setSearch}
+          onValueChange={handleSearch}
         />
-        <CommandList>
+        <CommandList ref={listRef}>
           <CommandGroup
             heading={`Sinchon Campus [${filteredBuildings.length}]`}
           >
