@@ -1,41 +1,59 @@
 import { selectedId } from "@/store";
 import { useStore } from "@nanostores/react";
 import sinchonBuildings from "@/data/buildings/sinchon.json";
-import { Button } from "@/components/ui/button";
-import { XIcon } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { useEffect, useState } from "react";
+import type { BuildingProps } from "@/content.config";
 
 const BuildingInformation = () => {
   const $selectedId = useStore(selectedId);
-  const buildingData = sinchonBuildings.filter(
-    (building) => building.id === $selectedId,
+  const [displayBuilding, setDisplayBuilding] = useState<BuildingProps | null>(
+    null,
   );
-  const selectedBuilding = buildingData.length >= 1 ? buildingData[0] : null;
 
-  if (!selectedBuilding) {
+  useEffect(() => {
+    if ($selectedId) {
+      const buildingData = sinchonBuildings.filter(
+        (building) => building.id === $selectedId,
+      );
+      if (buildingData.length >= 1) {
+        const building = buildingData[0];
+        setDisplayBuilding(building as BuildingProps);
+      } else {
+        setDisplayBuilding(null);
+      }
+    }
+  }, [$selectedId]);
+
+  if (!displayBuilding) {
     return null;
   }
 
   return (
-    <div className="rounded z-10 absolute top-12 left-0 px-4 w-108 max-w-full md:px-8">
-      <div className="bg-background/80 backdrop-blur-sm border p-3 shadow-xs">
-        <div className="flex justify-between gap-1">
-          <div>
-            <h2 className="font-bold text-lg/6">{selectedBuilding.name_en}</h2>
-            <div className="text-sm text-muted-foreground">
-              {selectedBuilding.name}
-            </div>
+    <Dialog modal={false} open={!!$selectedId}>
+      <DialogContent
+        className="top-12 left-4 translate-y-0 translate-x-0 w-full sm:w-108"
+        onPointerDownOutside={(e) => e.preventDefault()}
+        onEscapeKeyDown={() => selectedId.set("")}
+        onCloseClick={() => selectedId.set("")}
+      >
+        <DialogHeader>
+          <DialogTitle>{displayBuilding?.name_en}</DialogTitle>
+          <div className="text-sm text-muted-foreground">
+            {displayBuilding.name}
           </div>
-          <Button
-            onClick={() => selectedId.set("")}
-            className="relative left-1.5 bottom-1.5 text-muted-foreground"
-            variant="ghost"
-            size="icon"
-          >
-            <XIcon />
-          </Button>
-        </div>
-      </div>
-    </div>
+          <DialogDescription className="sr-only">
+            Information about {displayBuilding.name_en}
+          </DialogDescription>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
   );
 };
 

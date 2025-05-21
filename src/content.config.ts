@@ -24,3 +24,4 @@ const buildings = defineCollection({
 });
 
 export const collections = { buildings };
+export type BuildingProps = z.infer<typeof buildingsSchema>;
