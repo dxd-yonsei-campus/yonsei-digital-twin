@@ -2,6 +2,7 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import Layout from "@/layouts/Layout.astro";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { HomeIcon } from "lucide-react";
 import BuildingLayersToggle from "@/components/BuildingLayersToggle";
 import BuildingInformation from "@/components/BuildingInformation";
@@ -13,15 +14,30 @@ import SearchBar from "@/components/SearchBar";
   <div id="map" class="h-screen w-screen"></div>
   <BuildingInformation client:load />
   <div class="main-bg border-t absolute bottom-0 w-full py-2 px-4">
-    <div class="flex justify-between">
-      <BuildingLayersToggle client:load />
+    <div class="flex justify-between items-center mb-2 gap-3">
+      <div class="shrink-0">
+        <img
+          class="h-8 hidden dark:block"
+          src="/yonsei-logo-dark.png"
+          alt="Yonsei University"
+        />
+        <img
+          class="h-8 block dark:hidden"
+          src="/yonsei-logo-light.png"
+          alt="Yonsei University"
+        />
+      </div>
       <SearchBar client:load />
-      <Button id="reset-view">
-        <HomeIcon />
-        Sinchon
-      </Button>
+      <div class="flex gap-2 items-center">
+        <BuildingLayersToggle client:load />
+        <Separator orientation="vertical" className="h-6!" />
+        <Button variant="outline" id="reset-view">
+          <HomeIcon />
+          Sinchon
+        </Button>
+      </div>
     </div>
-    <div class="flex justify-between mt-2 text-sm text-muted-foreground">
+    <div class="flex justify-between mt-2.5 text-xs text-muted-foreground/70">
       <div>Yonsei Digital Twin</div>
     </div>
   </div>

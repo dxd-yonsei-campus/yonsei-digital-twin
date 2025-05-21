@@ -15,6 +15,7 @@
     "@astrojs/react": "^4.2.7",
     "@nanostores/react": "^1.0.0",
     "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-separator": "^1.1.7",
     "@radix-ui/react-slot": "^1.2.2",
     "@radix-ui/react-toggle": "^1.1.8",
     "@radix-ui/react-toggle-group": "^1.1.9",
