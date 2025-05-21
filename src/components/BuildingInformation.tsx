@@ -26,7 +26,10 @@ const BuildingInformation = () => {
       open={!!selectedBuilding}
       onOpenChange={() => selectedId.set("")}
     >
-      <DialogContent className="top-12 left-4 translate-y-0 translate-x-0 w-full sm:w-108">
+      <DialogContent
+        className="top-12 left-4 translate-y-0 translate-x-0 w-full sm:w-108"
+        onPointerDownOutside={(e) => e.preventDefault()}
+      >
         <DialogHeader>
           <DialogTitle>{selectedBuilding.name_en}</DialogTitle>
           <div className="text-sm text-muted-foreground">
