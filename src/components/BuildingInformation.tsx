@@ -38,12 +38,12 @@ const BuildingInformation = () => {
   return (
     <Dialog modal={false} open={!!$selectedId}>
       <DialogContent
-        className="top-12 left-4 translate-y-0 translate-x-0 w-full sm:w-108"
+        className="top-12 left-4 translate-y-0 translate-x-0 w-full sm:w-108 p-7"
         onPointerDownOutside={(e) => e.preventDefault()}
         onEscapeKeyDown={() => selectedId.set("")}
         onCloseClick={() => selectedId.set("")}
       >
-        <DialogHeader className="pr-4">
+        <DialogHeader>
           <DialogTitle>{displayBuilding?.name_en}</DialogTitle>
           <div className="text-sm text-muted-foreground">
             {displayBuilding.name}
