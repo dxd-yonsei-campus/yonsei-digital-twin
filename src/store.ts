@@ -1,6 +1,5 @@
 import { atom } from "nanostores";
-
-export type BuildingLayerType = "" | "osm";
+import type { BuildingLayerType } from "@/types/map";
 
 export const buildingLayer = atom<BuildingLayerType>("osm");
 export const selectedId = atom<string | number>("");

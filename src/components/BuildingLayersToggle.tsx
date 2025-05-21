@@ -1,6 +1,6 @@
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { buildingLayer } from "@/store";
-import type { BuildingLayerType } from "@/store";
+import type { BuildingLayerType } from "@/types/map";
 import { useStore } from "@nanostores/react";
 
 const BuildingLayerToggle = () => {
