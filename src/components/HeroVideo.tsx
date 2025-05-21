@@ -14,14 +14,20 @@ const HeroVideo = () => {
         ></video>
       </CardContent>
       <BorderBeam
-        duration={8}
-        size={400}
+        duration={9}
+        size={500}
         className="from-transparent via-primary to-transparent"
       />
       <BorderBeam
-        duration={8}
-        size={400}
-        delay={4}
+        duration={9}
+        size={500}
+        delay={3}
+        className="from-transparent via-primary to-transparent"
+      />
+      <BorderBeam
+        duration={9}
+        size={500}
+        delay={6}
         className="from-transparent via-primary to-transparent"
       />
     </Card>
