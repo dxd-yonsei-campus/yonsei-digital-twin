@@ -8,20 +8,35 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { useEffect, useState } from "react";
+import type { BuildingProps } from "@/content.config";
 
 const BuildingInformation = () => {
   const $selectedId = useStore(selectedId);
-  const buildingData = sinchonBuildings.filter(
-    (building) => building.id === $selectedId,
+  const [displayBuilding, setDisplayBuilding] = useState<BuildingProps | null>(
+    null,
   );
-  const selectedBuilding = buildingData.length >= 1 ? buildingData[0] : null;
 
-  if (!selectedBuilding) {
+  useEffect(() => {
+    if ($selectedId) {
+      const buildingData = sinchonBuildings.filter(
+        (building) => building.id === $selectedId,
+      );
+      if (buildingData.length >= 1) {
+        const building = buildingData[0];
+        setDisplayBuilding(building as BuildingProps);
+      } else {
+        setDisplayBuilding(null);
+      }
+    }
+  }, [$selectedId]);
+
+  if (!displayBuilding) {
     return null;
   }
 
   return (
-    <Dialog modal={false} open={!!selectedBuilding}>
+    <Dialog modal={false} open={!!$selectedId}>
       <DialogContent
         className="top-12 left-4 translate-y-0 translate-x-0 w-full sm:w-108"
         onPointerDownOutside={(e) => e.preventDefault()}
@@ -29,12 +44,12 @@ const BuildingInformation = () => {
         onCloseClick={() => selectedId.set("")}
       >
         <DialogHeader>
-          <DialogTitle>{selectedBuilding.name_en}</DialogTitle>
+          <DialogTitle>{displayBuilding?.name_en}</DialogTitle>
           <div className="text-sm text-muted-foreground">
-            {selectedBuilding.name}
+            {displayBuilding.name}
           </div>
           <DialogDescription className="sr-only">
-            Information about {selectedBuilding.name_en}
+            Information about {displayBuilding.name_en}
           </DialogDescription>
         </DialogHeader>
       </DialogContent>
