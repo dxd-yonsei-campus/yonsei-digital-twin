@@ -12,9 +12,7 @@ import SearchBar from "@/components/SearchBar";
   <h1 class="sr-only">Yonsei Digital Twin Map</h1>
   <div id="map" class="h-screen w-screen"></div>
   <BuildingInformation client:load />
-  <div
-    class="bg-background/80 backdrop-blur-sm border-t absolute bottom-0 w-full py-2 px-4"
-  >
+  <div class="main-bg border-t absolute bottom-0 w-full py-2 px-4">
     <div class="flex justify-between">
       <BuildingLayersToggle client:load />
       <SearchBar client:load />

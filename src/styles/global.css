@@ -147,3 +147,7 @@
     color: var(--color-muted-foreground);
   }
 }
+
+@utility main-bg {
+  @apply bg-background/80 backdrop-blur-sm;
+}
