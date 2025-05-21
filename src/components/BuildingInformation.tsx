@@ -43,7 +43,7 @@ const BuildingInformation = () => {
         onEscapeKeyDown={() => selectedId.set("")}
         onCloseClick={() => selectedId.set("")}
       >
-        <DialogHeader>
+        <DialogHeader className="pr-4">
           <DialogTitle>{displayBuilding?.name_en}</DialogTitle>
           <div className="text-sm text-muted-foreground">
             {displayBuilding.name}
