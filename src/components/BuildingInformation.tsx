@@ -4,9 +4,9 @@ import sinchonBuildings from "@/data/buildings/sinchon.json";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
 
 const BuildingInformation = () => {
@@ -21,14 +21,12 @@ const BuildingInformation = () => {
   }
 
   return (
-    <Dialog
-      modal={false}
-      open={!!selectedBuilding}
-      onOpenChange={() => selectedId.set("")}
-    >
+    <Dialog modal={false} open={!!selectedBuilding}>
       <DialogContent
         className="top-12 left-4 translate-y-0 translate-x-0 w-full sm:w-108"
         onPointerDownOutside={(e) => e.preventDefault()}
+        onEscapeKeyDown={() => selectedId.set("")}
+        onCloseClick={() => selectedId.set("")}
       >
         <DialogHeader>
           <DialogTitle>{selectedBuilding.name_en}</DialogTitle>
