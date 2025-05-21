@@ -11,6 +11,8 @@ import { SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import sinchonBuildings from "@/data/buildings/sinchon.json";
 import { selectedId } from "@/store";
+import { useStore } from "@nanostores/react";
+import { cn } from "@/lib/utils";
 
 const SearchBar = () => {
   const [open, setOpen] = React.useState(false);
@@ -72,16 +74,30 @@ const SearchBar = () => {
     });
   };
 
+  const $selectedId = useStore(selectedId);
+  const buildingData = sinchonBuildings.filter(
+    (building) => building.id === $selectedId,
+  );
+  const building = buildingData.length >= 1 ? buildingData[0] : null;
+
   return (
     <>
       <Button
         onClick={toggleOpen}
         variant="outline"
-        className="text-muted-foreground font-normal"
+        className="text-muted-foreground font-normal w-auto sm:w-52 md:w-60 flex justify-between"
       >
-        <SearchIcon />
-        <span className="hidden xs:block">Search buildings</span>
-        <kbd className="hidden md:inline-flex">
+        <div className="flex gap-2 items-center overflow-hidden">
+          <SearchIcon />
+          <span
+            className={cn("hidden xs:block overflow-hidden text-ellipsis", {
+              "text-foreground": building,
+            })}
+          >
+            {building ? building.name_en : "Search buildings"}
+          </span>
+        </div>
+        <kbd className="hidden md:inline-flex shrink-0">
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>
