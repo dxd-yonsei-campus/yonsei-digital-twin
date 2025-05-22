@@ -253,7 +253,6 @@
     "id": 472542679,
     "name": "송도학사 E",
     "name_en": "Songdo Dormitory E",
-    "address": "85 Songdogwahak-ro, Yeonsu-gu, Incheon, South Korea",
     "latitude": 37.384016,
     "longitude": 126.671759,
     "geometry": {
@@ -267,6 +266,25 @@
           [126.6719738, 37.3843499],
           [126.6719604, 37.3843407],
           [126.6714821, 37.3838383]
+        ]
+      ]
+    }
+  },
+  {
+    "id": 1096876551,
+    "name": "송도학사 F",
+    "name_en": "Songdo Dormitory F",
+    "latitude": 37.38385,
+    "longitude": 126.67257,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.6723034, 37.3841581],
+          [126.6721378, 37.38425],
+          [126.672023, 37.3841376],
+          [126.672188, 37.3840353],
+          [126.6723034, 37.3841581]
         ]
       ]
     }
