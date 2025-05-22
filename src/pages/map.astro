@@ -47,6 +47,7 @@ import SearchBar from "@/components/SearchBar";
     import { buildingLayer, selectedId } from "@/store";
     import mapboxgl from "mapbox-gl";
     import sinchonBuildings from "@/data/buildings/sinchon.json";
+    import songdoBuildings from "@/data/buildings/songdo.json";
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
     const sinchonCenter: [number, number] = [126.9384, 37.5647];
@@ -86,9 +87,8 @@ import SearchBar from "@/components/SearchBar";
         return;
       }
 
-      const sinchonBuildingIds = sinchonBuildings.map(
-        (building) => building.id,
-      );
+      const allBuildings = sinchonBuildings.concat(songdoBuildings);
+      const allBuildingIds = allBuildings.map((building) => building.id);
 
       // The 'building' layer in the Mapbox Streets
       // vector tileset contains building height data
@@ -98,7 +98,7 @@ import SearchBar from "@/components/SearchBar";
           id: "osm-buildings",
           source: "composite",
           "source-layer": "building",
-          filter: ["all", ["in", ["id"], ["literal", sinchonBuildingIds]]],
+          filter: ["all", ["in", ["id"], ["literal", allBuildingIds]]],
           type: "fill-extrusion",
           minzoom: 15,
           paint: {

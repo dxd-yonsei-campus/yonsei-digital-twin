@@ -6,13 +6,17 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandSeparator,
 } from "@/components/ui/command";
 import { SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import sinchonBuildings from "@/data/buildings/sinchon.json";
+import songdoBuildings from "@/data/buildings/songdo.json";
 import { selectedId } from "@/store";
 import { useStore } from "@nanostores/react";
 import { cn } from "@/lib/utils";
+import type { BuildingProps } from "@/content.config";
+import { flyToLocation } from "@/lib/mapUtils";
 
 const SearchBar = () => {
   const [open, setOpen] = React.useState(false);
@@ -21,12 +25,10 @@ const SearchBar = () => {
   const listRef = React.useRef<HTMLDivElement>(null);
 
   // https://github.com/pacocoursey/cmdk/issues/234#issuecomment-2105098199
-  const scrollUpWhenCleared = React.useCallback((value: string) => {
-    if (value === "") {
-      requestAnimationFrame(() => {
-        listRef.current?.scrollTo({ top: 0 });
-      });
-    }
+  const scrollUpWhenCleared = React.useCallback(() => {
+    requestAnimationFrame(() => {
+      listRef.current?.scrollTo({ top: 0 });
+    });
   }, []);
 
   const toggleOpen = () => {
@@ -37,7 +39,7 @@ const SearchBar = () => {
   };
 
   const handleSearch = (query: string) => {
-    scrollUpWhenCleared(query);
+    scrollUpWhenCleared();
     setSearch(query);
   };
 
@@ -53,7 +55,7 @@ const SearchBar = () => {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const filteredBuildings = sinchonBuildings
+  const filteredSinchonBuildings = sinchonBuildings
     .filter((building) =>
       building.name_en.toLowerCase().includes(search.toLowerCase()),
     )
@@ -61,17 +63,18 @@ const SearchBar = () => {
       a.name_en.toLowerCase().localeCompare(b.name_en.toLowerCase()),
     );
 
-  const handleSelect = (building: (typeof sinchonBuildings)[0]) => {
+  const filteredSongdoBuildings = songdoBuildings
+    .filter((building) =>
+      building.name_en.toLowerCase().includes(search.toLowerCase()),
+    )
+    .sort((a, b) =>
+      a.name_en.toLowerCase().localeCompare(b.name_en.toLowerCase()),
+    );
+
+  const handleSelect = (building: BuildingProps) => {
     selectedId.set(building.id);
     toggleOpen();
-
-    window.map.flyTo({
-      center: [building.longitude, building.latitude],
-      zoom: 17,
-      pitch: 45,
-      bearing: 0,
-      duration: 2000,
-    });
+    flyToLocation(building.longitude, building.latitude);
   };
 
   const $selectedId = useStore(selectedId);
@@ -114,27 +117,17 @@ const SearchBar = () => {
           onValueChange={handleSearch}
         />
         <CommandList ref={listRef}>
-          <CommandGroup
-            heading={`Sinchon Campus [${filteredBuildings.length}]`}
-          >
-            <CommandEmpty>No results for Sinchon campus.</CommandEmpty>
-            {filteredBuildings.map((building) => {
-              return (
-                <CommandItem
-                  key={building.id}
-                  value={String(building.id)}
-                  onSelect={() => handleSelect(building)}
-                >
-                  <div className="flex flex-col">
-                    <span>{building.name_en}</span>
-                    <span className="text-muted-foreground text-xs">
-                      {building.name}
-                    </span>
-                  </div>
-                </CommandItem>
-              );
-            })}
-          </CommandGroup>
+          <SearchGroup
+            name="Sinchon"
+            buildings={filteredSinchonBuildings as BuildingProps[]}
+            handleSelect={handleSelect}
+          />
+          <CommandSeparator />
+          <SearchGroup
+            name="Songdo"
+            buildings={filteredSongdoBuildings as BuildingProps[]}
+            handleSelect={handleSelect}
+          />
         </CommandList>
       </CommandDialog>
     </>
@@ -142,3 +135,49 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
+
+type SearchGroupProps = {
+  name: string;
+  buildings: BuildingProps[];
+  handleSelect: (building: BuildingProps) => void;
+};
+
+const SearchGroup = ({ name, buildings, handleSelect }: SearchGroupProps) => {
+  return (
+    <CommandGroup heading={`${name} Campus [${buildings.length}]`}>
+      {buildings.length === 0 && (
+        <div className="text-sm text-center py-4">
+          No results for {name} campus.
+        </div>
+      )}
+      {buildings.map((building) => {
+        return (
+          <SearchItem
+            building={building as BuildingProps}
+            handleSelect={handleSelect}
+          />
+        );
+      })}
+    </CommandGroup>
+  );
+};
+
+type SearchItemProps = {
+  building: BuildingProps;
+  handleSelect: (building: BuildingProps) => void;
+};
+
+const SearchItem = ({ building, handleSelect }: SearchItemProps) => {
+  return (
+    <CommandItem
+      key={building.id}
+      value={String(building.id)}
+      onSelect={() => handleSelect(building)}
+    >
+      <div className="flex flex-col">
+        <span>{building.name_en}</span>
+        <span className="text-muted-foreground text-xs">{building.name}</span>
+      </div>
+    </CommandItem>
+  );
+};

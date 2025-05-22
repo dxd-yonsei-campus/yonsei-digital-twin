@@ -1,6 +1,7 @@
 import { selectedId } from "@/store";
 import { useStore } from "@nanostores/react";
 import sinchonBuildings from "@/data/buildings/sinchon.json";
+import songdoBuildings from "@/data/buildings/songdo.json";
 import {
   Dialog,
   DialogContent,
@@ -11,6 +12,8 @@ import {
 import { useEffect, useState } from "react";
 import type { BuildingProps } from "@/content.config";
 
+const allBuildings = sinchonBuildings.concat(songdoBuildings);
+
 const BuildingInformation = () => {
   const $selectedId = useStore(selectedId);
   const [displayBuilding, setDisplayBuilding] = useState<BuildingProps | null>(
@@ -19,7 +22,7 @@ const BuildingInformation = () => {
 
   useEffect(() => {
     if ($selectedId) {
-      const buildingData = sinchonBuildings.filter(
+      const buildingData = allBuildings.filter(
         (building) => building.id === $selectedId,
       );
       if (buildingData.length >= 1) {
