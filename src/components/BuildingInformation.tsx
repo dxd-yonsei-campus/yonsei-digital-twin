@@ -9,8 +9,17 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
 import { useEffect, useState } from "react";
 import type { BuildingProps } from "@/content.config";
+
+const buildingCampusMap = new Map<string, string>();
+sinchonBuildings.forEach((building) =>
+  buildingCampusMap.set(String(building.id), "Sinchon"),
+);
+songdoBuildings.forEach((building) =>
+  buildingCampusMap.set(String(building.id), "Songdo"),
+);
 
 const allBuildings = sinchonBuildings.concat(songdoBuildings);
 
@@ -19,6 +28,7 @@ const BuildingInformation = () => {
   const [displayBuilding, setDisplayBuilding] = useState<BuildingProps | null>(
     null,
   );
+  const [campus, setCampus] = useState("");
 
   useEffect(() => {
     if ($selectedId) {
@@ -28,6 +38,7 @@ const BuildingInformation = () => {
       if (buildingData.length >= 1) {
         const building = buildingData[0];
         setDisplayBuilding(building as BuildingProps);
+        setCampus(buildingCampusMap.get(String(building.id)) || "");
       } else {
         setDisplayBuilding(null);
       }
@@ -47,7 +58,10 @@ const BuildingInformation = () => {
         onCloseClick={() => selectedId.set("")}
       >
         <DialogHeader>
-          <DialogTitle>{displayBuilding?.name_en}</DialogTitle>
+          <Badge variant="outline">{campus} Campus</Badge>
+          <DialogTitle className="flex items-center gap-2">
+            {displayBuilding?.name_en}
+          </DialogTitle>
           <div className="text-sm text-muted-foreground">
             {displayBuilding.name}
           </div>
