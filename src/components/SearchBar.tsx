@@ -24,12 +24,10 @@ const SearchBar = () => {
   const listRef = React.useRef<HTMLDivElement>(null);
 
   // https://github.com/pacocoursey/cmdk/issues/234#issuecomment-2105098199
-  const scrollUpWhenCleared = React.useCallback((value: string) => {
-    if (value === "") {
-      requestAnimationFrame(() => {
-        listRef.current?.scrollTo({ top: 0 });
-      });
-    }
+  const scrollUpWhenCleared = React.useCallback(() => {
+    requestAnimationFrame(() => {
+      listRef.current?.scrollTo({ top: 0 });
+    });
   }, []);
 
   const toggleOpen = () => {
@@ -40,7 +38,7 @@ const SearchBar = () => {
   };
 
   const handleSearch = (query: string) => {
-    scrollUpWhenCleared(query);
+    scrollUpWhenCleared();
     setSearch(query);
   };
 
