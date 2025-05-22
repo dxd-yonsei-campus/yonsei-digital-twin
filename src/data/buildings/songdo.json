@@ -217,6 +217,8 @@
     "id": 377505232,
     "name": "송도학사 B와 송도학사 C를 잇는 다리",
     "name_en": "Bridge from Songdo Dormitory B to Songdo Dormitory C",
+    "latitude": 37.381608,
+    "longitude": 126.667554,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -507,6 +509,25 @@
           [126.6707473, 37.3797937],
           [126.670653, 37.3798515],
           [126.6703716, 37.3795615]
+        ]
+      ]
+    }
+  },
+  {
+    "id": 1096167991,
+    "name": "에스엘바이젠산학협력관",
+    "name_en": "SL Weizen Industry-Academia Cooperation Building",
+    "latitude": 37.380871,
+    "longitude": 126.67213,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.671736, 37.380851],
+          [126.6720107, 37.380692],
+          [126.6724491, 37.3811705],
+          [126.6721878, 37.3813243],
+          [126.671736, 37.380851]
         ]
       ]
     }
