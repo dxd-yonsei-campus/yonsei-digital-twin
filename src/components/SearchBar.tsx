@@ -128,7 +128,11 @@ const SearchBar = () => {
           <CommandGroup
             heading={`Sinchon Campus [${filteredSinchonBuildings.length}]`}
           >
-            <CommandEmpty>No results for Sinchon campus.</CommandEmpty>
+            {filteredSinchonBuildings.length === 0 && (
+              <div className="text-sm text-center py-4">
+                No results for Sinchon campus.
+              </div>
+            )}
             {filteredSinchonBuildings.map((building) => {
               return (
                 <SearchItem
@@ -142,7 +146,11 @@ const SearchBar = () => {
           <CommandGroup
             heading={`Songdo Campus [${filteredSongdoBuildings.length}]`}
           >
-            <CommandEmpty>No results for Songdo campus.</CommandEmpty>
+            {filteredSongdoBuildings.length === 0 && (
+              <div className="text-sm text-center py-4">
+                No results for Songdo campus.
+              </div>
+            )}
             {filteredSongdoBuildings.map((building) => {
               return (
                 <SearchItem
