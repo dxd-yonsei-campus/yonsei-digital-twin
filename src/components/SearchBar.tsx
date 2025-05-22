@@ -6,13 +6,16 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandSeparator,
 } from "@/components/ui/command";
 import { SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import sinchonBuildings from "@/data/buildings/sinchon.json";
+import songdoBuildings from "@/data/buildings/songdo.json";
 import { selectedId } from "@/store";
 import { useStore } from "@nanostores/react";
 import { cn } from "@/lib/utils";
+import type { BuildingProps } from "@/content.config";
 
 const SearchBar = () => {
   const [open, setOpen] = React.useState(false);
@@ -53,7 +56,7 @@ const SearchBar = () => {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const filteredBuildings = sinchonBuildings
+  const filteredSinchonBuildings = sinchonBuildings
     .filter((building) =>
       building.name_en.toLowerCase().includes(search.toLowerCase()),
     )
@@ -61,7 +64,15 @@ const SearchBar = () => {
       a.name_en.toLowerCase().localeCompare(b.name_en.toLowerCase()),
     );
 
-  const handleSelect = (building: (typeof sinchonBuildings)[0]) => {
+  const filteredSongdoBuildings = songdoBuildings
+    .filter((building) =>
+      building.name_en.toLowerCase().includes(search.toLowerCase()),
+    )
+    .sort((a, b) =>
+      a.name_en.toLowerCase().localeCompare(b.name_en.toLowerCase()),
+    );
+
+  const handleSelect = (building: BuildingProps) => {
     selectedId.set(building.id);
     toggleOpen();
 
@@ -115,15 +126,37 @@ const SearchBar = () => {
         />
         <CommandList ref={listRef}>
           <CommandGroup
-            heading={`Sinchon Campus [${filteredBuildings.length}]`}
+            heading={`Sinchon Campus [${filteredSinchonBuildings.length}]`}
           >
             <CommandEmpty>No results for Sinchon campus.</CommandEmpty>
-            {filteredBuildings.map((building) => {
+            {filteredSinchonBuildings.map((building) => {
               return (
                 <CommandItem
                   key={building.id}
                   value={String(building.id)}
-                  onSelect={() => handleSelect(building)}
+                  onSelect={() => handleSelect(building as BuildingProps)}
+                >
+                  <div className="flex flex-col">
+                    <span>{building.name_en}</span>
+                    <span className="text-muted-foreground text-xs">
+                      {building.name}
+                    </span>
+                  </div>
+                </CommandItem>
+              );
+            })}
+          </CommandGroup>
+          <CommandSeparator />
+          <CommandGroup
+            heading={`Songdo Campus [${filteredSongdoBuildings.length}]`}
+          >
+            <CommandEmpty>No results for Sinchon campus.</CommandEmpty>
+            {filteredSongdoBuildings.map((building) => {
+              return (
+                <CommandItem
+                  key={building.id}
+                  value={String(building.id)}
+                  onSelect={() => handleSelect(building as BuildingProps)}
                 >
                   <div className="flex flex-col">
                     <span>{building.name_en}</span>
