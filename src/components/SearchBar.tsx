@@ -131,18 +131,10 @@ const SearchBar = () => {
             <CommandEmpty>No results for Sinchon campus.</CommandEmpty>
             {filteredSinchonBuildings.map((building) => {
               return (
-                <CommandItem
-                  key={building.id}
-                  value={String(building.id)}
-                  onSelect={() => handleSelect(building as BuildingProps)}
-                >
-                  <div className="flex flex-col">
-                    <span>{building.name_en}</span>
-                    <span className="text-muted-foreground text-xs">
-                      {building.name}
-                    </span>
-                  </div>
-                </CommandItem>
+                <SearchItem
+                  building={building as BuildingProps}
+                  handleSelect={handleSelect}
+                />
               );
             })}
           </CommandGroup>
@@ -150,21 +142,13 @@ const SearchBar = () => {
           <CommandGroup
             heading={`Songdo Campus [${filteredSongdoBuildings.length}]`}
           >
-            <CommandEmpty>No results for Sinchon campus.</CommandEmpty>
+            <CommandEmpty>No results for Songdo campus.</CommandEmpty>
             {filteredSongdoBuildings.map((building) => {
               return (
-                <CommandItem
-                  key={building.id}
-                  value={String(building.id)}
-                  onSelect={() => handleSelect(building as BuildingProps)}
-                >
-                  <div className="flex flex-col">
-                    <span>{building.name_en}</span>
-                    <span className="text-muted-foreground text-xs">
-                      {building.name}
-                    </span>
-                  </div>
-                </CommandItem>
+                <SearchItem
+                  building={building as BuildingProps}
+                  handleSelect={handleSelect}
+                />
               );
             })}
           </CommandGroup>
@@ -175,3 +159,23 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
+
+type SearchItemProps = {
+  building: BuildingProps;
+  handleSelect: (building: BuildingProps) => void;
+};
+
+const SearchItem = ({ building, handleSelect }: SearchItemProps) => {
+  return (
+    <CommandItem
+      key={building.id}
+      value={String(building.id)}
+      onSelect={() => handleSelect(building)}
+    >
+      <div className="flex flex-col">
+        <span>{building.name_en}</span>
+        <span className="text-muted-foreground text-xs">{building.name}</span>
+      </div>
+    </CommandItem>
+  );
+};
