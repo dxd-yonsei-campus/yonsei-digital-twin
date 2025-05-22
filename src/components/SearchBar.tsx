@@ -16,6 +16,7 @@ import { selectedId } from "@/store";
 import { useStore } from "@nanostores/react";
 import { cn } from "@/lib/utils";
 import type { BuildingProps } from "@/content.config";
+import { flyToLocation } from "@/lib/mapUtils";
 
 const SearchBar = () => {
   const [open, setOpen] = React.useState(false);
@@ -73,14 +74,7 @@ const SearchBar = () => {
   const handleSelect = (building: BuildingProps) => {
     selectedId.set(building.id);
     toggleOpen();
-
-    window.map.flyTo({
-      center: [building.longitude, building.latitude],
-      zoom: 17,
-      pitch: 45,
-      bearing: 0,
-      duration: 2000,
-    });
+    flyToLocation(building.longitude, building.latitude);
   };
 
   const $selectedId = useStore(selectedId);
