@@ -125,41 +125,17 @@ const SearchBar = () => {
           onValueChange={handleSearch}
         />
         <CommandList ref={listRef}>
-          <CommandGroup
-            heading={`Sinchon Campus [${filteredSinchonBuildings.length}]`}
-          >
-            {filteredSinchonBuildings.length === 0 && (
-              <div className="text-sm text-center py-4">
-                No results for Sinchon campus.
-              </div>
-            )}
-            {filteredSinchonBuildings.map((building) => {
-              return (
-                <SearchItem
-                  building={building as BuildingProps}
-                  handleSelect={handleSelect}
-                />
-              );
-            })}
-          </CommandGroup>
+          <SearchGroup
+            name="Sinchon"
+            buildings={filteredSinchonBuildings as BuildingProps[]}
+            handleSelect={handleSelect}
+          />
           <CommandSeparator />
-          <CommandGroup
-            heading={`Songdo Campus [${filteredSongdoBuildings.length}]`}
-          >
-            {filteredSongdoBuildings.length === 0 && (
-              <div className="text-sm text-center py-4">
-                No results for Songdo campus.
-              </div>
-            )}
-            {filteredSongdoBuildings.map((building) => {
-              return (
-                <SearchItem
-                  building={building as BuildingProps}
-                  handleSelect={handleSelect}
-                />
-              );
-            })}
-          </CommandGroup>
+          <SearchGroup
+            name="Songdo"
+            buildings={filteredSongdoBuildings as BuildingProps[]}
+            handleSelect={handleSelect}
+          />
         </CommandList>
       </CommandDialog>
     </>
@@ -167,6 +143,32 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
+
+type SearchGroupProps = {
+  name: string;
+  buildings: BuildingProps[];
+  handleSelect: (building: BuildingProps) => void;
+};
+
+const SearchGroup = ({ name, buildings, handleSelect }: SearchGroupProps) => {
+  return (
+    <CommandGroup heading={`${name} Campus [${buildings.length}]`}>
+      {buildings.length === 0 && (
+        <div className="text-sm text-center py-4">
+          No results for {name} campus.
+        </div>
+      )}
+      {buildings.map((building) => {
+        return (
+          <SearchItem
+            building={building as BuildingProps}
+            handleSelect={handleSelect}
+          />
+        );
+      })}
+    </CommandGroup>
+  );
+};
 
 type SearchItemProps = {
   building: BuildingProps;
