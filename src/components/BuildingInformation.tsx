@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { useEffect, useState } from "react";
 import type { BuildingProps } from "@/content.config";
+import { motion } from "motion/react";
 
 const allBuildings = sinchonBuildings.concat(songdoBuildings);
 
@@ -45,6 +46,7 @@ const BuildingInformation = () => {
         onPointerDownOutside={(e) => e.preventDefault()}
         onEscapeKeyDown={() => selectedId.set("")}
         onCloseClick={() => selectedId.set("")}
+        contentWrapper={<motion.div drag />}
       >
         <DialogHeader>
           <DialogTitle>{displayBuilding?.name_en}</DialogTitle>
