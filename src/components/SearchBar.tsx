@@ -121,12 +121,12 @@ const SearchBar = () => {
           onValueChange={() => scrollUpWhenCleared()}
         >
           <div className="px-2 pt-2 pb-1">
-            <TabsList className="bg-transparent px-0">
+            <TabsList className="bg-transparent px-0 flex-wrap">
               <TabsTrigger className="text-xs" value="sinchon">
-                Sinchon Campus [{filteredSinchonBuildings.length}]
+                Sinchon [{filteredSinchonBuildings.length}]
               </TabsTrigger>
               <TabsTrigger className="text-xs" value="songdo">
-                Songdo Campus [{filteredSongdoBuildings.length}]
+                Songdo [{filteredSongdoBuildings.length}]
               </TabsTrigger>
             </TabsList>
           </div>
