@@ -115,9 +115,13 @@ const SearchBar = () => {
           value={search}
           onValueChange={handleSearch}
         />
-        <CommandList ref={listRef}>
-          <Tabs defaultValue="sinchon" className="gap-0">
-            <TabsList className="px-3 mt-2">
+        <Tabs
+          defaultValue="sinchon"
+          className="gap-0"
+          onValueChange={() => scrollUpWhenCleared()}
+        >
+          <div className="px-3 pt-2 pb-0.5">
+            <TabsList className="bg-transparent px-0">
               <TabsTrigger className="text-xs" value="sinchon">
                 Sinchon Campus [{filteredSinchonBuildings.length}]
               </TabsTrigger>
@@ -125,6 +129,8 @@ const SearchBar = () => {
                 Songdo Campus [{filteredSongdoBuildings.length}]
               </TabsTrigger>
             </TabsList>
+          </div>
+          <CommandList ref={listRef}>
             <TabsContent value="sinchon">
               <SearchGroup
                 name="Sinchon"
@@ -139,8 +145,8 @@ const SearchBar = () => {
                 handleSelect={handleSelect}
               />
             </TabsContent>
-          </Tabs>
-        </CommandList>
+          </CommandList>
+        </Tabs>
       </CommandDialog>
     </>
   );
@@ -156,7 +162,7 @@ type SearchGroupProps = {
 
 const SearchGroup = ({ name, buildings, handleSelect }: SearchGroupProps) => {
   return (
-    <CommandGroup>
+    <CommandGroup className="pt-0">
       {buildings.length === 0 && (
         <div className="text-sm text-center py-4">
           No results for {name} campus.
