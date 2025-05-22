@@ -1,13 +1,12 @@
 import React from "react";
 import {
   CommandDialog,
-  CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
 } from "@/components/ui/command";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import sinchonBuildings from "@/data/buildings/sinchon.json";
@@ -117,17 +116,30 @@ const SearchBar = () => {
           onValueChange={handleSearch}
         />
         <CommandList ref={listRef}>
-          <SearchGroup
-            name="Sinchon"
-            buildings={filteredSinchonBuildings as BuildingProps[]}
-            handleSelect={handleSelect}
-          />
-          <CommandSeparator />
-          <SearchGroup
-            name="Songdo"
-            buildings={filteredSongdoBuildings as BuildingProps[]}
-            handleSelect={handleSelect}
-          />
+          <Tabs defaultValue="sinchon" className="gap-0">
+            <TabsList className="px-3 mt-2">
+              <TabsTrigger className="text-xs" value="sinchon">
+                Sinchon Campus [{filteredSinchonBuildings.length}]
+              </TabsTrigger>
+              <TabsTrigger className="text-xs" value="songdo">
+                Songdo Campus [{filteredSongdoBuildings.length}]
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="sinchon">
+              <SearchGroup
+                name="Sinchon"
+                buildings={filteredSinchonBuildings as BuildingProps[]}
+                handleSelect={handleSelect}
+              />
+            </TabsContent>
+            <TabsContent value="songdo">
+              <SearchGroup
+                name="Songdo"
+                buildings={filteredSongdoBuildings as BuildingProps[]}
+                handleSelect={handleSelect}
+              />
+            </TabsContent>
+          </Tabs>
         </CommandList>
       </CommandDialog>
     </>
@@ -144,7 +156,7 @@ type SearchGroupProps = {
 
 const SearchGroup = ({ name, buildings, handleSelect }: SearchGroupProps) => {
   return (
-    <CommandGroup heading={`${name} Campus [${buildings.length}]`}>
+    <CommandGroup>
       {buildings.length === 0 && (
         <div className="text-sm text-center py-4">
           No results for {name} campus.
@@ -153,6 +165,7 @@ const SearchGroup = ({ name, buildings, handleSelect }: SearchGroupProps) => {
       {buildings.map((building) => {
         return (
           <SearchItem
+            key={building.id}
             building={building as BuildingProps}
             handleSelect={handleSelect}
           />
