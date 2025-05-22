@@ -120,7 +120,7 @@ const SearchBar = () => {
           className="gap-0"
           onValueChange={() => scrollUpWhenCleared()}
         >
-          <div className="px-3 pt-2 pb-0.5">
+          <div className="px-2 pt-2 pb-1">
             <TabsList className="bg-transparent px-0">
               <TabsTrigger className="text-xs" value="sinchon">
                 Sinchon Campus [{filteredSinchonBuildings.length}]
