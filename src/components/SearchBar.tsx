@@ -1,13 +1,12 @@
 import React from "react";
 import {
   CommandDialog,
-  CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
 } from "@/components/ui/command";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import sinchonBuildings from "@/data/buildings/sinchon.json";
@@ -116,19 +115,38 @@ const SearchBar = () => {
           value={search}
           onValueChange={handleSearch}
         />
-        <CommandList ref={listRef}>
-          <SearchGroup
-            name="Sinchon"
-            buildings={filteredSinchonBuildings as BuildingProps[]}
-            handleSelect={handleSelect}
-          />
-          <CommandSeparator />
-          <SearchGroup
-            name="Songdo"
-            buildings={filteredSongdoBuildings as BuildingProps[]}
-            handleSelect={handleSelect}
-          />
-        </CommandList>
+        <Tabs
+          defaultValue="sinchon"
+          className="gap-0"
+          onValueChange={() => scrollUpWhenCleared()}
+        >
+          <div className="px-2 pt-2 pb-1">
+            <TabsList className="bg-transparent px-0 flex-wrap">
+              <TabsTrigger className="text-xs" value="sinchon">
+                Sinchon [{filteredSinchonBuildings.length}]
+              </TabsTrigger>
+              <TabsTrigger className="text-xs" value="songdo">
+                Songdo [{filteredSongdoBuildings.length}]
+              </TabsTrigger>
+            </TabsList>
+          </div>
+          <CommandList ref={listRef}>
+            <TabsContent value="sinchon">
+              <SearchGroup
+                name="Sinchon"
+                buildings={filteredSinchonBuildings as BuildingProps[]}
+                handleSelect={handleSelect}
+              />
+            </TabsContent>
+            <TabsContent value="songdo">
+              <SearchGroup
+                name="Songdo"
+                buildings={filteredSongdoBuildings as BuildingProps[]}
+                handleSelect={handleSelect}
+              />
+            </TabsContent>
+          </CommandList>
+        </Tabs>
       </CommandDialog>
     </>
   );
@@ -144,7 +162,7 @@ type SearchGroupProps = {
 
 const SearchGroup = ({ name, buildings, handleSelect }: SearchGroupProps) => {
   return (
-    <CommandGroup heading={`${name} Campus [${buildings.length}]`}>
+    <CommandGroup className="pt-0">
       {buildings.length === 0 && (
         <div className="text-sm text-center py-4">
           No results for {name} campus.
@@ -153,6 +171,7 @@ const SearchGroup = ({ name, buildings, handleSelect }: SearchGroupProps) => {
       {buildings.map((building) => {
         return (
           <SearchItem
+            key={building.id}
             building={building as BuildingProps}
             handleSelect={handleSelect}
           />
