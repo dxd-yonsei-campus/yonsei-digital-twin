@@ -1,3 +1,17 @@
+import type { BuildingProps } from "@/content.config";
+import sinchonBuildings from "@/data/buildings/sinchon.json";
+import songdoBuildings from "@/data/buildings/songdo.json";
+
+export const getAllBuildings = (): BuildingProps[] => {
+  const allBuildings = sinchonBuildings.concat(songdoBuildings);
+  return allBuildings as BuildingProps[];
+};
+
+export const getAllBuildingIds = (): Array<string | number> => {
+  const allBuildings = getAllBuildings();
+  return allBuildings.map((building) => building.id);
+};
+
 export const flyToLocation = (longitude: number, latitude: number) => {
   window.map.flyTo({
     center: [longitude, latitude],

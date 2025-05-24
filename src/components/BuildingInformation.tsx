@@ -1,7 +1,5 @@
 import { selectedId } from "@/store";
 import { useStore } from "@nanostores/react";
-import sinchonBuildings from "@/data/buildings/sinchon.json";
-import songdoBuildings from "@/data/buildings/songdo.json";
 import {
   Dialog,
   DialogContent,
@@ -11,8 +9,9 @@ import {
 } from "@/components/ui/dialog";
 import { useEffect, useState } from "react";
 import type { BuildingProps } from "@/content.config";
+import { getAllBuildings } from "@/lib/mapUtils";
 
-const allBuildings = sinchonBuildings.concat(songdoBuildings);
+const allBuildings = getAllBuildings();
 
 const BuildingInformation = () => {
   const $selectedId = useStore(selectedId);
