@@ -9,13 +9,15 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import sinchonBuildings from "@/data/buildings/sinchon.json";
-import songdoBuildings from "@/data/buildings/songdo.json";
 import { selectedId } from "@/store";
 import { useStore } from "@nanostores/react";
 import { cn } from "@/lib/utils";
 import type { BuildingProps } from "@/content.config";
-import { flyToLocation } from "@/lib/mapUtils";
+import {
+  flyToLocation,
+  getBuildingsForCampus,
+  getBuildingWithId,
+} from "@/lib/mapApi";
 
 const SearchBar = () => {
   const [open, setOpen] = React.useState(false);
@@ -54,7 +56,7 @@ const SearchBar = () => {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const filteredSinchonBuildings = sinchonBuildings
+  const filteredSinchonBuildings = getBuildingsForCampus("sinchon")
     .filter((building) =>
       building.name_en.toLowerCase().includes(search.toLowerCase()),
     )
@@ -62,7 +64,7 @@ const SearchBar = () => {
       a.name_en.toLowerCase().localeCompare(b.name_en.toLowerCase()),
     );
 
-  const filteredSongdoBuildings = songdoBuildings
+  const filteredSongdoBuildings = getBuildingsForCampus("songdo")
     .filter((building) =>
       building.name_en.toLowerCase().includes(search.toLowerCase()),
     )
@@ -77,10 +79,7 @@ const SearchBar = () => {
   };
 
   const $selectedId = useStore(selectedId);
-  const buildingData = sinchonBuildings.filter(
-    (building) => building.id === $selectedId,
-  );
-  const building = buildingData.length >= 1 ? buildingData[0] : null;
+  const building = getBuildingWithId($selectedId);
 
   return (
     <>
