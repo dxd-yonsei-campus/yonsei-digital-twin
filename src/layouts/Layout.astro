@@ -14,6 +14,8 @@ const {
 const formattedTitle = title
   ? `Yonsei Digital Twin | ${title}`
   : "Yonsei Digital Twin";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <html lang="en" class="dark">
@@ -24,6 +26,14 @@ const formattedTitle = title
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={formattedTitle} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={formattedTitle} />
+    <meta name="twitter:description" content={description} />
     <title>{formattedTitle}</title>
   </head>
   <body>
