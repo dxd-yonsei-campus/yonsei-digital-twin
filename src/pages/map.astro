@@ -46,8 +46,7 @@ import SearchBar from "@/components/SearchBar";
   <script>
     import { buildingLayer, selectedId } from "@/store";
     import mapboxgl from "mapbox-gl";
-    import sinchonBuildings from "@/data/buildings/sinchon.json";
-    import songdoBuildings from "@/data/buildings/songdo.json";
+    import { getAllBuildingIds } from "@/lib/mapApi";
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
     const sinchonCenter: [number, number] = [126.9384, 37.5647];
@@ -88,8 +87,7 @@ import SearchBar from "@/components/SearchBar";
         return;
       }
 
-      const allBuildings = sinchonBuildings.concat(songdoBuildings);
-      const allBuildingIds = allBuildings.map((building) => building.id);
+      const allBuildingIds = getAllBuildingIds();
 
       // The 'building' layer in the Mapbox Streets
       // vector tileset contains building height data
