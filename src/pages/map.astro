@@ -172,17 +172,12 @@ import SearchBar from "@/components/SearchBar";
       const features = map.queryRenderedFeatures(e.point, {
         layers: ["osm-buildings"], // make sure this matches your layer name
       });
-      console.log(features);
 
       if (features.length) {
         const building = features[0];
-        console.log("Building properties:", building.properties);
-
-        // Try to access an ID if it exists
         const buildingId = building.id;
         selectedId.set(buildingId || "");
       } else {
-        console.log("No building found at clicked point");
         selectedId.set("");
         map.setFilter("selected-building", ["==", ["id"], ""]);
       }
