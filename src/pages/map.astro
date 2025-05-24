@@ -73,6 +73,7 @@ import SearchBar from "@/components/SearchBar";
 
     map.addControl(new mapboxgl.AttributionControl(), "top-left");
     map.addControl(new mapboxgl.ScaleControl(), "bottom-right");
+    map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
     map.on("style.load", () => {
       // Insert the layer beneath any symbol layer.
