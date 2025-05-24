@@ -7,9 +7,13 @@ interface Props {
 }
 
 const {
-  title = "Yonsei Digital Twin",
-  description = "A digital twin of the Yonsei University campus.",
+  title,
+  description = "An interactive digital twin of the Yonsei University campus.",
 } = Astro.props;
+
+const formattedTitle = title
+  ? `Yonsei Digital Twin | ${title}`
+  : "Yonsei Digital Twin";
 ---
 
 <html lang="en" class="dark">
@@ -19,7 +23,7 @@ const {
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <title>{title}</title>
+    <title>{formattedTitle}</title>
   </head>
   <body>
     <slot />
