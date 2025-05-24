@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { useEffect, useState } from "react";
 import type { BuildingProps } from "@/content.config";
-import { getAllBuildings } from "@/lib/mapUtils";
+import { getAllBuildings } from "@/lib/mapApi";
 
 const allBuildings = getAllBuildings();
 

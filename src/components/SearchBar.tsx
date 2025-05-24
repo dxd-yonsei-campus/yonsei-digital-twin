@@ -17,7 +17,7 @@ import {
   flyToLocation,
   getBuildingsForCampus,
   getBuildingWithId,
-} from "@/lib/mapUtils";
+} from "@/lib/mapApi";
 
 const SearchBar = () => {
   const [open, setOpen] = React.useState(false);
