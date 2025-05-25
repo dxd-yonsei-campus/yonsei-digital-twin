@@ -42,7 +42,11 @@ import ResetViewGroup from '@/components/map/ResetViewGroup';
   <script>
     import { buildingLayer, selectedCampus, selectedId } from '@/store';
     import mapboxgl from 'mapbox-gl';
-    import { getAllBuildingIds, getCameraForCampus } from '@/lib/mapApi';
+    import {
+      getAllBuildingIds,
+      getCameraForCampus,
+      updateSelectedCampus,
+    } from '@/lib/mapApi';
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
     const initialCamera = getCameraForCampus(selectedCampus.get());
@@ -63,6 +67,12 @@ import ResetViewGroup from '@/components/map/ResetViewGroup';
     map.addControl(new mapboxgl.AttributionControl(), 'top-left');
     map.addControl(new mapboxgl.ScaleControl(), 'bottom-right');
     map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+
+    // Add camera move listener to update selected campus
+    map.on('moveend', () => {
+      const center = map.getCenter();
+      updateSelectedCampus(center.lng, center.lat);
+    });
 
     map.on('style.load', () => {
       // Insert the layer beneath any symbol layer.

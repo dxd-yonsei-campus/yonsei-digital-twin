@@ -9,7 +9,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { SearchIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { selectedId } from '@/store';
+import { selectedCampus, selectedId } from '@/store';
 import { useStore } from '@nanostores/react';
 import { cn } from '@/lib/utils';
 import type { BuildingProps } from '@/content.config';
@@ -20,6 +20,7 @@ import {
 } from '@/lib/mapApi';
 
 const SearchBar = () => {
+  const $selectedCampus = useStore(selectedCampus);
   const [open, setOpen] = React.useState(false);
   const [search, setSearch] = React.useState('');
 
@@ -115,7 +116,7 @@ const SearchBar = () => {
           onValueChange={handleSearch}
         />
         <Tabs
-          defaultValue="sinchon"
+          defaultValue={$selectedCampus}
           className="gap-0"
           onValueChange={() => scrollUpWhenCleared()}
         >
