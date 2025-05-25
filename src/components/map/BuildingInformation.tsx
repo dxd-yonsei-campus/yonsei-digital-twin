@@ -49,7 +49,7 @@ const BuildingInformation = () => {
         onEscapeKeyDown={() => selectedId.set('')}
         onCloseClick={() => selectedId.set('')}
       >
-        <DialogHeader>
+        <DialogHeader className="text-left">
           {campusName && (
             <Badge variant="outline">
               {campusNameToDisplayableName[campusName]} Campus
