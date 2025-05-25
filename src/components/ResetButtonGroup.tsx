@@ -10,7 +10,7 @@ import {
 import { ChevronUp, HomeIcon } from 'lucide-react';
 import { useStore } from '@nanostores/react';
 import { selectedCampus } from '@/store';
-import type { CampusName } from '@/types/map';
+import { campuses, type CampusName } from '@/types/map';
 import { campusNameToDisplayableName } from '@/lib/mapUtils';
 
 const ResetButtonGroup = () => {
@@ -27,15 +27,14 @@ const ResetButtonGroup = () => {
             <ChevronUp />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-56">
+        <DropdownMenuContent align="end" className="w-32">
           <DropdownMenuRadioGroup
             value={$selectedCampus}
             onValueChange={(campus) => selectedCampus.set(campus as CampusName)}
           >
-            {['sinchon', 'songdo'].map((name) => {
-              const campus = name as CampusName;
+            {campuses.map((campus) => {
               return (
-                <DropdownMenuRadioItem key={name} value={campus}>
+                <DropdownMenuRadioItem key={campus} value={campus}>
                   {campusNameToDisplayableName[campus]}
                 </DropdownMenuRadioItem>
               );
