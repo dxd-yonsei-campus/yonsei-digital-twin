@@ -8,7 +8,7 @@ interface Props {
 
 const {
   title,
-  description = 'An interactive digital twin of the Yonsei University campus.',
+  description = "Discover Yonsei University's campuses and access detailed building information through the Yonsei Digital Twin.",
 } = Astro.props;
 
 const formattedTitle = title
@@ -30,10 +30,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:type" content="website" />
     <meta property="og:title" content={formattedTitle} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content="/og-image.png" />
     <meta name="twitter:card" content="summary" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={formattedTitle} />
     <meta name="twitter:description" content={description} />
+    <meta property="twitter:image" content="/og-image.png" />
     <title>{formattedTitle}</title>
   </head>
   <body>
