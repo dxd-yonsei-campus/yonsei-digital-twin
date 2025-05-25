@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import HeroVideo from '@/components/landing/HeroVideo';
 import MapLink from '@/components/landing/MapLink';
+import { campuses } from '@/types/map';
 ---
 
 <Layout>
@@ -16,8 +17,11 @@ import MapLink from '@/components/landing/MapLink';
       <div
         class="mt-4 flex flex-col items-center justify-center gap-1.5 sm:flex-row lg:justify-start"
       >
-        <MapLink client:load campus="sinchon" />
-        <MapLink client:load campus="songdo" />
+        {
+          campuses.map((campus) => {
+            return <MapLink client:load campus={campus} />;
+          })
+        }
       </div>
     </div>
     <HeroVideo client:load />
