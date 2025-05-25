@@ -18,9 +18,10 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title="Map">
+<Layout title={t('site.map')}>
   <h1 class="sr-only">
-    {t('site.title')} Map
+    {t('site.title')}&nbsp;
+    {t('site.map')}
   </h1>
   <div id="map" class="h-screen w-screen"></div>
   <BuildingInformation client:load lang={lang} />
