@@ -16,8 +16,9 @@ const redirectPath = Astro.url.pathname.split('/').slice(2).join('/');
     Object.entries(languages).map(([lang, label]) => (
       <div
         class:list={[
-          currentLang == lang ? 'text-foreground' : 'text-muted-foreground/70',
-          'transition-colors hover:text-muted-foreground',
+          'transition-colors',
+          currentLang === lang ? 'text-foreground' : 'text-muted-foreground/70',
+          { 'hover:text-muted-foreground': currentLang !== lang },
         ]}
       >
         <a href={`/${lang}/${redirectPath}`}>{label}</a>
