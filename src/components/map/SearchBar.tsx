@@ -147,6 +147,7 @@ const SearchBar = ({ lang }: SearchBarProps) => {
                 name="Sinchon"
                 buildings={filteredSinchonBuildings as BuildingProps[]}
                 handleSelect={handleSelect}
+                lang={lang}
               />
             </TabsContent>
             <TabsContent value="songdo">
@@ -154,6 +155,7 @@ const SearchBar = ({ lang }: SearchBarProps) => {
                 name="Songdo"
                 buildings={filteredSongdoBuildings as BuildingProps[]}
                 handleSelect={handleSelect}
+                lang={lang}
               />
             </TabsContent>
           </CommandList>
@@ -169,9 +171,15 @@ type SearchGroupProps = {
   name: string;
   buildings: BuildingProps[];
   handleSelect: (building: BuildingProps) => void;
+  lang: keyof typeof ui;
 };
 
-const SearchGroup = ({ name, buildings, handleSelect }: SearchGroupProps) => {
+const SearchGroup = ({
+  name,
+  buildings,
+  handleSelect,
+  lang,
+}: SearchGroupProps) => {
   return (
     <CommandGroup className="pt-0">
       {buildings.length === 0 && (
@@ -183,6 +191,7 @@ const SearchGroup = ({ name, buildings, handleSelect }: SearchGroupProps) => {
         return (
           <SearchItem
             key={building.id}
+            lang={lang}
             building={building as BuildingProps}
             handleSelect={handleSelect}
           />
@@ -195,9 +204,10 @@ const SearchGroup = ({ name, buildings, handleSelect }: SearchGroupProps) => {
 type SearchItemProps = {
   building: BuildingProps;
   handleSelect: (building: BuildingProps) => void;
+  lang: keyof typeof ui;
 };
 
-const SearchItem = ({ building, handleSelect }: SearchItemProps) => {
+const SearchItem = ({ building, handleSelect, lang }: SearchItemProps) => {
   return (
     <CommandItem
       key={building.id}
@@ -205,8 +215,10 @@ const SearchItem = ({ building, handleSelect }: SearchItemProps) => {
       onSelect={() => handleSelect(building)}
     >
       <div className="flex flex-col">
-        <span>{building.name_en}</span>
-        <span className="text-xs text-muted-foreground">{building.name}</span>
+        <span>{lang === 'en' ? building.name_en : building.name}</span>
+        <span className="text-xs text-muted-foreground">
+          {lang === 'en' ? building.name : building.name_en}
+        </span>
       </div>
     </CommandItem>
   );
