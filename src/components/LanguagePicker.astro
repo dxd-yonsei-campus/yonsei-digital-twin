@@ -8,13 +8,18 @@ interface Props {
 
 const currentLang = getLangFromUrl(Astro.url);
 const { className } = Astro.props;
+const redirectPath = Astro.url.pathname.split('/').slice(2).join('/');
 ---
 
-<div class:list={['flex gap-2', className]}>
+<div class:list={['flex gap-1.5', className]}>
   {
     Object.entries(languages).map(([lang, label]) => (
-      <div class:list={[{ 'text-muted-foreground': currentLang !== lang }]}>
-        <a href={`/${lang}/`}>{label}</a>
+      <div
+        class:list={[
+          currentLang == lang ? 'text-foreground' : 'text-muted-foreground',
+        ]}
+      >
+        <a href={`/${lang}/${redirectPath}`}>{label}</a>
       </div>
     ))
   }

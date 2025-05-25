@@ -12,6 +12,7 @@ export function getStaticPaths() {
 }
 
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import LanguagePicker from '@/components/LanguagePicker.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -44,13 +45,17 @@ const t = useTranslations(lang);
         <ResetViewGroup lang={lang} client:only="react" />
       </div>
     </div>
-    <div class="mt-2.5 flex justify-between text-xs text-muted-foreground/70">
+    <div
+      class="mt-2.5 flex items-center justify-start gap-2 text-xs text-muted-foreground/70"
+    >
       <a
         class="transition-colors hover:text-muted-foreground"
         href={`/${lang}`}
       >
         {t('site.title')}
       </a>
+      <Separator orientation="vertical" className="h-3!" />
+      <LanguagePicker />
     </div>
   </div>
   <script>
