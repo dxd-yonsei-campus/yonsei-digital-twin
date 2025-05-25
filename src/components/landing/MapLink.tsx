@@ -15,7 +15,7 @@ const MapLink = ({ campus, lang }: MapLinkProps) => {
   return (
     <Button
       variant="default"
-      className="w-full cursor-pointer sm:w-fit"
+      className="w-full min-w-32 cursor-pointer sm:w-fit"
       asChild
     >
       <a onClick={() => selectedCampus.set(campus)} href={`/${lang}/map`}>
