@@ -5,7 +5,7 @@ import type { CampusName } from '@/types/map';
 import type { EasingOptions } from 'mapbox-gl';
 
 const SINCHON_CENTER: [number, number] = [126.9384, 37.5647];
-const SONGDO_CENTER: [number, number] = [126.671, 37.38145];
+const SONGDO_CENTER: [number, number] = [126.6706, 37.38145];
 
 export const getAllBuildings = (): BuildingProps[] => {
   const allBuildings = sinchonBuildings.concat(songdoBuildings);
