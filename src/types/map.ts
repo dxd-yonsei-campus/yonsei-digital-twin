@@ -1,3 +1,3 @@
-export type BuildingLayerType = "" | "osm";
+export type BuildingLayerType = '' | 'osm';
 
-export type CampusName = "sinchon" | "songdo";
+export type CampusName = 'sinchon' | 'songdo';

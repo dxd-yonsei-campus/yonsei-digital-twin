@@ -1,15 +1,15 @@
-import { selectedId } from "@/store";
-import { useStore } from "@nanostores/react";
+import { selectedId } from '@/store';
+import { useStore } from '@nanostores/react';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogDescription,
-} from "@/components/ui/dialog";
-import { useEffect, useState } from "react";
-import type { BuildingProps } from "@/content.config";
-import { getAllBuildings } from "@/lib/mapApi";
+} from '@/components/ui/dialog';
+import { useEffect, useState } from 'react';
+import type { BuildingProps } from '@/content.config';
+import { getAllBuildings } from '@/lib/mapApi';
 
 const allBuildings = getAllBuildings();
 
@@ -40,10 +40,10 @@ const BuildingInformation = () => {
   return (
     <Dialog modal={false} open={!!$selectedId}>
       <DialogContent
-        className="top-12 left-4 translate-y-0 translate-x-0 w-full sm:w-108 p-7"
+        className="top-12 left-4 w-full translate-x-0 translate-y-0 p-7 sm:w-108"
         onPointerDownOutside={(e) => e.preventDefault()}
-        onEscapeKeyDown={() => selectedId.set("")}
-        onCloseClick={() => selectedId.set("")}
+        onEscapeKeyDown={() => selectedId.set('')}
+        onCloseClick={() => selectedId.set('')}
       >
         <DialogHeader>
           <DialogTitle>{displayBuilding?.name_en}</DialogTitle>

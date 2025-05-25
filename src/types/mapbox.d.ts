@@ -1,4 +1,4 @@
-import type mapboxgl from "mapbox-gl";
+import type mapboxgl from 'mapbox-gl';
 
 declare global {
   interface Window {

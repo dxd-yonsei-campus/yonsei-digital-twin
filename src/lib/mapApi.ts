@@ -1,7 +1,7 @@
-import type { BuildingProps } from "@/content.config";
-import sinchonBuildings from "@/data/buildings/sinchon.json";
-import songdoBuildings from "@/data/buildings/songdo.json";
-import type { CampusName } from "@/types/map";
+import type { BuildingProps } from '@/content.config';
+import sinchonBuildings from '@/data/buildings/sinchon.json';
+import songdoBuildings from '@/data/buildings/songdo.json';
+import type { CampusName } from '@/types/map';
 
 export const getAllBuildings = (): BuildingProps[] => {
   const allBuildings = sinchonBuildings.concat(songdoBuildings);
@@ -15,9 +15,9 @@ export const getAllBuildingIds = (): Array<string | number> => {
 
 export const getBuildingsForCampus = (campus: CampusName): BuildingProps[] => {
   switch (campus) {
-    case "sinchon":
+    case 'sinchon':
       return sinchonBuildings as BuildingProps[];
-    case "songdo":
+    case 'songdo':
       return songdoBuildings as BuildingProps[];
     default:
       return [];

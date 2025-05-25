@@ -1,5 +1,5 @@
 ---
-import "@/styles/global.css";
+import '@/styles/global.css';
 
 interface Props {
   title?: string;
@@ -7,19 +7,36 @@ interface Props {
 }
 
 const {
-  title = "Yonsei Digital Twin",
-  description = "A digital twin of the Yonsei University campus.",
+  title,
+  description = "Discover Yonsei University's campuses and access detailed building information through the Yonsei Digital Twin.",
 } = Astro.props;
+
+const formattedTitle = title
+  ? `Yonsei Digital Twin | ${title}`
+  : 'Yonsei Digital Twin';
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <html lang="en" class="dark">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <title>{title}</title>
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={formattedTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={formattedTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta property="twitter:image" content="/og-image.png" />
+    <title>{formattedTitle}</title>
   </head>
   <body>
     <slot />
