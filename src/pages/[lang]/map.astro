@@ -77,6 +77,10 @@ const t = useTranslations(lang);
       attributionControl: false,
       logoPosition: 'top-right',
       minZoom: 14,
+      language:
+        document.querySelector('html')?.getAttribute('lang') === 'ko'
+          ? 'ko'
+          : 'en',
       ...initialCamera,
     });
 
