@@ -17,6 +17,12 @@ export const getAllBuildingIds = (): Array<string | number> => {
   return allBuildings.map((building) => building.id);
 };
 
+export const getBuildingIdsForCampus = (
+  campus: CampusName,
+): Array<string | number> => {
+  return getBuildingsForCampus(campus).map((building) => building.id);
+};
+
 export const getBuildingsForCampus = (campus: CampusName): BuildingProps[] => {
   switch (campus) {
     case 'sinchon':
@@ -26,6 +32,24 @@ export const getBuildingsForCampus = (campus: CampusName): BuildingProps[] => {
     default:
       return [];
   }
+};
+
+export const getCampusForBuildingId = (
+  buildingId: string | number,
+): CampusName | null => {
+  const sinchonIds = getBuildingIdsForCampus('sinchon');
+
+  if (sinchonIds.includes(buildingId)) {
+    return 'sinchon';
+  }
+
+  const songdoIds = getBuildingIdsForCampus('songdo');
+
+  if (songdoIds.includes(buildingId)) {
+    return 'songdo';
+  }
+
+  return null;
 };
 
 export const getBuildingWithId = (

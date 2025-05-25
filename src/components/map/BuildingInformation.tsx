@@ -9,7 +9,9 @@ import {
 } from '@/components/ui/dialog';
 import { useEffect, useState } from 'react';
 import type { BuildingProps } from '@/content.config';
-import { getAllBuildings } from '@/lib/mapApi';
+import { getAllBuildings, getCampusForBuildingId } from '@/lib/mapApi';
+import { campusNameToDisplayableName } from '@/lib/mapUtils';
+import { Badge } from '../ui/badge';
 
 const allBuildings = getAllBuildings();
 
@@ -37,6 +39,8 @@ const BuildingInformation = () => {
     return null;
   }
 
+  const campusName = getCampusForBuildingId(displayBuilding.id);
+
   return (
     <Dialog modal={false} open={!!$selectedId}>
       <DialogContent
@@ -46,6 +50,11 @@ const BuildingInformation = () => {
         onCloseClick={() => selectedId.set('')}
       >
         <DialogHeader>
+          {campusName && (
+            <Badge variant="outline">
+              {campusNameToDisplayableName[campusName]} Campus
+            </Badge>
+          )}
           <DialogTitle>{displayBuilding?.name_en}</DialogTitle>
           <div className="text-sm text-muted-foreground">
             {displayBuilding.name}
