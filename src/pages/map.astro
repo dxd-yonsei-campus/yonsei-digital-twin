@@ -193,9 +193,5 @@ import ResetViewGroup from '@/components/map/ResetViewGroup';
         map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
       }
     });
-
-    document.getElementById('reset-view')?.addEventListener('click', () => {
-      map.flyTo(initialCamera);
-    });
   </script>
 </Layout>

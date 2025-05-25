@@ -20,7 +20,9 @@ const ResetButtonGroup = () => {
     <ButtonGroup>
       <Button variant="outline" onClick={() => flyToCampus($selectedCampus)}>
         <HomeIcon />
-        {campusNameToDisplayableName[$selectedCampus]}
+        <span className="hidden xs:block">
+          {campusNameToDisplayableName[$selectedCampus]}
+        </span>
       </Button>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
