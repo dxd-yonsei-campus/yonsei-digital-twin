@@ -40,12 +40,12 @@ import ResetViewGroup from '@/components/map/ResetViewGroup';
     </div>
   </div>
   <script>
-    import { buildingLayer, selectedId } from '@/store';
+    import { buildingLayer, selectedCampus, selectedId } from '@/store';
     import mapboxgl from 'mapbox-gl';
     import { getAllBuildingIds, getCameraForCampus } from '@/lib/mapApi';
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
-    const initialCamera = getCameraForCampus('sinchon');
+    const initialCamera = getCameraForCampus(selectedCampus.get());
 
     const map = new mapboxgl.Map({
       style: 'mapbox://styles/mapbox/light-v11',
