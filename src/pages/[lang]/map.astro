@@ -30,12 +30,16 @@ const t = useTranslations(lang);
       <div class="shrink-0">
         <img
           class="hidden h-8 dark:block"
-          src="/yonsei-logo-dark.png"
+          src={lang === 'en'
+            ? '/yonsei-logo-dark.png'
+            : '/yonsei-logo-dark-ko.png'}
           alt="Yonsei University"
         />
         <img
           class="block h-8 dark:hidden"
-          src="/yonsei-logo-light.png"
+          src={lang === 'en'
+            ? '/yonsei-logo-light.png'
+            : '/yonsei-logo-light-ko.png'}
           alt="Yonsei University"
         />
       </div>
