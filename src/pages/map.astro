@@ -30,7 +30,7 @@ import ResetViewGroup from '@/components/map/ResetViewGroup';
       <div class="flex items-center gap-2">
         <BuildingLayersToggle client:load />
         <Separator orientation="vertical" className="h-6!" />
-        <ResetViewGroup client:load />
+        <ResetViewGroup client:only="react" />
       </div>
     </div>
     <div class="mt-2.5 flex justify-between text-xs text-muted-foreground/70">
