@@ -6,6 +6,10 @@ import BuildingLayersToggle from '@/components/map/BuildingLayersToggle';
 import BuildingInformation from '@/components/map/BuildingInformation';
 import SearchBar from '@/components/map/SearchBar';
 import ResetViewGroup from '@/components/map/ResetViewGroup';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }];
+}
 ---
 
 <Layout title="Map">

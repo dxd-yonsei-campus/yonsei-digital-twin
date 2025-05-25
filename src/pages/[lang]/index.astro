@@ -28,7 +28,7 @@ const t = useTranslations(lang);
       >
         {
           campuses.map((campus) => {
-            return <MapLink client:load campus={campus} />;
+            return <MapLink client:load campus={campus} lang={lang} />;
           })
         }
       </div>
