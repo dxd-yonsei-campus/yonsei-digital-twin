@@ -11,10 +11,7 @@ import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const {
-  title,
-  description = "Discover Yonsei University's campuses and access detailed building information through the Yonsei Digital Twin.",
-} = Astro.props;
+const { title, description = t('site.description') } = Astro.props;
 
 const formattedTitle = title
   ? `${t('site.title')} | ${title}`
