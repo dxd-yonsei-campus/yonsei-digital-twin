@@ -16,9 +16,13 @@ const formattedTitle = title
   : 'Yonsei Digital Twin';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+import { getLangFromUrl } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
-<html lang="en" class="dark">
+<html lang={lang} class="dark">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
