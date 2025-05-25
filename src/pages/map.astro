@@ -42,16 +42,10 @@ import ResetButtonGroup from '@/components/ResetButtonGroup';
   <script>
     import { buildingLayer, selectedId } from '@/store';
     import mapboxgl from 'mapbox-gl';
-    import { getAllBuildingIds } from '@/lib/mapApi';
+    import { getAllBuildingIds, getCameraForCampus } from '@/lib/mapApi';
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
-    const sinchonCenter: [number, number] = [126.9384, 37.5647];
-    const initialCamera = {
-      center: sinchonCenter,
-      zoom: 15.5,
-      pitch: 45,
-      bearing: -17.6,
-    };
+    const initialCamera = getCameraForCampus('sinchon');
 
     const map = new mapboxgl.Map({
       style: 'mapbox://styles/mapbox/light-v11',

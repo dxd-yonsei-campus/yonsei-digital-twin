@@ -12,12 +12,13 @@ import { useStore } from '@nanostores/react';
 import { selectedCampus } from '@/store';
 import { campuses, type CampusName } from '@/types/map';
 import { campusNameToDisplayableName } from '@/lib/mapUtils';
+import { flyToCampus } from '@/lib/mapApi';
 
 const ResetButtonGroup = () => {
   const $selectedCampus = useStore(selectedCampus);
   return (
     <ButtonGroup>
-      <Button variant="outline" id="reset-view">
+      <Button variant="outline" onClick={() => flyToCampus($selectedCampus)}>
         <HomeIcon />
         {campusNameToDisplayableName[$selectedCampus]}
       </Button>
