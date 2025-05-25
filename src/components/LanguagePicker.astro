@@ -2,10 +2,15 @@
 import { languages } from '@/i18n/ui';
 import { getLangFromUrl } from '@/i18n/utils';
 
+interface Props {
+  className?: string;
+}
+
 const currentLang = getLangFromUrl(Astro.url);
+const { className } = Astro.props;
 ---
 
-<div class="absolute top-8 right-8 flex gap-3">
+<div class:list={['flex gap-2', className]}>
   {
     Object.entries(languages).map(([lang, label]) => (
       <div class:list={[{ 'text-muted-foreground': currentLang !== lang }]}>
