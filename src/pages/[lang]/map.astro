@@ -19,7 +19,7 @@ const lang = getLangFromUrl(Astro.url);
 <Layout title="Map">
   <h1 class="sr-only">Yonsei Digital Twin Map</h1>
   <div id="map" class="h-screen w-screen"></div>
-  <BuildingInformation client:load />
+  <BuildingInformation client:load lang={lang} />
   <div class="absolute bottom-0 w-full border-t main-bg px-4 py-2">
     <div class="mb-2 flex items-center justify-between gap-3">
       <div class="shrink-0">
