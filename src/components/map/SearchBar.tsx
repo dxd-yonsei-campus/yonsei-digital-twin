@@ -18,11 +18,18 @@ import {
   getBuildingsForCampus,
   getBuildingWithId,
 } from '@/lib/mapApi';
+import type { ui } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
 
-const SearchBar = () => {
+type SearchBarProps = {
+  lang: keyof typeof ui;
+};
+
+const SearchBar = ({ lang }: SearchBarProps) => {
   const $selectedCampus = useStore(selectedCampus);
   const [open, setOpen] = React.useState(false);
   const [search, setSearch] = React.useState('');
+  const t = useTranslations(lang);
 
   const listRef = React.useRef<HTMLDivElement>(null);
 
@@ -96,7 +103,11 @@ const SearchBar = () => {
               'text-foreground': building,
             })}
           >
-            {building ? building.name_en : 'Search buildings'}
+            {building
+              ? lang === 'en'
+                ? building.name_en
+                : building.name
+              : t('search.placeholder')}
           </span>
         </div>
         <kbd className="hidden shrink-0 md:inline-flex">
@@ -111,7 +122,7 @@ const SearchBar = () => {
         onOpenChange={setOpen}
       >
         <CommandInput
-          placeholder="Search for buildings..."
+          placeholder={t('search.placeholder')}
           value={search}
           onValueChange={handleSearch}
         />
@@ -123,10 +134,10 @@ const SearchBar = () => {
           <div className="px-2 pt-2 pb-1">
             <TabsList className="flex-wrap bg-transparent px-0">
               <TabsTrigger className="text-xs" value="sinchon">
-                Sinchon [{filteredSinchonBuildings.length}]
+                {t('sinchon')} [{filteredSinchonBuildings.length}]
               </TabsTrigger>
               <TabsTrigger className="text-xs" value="songdo">
-                Songdo [{filteredSongdoBuildings.length}]
+                {t('songdo')} [{filteredSongdoBuildings.length}]
               </TabsTrigger>
             </TabsList>
           </div>

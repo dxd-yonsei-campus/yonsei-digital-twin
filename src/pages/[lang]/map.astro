@@ -34,7 +34,7 @@ const lang = getLangFromUrl(Astro.url);
           alt="Yonsei University"
         />
       </div>
-      <SearchBar client:load />
+      <SearchBar client:load lang={lang} />
       <div class="flex items-center gap-2">
         <BuildingLayersToggle client:load />
         <Separator orientation="vertical" className="h-6!" />
