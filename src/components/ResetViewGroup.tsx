@@ -31,7 +31,10 @@ const ResetButtonGroup = () => {
         <DropdownMenuContent align="end" className="w-32">
           <DropdownMenuRadioGroup
             value={$selectedCampus}
-            onValueChange={(campus) => selectedCampus.set(campus as CampusName)}
+            onValueChange={(campus) => {
+              selectedCampus.set(campus as CampusName);
+              flyToCampus(campus as CampusName);
+            }}
           >
             {campuses.map((campus) => {
               return (

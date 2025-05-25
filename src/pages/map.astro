@@ -5,7 +5,7 @@ import { Separator } from '@/components/ui/separator';
 import BuildingLayersToggle from '@/components/BuildingLayersToggle';
 import BuildingInformation from '@/components/BuildingInformation';
 import SearchBar from '@/components/SearchBar';
-import ResetButtonGroup from '@/components/ResetButtonGroup';
+import ResetViewGroup from '@/components/ResetViewGroup';
 ---
 
 <Layout title="Map">
@@ -30,7 +30,7 @@ import ResetButtonGroup from '@/components/ResetButtonGroup';
       <div class="flex items-center gap-2">
         <BuildingLayersToggle client:load />
         <Separator orientation="vertical" className="h-6!" />
-        <ResetButtonGroup client:load />
+        <ResetViewGroup client:load />
       </div>
     </div>
     <div class="mt-2.5 flex justify-between text-xs text-muted-foreground/70">
