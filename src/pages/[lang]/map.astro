@@ -11,9 +11,10 @@ export function getStaticPaths() {
   return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }];
 }
 
-import { getLangFromUrl } from '@/i18n/utils';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout title="Map">
@@ -46,7 +47,7 @@ const lang = getLangFromUrl(Astro.url);
         class="transition-colors hover:text-muted-foreground"
         href={`/${lang}`}
       >
-        Yonsei Digital Twin
+        {t('site.title')}
       </a>
     </div>
   </div>

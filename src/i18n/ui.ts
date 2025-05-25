@@ -7,7 +7,7 @@ export const defaultLang = 'en';
 
 export const ui = {
   en: {
-    'home.title': 'Yonsei Digital Twin',
+    'site.title': 'Yonsei Digital Twin',
     'home.description': 'A digital twin of the Yonsei University Campus.',
     'search.placeholder': 'Search for buildings...',
     sinchon: 'Sinchon',
@@ -16,7 +16,7 @@ export const ui = {
     songdo_long: 'Songdo Campus',
   },
   ko: {
-    'home.title': '연세 디지털 트윈',
+    'site.title': '연세 디지털 트윈',
     'home.description': '연세대학교 캠퍼스의 디지털 트윈',
     'search.placeholder': '건물 검색',
     sinchon: '신촌',
