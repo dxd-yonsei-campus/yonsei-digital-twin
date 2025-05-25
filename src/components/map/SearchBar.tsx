@@ -67,18 +67,26 @@ const SearchBar = ({ lang }: SearchBarProps) => {
 
   const filteredSinchonBuildings = getBuildingsForCampus('sinchon')
     .filter((building) =>
-      building.name_en.toLowerCase().includes(search.toLowerCase()),
+      (lang === 'ko' ? building.name : building.name_en)
+        .toLowerCase()
+        .includes(search.toLowerCase()),
     )
     .sort((a, b) =>
-      a.name_en.toLowerCase().localeCompare(b.name_en.toLowerCase()),
+      (lang === 'ko' ? a.name : a.name_en)
+        .toLowerCase()
+        .localeCompare((lang === 'ko' ? b.name : b.name_en).toLowerCase()),
     );
 
   const filteredSongdoBuildings = getBuildingsForCampus('songdo')
     .filter((building) =>
-      building.name_en.toLowerCase().includes(search.toLowerCase()),
+      (lang === 'ko' ? building.name : building.name_en)
+        .toLowerCase()
+        .includes(search.toLowerCase()),
     )
     .sort((a, b) =>
-      a.name_en.toLowerCase().localeCompare(b.name_en.toLowerCase()),
+      (lang === 'ko' ? a.name : b.name)
+        .toLowerCase()
+        .localeCompare((lang === 'ko' ? b.name : b.name_en).toLowerCase()),
     );
 
   const handleSelect = (building: BuildingProps) => {
