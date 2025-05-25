@@ -20,6 +20,7 @@ import {
 } from '@/lib/mapApi';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
+import type { CampusName } from '@/types/map';
 
 type SearchBarProps = {
   lang: keyof typeof ui;
@@ -144,7 +145,7 @@ const SearchBar = ({ lang }: SearchBarProps) => {
           <CommandList ref={listRef}>
             <TabsContent value="sinchon">
               <SearchGroup
-                name="Sinchon"
+                name="sinchon"
                 buildings={filteredSinchonBuildings as BuildingProps[]}
                 handleSelect={handleSelect}
                 lang={lang}
@@ -152,7 +153,7 @@ const SearchBar = ({ lang }: SearchBarProps) => {
             </TabsContent>
             <TabsContent value="songdo">
               <SearchGroup
-                name="Songdo"
+                name="songdo"
                 buildings={filteredSongdoBuildings as BuildingProps[]}
                 handleSelect={handleSelect}
                 lang={lang}
@@ -168,7 +169,7 @@ const SearchBar = ({ lang }: SearchBarProps) => {
 export default SearchBar;
 
 type SearchGroupProps = {
-  name: string;
+  name: CampusName;
   buildings: BuildingProps[];
   handleSelect: (building: BuildingProps) => void;
   lang: keyof typeof ui;
@@ -180,11 +181,15 @@ const SearchGroup = ({
   handleSelect,
   lang,
 }: SearchGroupProps) => {
+  const t = useTranslations(lang);
+
   return (
     <CommandGroup className="pt-0">
       {buildings.length === 0 && (
         <div className="py-4 text-center text-sm">
-          No results for {name} campus.
+          {lang === 'en' ? 'No results for' : '검색 결과가 없습니다'}&nbsp;
+          {t(`${name}_long`)}
+          {lang === 'en' ? '.' : ''}
         </div>
       )}
       {buildings.map((building) => {
