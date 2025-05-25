@@ -1,0 +1,16 @@
+---
+import { languages } from '@/i18n/ui';
+import { getLangFromUrl } from '@/i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+---
+
+<div class="absolute top-8 right-8 flex gap-3">
+  {
+    Object.entries(languages).map(([lang, label]) => (
+      <div class:list={[{ 'text-muted-foreground': currentLang !== lang }]}>
+        <a href={`/${lang}/`}>{label}</a>
+      </div>
+    ))
+  }
+</div>
