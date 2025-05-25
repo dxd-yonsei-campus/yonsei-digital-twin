@@ -1,12 +1,11 @@
 ---
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Layout from '@/layouts/Layout.astro';
-import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { HomeIcon } from 'lucide-react';
 import BuildingLayersToggle from '@/components/BuildingLayersToggle';
 import BuildingInformation from '@/components/BuildingInformation';
 import SearchBar from '@/components/SearchBar';
+import ResetButtonGroup from '@/components/ResetButtonGroup';
 ---
 
 <Layout title="Map">
@@ -31,10 +30,7 @@ import SearchBar from '@/components/SearchBar';
       <div class="flex items-center gap-2">
         <BuildingLayersToggle client:load />
         <Separator orientation="vertical" className="h-6!" />
-        <Button variant="outline" id="reset-view">
-          <HomeIcon />
-          Sinchon
-        </Button>
+        <ResetButtonGroup client:load />
       </div>
     </div>
     <div class="mt-2.5 flex justify-between text-xs text-muted-foreground/70">
