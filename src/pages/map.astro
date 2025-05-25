@@ -1,12 +1,11 @@
 ---
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Layout from '@/layouts/Layout.astro';
-import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { HomeIcon } from 'lucide-react';
-import BuildingLayersToggle from '@/components/BuildingLayersToggle';
-import BuildingInformation from '@/components/BuildingInformation';
-import SearchBar from '@/components/SearchBar';
+import BuildingLayersToggle from '@/components/map/BuildingLayersToggle';
+import BuildingInformation from '@/components/map/BuildingInformation';
+import SearchBar from '@/components/map/SearchBar';
+import ResetViewGroup from '@/components/map/ResetViewGroup';
 ---
 
 <Layout title="Map">
@@ -31,10 +30,7 @@ import SearchBar from '@/components/SearchBar';
       <div class="flex items-center gap-2">
         <BuildingLayersToggle client:load />
         <Separator orientation="vertical" className="h-6!" />
-        <Button variant="outline" id="reset-view">
-          <HomeIcon />
-          Sinchon
-        </Button>
+        <ResetViewGroup client:only="react" />
       </div>
     </div>
     <div class="mt-2.5 flex justify-between text-xs text-muted-foreground/70">
@@ -44,18 +40,12 @@ import SearchBar from '@/components/SearchBar';
     </div>
   </div>
   <script>
-    import { buildingLayer, selectedId } from '@/store';
+    import { buildingLayer, selectedCampus, selectedId } from '@/store';
     import mapboxgl from 'mapbox-gl';
-    import { getAllBuildingIds } from '@/lib/mapApi';
+    import { getAllBuildingIds, getCameraForCampus } from '@/lib/mapApi';
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
-    const sinchonCenter: [number, number] = [126.9384, 37.5647];
-    const initialCamera = {
-      center: sinchonCenter,
-      zoom: 15.5,
-      pitch: 45,
-      bearing: -17.6,
-    };
+    const initialCamera = getCameraForCampus(selectedCampus.get());
 
     const map = new mapboxgl.Map({
       style: 'mapbox://styles/mapbox/light-v11',
@@ -202,10 +192,6 @@ import SearchBar from '@/components/SearchBar';
         map.setLayoutProperty('selected-building', 'visibility', 'visible');
         map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
       }
-    });
-
-    document.getElementById('reset-view')?.addEventListener('click', () => {
-      map.flyTo(initialCamera);
     });
   </script>
 </Layout>

@@ -2,6 +2,10 @@ import type { BuildingProps } from '@/content.config';
 import sinchonBuildings from '@/data/buildings/sinchon.json';
 import songdoBuildings from '@/data/buildings/songdo.json';
 import type { CampusName } from '@/types/map';
+import type { EasingOptions } from 'mapbox-gl';
+
+const SINCHON_CENTER: [number, number] = [126.9384, 37.5647];
+const SONGDO_CENTER: [number, number] = [126.6706, 37.38145];
 
 export const getAllBuildings = (): BuildingProps[] => {
   const allBuildings = sinchonBuildings.concat(songdoBuildings);
@@ -40,4 +44,30 @@ export const flyToLocation = (longitude: number, latitude: number) => {
     bearing: 0,
     duration: 2000,
   });
+};
+
+export const getCameraForCampus = (campus: CampusName): EasingOptions => {
+  switch (campus) {
+    case 'sinchon':
+      return {
+        center: SINCHON_CENTER,
+        zoom: 15.5,
+        pitch: 45,
+        bearing: -17.6,
+      };
+    case 'songdo':
+      return {
+        center: SONGDO_CENTER,
+        zoom: 16.2,
+        pitch: 45,
+        bearing: -17.6,
+      };
+    default:
+      return {};
+  }
+};
+
+export const flyToCampus = (campus: CampusName) => {
+  const cameraSettings = getCameraForCampus(campus);
+  window.map.flyTo(cameraSettings);
 };
