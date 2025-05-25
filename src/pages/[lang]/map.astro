@@ -10,6 +10,10 @@ import ResetViewGroup from '@/components/map/ResetViewGroup';
 export function getStaticPaths() {
   return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }];
 }
+
+import { getLangFromUrl } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <Layout title="Map">
@@ -34,11 +38,14 @@ export function getStaticPaths() {
       <div class="flex items-center gap-2">
         <BuildingLayersToggle client:load />
         <Separator orientation="vertical" className="h-6!" />
-        <ResetViewGroup client:only="react" />
+        <ResetViewGroup lang={lang} client:only="react" />
       </div>
     </div>
     <div class="mt-2.5 flex justify-between text-xs text-muted-foreground/70">
-      <a class="transition-colors hover:text-muted-foreground" href="/">
+      <a
+        class="transition-colors hover:text-muted-foreground"
+        href={`/${lang}`}
+      >
         Yonsei Digital Twin
       </a>
     </div>
