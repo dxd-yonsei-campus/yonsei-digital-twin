@@ -13,22 +13,22 @@ import SearchBar from '@/components/SearchBar';
   <h1 class="sr-only">Yonsei Digital Twin Map</h1>
   <div id="map" class="h-screen w-screen"></div>
   <BuildingInformation client:load />
-  <div class="main-bg border-t absolute bottom-0 w-full py-2 px-4">
-    <div class="flex justify-between items-center mb-2 gap-3">
+  <div class="absolute bottom-0 w-full border-t main-bg px-4 py-2">
+    <div class="mb-2 flex items-center justify-between gap-3">
       <div class="shrink-0">
         <img
-          class="h-8 hidden dark:block"
+          class="hidden h-8 dark:block"
           src="/yonsei-logo-dark.png"
           alt="Yonsei University"
         />
         <img
-          class="h-8 block dark:hidden"
+          class="block h-8 dark:hidden"
           src="/yonsei-logo-light.png"
           alt="Yonsei University"
         />
       </div>
       <SearchBar client:load />
-      <div class="flex gap-2 items-center">
+      <div class="flex items-center gap-2">
         <BuildingLayersToggle client:load />
         <Separator orientation="vertical" className="h-6!" />
         <Button variant="outline" id="reset-view">
@@ -37,7 +37,7 @@ import SearchBar from '@/components/SearchBar';
         </Button>
       </div>
     </div>
-    <div class="flex justify-between mt-2.5 text-xs text-muted-foreground/70">
+    <div class="mt-2.5 flex justify-between text-xs text-muted-foreground/70">
       <a class="transition-colors hover:text-muted-foreground" href="/">
         Yonsei Digital Twin
       </a>

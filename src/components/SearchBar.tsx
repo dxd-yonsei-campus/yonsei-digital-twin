@@ -86,19 +86,19 @@ const SearchBar = () => {
       <Button
         onClick={toggleOpen}
         variant="outline"
-        className="text-muted-foreground font-normal w-auto sm:w-52 md:w-60 flex justify-between"
+        className="flex w-auto justify-between font-normal text-muted-foreground sm:w-52 md:w-60"
       >
-        <div className="flex gap-2 items-center overflow-hidden">
+        <div className="flex items-center gap-2 overflow-hidden">
           <SearchIcon />
           <span
-            className={cn('hidden sm:block overflow-hidden text-ellipsis', {
+            className={cn('hidden overflow-hidden text-ellipsis sm:block', {
               'text-foreground': building,
             })}
           >
             {building ? building.name_en : 'Search buildings'}
           </span>
         </div>
-        <kbd className="hidden md:inline-flex shrink-0">
+        <kbd className="hidden shrink-0 md:inline-flex">
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>
@@ -120,7 +120,7 @@ const SearchBar = () => {
           onValueChange={() => scrollUpWhenCleared()}
         >
           <div className="px-2 pt-2 pb-1">
-            <TabsList className="bg-transparent px-0 flex-wrap">
+            <TabsList className="flex-wrap bg-transparent px-0">
               <TabsTrigger className="text-xs" value="sinchon">
                 Sinchon [{filteredSinchonBuildings.length}]
               </TabsTrigger>
@@ -163,7 +163,7 @@ const SearchGroup = ({ name, buildings, handleSelect }: SearchGroupProps) => {
   return (
     <CommandGroup className="pt-0">
       {buildings.length === 0 && (
-        <div className="text-sm text-center py-4">
+        <div className="py-4 text-center text-sm">
           No results for {name} campus.
         </div>
       )}
@@ -194,7 +194,7 @@ const SearchItem = ({ building, handleSelect }: SearchItemProps) => {
     >
       <div className="flex flex-col">
         <span>{building.name_en}</span>
-        <span className="text-muted-foreground text-xs">{building.name}</span>
+        <span className="text-xs text-muted-foreground">{building.name}</span>
       </div>
     </CommandItem>
   );
