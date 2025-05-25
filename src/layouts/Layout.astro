@@ -1,5 +1,5 @@
 ---
-import "@/styles/global.css";
+import '@/styles/global.css';
 
 interface Props {
   title?: string;
@@ -8,12 +8,12 @@ interface Props {
 
 const {
   title,
-  description = "An interactive digital twin of the Yonsei University campus.",
+  description = 'An interactive digital twin of the Yonsei University campus.',
 } = Astro.props;
 
 const formattedTitle = title
   ? `Yonsei Digital Twin | ${title}`
-  : "Yonsei Digital Twin";
+  : 'Yonsei Digital Twin';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---

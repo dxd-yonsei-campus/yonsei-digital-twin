@@ -1,27 +1,27 @@
-import React from "react";
+import React from 'react';
 import {
   CommandDialog,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { SearchIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { selectedId } from "@/store";
-import { useStore } from "@nanostores/react";
-import { cn } from "@/lib/utils";
-import type { BuildingProps } from "@/content.config";
+} from '@/components/ui/command';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { SearchIcon } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { selectedId } from '@/store';
+import { useStore } from '@nanostores/react';
+import { cn } from '@/lib/utils';
+import type { BuildingProps } from '@/content.config';
 import {
   flyToLocation,
   getBuildingsForCampus,
   getBuildingWithId,
-} from "@/lib/mapApi";
+} from '@/lib/mapApi';
 
 const SearchBar = () => {
   const [open, setOpen] = React.useState(false);
-  const [search, setSearch] = React.useState("");
+  const [search, setSearch] = React.useState('');
 
   const listRef = React.useRef<HTMLDivElement>(null);
 
@@ -34,7 +34,7 @@ const SearchBar = () => {
 
   const toggleOpen = () => {
     if (!open) {
-      setSearch("");
+      setSearch('');
     }
     setOpen((open) => !open);
   };
@@ -46,17 +46,17 @@ const SearchBar = () => {
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         toggleOpen();
       }
     };
 
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
+    document.addEventListener('keydown', down);
+    return () => document.removeEventListener('keydown', down);
   }, []);
 
-  const filteredSinchonBuildings = getBuildingsForCampus("sinchon")
+  const filteredSinchonBuildings = getBuildingsForCampus('sinchon')
     .filter((building) =>
       building.name_en.toLowerCase().includes(search.toLowerCase()),
     )
@@ -64,7 +64,7 @@ const SearchBar = () => {
       a.name_en.toLowerCase().localeCompare(b.name_en.toLowerCase()),
     );
 
-  const filteredSongdoBuildings = getBuildingsForCampus("songdo")
+  const filteredSongdoBuildings = getBuildingsForCampus('songdo')
     .filter((building) =>
       building.name_en.toLowerCase().includes(search.toLowerCase()),
     )
@@ -91,11 +91,11 @@ const SearchBar = () => {
         <div className="flex gap-2 items-center overflow-hidden">
           <SearchIcon />
           <span
-            className={cn("hidden sm:block overflow-hidden text-ellipsis", {
-              "text-foreground": building,
+            className={cn('hidden sm:block overflow-hidden text-ellipsis', {
+              'text-foreground': building,
             })}
           >
-            {building ? building.name_en : "Search buildings"}
+            {building ? building.name_en : 'Search buildings'}
           </span>
         </div>
         <kbd className="hidden md:inline-flex shrink-0">

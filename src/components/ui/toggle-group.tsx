@@ -1,24 +1,24 @@
-import * as React from "react";
-import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
-import { type VariantProps } from "class-variance-authority";
+import * as React from 'react';
+import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
+import { type VariantProps } from 'class-variance-authority';
 
-import { cn } from "@/lib/utils";
-import { toggleVariants } from "@/components/ui/toggle";
+import { cn } from '@/lib/utils';
+import { toggleVariants } from '@/components/ui/toggle';
 
 const ToggleGroupContext = React.createContext<
   VariantProps<typeof toggleVariants>
 >({
-  size: "default",
-  variant: "default",
+  size: 'default',
+  variant: 'default',
 });
 
 type ToggleGroupProps<T extends string> = {
   value?: T;
   onValueChange?: (value: T) => void;
-  type: "single";
+  type: 'single';
   className?: string;
-  variant?: VariantProps<typeof toggleVariants>["variant"];
-  size?: VariantProps<typeof toggleVariants>["size"];
+  variant?: VariantProps<typeof toggleVariants>['variant'];
+  size?: VariantProps<typeof toggleVariants>['size'];
   children?: React.ReactNode;
 };
 
@@ -38,7 +38,7 @@ function ToggleGroup<T extends string>({
       data-variant={variant}
       data-size={size}
       className={cn(
-        "group/toggle-group flex w-fit items-center rounded-md data-[variant=outline]:shadow-xs",
+        'group/toggle-group flex w-fit items-center rounded-md data-[variant=outline]:shadow-xs',
         className,
       )}
       type={type}
@@ -56,8 +56,8 @@ function ToggleGroup<T extends string>({
 type ToggleGroupItemProps<T extends string> = {
   value: T;
   className?: string;
-  variant?: VariantProps<typeof toggleVariants>["variant"];
-  size?: VariantProps<typeof toggleVariants>["size"];
+  variant?: VariantProps<typeof toggleVariants>['variant'];
+  size?: VariantProps<typeof toggleVariants>['size'];
   children?: React.ReactNode;
 };
 
@@ -81,7 +81,7 @@ function ToggleGroupItem<T extends string>({
           variant: context.variant || variant,
           size: context.size || size,
         }),
-        "min-w-0 flex-1 shrink-0 rounded-none shadow-none first:rounded-l-md last:rounded-r-md focus:z-10 focus-visible:z-10 data-[variant=outline]:border-l-0 data-[variant=outline]:first:border-l",
+        'min-w-0 flex-1 shrink-0 rounded-none shadow-none first:rounded-l-md last:rounded-r-md focus:z-10 focus-visible:z-10 data-[variant=outline]:border-l-0 data-[variant=outline]:first:border-l',
         className,
       )}
       value={value}

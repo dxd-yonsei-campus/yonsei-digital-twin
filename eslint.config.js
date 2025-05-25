@@ -1,16 +1,16 @@
 // @ts-check
-import eslint from "@eslint/js";
-import eslintPluginAstro from "eslint-plugin-astro";
-import tseslint from "typescript-eslint";
+import eslint from '@eslint/js';
+import eslintPluginAstro from 'eslint-plugin-astro';
+import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
     ignores: [
-      "**/dist",
-      "**/node_modules",
-      "**/.astro",
-      "**/.github",
-      "**/.changeset",
+      '**/dist',
+      '**/node_modules',
+      '**/.astro',
+      '**/.github',
+      '**/.changeset',
     ],
   },
 
@@ -21,9 +21,9 @@ export default tseslint.config(
 
   // Allow triple-slash references in `*.d.ts` files.
   {
-    files: ["**/*.d.ts"],
+    files: ['**/*.d.ts'],
     rules: {
-      "@typescript-eslint/triple-slash-reference": "off",
+      '@typescript-eslint/triple-slash-reference': 'off',
     },
   },
 
@@ -32,7 +32,7 @@ export default tseslint.config(
   {
     rules: {
       // override/add rules settings here, such as:
-      "astro/no-set-html-directive": "error",
+      'astro/no-set-html-directive': 'error',
     },
   },
 );

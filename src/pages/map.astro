@@ -1,12 +1,12 @@
 ---
-import "mapbox-gl/dist/mapbox-gl.css";
-import Layout from "@/layouts/Layout.astro";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { HomeIcon } from "lucide-react";
-import BuildingLayersToggle from "@/components/BuildingLayersToggle";
-import BuildingInformation from "@/components/BuildingInformation";
-import SearchBar from "@/components/SearchBar";
+import 'mapbox-gl/dist/mapbox-gl.css';
+import Layout from '@/layouts/Layout.astro';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { HomeIcon } from 'lucide-react';
+import BuildingLayersToggle from '@/components/BuildingLayersToggle';
+import BuildingInformation from '@/components/BuildingInformation';
+import SearchBar from '@/components/SearchBar';
 ---
 
 <Layout title="Map">
@@ -44,9 +44,9 @@ import SearchBar from "@/components/SearchBar";
     </div>
   </div>
   <script>
-    import { buildingLayer, selectedId } from "@/store";
-    import mapboxgl from "mapbox-gl";
-    import { getAllBuildingIds } from "@/lib/mapApi";
+    import { buildingLayer, selectedId } from '@/store';
+    import mapboxgl from 'mapbox-gl';
+    import { getAllBuildingIds } from '@/lib/mapApi';
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
     const sinchonCenter: [number, number] = [126.9384, 37.5647];
@@ -58,11 +58,11 @@ import SearchBar from "@/components/SearchBar";
     };
 
     const map = new mapboxgl.Map({
-      style: "mapbox://styles/mapbox/light-v11",
-      container: "map",
+      style: 'mapbox://styles/mapbox/light-v11',
+      container: 'map',
       antialias: true,
       attributionControl: false,
-      logoPosition: "top-right",
+      logoPosition: 'top-right',
       minZoom: 14,
       ...initialCamera,
     });
@@ -70,17 +70,17 @@ import SearchBar from "@/components/SearchBar";
     // Expose map instance to window
     window.map = map;
 
-    map.addControl(new mapboxgl.AttributionControl(), "top-left");
-    map.addControl(new mapboxgl.ScaleControl(), "bottom-right");
-    map.addControl(new mapboxgl.NavigationControl(), "top-right");
+    map.addControl(new mapboxgl.AttributionControl(), 'top-left');
+    map.addControl(new mapboxgl.ScaleControl(), 'bottom-right');
+    map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
-    map.on("style.load", () => {
+    map.on('style.load', () => {
       // Insert the layer beneath any symbol layer.
       const layers = map.getStyle().layers;
 
       const labelLayerId = layers.find(
         (layer) =>
-          layer.type === "symbol" && layer.layout && layer.layout["text-field"],
+          layer.type === 'symbol' && layer.layout && layer.layout['text-field'],
       )?.id;
 
       if (!labelLayerId) {
@@ -94,37 +94,37 @@ import SearchBar from "@/components/SearchBar";
       // from OpenStreetMap.
       map.addLayer(
         {
-          id: "osm-buildings",
-          source: "composite",
-          "source-layer": "building",
-          filter: ["all", ["in", ["id"], ["literal", allBuildingIds]]],
-          type: "fill-extrusion",
+          id: 'osm-buildings',
+          source: 'composite',
+          'source-layer': 'building',
+          filter: ['all', ['in', ['id'], ['literal', allBuildingIds]]],
+          type: 'fill-extrusion',
           minzoom: 15,
           paint: {
-            "fill-extrusion-color": "#aaa",
+            'fill-extrusion-color': '#aaa',
 
             // Use an 'interpolate' expression to
             // add a smooth transition effect to
             // the buildings as the user zooms in.
-            "fill-extrusion-height": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
+            'fill-extrusion-height': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
               15,
               0,
               15.05,
-              ["get", "height"],
+              ['get', 'height'],
             ],
-            "fill-extrusion-base": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
+            'fill-extrusion-base': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
               15,
               0,
               15.05,
-              ["get", "min_height"],
+              ['get', 'min_height'],
             ],
-            "fill-extrusion-opacity": 1,
+            'fill-extrusion-opacity': 1,
           },
         },
         labelLayerId,
@@ -132,79 +132,79 @@ import SearchBar from "@/components/SearchBar";
 
       map.addLayer(
         {
-          id: "selected-building",
-          source: "composite",
-          "source-layer": "building",
-          type: "fill-extrusion",
+          id: 'selected-building',
+          source: 'composite',
+          'source-layer': 'building',
+          type: 'fill-extrusion',
           minzoom: 15,
-          filter: ["all", ["in", ["id"], ""]],
+          filter: ['all', ['in', ['id'], '']],
           layout: {
-            visibility: "none",
+            visibility: 'none',
           },
           paint: {
-            "fill-extrusion-color": "#003876",
-            "fill-extrusion-height": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
+            'fill-extrusion-color': '#003876',
+            'fill-extrusion-height': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
               15,
               0,
               15.05,
-              ["get", "height"],
+              ['get', 'height'],
             ],
-            "fill-extrusion-base": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
+            'fill-extrusion-base': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
               15,
               0,
               15.05,
-              ["get", "min_height"],
+              ['get', 'min_height'],
             ],
-            "fill-extrusion-opacity": 0.8,
+            'fill-extrusion-opacity': 0.8,
           },
         },
         labelLayerId,
       );
     });
 
-    map.on("click", (e) => {
+    map.on('click', (e) => {
       const features = map.queryRenderedFeatures(e.point, {
-        layers: ["osm-buildings"], // make sure this matches your layer name
+        layers: ['osm-buildings'], // make sure this matches your layer name
       });
 
       if (features.length) {
         const building = features[0];
         const buildingId = building.id;
-        selectedId.set(buildingId || "");
+        selectedId.set(buildingId || '');
       } else {
-        selectedId.set("");
-        map.setFilter("selected-building", ["==", ["id"], ""]);
+        selectedId.set('');
+        map.setFilter('selected-building', ['==', ['id'], '']);
       }
     });
 
     selectedId.listen((selectedId) => {
       if (selectedId) {
-        map.setFilter("selected-building", ["==", ["id"], selectedId]);
-        if (buildingLayer.get() == "osm") {
-          map.setLayoutProperty("selected-building", "visibility", "visible");
+        map.setFilter('selected-building', ['==', ['id'], selectedId]);
+        if (buildingLayer.get() == 'osm') {
+          map.setLayoutProperty('selected-building', 'visibility', 'visible');
         }
       } else {
-        map.setFilter("selected-building", ["==", ["id"], ""]);
-        map.setLayoutProperty("selected-building", "visibility", "none");
+        map.setFilter('selected-building', ['==', ['id'], '']);
+        map.setLayoutProperty('selected-building', 'visibility', 'none');
       }
     });
 
     buildingLayer.listen((layer) => {
-      map.setLayoutProperty("osm-buildings", "visibility", "none");
-      map.setLayoutProperty("selected-building", "visibility", "none");
-      if (layer === "osm") {
-        map.setLayoutProperty("selected-building", "visibility", "visible");
-        map.setLayoutProperty("osm-buildings", "visibility", "visible");
+      map.setLayoutProperty('osm-buildings', 'visibility', 'none');
+      map.setLayoutProperty('selected-building', 'visibility', 'none');
+      if (layer === 'osm') {
+        map.setLayoutProperty('selected-building', 'visibility', 'visible');
+        map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
       }
     });
 
-    document.getElementById("reset-view")?.addEventListener("click", () => {
+    document.getElementById('reset-view')?.addEventListener('click', () => {
       map.flyTo(initialCamera);
     });
   </script>

@@ -1,5 +1,5 @@
-import { BorderBeam } from "@/components/magicui/border-beam";
-import { Card, CardContent } from "@/components/ui/card";
+import { BorderBeam } from '@/components/magicui/border-beam';
+import { Card, CardContent } from '@/components/ui/card';
 
 const HeroVideo = () => {
   return (
