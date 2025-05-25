@@ -6,20 +6,21 @@ interface Props {
   description?: string;
 }
 
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const {
   title,
   description = "Discover Yonsei University's campuses and access detailed building information through the Yonsei Digital Twin.",
 } = Astro.props;
 
 const formattedTitle = title
-  ? `Yonsei Digital Twin | ${title}`
-  : 'Yonsei Digital Twin';
+  ? `${t('site.title')} | ${title}`
+  : t('site.title');
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
-import { getLangFromUrl } from '@/i18n/utils';
-
-const lang = getLangFromUrl(Astro.url);
 ---
 
 <html lang={lang} class="dark">
