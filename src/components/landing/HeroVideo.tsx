@@ -6,7 +6,7 @@ const HeroVideo = () => {
     <Card className="relative max-w-3xl overflow-hidden py-1.5">
       <CardContent className="px-1.5">
         <video
-          className="rounded-lg"
+          className="aspect-video h-auto w-3xl rounded-lg"
           src="/hero-video.mp4"
           autoPlay
           muted
