@@ -12,24 +12,25 @@ export function getStaticPaths() {
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { ChevronDown, Languages } from 'lucide-react';
 import { languages } from '@/i18n/ui';
+import ThemeIcon from '@/components/ThemeIcon.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
 <Layout>
-  <LanguagePicker
-    client:load
-    className="absolute top-8 right-2 text-muted-foreground lg:right-6"
-    lang={lang}
-    align="end"
+  <div
+    class="absolute top-8 right-4 flex items-center text-muted-foreground lg:right-6"
   >
-    <>
-      <Languages className="size-4.5" />
-      {languages[lang]}
-      <ChevronDown className="size-3.5" />
-    </>
-  </LanguagePicker>
+    <LanguagePicker client:load lang={lang} align="end">
+      <>
+        <Languages className="size-4.5" />
+        {languages[lang]}
+        <ChevronDown className="size-3.5" />
+      </>
+    </LanguagePicker>
+    <ThemeIcon />
+  </div>
   <main
     class="mx-auto flex h-svh max-w-6xl flex-col items-center justify-center gap-8 px-4 lg:flex-row lg:justify-between"
   >
