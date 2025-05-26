@@ -84,7 +84,7 @@ const SearchBar = ({ lang }: SearchBarProps) => {
         .includes(search.toLowerCase()),
     )
     .sort((a, b) =>
-      (lang === 'ko' ? a.name : b.name)
+      (lang === 'ko' ? a.name : a.name_en)
         .toLowerCase()
         .localeCompare((lang === 'ko' ? b.name : b.name_en).toLowerCase()),
     );
