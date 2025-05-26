@@ -1,7 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import HeroVideo from '@/components/landing/HeroVideo';
-import LanguagePicker from '@/components/LanguagePicker.astro';
+import LanguagePicker from '@/components/landing/LanguagePicker';
 import MapLink from '@/components/landing/MapLink';
 import { campuses } from '@/types/map';
 
@@ -10,13 +10,26 @@ export function getStaticPaths() {
 }
 
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { ChevronDown, Languages } from 'lucide-react';
+import { languages } from '@/i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
 <Layout>
-  <LanguagePicker className="absolute top-8 right-8" />
+  <LanguagePicker
+    client:load
+    className="absolute top-8 right-2 text-muted-foreground lg:right-6"
+    lang={lang}
+    align="end"
+  >
+    <>
+      <Languages className="size-4.5" />
+      {languages[lang]}
+      <ChevronDown className="size-3.5" />
+    </>
+  </LanguagePicker>
   <main
     class="mx-auto flex h-svh max-w-6xl flex-col items-center justify-center gap-8 px-4 lg:flex-row lg:justify-between"
   >
