@@ -1,6 +1,6 @@
 export const languages = {
-  en: 'EN',
-  ko: 'KO',
+  en: 'English',
+  ko: '한국어 (Korean)',
 };
 
 export const defaultLang = 'en';
@@ -17,6 +17,7 @@ export const ui = {
     sinchon_long: 'Sinchon Campus',
     songdo: 'Songdo',
     songdo_long: 'Songdo Campus',
+    language: 'Language',
   },
   ko: {
     'site.title': '연세 디지털 트윈',
@@ -29,5 +30,6 @@ export const ui = {
     sinchon_long: '신촌캠퍼스',
     songdo: '송도',
     songdo_long: '송도캠퍼스',
+    language: '언어',
   },
 } as const;
