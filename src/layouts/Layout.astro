@@ -20,7 +20,7 @@ const formattedTitle = title
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
-<html lang={lang} class="dark">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -43,4 +43,34 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <body>
     <slot />
   </body>
+  <script>
+    import { theme } from '@/store';
+
+    const initTheme = (() => {
+      const localStorageTheme = localStorage?.getItem('theme') ?? '';
+      if (['dark', 'light'].includes(localStorageTheme)) {
+        return localStorageTheme as 'dark' | 'light';
+      }
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      return 'light';
+    })();
+
+    if (initTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    theme.set(initTheme);
+
+    theme.listen((newTheme) => {
+      if (newTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    });
+  </script>
 </html>
