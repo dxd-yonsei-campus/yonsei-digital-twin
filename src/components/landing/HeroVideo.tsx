@@ -11,6 +11,7 @@ const HeroVideo = () => {
           autoPlay
           muted
           loop
+          playsInline
         ></video>
       </CardContent>
       <BorderBeam
