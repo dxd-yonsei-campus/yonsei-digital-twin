@@ -11,11 +11,6 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://yonsei-campus.com',
 
-  i18n: {
-    locales: ['en', 'ko'],
-    defaultLocale: 'en',
-  },
-
   vite: {
     plugins: [tailwindcss()],
   },
