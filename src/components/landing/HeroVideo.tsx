@@ -17,19 +17,30 @@ const HeroVideo = () => {
       <BorderBeam
         duration={9}
         size={500}
-        className="from-transparent via-primary to-transparent"
+        className="hidden from-transparent via-primary to-transparent xs:block"
       />
       <BorderBeam
         duration={9}
         size={500}
         delay={3}
-        className="from-transparent via-primary to-transparent"
+        className="hidden from-transparent via-primary to-transparent xs:block"
       />
       <BorderBeam
         duration={9}
         size={500}
         delay={6}
-        className="from-transparent via-primary to-transparent"
+        className="hidden from-transparent via-primary to-transparent xs:block"
+      />
+      <BorderBeam
+        duration={9}
+        size={300}
+        className="block from-transparent via-primary to-transparent xs:hidden"
+      />
+      <BorderBeam
+        duration={9}
+        size={300}
+        delay={4.5}
+        className="block from-transparent via-primary to-transparent xs:hidden"
       />
     </Card>
   );
