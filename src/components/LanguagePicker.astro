@@ -13,7 +13,7 @@ const redirectPath = Astro.url.pathname.split('/').slice(2).join('/');
 
 <div class:list={['flex gap-1.5', className]}>
   {
-    Object.entries(languages).map(([lang, label]) => (
+    Object.entries(languages).map(([lang]) => (
       <div
         class:list={[
           'transition-colors',
@@ -21,7 +21,7 @@ const redirectPath = Astro.url.pathname.split('/').slice(2).join('/');
           { 'hover:text-muted-foreground': currentLang !== lang },
         ]}
       >
-        <a href={`/${lang}/${redirectPath}`}>{label}</a>
+        <a href={`/${lang}/${redirectPath}`}>{lang.toUpperCase()}</a>
       </div>
     ))
   }
