@@ -5,7 +5,7 @@ import { useStore } from '@nanostores/react';
 import React, { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
-const ThemeIcon = () => {
+const ThemePicker = () => {
   const currentTheme = useStore(theme);
   const [isRendered, setIsRendered] = React.useState(false);
 
@@ -43,4 +43,4 @@ const ThemeIcon = () => {
   );
 };
 
-export default ThemeIcon;
+export default ThemePicker;
