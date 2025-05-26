@@ -6,7 +6,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { languages, ui } from '@/i18n/ui';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 
 type LanguagePickerProps = {
@@ -32,7 +32,7 @@ const LanguagePicker = ({
       <DropdownMenuContent
         align={align}
         className={cn(
-          'w-40',
+          'w-34',
           { 'mr-4': align === 'end' },
           { 'ml-4': align === 'start' },
         )}

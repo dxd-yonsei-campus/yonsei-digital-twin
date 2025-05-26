@@ -1,6 +1,6 @@
 export const languages = {
   en: 'English',
-  ko: '한국어 (Korean)',
+  ko: '한국어',
 };
 
 export const defaultLang = 'en';
