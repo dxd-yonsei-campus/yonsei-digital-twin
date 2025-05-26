@@ -6,19 +6,21 @@ interface Props {
   description?: string;
 }
 
-const {
-  title,
-  description = "Discover Yonsei University's campuses and access detailed building information through the Yonsei Digital Twin.",
-} = Astro.props;
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { title, description = t('site.description') } = Astro.props;
 
 const formattedTitle = title
-  ? `Yonsei Digital Twin | ${title}`
-  : 'Yonsei Digital Twin';
+  ? `${t('site.title')} | ${title}`
+  : t('site.title');
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
-<html lang="en" class="dark">
+<html lang={lang} class="dark">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />

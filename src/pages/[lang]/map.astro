@@ -1,0 +1,235 @@
+---
+import 'mapbox-gl/dist/mapbox-gl.css';
+import Layout from '@/layouts/Layout.astro';
+import { Separator } from '@/components/ui/separator';
+import BuildingLayersToggle from '@/components/map/BuildingLayersToggle';
+import BuildingInformation from '@/components/map/BuildingInformation';
+import SearchBar from '@/components/map/SearchBar';
+import ResetViewGroup from '@/components/map/ResetViewGroup';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }];
+}
+
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import LanguagePicker from '@/components/LanguagePicker.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={t('site.map')}>
+  <h1 class="sr-only">
+    {t('site.title')}&nbsp;
+    {t('site.map')}
+  </h1>
+  <div id="map" class="h-screen w-screen"></div>
+  <BuildingInformation client:load lang={lang} />
+  <div class="absolute bottom-0 w-full border-t main-bg px-4 py-2">
+    <div class="mb-2 flex items-center justify-between gap-3">
+      <div class="shrink-0">
+        <img
+          class="hidden h-8 dark:block"
+          src={lang === 'en'
+            ? '/yonsei-logo-dark.png'
+            : '/yonsei-logo-dark-ko.png'}
+          alt="Yonsei University"
+        />
+        <img
+          class="block h-8 dark:hidden"
+          src={lang === 'en'
+            ? '/yonsei-logo-light.png'
+            : '/yonsei-logo-light-ko.png'}
+          alt="Yonsei University"
+        />
+      </div>
+      <SearchBar client:load lang={lang} />
+      <div class="flex items-center gap-2">
+        <BuildingLayersToggle client:load />
+        <Separator orientation="vertical" className="h-6!" />
+        <ResetViewGroup lang={lang} client:only="react" />
+      </div>
+    </div>
+    <div
+      class="mt-2.5 flex items-center justify-start gap-2 text-xs text-muted-foreground/70"
+    >
+      <a
+        class="transition-colors hover:text-muted-foreground"
+        href={`/${lang}/`}
+      >
+        {t('site.title')}
+      </a>
+      <Separator orientation="vertical" className="h-3!" />
+      <LanguagePicker />
+    </div>
+  </div>
+  <script>
+    import { buildingLayer, selectedCampus, selectedId } from '@/store';
+    import mapboxgl from 'mapbox-gl';
+    import {
+      getAllBuildingIds,
+      getCameraForCampus,
+      updateSelectedCampus,
+    } from '@/lib/mapApi';
+    mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
+
+    const initialCamera = getCameraForCampus(selectedCampus.get());
+
+    const map = new mapboxgl.Map({
+      style: 'mapbox://styles/mapbox/light-v11',
+      container: 'map',
+      antialias: true,
+      attributionControl: false,
+      logoPosition: 'top-right',
+      minZoom: 14,
+      language:
+        document.querySelector('html')?.getAttribute('lang') === 'ko'
+          ? 'ko'
+          : 'en',
+      ...initialCamera,
+    });
+
+    // Expose map instance to window
+    window.map = map;
+
+    map.addControl(new mapboxgl.AttributionControl(), 'top-left');
+    map.addControl(new mapboxgl.ScaleControl(), 'bottom-right');
+    map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+
+    // Add camera move listener to update selected campus
+    map.on('moveend', () => {
+      const center = map.getCenter();
+      updateSelectedCampus(center.lng, center.lat);
+    });
+
+    map.on('style.load', () => {
+      // Insert the layer beneath any symbol layer.
+      const layers = map.getStyle().layers;
+
+      const labelLayerId = layers.find(
+        (layer) =>
+          layer.type === 'symbol' && layer.layout && layer.layout['text-field'],
+      )?.id;
+
+      if (!labelLayerId) {
+        return;
+      }
+
+      const allBuildingIds = getAllBuildingIds();
+
+      // The 'building' layer in the Mapbox Streets
+      // vector tileset contains building height data
+      // from OpenStreetMap.
+      map.addLayer(
+        {
+          id: 'osm-buildings',
+          source: 'composite',
+          'source-layer': 'building',
+          filter: ['all', ['in', ['id'], ['literal', allBuildingIds]]],
+          type: 'fill-extrusion',
+          minzoom: 15,
+          paint: {
+            'fill-extrusion-color': '#aaa',
+
+            // Use an 'interpolate' expression to
+            // add a smooth transition effect to
+            // the buildings as the user zooms in.
+            'fill-extrusion-height': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
+              15,
+              0,
+              15.05,
+              ['get', 'height'],
+            ],
+            'fill-extrusion-base': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
+              15,
+              0,
+              15.05,
+              ['get', 'min_height'],
+            ],
+            'fill-extrusion-opacity': 1,
+          },
+        },
+        labelLayerId,
+      );
+
+      map.addLayer(
+        {
+          id: 'selected-building',
+          source: 'composite',
+          'source-layer': 'building',
+          type: 'fill-extrusion',
+          minzoom: 15,
+          filter: ['all', ['in', ['id'], '']],
+          layout: {
+            visibility: 'none',
+          },
+          paint: {
+            'fill-extrusion-color': '#003876',
+            'fill-extrusion-height': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
+              15,
+              0,
+              15.05,
+              ['get', 'height'],
+            ],
+            'fill-extrusion-base': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
+              15,
+              0,
+              15.05,
+              ['get', 'min_height'],
+            ],
+            'fill-extrusion-opacity': 0.8,
+          },
+        },
+        labelLayerId,
+      );
+    });
+
+    map.on('click', (e) => {
+      const features = map.queryRenderedFeatures(e.point, {
+        layers: ['osm-buildings'], // make sure this matches your layer name
+      });
+
+      if (features.length) {
+        const building = features[0];
+        const buildingId = building.id;
+        selectedId.set(buildingId || '');
+      } else {
+        selectedId.set('');
+        map.setFilter('selected-building', ['==', ['id'], '']);
+      }
+    });
+
+    selectedId.listen((selectedId) => {
+      if (selectedId) {
+        map.setFilter('selected-building', ['==', ['id'], selectedId]);
+        if (buildingLayer.get() == 'osm') {
+          map.setLayoutProperty('selected-building', 'visibility', 'visible');
+        }
+      } else {
+        map.setFilter('selected-building', ['==', ['id'], '']);
+        map.setLayoutProperty('selected-building', 'visibility', 'none');
+      }
+    });
+
+    buildingLayer.listen((layer) => {
+      map.setLayoutProperty('osm-buildings', 'visibility', 'none');
+      map.setLayoutProperty('selected-building', 'visibility', 'none');
+      if (layer === 'osm') {
+        map.setLayoutProperty('selected-building', 'visibility', 'visible');
+        map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
+      }
+    });
+  </script>
+</Layout>

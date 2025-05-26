@@ -10,16 +10,22 @@ import {
 import { useEffect, useState } from 'react';
 import type { BuildingProps } from '@/content.config';
 import { getAllBuildings, getCampusForBuildingId } from '@/lib/mapApi';
-import { campusNameToDisplayableName } from '@/lib/mapUtils';
 import { Badge } from '../ui/badge';
+import type { ui } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
 
 const allBuildings = getAllBuildings();
 
-const BuildingInformation = () => {
+type BuildingInformationProps = {
+  lang: keyof typeof ui;
+};
+
+const BuildingInformation = ({ lang }: BuildingInformationProps) => {
   const $selectedId = useStore(selectedId);
   const [displayBuilding, setDisplayBuilding] = useState<BuildingProps | null>(
     null,
   );
+  const t = useTranslations(lang);
 
   useEffect(() => {
     if ($selectedId) {
@@ -51,16 +57,21 @@ const BuildingInformation = () => {
       >
         <DialogHeader className="text-left">
           {campusName && (
-            <Badge variant="outline">
-              {campusNameToDisplayableName[campusName]} Campus
-            </Badge>
+            <Badge variant="outline">{t(`${campusName}_long`)}</Badge>
           )}
-          <DialogTitle>{displayBuilding?.name_en}</DialogTitle>
+          <DialogTitle>
+            {lang === 'en' ? displayBuilding.name_en : displayBuilding.name}
+          </DialogTitle>
           <div className="text-sm text-muted-foreground">
-            {displayBuilding.name}
+            {lang === 'en' ? displayBuilding.name : displayBuilding.name_en}
           </div>
           <DialogDescription className="sr-only">
             Information about {displayBuilding.name_en}
+            {lang === 'en' ? (
+              <>Information about {displayBuilding.name_en}</>
+            ) : (
+              <>에 대한 정보 {displayBuilding.name}</>
+            )}
           </DialogDescription>
         </DialogHeader>
       </DialogContent>

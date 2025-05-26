@@ -18,11 +18,19 @@ import {
   getBuildingsForCampus,
   getBuildingWithId,
 } from '@/lib/mapApi';
+import type { ui } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+import type { CampusName } from '@/types/map';
 
-const SearchBar = () => {
+type SearchBarProps = {
+  lang: keyof typeof ui;
+};
+
+const SearchBar = ({ lang }: SearchBarProps) => {
   const $selectedCampus = useStore(selectedCampus);
   const [open, setOpen] = React.useState(false);
   const [search, setSearch] = React.useState('');
+  const t = useTranslations(lang);
 
   const listRef = React.useRef<HTMLDivElement>(null);
 
@@ -59,18 +67,26 @@ const SearchBar = () => {
 
   const filteredSinchonBuildings = getBuildingsForCampus('sinchon')
     .filter((building) =>
-      building.name_en.toLowerCase().includes(search.toLowerCase()),
+      (lang === 'ko' ? building.name : building.name_en)
+        .toLowerCase()
+        .includes(search.toLowerCase()),
     )
     .sort((a, b) =>
-      a.name_en.toLowerCase().localeCompare(b.name_en.toLowerCase()),
+      (lang === 'ko' ? a.name : a.name_en)
+        .toLowerCase()
+        .localeCompare((lang === 'ko' ? b.name : b.name_en).toLowerCase()),
     );
 
   const filteredSongdoBuildings = getBuildingsForCampus('songdo')
     .filter((building) =>
-      building.name_en.toLowerCase().includes(search.toLowerCase()),
+      (lang === 'ko' ? building.name : building.name_en)
+        .toLowerCase()
+        .includes(search.toLowerCase()),
     )
     .sort((a, b) =>
-      a.name_en.toLowerCase().localeCompare(b.name_en.toLowerCase()),
+      (lang === 'ko' ? a.name : a.name_en)
+        .toLowerCase()
+        .localeCompare((lang === 'ko' ? b.name : b.name_en).toLowerCase()),
     );
 
   const handleSelect = (building: BuildingProps) => {
@@ -96,7 +112,11 @@ const SearchBar = () => {
               'text-foreground': building,
             })}
           >
-            {building ? building.name_en : 'Search buildings'}
+            {building
+              ? lang === 'en'
+                ? building.name_en
+                : building.name
+              : t('search.placeholder')}
           </span>
         </div>
         <kbd className="hidden shrink-0 md:inline-flex">
@@ -111,7 +131,7 @@ const SearchBar = () => {
         onOpenChange={setOpen}
       >
         <CommandInput
-          placeholder="Search for buildings..."
+          placeholder={t('search.placeholder')}
           value={search}
           onValueChange={handleSearch}
         />
@@ -123,26 +143,28 @@ const SearchBar = () => {
           <div className="px-2 pt-2 pb-1">
             <TabsList className="flex-wrap bg-transparent px-0">
               <TabsTrigger className="text-xs" value="sinchon">
-                Sinchon [{filteredSinchonBuildings.length}]
+                {t('sinchon')} [{filteredSinchonBuildings.length}]
               </TabsTrigger>
               <TabsTrigger className="text-xs" value="songdo">
-                Songdo [{filteredSongdoBuildings.length}]
+                {t('songdo')} [{filteredSongdoBuildings.length}]
               </TabsTrigger>
             </TabsList>
           </div>
           <CommandList ref={listRef}>
             <TabsContent value="sinchon">
               <SearchGroup
-                name="Sinchon"
+                name="sinchon"
                 buildings={filteredSinchonBuildings as BuildingProps[]}
                 handleSelect={handleSelect}
+                lang={lang}
               />
             </TabsContent>
             <TabsContent value="songdo">
               <SearchGroup
-                name="Songdo"
+                name="songdo"
                 buildings={filteredSongdoBuildings as BuildingProps[]}
                 handleSelect={handleSelect}
+                lang={lang}
               />
             </TabsContent>
           </CommandList>
@@ -155,23 +177,34 @@ const SearchBar = () => {
 export default SearchBar;
 
 type SearchGroupProps = {
-  name: string;
+  name: CampusName;
   buildings: BuildingProps[];
   handleSelect: (building: BuildingProps) => void;
+  lang: keyof typeof ui;
 };
 
-const SearchGroup = ({ name, buildings, handleSelect }: SearchGroupProps) => {
+const SearchGroup = ({
+  name,
+  buildings,
+  handleSelect,
+  lang,
+}: SearchGroupProps) => {
+  const t = useTranslations(lang);
+
   return (
     <CommandGroup className="pt-0">
       {buildings.length === 0 && (
         <div className="py-4 text-center text-sm">
-          No results for {name} campus.
+          {lang === 'en' ? 'No results for' : '검색 결과가 없습니다'}&nbsp;
+          {t(`${name}_long`)}
+          {lang === 'en' ? '.' : ''}
         </div>
       )}
       {buildings.map((building) => {
         return (
           <SearchItem
             key={building.id}
+            lang={lang}
             building={building as BuildingProps}
             handleSelect={handleSelect}
           />
@@ -184,9 +217,10 @@ const SearchGroup = ({ name, buildings, handleSelect }: SearchGroupProps) => {
 type SearchItemProps = {
   building: BuildingProps;
   handleSelect: (building: BuildingProps) => void;
+  lang: keyof typeof ui;
 };
 
-const SearchItem = ({ building, handleSelect }: SearchItemProps) => {
+const SearchItem = ({ building, handleSelect, lang }: SearchItemProps) => {
   return (
     <CommandItem
       key={building.id}
@@ -194,8 +228,10 @@ const SearchItem = ({ building, handleSelect }: SearchItemProps) => {
       onSelect={() => handleSelect(building)}
     >
       <div className="flex flex-col">
-        <span>{building.name_en}</span>
-        <span className="text-xs text-muted-foreground">{building.name}</span>
+        <span>{lang === 'en' ? building.name_en : building.name}</span>
+        <span className="text-xs text-muted-foreground">
+          {lang === 'en' ? building.name : building.name_en}
+        </span>
       </div>
     </CommandItem>
   );

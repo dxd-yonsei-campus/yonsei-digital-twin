@@ -1,0 +1,28 @@
+---
+import { languages } from '@/i18n/ui';
+import { getLangFromUrl } from '@/i18n/utils';
+
+interface Props {
+  className?: string;
+}
+
+const currentLang = getLangFromUrl(Astro.url);
+const { className } = Astro.props;
+const redirectPath = Astro.url.pathname.split('/').slice(2).join('/');
+---
+
+<div class:list={['flex gap-1.5', className]}>
+  {
+    Object.entries(languages).map(([lang, label]) => (
+      <div
+        class:list={[
+          'transition-colors',
+          currentLang === lang ? 'text-foreground' : 'text-muted-foreground/70',
+          { 'hover:text-muted-foreground': currentLang !== lang },
+        ]}
+      >
+        <a href={`/${lang}/${redirectPath}`}>{label}</a>
+      </div>
+    ))
+  }
+</div>

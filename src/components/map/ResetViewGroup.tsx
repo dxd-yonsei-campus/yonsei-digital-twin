@@ -11,18 +11,23 @@ import { ChevronUp, HomeIcon } from 'lucide-react';
 import { useStore } from '@nanostores/react';
 import { selectedCampus } from '@/store';
 import { campuses, type CampusName } from '@/types/map';
-import { campusNameToDisplayableName } from '@/lib/mapUtils';
 import { flyToCampus } from '@/lib/mapApi';
+import type { ui } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
 
-const ResetButtonGroup = () => {
+type ResetButtonGroupProps = {
+  lang: keyof typeof ui;
+};
+
+const ResetButtonGroup = ({ lang }: ResetButtonGroupProps) => {
   const $selectedCampus = useStore(selectedCampus);
+  const t = useTranslations(lang);
+
   return (
     <ButtonGroup>
       <Button variant="outline" onClick={() => flyToCampus($selectedCampus)}>
         <HomeIcon />
-        <span className="hidden xs:block">
-          {campusNameToDisplayableName[$selectedCampus]}
-        </span>
+        <span className="hidden xs:block">{t($selectedCampus)}</span>
       </Button>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -41,7 +46,7 @@ const ResetButtonGroup = () => {
             {campuses.map((campus) => {
               return (
                 <DropdownMenuRadioItem key={campus} value={campus}>
-                  {campusNameToDisplayableName[campus]}
+                  {t(campus)}
                 </DropdownMenuRadioItem>
               );
             })}
