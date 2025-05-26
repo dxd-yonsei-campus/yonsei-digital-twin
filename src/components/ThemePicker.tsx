@@ -5,7 +5,11 @@ import { useStore } from '@nanostores/react';
 import React, { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
-const ThemePicker = () => {
+type ThemePickerProps = {
+  className?: string;
+};
+
+const ThemePicker = ({ className }: ThemePickerProps) => {
   const currentTheme = useStore(theme);
   const [isRendered, setIsRendered] = React.useState(false);
 
@@ -14,7 +18,7 @@ const ThemePicker = () => {
   }, []);
 
   if (!isRendered) {
-    return <Button variant="ghost" size="icon"></Button>;
+    return <Button variant="ghost" size="icon" className={className}></Button>;
   }
 
   return (
@@ -22,6 +26,7 @@ const ThemePicker = () => {
       variant="ghost"
       size="icon"
       onClick={() => theme.set(currentTheme === 'light' ? 'dark' : 'light')}
+      className={className}
     >
       <svg
         className={cn('size-5.5')}

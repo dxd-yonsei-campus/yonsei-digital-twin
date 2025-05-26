@@ -13,6 +13,7 @@ export function getStaticPaths() {
 
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import LanguagePicker from '@/components/map/LanguagePicker.astro';
+import ThemePicker from '@/components/ThemePicker';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -61,6 +62,11 @@ const t = useTranslations(lang);
       </a>
       <Separator orientation="vertical" className="h-3!" />
       <LanguagePicker />
+      <Separator orientation="vertical" className="h-3!" />
+      <ThemePicker
+        className="size-4 bg-transparent hover:bg-transparent! [&>svg]:size-4"
+        client:load
+      />
     </div>
   </div>
   <script>
