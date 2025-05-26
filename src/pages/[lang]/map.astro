@@ -71,7 +71,8 @@ const t = useTranslations(lang);
       getCameraForCampus,
       updateSelectedCampus,
     } from '@/lib/mapApi';
-    mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
+    mapboxgl.accessToken =
+      import.meta.env.PUBLIC_MAPBOX_TOKEN || process.env.PUBLIC_MAPBOX_TOKEN;
 
     const initialCamera = getCameraForCampus(selectedCampus.get());
 
