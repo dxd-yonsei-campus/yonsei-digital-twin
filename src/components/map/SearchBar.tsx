@@ -38,7 +38,7 @@ const searchOptions = {
 };
 const searcher = new uFuzzySearch(searchOptions);
 
-// Preload building names for search
+// Preload building data for search
 const campusToBuilding: Record<CampusName, BuildingProps[]> = {
   sinchon: getBuildingsForCampus('sinchon'),
   songdo: getBuildingsForCampus('songdo'),
