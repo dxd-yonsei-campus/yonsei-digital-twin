@@ -1,4 +1,7 @@
 import type { BuildingProps } from '@/content.config';
+import type { CampusName } from '@/types/map';
+import { getBuildingsForCampus } from './mapApi';
+import uFuzzySearch from '@leeoniya/ufuzzy';
 
 const romanToNumber = (roman: string): number => {
   const romanMap: Record<string, number> = {
@@ -44,7 +47,7 @@ const extractRomanNumeralValue = (str: string): number | null => {
   return romanToNumber(firstRomanNumeral);
 };
 
-export const buildSearchableName = (building: BuildingProps): string => {
+const buildSearchableName = (building: BuildingProps): string => {
   let searchName = `${building.name} ${building.name_en}`;
 
   const numberValue = extractRomanNumeralValue(building.name_en);
@@ -54,4 +57,33 @@ export const buildSearchableName = (building: BuildingProps): string => {
   }
 
   return searchName;
+};
+
+const searchOptions = {
+  unicode: true,
+  interSplit: "[^\\p{L}\\d']+",
+  intraSplit: '\\p{Ll}\\p{Lu}',
+  intraBound: '\\p{L}\\d|\\d\\p{L}|\\p{Ll}\\p{Lu}',
+  intraChars: "[\\p{L}\\d']",
+  intraContr: "'\\p{L}{1,2}\\b",
+};
+const searcher = new uFuzzySearch(searchOptions);
+
+// Preload building data for search
+const campusToBuilding: Record<CampusName, BuildingProps[]> = {
+  sinchon: getBuildingsForCampus('sinchon'),
+  songdo: getBuildingsForCampus('songdo'),
+};
+
+// Preload building names for search
+const campusToSearchableNames: Record<CampusName, string[]> = {
+  sinchon: campusToBuilding.sinchon.map(buildSearchableName),
+  songdo: campusToBuilding.songdo.map(buildSearchableName),
+};
+
+export const filterBuildingsForCampus = (campus: CampusName, query: string) => {
+  const buildings = campusToBuilding[campus] || [];
+  const names = campusToSearchableNames[campus] || [];
+  const ids = searcher.filter(names, query);
+  return ids ? ids.map((i) => buildings[i]) : buildings;
 };

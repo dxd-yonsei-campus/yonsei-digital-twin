@@ -13,48 +13,14 @@ import { selectedCampus, selectedId } from '@/store';
 import { useStore } from '@nanostores/react';
 import { cn } from '@/lib/utils';
 import type { BuildingProps } from '@/content.config';
-import {
-  flyToLocation,
-  getBuildingsForCampus,
-  getBuildingWithId,
-} from '@/lib/mapApi';
+import { flyToLocation, getBuildingWithId } from '@/lib/mapApi';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 import type { CampusName } from '@/types/map';
-import uFuzzySearch from '@leeoniya/ufuzzy';
-import { buildSearchableName } from '@/lib/searchUtils';
+import { filterBuildingsForCampus } from '@/lib/searchUtils';
 
 type SearchBarProps = {
   lang: keyof typeof ui;
-};
-
-const searchOptions = {
-  unicode: true,
-  interSplit: "[^\\p{L}\\d']+",
-  intraSplit: '\\p{Ll}\\p{Lu}',
-  intraBound: '\\p{L}\\d|\\d\\p{L}|\\p{Ll}\\p{Lu}',
-  intraChars: "[\\p{L}\\d']",
-  intraContr: "'\\p{L}{1,2}\\b",
-};
-const searcher = new uFuzzySearch(searchOptions);
-
-// Preload building data for search
-const campusToBuilding: Record<CampusName, BuildingProps[]> = {
-  sinchon: getBuildingsForCampus('sinchon'),
-  songdo: getBuildingsForCampus('songdo'),
-};
-
-// Preload building names for search
-const campusToSearchableNames: Record<CampusName, string[]> = {
-  sinchon: campusToBuilding.sinchon.map(buildSearchableName),
-  songdo: campusToBuilding.songdo.map(buildSearchableName),
-};
-
-const filterBuildingsForCampus = (campus: CampusName, query: string) => {
-  const buildings = campusToBuilding[campus] || [];
-  const names = campusToSearchableNames[campus] || [];
-  const ids = searcher.filter(names, query);
-  return ids ? ids.map((i) => buildings[i]) : buildings;
 };
 
 const SearchBar = ({ lang }: SearchBarProps) => {
