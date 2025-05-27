@@ -34,7 +34,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
       );
       if (buildingData.length >= 1) {
         const building = buildingData[0];
-        setDisplayBuilding(building as BuildingProps);
+        setDisplayBuilding(building);
       } else {
         setDisplayBuilding(null);
       }

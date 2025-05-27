@@ -185,7 +185,7 @@ const SearchGroup = ({
           <SearchItem
             key={building.id}
             lang={lang}
-            building={building as BuildingProps}
+            building={building}
             handleSelect={handleSelect}
           />
         );
