@@ -1,6 +1,7 @@
 import type { BuildingProps } from '@/content.config';
 import sinchonBuildings from '@/data/buildings/sinchon.json';
 import songdoBuildings from '@/data/buildings/songdo.json';
+import miraeBuildings from '@/data/buildings/mirae.json';
 import { selectedCampus } from '@/store';
 import type { CampusName } from '@/types/map';
 import type { EasingOptions } from 'mapbox-gl';
@@ -10,7 +11,9 @@ const SONGDO_CENTER: [number, number] = [126.6706, 37.38145];
 const MIRAE_CENTER: [number, number] = [127.901661, 37.279944];
 
 export const getAllBuildings = (): BuildingProps[] => {
-  const allBuildings = sinchonBuildings.concat(songdoBuildings);
+  const allBuildings = sinchonBuildings
+    .concat(songdoBuildings)
+    .concat(miraeBuildings);
   return allBuildings as BuildingProps[];
 };
 
@@ -31,6 +34,8 @@ export const getBuildingsForCampus = (campus: CampusName): BuildingProps[] => {
       return sinchonBuildings as BuildingProps[];
     case 'songdo':
       return songdoBuildings as BuildingProps[];
+    case 'mirae':
+      return miraeBuildings as BuildingProps[];
     default:
       return [];
   }

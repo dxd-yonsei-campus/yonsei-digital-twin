@@ -64,6 +64,7 @@ const SearchBar = ({ lang }: SearchBarProps) => {
 
   const filteredSinchonBuildings = filterBuildingsForCampus('sinchon', search);
   const filteredSongdoBuildings = filterBuildingsForCampus('songdo', search);
+  const filteredMiraeBuildings = filterBuildingsForCampus('mirae', search);
 
   const handleSelect = (building: BuildingProps) => {
     selectedId.set(building.id);
@@ -124,6 +125,9 @@ const SearchBar = ({ lang }: SearchBarProps) => {
               <TabsTrigger className="text-xs" value="songdo">
                 {t('songdo')} [{filteredSongdoBuildings.length}]
               </TabsTrigger>
+              <TabsTrigger className="text-xs" value="mirae">
+                {t('mirae')} [{filteredMiraeBuildings.length}]
+              </TabsTrigger>
             </TabsList>
           </div>
           <CommandList ref={listRef}>
@@ -139,6 +143,14 @@ const SearchBar = ({ lang }: SearchBarProps) => {
               <SearchGroup
                 name="songdo"
                 buildings={filteredSongdoBuildings as BuildingProps[]}
+                handleSelect={handleSelect}
+                lang={lang}
+              />
+            </TabsContent>
+            <TabsContent value="mirae">
+              <SearchGroup
+                name="mirae"
+                buildings={filteredMiraeBuildings as BuildingProps[]}
                 handleSelect={handleSelect}
                 lang={lang}
               />
