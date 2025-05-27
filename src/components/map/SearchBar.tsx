@@ -16,7 +16,7 @@ import type { BuildingProps } from '@/content.config';
 import { flyToLocation, getBuildingWithId } from '@/lib/mapApi';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
-import type { CampusName } from '@/types/map';
+import { campuses, type CampusName } from '@/types/map';
 import { filterBuildingsForCampus } from '@/lib/searchUtils';
 
 type SearchBarProps = {
@@ -65,6 +65,12 @@ const SearchBar = ({ lang }: SearchBarProps) => {
   const filteredSinchonBuildings = filterBuildingsForCampus('sinchon', search);
   const filteredSongdoBuildings = filterBuildingsForCampus('songdo', search);
   const filteredMiraeBuildings = filterBuildingsForCampus('mirae', search);
+
+  const campusToBuildings: Record<CampusName, BuildingProps[]> = {
+    sinchon: filteredSinchonBuildings,
+    songdo: filteredSongdoBuildings,
+    mirae: filteredMiraeBuildings,
+  };
 
   const handleSelect = (building: BuildingProps) => {
     selectedId.set(building.id);
@@ -119,42 +125,28 @@ const SearchBar = ({ lang }: SearchBarProps) => {
         >
           <div className="px-2 pt-2 pb-1">
             <TabsList className="flex-wrap bg-transparent px-0">
-              <TabsTrigger className="text-xs" value="sinchon">
-                {t('sinchon')} [{filteredSinchonBuildings.length}]
-              </TabsTrigger>
-              <TabsTrigger className="text-xs" value="songdo">
-                {t('songdo')} [{filteredSongdoBuildings.length}]
-              </TabsTrigger>
-              <TabsTrigger className="text-xs" value="mirae">
-                {t('mirae')} [{filteredMiraeBuildings.length}]
-              </TabsTrigger>
+              {campuses.map((campus) => {
+                return (
+                  <TabsTrigger key={campus} className="text-xs" value={campus}>
+                    {t(`${campus}`)} [{campusToBuildings[campus].length}]
+                  </TabsTrigger>
+                );
+              })}
             </TabsList>
           </div>
           <CommandList ref={listRef}>
-            <TabsContent value="sinchon">
-              <SearchGroup
-                name="sinchon"
-                buildings={filteredSinchonBuildings as BuildingProps[]}
-                handleSelect={handleSelect}
-                lang={lang}
-              />
-            </TabsContent>
-            <TabsContent value="songdo">
-              <SearchGroup
-                name="songdo"
-                buildings={filteredSongdoBuildings as BuildingProps[]}
-                handleSelect={handleSelect}
-                lang={lang}
-              />
-            </TabsContent>
-            <TabsContent value="mirae">
-              <SearchGroup
-                name="mirae"
-                buildings={filteredMiraeBuildings as BuildingProps[]}
-                handleSelect={handleSelect}
-                lang={lang}
-              />
-            </TabsContent>
+            {campuses.map((campus) => {
+              return (
+                <TabsContent value={campus} key={campus}>
+                  <SearchGroup
+                    name={campus}
+                    buildings={campusToBuildings[campus] || []}
+                    handleSelect={handleSelect}
+                    lang={lang}
+                  />
+                </TabsContent>
+              );
+            })}
           </CommandList>
         </Tabs>
       </CommandDialog>
