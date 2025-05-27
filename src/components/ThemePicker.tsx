@@ -2,7 +2,6 @@ import { Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { theme } from '@/store';
 import { useStore } from '@nanostores/react';
-import React, { useEffect } from 'react';
 
 type ThemePickerProps = {
   className?: string;
@@ -10,15 +9,6 @@ type ThemePickerProps = {
 
 const ThemePicker = ({ className }: ThemePickerProps) => {
   const currentTheme = useStore(theme);
-  const [isRendered, setIsRendered] = React.useState(false);
-
-  useEffect(() => {
-    setIsRendered(true);
-  }, []);
-
-  if (!isRendered) {
-    return <Button variant="ghost" size="icon" className={className}></Button>;
-  }
 
   return (
     <Button
