@@ -73,12 +73,14 @@ const searcher = new uFuzzySearch(searchOptions);
 const campusToBuilding: Record<CampusName, BuildingProps[]> = {
   sinchon: getBuildingsForCampus('sinchon'),
   songdo: getBuildingsForCampus('songdo'),
+  mirae: getBuildingsForCampus('mirae'),
 };
 
 // Preload building names for search
 const campusToSearchableNames: Record<CampusName, string[]> = {
   sinchon: campusToBuilding.sinchon.map(buildSearchableName),
   songdo: campusToBuilding.songdo.map(buildSearchableName),
+  mirae: campusToBuilding.mirae.map(buildSearchableName),
 };
 
 export const filterBuildingsForCampus = (campus: CampusName, query: string) => {

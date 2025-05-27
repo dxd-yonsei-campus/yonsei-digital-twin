@@ -1,15 +1,19 @@
 import type { BuildingProps } from '@/content.config';
 import sinchonBuildings from '@/data/buildings/sinchon.json';
 import songdoBuildings from '@/data/buildings/songdo.json';
+import miraeBuildings from '@/data/buildings/mirae.json';
 import { selectedCampus } from '@/store';
 import type { CampusName } from '@/types/map';
 import type { EasingOptions } from 'mapbox-gl';
 
 const SINCHON_CENTER: [number, number] = [126.9384, 37.5647];
 const SONGDO_CENTER: [number, number] = [126.6706, 37.38145];
+const MIRAE_CENTER: [number, number] = [127.903, 37.278];
 
 export const getAllBuildings = (): BuildingProps[] => {
-  const allBuildings = sinchonBuildings.concat(songdoBuildings);
+  const allBuildings = sinchonBuildings
+    .concat(songdoBuildings)
+    .concat(miraeBuildings);
   return allBuildings as BuildingProps[];
 };
 
@@ -30,6 +34,8 @@ export const getBuildingsForCampus = (campus: CampusName): BuildingProps[] => {
       return sinchonBuildings as BuildingProps[];
     case 'songdo':
       return songdoBuildings as BuildingProps[];
+    case 'mirae':
+      return miraeBuildings as BuildingProps[];
     default:
       return [];
   }
@@ -48,6 +54,12 @@ export const getCampusForBuildingId = (
 
   if (songdoIds.includes(buildingId)) {
     return 'songdo';
+  }
+
+  const miraeIds = getBuildingIdsForCampus('mirae');
+
+  if (miraeIds.includes(buildingId)) {
+    return 'mirae';
   }
 
   return null;
@@ -87,6 +99,13 @@ export const getCameraForCampus = (campus: CampusName): EasingOptions => {
         pitch: 45,
         bearing: -17.6,
       };
+    case 'mirae':
+      return {
+        center: MIRAE_CENTER,
+        zoom: 16,
+        pitch: 45,
+        bearing: -17.6,
+      };
     default:
       return {};
   }
@@ -110,11 +129,20 @@ export const updateSelectedCampus = (longitude: number, latitude: number) => {
       Math.pow(latitude - SONGDO_CENTER[1], 2),
   );
 
+  const miraeDistance = Math.sqrt(
+    Math.pow(longitude - MIRAE_CENTER[0], 2) +
+      Math.pow(latitude - MIRAE_CENTER[1], 2),
+  );
+
   if (sinchonDistance < CAMPUS_RADIUS) {
     selectedCampus.set('sinchon');
   }
 
   if (songdoDistance < CAMPUS_RADIUS) {
     selectedCampus.set('songdo');
+  }
+
+  if (miraeDistance < CAMPUS_RADIUS) {
+    selectedCampus.set('mirae');
   }
 };
