@@ -22,7 +22,7 @@ import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 import type { CampusName } from '@/types/map';
 import uFuzzySearch from '@leeoniya/ufuzzy';
-import { extractRomanNumeralValue } from '@/lib/searchUtils';
+import { buildSearchableName } from '@/lib/searchUtils';
 
 type SearchBarProps = {
   lang: keyof typeof ui;
@@ -44,19 +44,15 @@ const campusToBuilding: Record<CampusName, BuildingProps[]> = {
   songdo: getBuildingsForCampus('songdo'),
 };
 
+// Preload building names for search
+const campusToSearchableNames: Record<CampusName, string[]> = {
+  sinchon: campusToBuilding.sinchon.map(buildSearchableName),
+  songdo: campusToBuilding.songdo.map(buildSearchableName),
+};
+
 const filterBuildingsForCampus = (campus: CampusName, query: string) => {
   const buildings = campusToBuilding[campus] || [];
-  const names = buildings.map((b) => {
-    let searchName = `${b.name} ${b.name_en}`;
-
-    const numberValue = extractRomanNumeralValue(b.name_en);
-
-    if (numberValue) {
-      searchName += ` ${numberValue}`;
-    }
-
-    return searchName;
-  });
+  const names = campusToSearchableNames[campus] || [];
   const ids = searcher.filter(names, query);
   return ids ? ids.map((i) => buildings[i]) : buildings;
 };

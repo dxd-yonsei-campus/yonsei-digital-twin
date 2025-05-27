@@ -1,4 +1,6 @@
-function romanToNumber(roman: string): number {
+import type { BuildingProps } from '@/content.config';
+
+const romanToNumber = (roman: string): number => {
   const romanMap: Record<string, number> = {
     I: 1,
     V: 5,
@@ -25,11 +27,11 @@ function romanToNumber(roman: string): number {
   }
 
   return result;
-}
+};
 
 // Extracts the first Roman numeral from a string and converts it to a number.
 // Used to allow searching for buildings with Roman numeral names (e.g., "II", "III").
-export function extractRomanNumeralValue(str: string): number | null {
+const extractRomanNumeralValue = (str: string): number | null => {
   const pattern = /\b(I|II|III|IV|V|VI|VII|VIII|IX|X)(?!\.|[a-zA-Z])/i;
   const matches = str.match(pattern);
 
@@ -40,4 +42,16 @@ export function extractRomanNumeralValue(str: string): number | null {
   const firstRomanNumeral = matches[0].toUpperCase();
 
   return romanToNumber(firstRomanNumeral);
-}
+};
+
+export const buildSearchableName = (building: BuildingProps): string => {
+  let searchName = `${building.name} ${building.name_en}`;
+
+  const numberValue = extractRomanNumeralValue(building.name_en);
+
+  if (numberValue) {
+    searchName += ` ${numberValue}`;
+  }
+
+  return searchName;
+};
