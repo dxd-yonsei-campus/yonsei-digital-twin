@@ -39,15 +39,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta property="twitter:image" content="/og-image.png" />
     <title>{formattedTitle}</title>
-    <script>
-      import { THEME_STORAGE_KEY } from '@/lib/consts';
-      import { theme } from '@/store';
-
+    <script is:inline>
       const initTheme = (() => {
-        const localStorageTheme =
-          localStorage?.getItem(THEME_STORAGE_KEY) ?? '';
+        const localStorageTheme = localStorage?.getItem('theme') ?? '';
         if (['dark', 'light'].includes(localStorageTheme)) {
-          return localStorageTheme as 'dark' | 'light';
+          return localStorageTheme;
         }
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
           return 'dark';
@@ -57,11 +53,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
       if (initTheme === 'dark') {
         document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
       } else {
         document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
       }
-
-      theme.set(initTheme);
+    </script>
+    <script>
+      import { theme } from '@/store';
 
       theme.listen((newTheme) => {
         if (newTheme === 'dark') {
