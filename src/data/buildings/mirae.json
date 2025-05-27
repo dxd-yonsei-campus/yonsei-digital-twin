@@ -723,5 +723,19 @@
         ]
       ]
     }
+  },
+  {
+    "id": "business-incubation-center-2",
+    "name": "창업보육센터 2",
+    "name_en": "Business Incubation Center 2",
+    "latitude": 37.275648,
+    "longitude": 127.903659
+  },
+  {
+    "id": "business-incubation-center-3",
+    "name": "창업보육센터 3",
+    "name_en": "Business Incubation Center 3",
+    "latitude": 37.27521,
+    "longitude": 127.90408
   }
 ]
