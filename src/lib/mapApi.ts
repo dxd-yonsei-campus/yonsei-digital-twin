@@ -7,6 +7,7 @@ import type { EasingOptions } from 'mapbox-gl';
 
 const SINCHON_CENTER: [number, number] = [126.9384, 37.5647];
 const SONGDO_CENTER: [number, number] = [126.6706, 37.38145];
+const MIRAE_CENTER: [number, number] = [127.901661, 37.279944];
 
 export const getAllBuildings = (): BuildingProps[] => {
   const allBuildings = sinchonBuildings.concat(songdoBuildings);
@@ -87,6 +88,13 @@ export const getCameraForCampus = (campus: CampusName): EasingOptions => {
         pitch: 45,
         bearing: -17.6,
       };
+    case 'mirae':
+      return {
+        center: MIRAE_CENTER,
+        zoom: 15.5,
+        pitch: 45,
+        bearing: -17.6,
+      };
     default:
       return {};
   }
@@ -110,11 +118,20 @@ export const updateSelectedCampus = (longitude: number, latitude: number) => {
       Math.pow(latitude - SONGDO_CENTER[1], 2),
   );
 
+  const miraeDistance = Math.sqrt(
+    Math.pow(longitude - MIRAE_CENTER[0], 2) +
+      Math.pow(latitude - MIRAE_CENTER[1], 2),
+  );
+
   if (sinchonDistance < CAMPUS_RADIUS) {
     selectedCampus.set('sinchon');
   }
 
   if (songdoDistance < CAMPUS_RADIUS) {
     selectedCampus.set('songdo');
+  }
+
+  if (miraeDistance < CAMPUS_RADIUS) {
+    selectedCampus.set('mirae');
   }
 };

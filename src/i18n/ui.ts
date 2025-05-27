@@ -17,6 +17,8 @@ export const ui = {
     sinchon_long: 'Sinchon Campus',
     songdo: 'Songdo',
     songdo_long: 'Songdo Campus',
+    mirae: 'MIRAE',
+    mirae_long: 'MIRAE Campus',
     language: 'Language',
   },
   ko: {
@@ -30,6 +32,8 @@ export const ui = {
     sinchon_long: '신촌캠퍼스',
     songdo: '송도',
     songdo_long: '송도캠퍼스',
+    mirae: '미래',
+    mirae_long: '미래캠퍼스',
     language: '언어',
   },
 } as const;
