@@ -1,5 +1,6 @@
 ---
 import '@/styles/global.css';
+import { THEME_STORAGE_KEY } from '@/lib/consts';
 
 interface Props {
   title?: string;
@@ -39,38 +40,39 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta property="twitter:image" content="/og-image.png" />
     <title>{formattedTitle}</title>
+    <script is:inline define:vars={{ themeStorageKey: THEME_STORAGE_KEY }}>
+      const initTheme = (() => {
+        const localStorageTheme = localStorage?.getItem(themeStorageKey) ?? '';
+        if (['dark', 'light'].includes(localStorageTheme)) {
+          return localStorageTheme;
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+
+      if (initTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem(themeStorageKey, 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem(themeStorageKey, 'light');
+      }
+    </script>
+    <script>
+      import { theme } from '@/store';
+
+      theme.listen((newTheme) => {
+        if (newTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      });
+    </script>
   </head>
   <body>
     <slot />
   </body>
-  <script>
-    import { theme } from '@/store';
-
-    const initTheme = (() => {
-      const localStorageTheme = localStorage?.getItem('theme') ?? '';
-      if (['dark', 'light'].includes(localStorageTheme)) {
-        return localStorageTheme as 'dark' | 'light';
-      }
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
-      return 'light';
-    })();
-
-    if (initTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-
-    theme.set(initTheme);
-
-    theme.listen((newTheme) => {
-      if (newTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    });
-  </script>
 </html>
