@@ -56,6 +56,12 @@ export const getCampusForBuildingId = (
     return 'songdo';
   }
 
+  const miraeIds = getBuildingIdsForCampus('mirae');
+
+  if (miraeIds.includes(buildingId)) {
+    return 'mirae';
+  }
+
   return null;
 };
 
