@@ -8,7 +8,7 @@ import type { EasingOptions } from 'mapbox-gl';
 
 const SINCHON_CENTER: [number, number] = [126.9384, 37.5647];
 const SONGDO_CENTER: [number, number] = [126.6706, 37.38145];
-const MIRAE_CENTER: [number, number] = [127.901661, 37.279944];
+const MIRAE_CENTER: [number, number] = [127.903, 37.278];
 
 export const getAllBuildings = (): BuildingProps[] => {
   const allBuildings = sinchonBuildings
@@ -102,7 +102,7 @@ export const getCameraForCampus = (campus: CampusName): EasingOptions => {
     case 'mirae':
       return {
         center: MIRAE_CENTER,
-        zoom: 15.5,
+        zoom: 16,
         pitch: 45,
         bearing: -17.6,
       };
