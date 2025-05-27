@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,9 +25,15 @@ const LanguagePicker = ({
   align = 'start',
   lang: currentLang,
 }: LanguagePickerProps) => {
+  const [open, setOpen] = React.useState(false);
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className={className} asChild>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
+      <DropdownMenuTrigger
+        className={className}
+        asChild
+        onClick={() => setOpen(!open)}
+      >
         <Button variant="ghost">{children ? children : `Language`}</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
