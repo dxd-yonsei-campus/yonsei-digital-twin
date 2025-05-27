@@ -39,38 +39,40 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta property="twitter:image" content="/og-image.png" />
     <title>{formattedTitle}</title>
-  </head>
-  <body>
-    <slot />
-  </body>
-  <script>
-    import { theme } from '@/store';
+    <script>
+      import { THEME_STORAGE_KEY } from '@/lib/consts';
+      import { theme } from '@/store';
 
-    const initTheme = (() => {
-      const localStorageTheme = localStorage?.getItem('theme') ?? '';
-      if (['dark', 'light'].includes(localStorageTheme)) {
-        return localStorageTheme as 'dark' | 'light';
-      }
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
-      return 'light';
-    })();
+      const initTheme = (() => {
+        const localStorageTheme =
+          localStorage?.getItem(THEME_STORAGE_KEY) ?? '';
+        if (['dark', 'light'].includes(localStorageTheme)) {
+          return localStorageTheme as 'dark' | 'light';
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
 
-    if (initTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-
-    theme.set(initTheme);
-
-    theme.listen((newTheme) => {
-      if (newTheme === 'dark') {
+      if (initTheme === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
       }
-    });
-  </script>
+
+      theme.set(initTheme);
+
+      theme.listen((newTheme) => {
+        if (newTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
