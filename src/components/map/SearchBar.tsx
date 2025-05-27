@@ -21,10 +21,26 @@ import {
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 import type { CampusName } from '@/types/map';
+import uFuzzySearch from '@leeoniya/ufuzzy';
 
 type SearchBarProps = {
   lang: keyof typeof ui;
 };
+
+const searchOptions = {
+  unicode: true,
+  interSplit: "[^\\p{L}\\d']+",
+  intraSplit: '\\p{Ll}\\p{Lu}',
+  intraBound: '\\p{L}\\d|\\d\\p{L}|\\p{Ll}\\p{Lu}',
+  intraChars: "[\\p{L}\\d']",
+  intraContr: "'\\p{L}{1,2}\\b",
+};
+const searcher = new uFuzzySearch(searchOptions);
+
+const sinchonBuildings = getBuildingsForCampus('sinchon');
+const sinchonNames = sinchonBuildings.map((b) => `${b.name} ${b.name_en}`);
+const songdoBuildings = getBuildingsForCampus('songdo');
+const songdoNames = songdoBuildings.map((b) => `${b.name} ${b.name_en}`);
 
 const SearchBar = ({ lang }: SearchBarProps) => {
   const $selectedCampus = useStore(selectedCampus);
@@ -65,29 +81,15 @@ const SearchBar = ({ lang }: SearchBarProps) => {
     return () => document.removeEventListener('keydown', down);
   }, []);
 
-  const filteredSinchonBuildings = getBuildingsForCampus('sinchon')
-    .filter((building) =>
-      (lang === 'ko' ? building.name : building.name_en)
-        .toLowerCase()
-        .includes(search.toLowerCase()),
-    )
-    .sort((a, b) =>
-      (lang === 'ko' ? a.name : a.name_en)
-        .toLowerCase()
-        .localeCompare((lang === 'ko' ? b.name : b.name_en).toLowerCase()),
-    );
+  const sinchonIds = searcher.filter(sinchonNames, search);
+  const filteredSinchonBuildings = sinchonIds
+    ? sinchonIds.map((i) => sinchonBuildings[i])
+    : sinchonBuildings;
 
-  const filteredSongdoBuildings = getBuildingsForCampus('songdo')
-    .filter((building) =>
-      (lang === 'ko' ? building.name : building.name_en)
-        .toLowerCase()
-        .includes(search.toLowerCase()),
-    )
-    .sort((a, b) =>
-      (lang === 'ko' ? a.name : a.name_en)
-        .toLowerCase()
-        .localeCompare((lang === 'ko' ? b.name : b.name_en).toLowerCase()),
-    );
+  const songdoIds = searcher.filter(songdoNames, search);
+  const filteredSongdoBuildings = songdoIds
+    ? songdoIds.map((i) => songdoBuildings[i])
+    : songdoBuildings;
 
   const handleSelect = (building: BuildingProps) => {
     selectedId.set(building.id);

@@ -15,6 +15,7 @@
   "dependencies": {
     "@astrojs/react": "^4.2.7",
     "@astrojs/sitemap": "^3.4.0",
+    "@leeoniya/ufuzzy": "^1.0.18",
     "@nanostores/persistent": "^1.0.0",
     "@nanostores/react": "^1.0.0",
     "@radix-ui/react-dialog": "^1.1.14",
