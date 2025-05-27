@@ -37,8 +37,14 @@ const searchOptions = {
 };
 const searcher = new uFuzzySearch(searchOptions);
 
+// Preload building names for search
+const campusToBuilding: Record<CampusName, BuildingProps[]> = {
+  sinchon: getBuildingsForCampus('sinchon'),
+  songdo: getBuildingsForCampus('songdo'),
+};
+
 const filterBuildingsForCampus = (campus: CampusName, query: string) => {
-  const buildings = getBuildingsForCampus(campus);
+  const buildings = campusToBuilding[campus] || [];
   const names = buildings.map((b) => `${b.name} ${b.name_en}`);
   const ids = searcher.filter(names, query);
   return ids ? ids.map((i) => buildings[i]) : buildings;
