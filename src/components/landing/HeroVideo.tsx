@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const HeroVideo = () => {
   return (
-    <Card className="relative max-w-3xl overflow-hidden py-1.5">
+    <Card className="relative max-w-3xl overflow-hidden py-1.5 shadow-none">
       <CardContent className="px-1.5">
         <video
           className="aspect-video h-auto w-3xl rounded-lg"
