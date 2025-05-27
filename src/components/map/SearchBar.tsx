@@ -22,6 +22,7 @@ import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 import type { CampusName } from '@/types/map';
 import uFuzzySearch from '@leeoniya/ufuzzy';
+import { extractRomanNumeralValue } from '@/lib/searchUtils';
 
 type SearchBarProps = {
   lang: keyof typeof ui;
@@ -45,7 +46,17 @@ const campusToBuilding: Record<CampusName, BuildingProps[]> = {
 
 const filterBuildingsForCampus = (campus: CampusName, query: string) => {
   const buildings = campusToBuilding[campus] || [];
-  const names = buildings.map((b) => `${b.name} ${b.name_en}`);
+  const names = buildings.map((b) => {
+    let searchName = `${b.name} ${b.name_en}`;
+
+    const numberValue = extractRomanNumeralValue(b.name_en);
+
+    if (numberValue) {
+      searchName += ` ${numberValue}`;
+    }
+
+    return searchName;
+  });
   const ids = searcher.filter(names, query);
   return ids ? ids.map((i) => buildings[i]) : buildings;
 };
