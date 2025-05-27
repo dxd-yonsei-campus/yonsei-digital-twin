@@ -37,10 +37,12 @@ const searchOptions = {
 };
 const searcher = new uFuzzySearch(searchOptions);
 
-const sinchonBuildings = getBuildingsForCampus('sinchon');
-const sinchonNames = sinchonBuildings.map((b) => `${b.name} ${b.name_en}`);
-const songdoBuildings = getBuildingsForCampus('songdo');
-const songdoNames = songdoBuildings.map((b) => `${b.name} ${b.name_en}`);
+const filterBuildingsForCampus = (campus: CampusName, query: string) => {
+  const buildings = getBuildingsForCampus(campus);
+  const names = buildings.map((b) => `${b.name} ${b.name_en}`);
+  const ids = searcher.filter(names, query);
+  return ids ? ids.map((i) => buildings[i]) : buildings;
+};
 
 const SearchBar = ({ lang }: SearchBarProps) => {
   const $selectedCampus = useStore(selectedCampus);
@@ -81,15 +83,8 @@ const SearchBar = ({ lang }: SearchBarProps) => {
     return () => document.removeEventListener('keydown', down);
   }, []);
 
-  const sinchonIds = searcher.filter(sinchonNames, search);
-  const filteredSinchonBuildings = sinchonIds
-    ? sinchonIds.map((i) => sinchonBuildings[i])
-    : sinchonBuildings;
-
-  const songdoIds = searcher.filter(songdoNames, search);
-  const filteredSongdoBuildings = songdoIds
-    ? songdoIds.map((i) => songdoBuildings[i])
-    : songdoBuildings;
+  const filteredSinchonBuildings = filterBuildingsForCampus('sinchon', search);
+  const filteredSongdoBuildings = filterBuildingsForCampus('songdo', search);
 
   const handleSelect = (building: BuildingProps) => {
     selectedId.set(building.id);
