@@ -1,5 +1,5 @@
 import { Moon, Sun } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '@/components/ui/button';
 import { theme } from '@/store';
 import { useStore } from '@nanostores/react';
 import React, { useEffect } from 'react';

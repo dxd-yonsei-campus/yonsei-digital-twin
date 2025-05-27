@@ -10,7 +10,7 @@ import {
 import { useEffect, useState } from 'react';
 import type { BuildingProps } from '@/content.config';
 import { getAllBuildings, getCampusForBuildingId } from '@/lib/mapApi';
-import { Badge } from '../ui/badge';
+import { Badge } from '@/components/ui/badge';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 
