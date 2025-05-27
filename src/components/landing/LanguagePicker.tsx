@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,9 +25,17 @@ const LanguagePicker = ({
   align = 'start',
   lang: currentLang,
 }: LanguagePickerProps) => {
+  // This is a controlled component as uncontrolled dropdown does not seem to work well with Safari.
+  // See: https://github.com/radix-ui/primitives/issues/2580
+  const [open, setOpen] = React.useState(false);
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className={className} asChild>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
+      <DropdownMenuTrigger
+        className={className}
+        asChild
+        onClick={() => setOpen(!open)}
+      >
         <Button variant="ghost">{children ? children : `Language`}</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
