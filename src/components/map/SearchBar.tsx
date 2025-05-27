@@ -13,14 +13,11 @@ import { selectedCampus, selectedId } from '@/store';
 import { useStore } from '@nanostores/react';
 import { cn } from '@/lib/utils';
 import type { BuildingProps } from '@/content.config';
-import {
-  flyToLocation,
-  getBuildingsForCampus,
-  getBuildingWithId,
-} from '@/lib/mapApi';
+import { flyToLocation, getBuildingWithId } from '@/lib/mapApi';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 import type { CampusName } from '@/types/map';
+import { filterBuildingsForCampus } from '@/lib/searchUtils';
 
 type SearchBarProps = {
   lang: keyof typeof ui;
@@ -65,29 +62,8 @@ const SearchBar = ({ lang }: SearchBarProps) => {
     return () => document.removeEventListener('keydown', down);
   }, []);
 
-  const filteredSinchonBuildings = getBuildingsForCampus('sinchon')
-    .filter((building) =>
-      (lang === 'ko' ? building.name : building.name_en)
-        .toLowerCase()
-        .includes(search.toLowerCase()),
-    )
-    .sort((a, b) =>
-      (lang === 'ko' ? a.name : a.name_en)
-        .toLowerCase()
-        .localeCompare((lang === 'ko' ? b.name : b.name_en).toLowerCase()),
-    );
-
-  const filteredSongdoBuildings = getBuildingsForCampus('songdo')
-    .filter((building) =>
-      (lang === 'ko' ? building.name : building.name_en)
-        .toLowerCase()
-        .includes(search.toLowerCase()),
-    )
-    .sort((a, b) =>
-      (lang === 'ko' ? a.name : a.name_en)
-        .toLowerCase()
-        .localeCompare((lang === 'ko' ? b.name : b.name_en).toLowerCase()),
-    );
+  const filteredSinchonBuildings = filterBuildingsForCampus('sinchon', search);
+  const filteredSongdoBuildings = filterBuildingsForCampus('songdo', search);
 
   const handleSelect = (building: BuildingProps) => {
     selectedId.set(building.id);
