@@ -13,8 +13,8 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@astrojs/react": "^4.2.7",
-    "@astrojs/sitemap": "^3.4.0",
+    "@astrojs/react": "^4.3.0",
+    "@astrojs/sitemap": "^3.4.1",
     "@leeoniya/ufuzzy": "^1.0.18",
     "@nanostores/persistent": "^1.0.0",
     "@nanostores/react": "^1.0.0",
@@ -29,7 +29,7 @@
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
     "@typescript-eslint/parser": "^8.32.1",
-    "astro": "^5.7.12",
+    "astro": "^5.9.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
