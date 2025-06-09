@@ -13,6 +13,7 @@ import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { ChevronDown, Languages } from 'lucide-react';
 import { languages } from '@/i18n/ui';
 import ThemePicker from '@/components/ThemePicker';
+import Footer from '@/components/Footer.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -53,16 +54,5 @@ const t = useTranslations(lang);
     </div>
     <HeroVideo client:load />
   </main>
-  <footer
-    class="fixed bottom-4 w-full px-4 text-center text-sm text-muted-foreground/50"
-  >
-    <img
-      class="mb-1 inline-block size-8.5"
-      src="/dxd-logo.png"
-      alt="Yonsei DXD Lab"
-    />
-    <div>
-      &copy; {new Date().getFullYear()} Yonsei DXD Lab
-    </div>
-  </footer>
+  <Footer />
 </Layout>
