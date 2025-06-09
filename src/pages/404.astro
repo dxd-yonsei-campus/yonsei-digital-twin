@@ -1,0 +1,27 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout title="404 Not Found">
+  <main
+    class="mx-auto grid h-svh max-w-lg place-content-center px-4 text-center"
+  >
+    <h1 class="text-2xl">The requested page was not found.</h1>
+    <a
+      class="mt-2.5 text-muted-foreground transition-colors hover:text-foreground"
+      href="/">Return to home</a
+    >
+  </main>
+  <footer
+    class="fixed bottom-4 w-full px-4 text-center text-sm text-muted-foreground/50"
+  >
+    <img
+      class="mb-1 inline-block size-8.5"
+      src="/dxd-logo.png"
+      alt="Yonsei DXD Lab"
+    />
+    <div>
+      &copy; {new Date().getFullYear()} Yonsei DXD Lab
+    </div>
+  </footer>
+</Layout>
