@@ -133,7 +133,7 @@ const t = useTranslations(lang);
           .map((building) => [String(building.id), building.height]),
       );
 
-      const fillExtrusionExpression: DataDrivenPropertyValueSpecification<number> =
+      const fillExtrusionHeightExpression: DataDrivenPropertyValueSpecification<number> =
         [
           'interpolate',
           ['linear'],
@@ -150,6 +150,17 @@ const t = useTranslations(lang);
             // Otherwise, fall back to OSM height data
             ['get', 'height'],
           ],
+        ];
+
+      const fillExtrusionBaseExpression: DataDrivenPropertyValueSpecification<number> =
+        [
+          'interpolate',
+          ['linear'],
+          ['zoom'],
+          15,
+          0,
+          15.05,
+          ['get', 'min_height'],
         ];
 
       // The 'building' layer in the Mapbox Streets
@@ -169,16 +180,8 @@ const t = useTranslations(lang);
             // Use an 'interpolate' expression to
             // add a smooth transition effect to
             // the buildings as the user zooms in.
-            'fill-extrusion-height': fillExtrusionExpression,
-            'fill-extrusion-base': [
-              'interpolate',
-              ['linear'],
-              ['zoom'],
-              15,
-              0,
-              15.05,
-              ['get', 'min_height'],
-            ],
+            'fill-extrusion-height': fillExtrusionHeightExpression,
+            'fill-extrusion-base': fillExtrusionBaseExpression,
             'fill-extrusion-opacity': 1,
           },
         },
@@ -198,16 +201,8 @@ const t = useTranslations(lang);
           },
           paint: {
             'fill-extrusion-color': '#003876',
-            'fill-extrusion-height': fillExtrusionExpression,
-            'fill-extrusion-base': [
-              'interpolate',
-              ['linear'],
-              ['zoom'],
-              15,
-              0,
-              15.05,
-              ['get', 'min_height'],
-            ],
+            'fill-extrusion-height': fillExtrusionHeightExpression,
+            'fill-extrusion-base': fillExtrusionBaseExpression,
             'fill-extrusion-opacity': 0.8,
           },
         },
