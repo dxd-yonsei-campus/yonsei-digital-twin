@@ -71,9 +71,12 @@ const t = useTranslations(lang);
   </div>
   <script>
     import { buildingLayer, selectedCampus, selectedId } from '@/store';
-    import mapboxgl from 'mapbox-gl';
+    import mapboxgl, {
+      type DataDrivenPropertyValueSpecification,
+    } from 'mapbox-gl';
     import {
       getAllBuildingIds,
+      getAllBuildings,
       getCameraForCampus,
       updateSelectedCampus,
     } from '@/lib/mapApi';
@@ -122,6 +125,41 @@ const t = useTranslations(lang);
       }
 
       const allBuildingIds = getAllBuildingIds();
+      const allBuildingData = getAllBuildings();
+
+      const buildingHeights = Object.fromEntries(
+        allBuildingData
+          .filter((building) => Boolean(building.height))
+          .map((building) => [String(building.id), building.height]),
+      );
+
+      const fillExtrusionExpression: DataDrivenPropertyValueSpecification<number> =
+        [
+          'interpolate',
+          ['linear'],
+          ['zoom'],
+          15,
+          0,
+          15.05,
+          [
+            'case',
+            // Check if custom height exists in your dictionary
+            ['has', ['to-string', ['id']], ['literal', buildingHeights]],
+            // If it exists, use the custom height
+            ['get', ['to-string', ['id']], ['literal', buildingHeights]],
+            // Otherwise, fall back to OSM height data
+            ['get', 'height'],
+          ],
+        ];
+
+      // const heightExpression: DataDrivenPropertyValueSpecification<number> = [
+      //   "case",
+      //   ...allBuildingIds.flatMap((id) => [
+      //     ["==", ["get", "id"], String(id)],
+      //     buildingHeights[String(id)]
+      //   ]),
+      //   30, // Default height if no matching ID
+      // ];
 
       // The 'building' layer in the Mapbox Streets
       // vector tileset contains building height data
@@ -140,15 +178,7 @@ const t = useTranslations(lang);
             // Use an 'interpolate' expression to
             // add a smooth transition effect to
             // the buildings as the user zooms in.
-            'fill-extrusion-height': [
-              'interpolate',
-              ['linear'],
-              ['zoom'],
-              15,
-              0,
-              15.05,
-              ['get', 'height'],
-            ],
+            'fill-extrusion-height': fillExtrusionExpression,
             'fill-extrusion-base': [
               'interpolate',
               ['linear'],
@@ -177,15 +207,7 @@ const t = useTranslations(lang);
           },
           paint: {
             'fill-extrusion-color': '#003876',
-            'fill-extrusion-height': [
-              'interpolate',
-              ['linear'],
-              ['zoom'],
-              15,
-              0,
-              15.05,
-              ['get', 'height'],
-            ],
+            'fill-extrusion-height': fillExtrusionExpression,
             'fill-extrusion-base': [
               'interpolate',
               ['linear'],
