@@ -6,6 +6,7 @@
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560918,
     "longitude": 126.938647,
+    "height": 85.9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -34,11 +35,12 @@
   },
   {
     "id": 324328456,
-    "name": "연세대학교 의과대학 의학도서관",
-    "name_en": "Yonsei University Medical Library (College of Medicine)",
+    "name": "의학도서관 (의과대학)",
+    "name_en": "Medical Library (College of Medicine)",
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560795,
     "longitude": 126.939862,
+    "height": 28.8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -59,6 +61,7 @@
     "name_en": "College of Medicine",
     "latitude": 37.561027,
     "longitude": 126.940101,
+    "height": 28.8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -84,6 +87,7 @@
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560802,
     "longitude": 126.939779,
+    "height": 28.8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -138,8 +142,8 @@
   },
   {
     "id": 429249489,
-    "name": "종합관",
-    "name_en": "YUHS Administration Building",
+    "name": "종합관 / 장례식장",
+    "name_en": "YUHS Administration Building / Funeral Hall",
     "address": "103-2 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560762,
     "longitude": 126.940165,
@@ -174,11 +178,12 @@
   },
   {
     "id": 472648570,
-    "name": "연대세브란스병원",
-    "name_en": "Severance Hospital",
+    "name": "세브란스병원 본관",
+    "name_en": "Severance Hospital Main Building",
     "address": "50-1 Yonsei-ro, Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562311,
     "longitude": 126.940876,
+    "height": 104,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -241,6 +246,7 @@
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.56304,
     "longitude": 126.940383,
+    "height": 41.4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -271,7 +277,7 @@
   },
   {
     "id": 324328432,
-    "name": "세브란스 어린이병원",
+    "name": "어린이병원",
     "name_en": "Children's Hospital",
     "address": "Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562519,
@@ -315,6 +321,7 @@
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562767,
     "longitude": 126.939555,
+    "height": 40.5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -375,11 +382,12 @@
   },
   {
     "id": 324328472,
-    "name": "세브란스 안과병원",
-    "name_en": "Eye Hospital",
+    "name": "안이비인후과병원",
+    "name_en": "EYE & ENT Hospital",
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.561509,
     "longitude": 126.938255,
+    "height": 25.47,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -414,6 +422,7 @@
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562953,
     "longitude": 126.941652,
+    "height": 27.75,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -449,6 +458,7 @@
     "address": "South Korea, Seoul, Seodaemun-gu, Sinchon-dong",
     "latitude": 37.563461,
     "longitude": 126.942361,
+    "height": 26.77,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -474,11 +484,12 @@
   },
   {
     "id": "avison-biomedical",
-    "name": "에비슨 의생명 연구센터",
+    "name": "에비슨의생명연구센터",
     "name_en": "Avison Biomedical Research Center",
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563929,
-    "longitude": 126.942488
+    "longitude": 126.942488,
+    "height": 27.3
   },
   {
     "id": 429249494,
@@ -487,6 +498,7 @@
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563585,
     "longitude": 126.941844,
+    "height": 27.57,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -511,6 +523,7 @@
     "address": "South Korea, Seoul, Seodaemun-gu, Sinchon-dong, 124-17",
     "latitude": 37.560528,
     "longitude": 126.939421,
+    "height": 27.4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -544,6 +557,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562884,
     "longitude": 126.942303,
+    "height": 26.4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -574,7 +588,7 @@
   },
   {
     "id": 429249495,
-    "name": "러들러교수동",
+    "name": "러들로교수동",
     "name_en": "Alfred I. Ludlow Faculty Building",
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563687,
@@ -602,6 +616,7 @@
     "address": "50 Yonsei-ro, Changcheon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560822,
     "longitude": 126.935498,
+    "height": 20.1,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -661,11 +676,12 @@
   },
   {
     "id": 421415358,
-    "name": "산학협동연구관",
+    "name": "산학협동관",
     "name_en": "Industry-University Research Center",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562737,
     "longitude": 126.932347,
+    "height": 14.9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -681,11 +697,12 @@
   },
   {
     "id": 421415363,
-    "name": "GS칼텍스 산학협력관",
+    "name": "GS칼텍스산학협력단",
     "name_en": "GS Caltex Research Hall",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562783,
     "longitude": 126.933096,
+    "height": 20,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -710,6 +727,7 @@
     "address": "134 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563019,
     "longitude": 126.931983,
+    "height": 22.4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -732,11 +750,12 @@
   },
   {
     "id": 252290041,
-    "name": "첨단과학관",
+    "name": "첨단과학기술연구원",
     "name_en": "Advanced Science & Technology Center",
     "address": "South Korea, Seoul, Seodaemun-gu, 134 첨단과학기술연구관 508호 연세대학교 공동기기원",
     "latitude": 37.56318,
     "longitude": 126.933803,
+    "height": 23.9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -763,6 +782,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.561735,
     "longitude": 126.936647,
+    "height": 39.45,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -827,6 +847,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562356,
     "longitude": 126.935265,
+    "height": 28,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -859,6 +880,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562356,
     "longitude": 126.935265,
+    "height": 6.6,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -879,6 +901,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.561723,
     "longitude": 126.935094,
+    "height": 28.65,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -936,10 +959,11 @@
   },
   {
     "id": 324328422,
-    "name": "백주년기념관",
-    "name_en": "Centennial Hall",
+    "name": "백주년기념관 / 박물관",
+    "name_en": "Centennial Hall / University Museum",
     "latitude": 37.561732,
     "longitude": 126.937895,
+    "height": 21.1,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -987,9 +1011,10 @@
   {
     "id": 429249497,
     "name": "정자각",
-    "name_en": "Pavillion",
+    "name_en": "Pavilion",
     "latitude": 37.562787,
     "longitude": 126.938638,
+    "height": 9.2,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1009,11 +1034,12 @@
   },
   {
     "id": 240334198,
-    "name": "학생회관",
-    "name_en": "Student Union Building",
+    "name": "학생회관 / 글로벌라운지",
+    "name_en": "Student Union Building / Global Lounge",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563417,
     "longitude": 126.938408,
+    "height": 23.15,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1036,11 +1062,12 @@
   },
   {
     "id": 429249499,
-    "name": "루스채플",
-    "name_en": "Luce Chapel",
+    "name": "루스채플 / 교목실 / 대학교회",
+    "name_en": "Luce Chapel / Office of the Chaplain / University Church",
     "address": "131 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563293,
     "longitude": 126.939018,
+    "height": 12.95,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1074,6 +1101,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564268,
     "longitude": 126.938917,
+    "height": 21.304,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1104,8 +1132,8 @@
   },
   {
     "id": "school-of-business",
-    "name": "연세대학교 경영관",
-    "name_en": "School of Business",
+    "name": "경영관",
+    "name_en": "School of Business / Graduate School of Business",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564928,
     "longitude": 126.939169
@@ -1117,6 +1145,7 @@
     "address": "131-2 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563996,
     "longitude": 126.940826,
+    "height": 17.7,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1141,6 +1170,7 @@
     "address": "131-2 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563971,
     "longitude": 126.940781,
+    "height": 17.7,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1164,6 +1194,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.5637,
     "longitude": 126.936923,
+    "height": 26.5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1186,6 +1217,7 @@
     "name_en": "Central Library",
     "latitude": 37.563825,
     "longitude": 126.936458,
+    "height": 26.5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1207,6 +1239,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563901,
     "longitude": 126.936036,
+    "height": 40.55,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1230,6 +1263,7 @@
     "name_en": "Gymnasium",
     "latitude": 37.563104,
     "longitude": 126.935677,
+    "height": 17,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1252,6 +1286,7 @@
     "name_en": "Sports Science Complex",
     "latitude": 37.562707,
     "longitude": 126.935494,
+    "height": 16.61,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1291,7 +1326,7 @@
   },
   {
     "id": 468614771,
-    "name": "광복관별관",
+    "name": "광복관 별관",
     "name_en": "Gwangbok Hall Annex",
     "latitude": 37.564449,
     "longitude": 126.936254,
@@ -1315,6 +1350,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564628,
     "longitude": 126.936716,
+    "height": 27.4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1340,6 +1376,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564686,
     "longitude": 126.937572,
+    "height": 20.25,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1364,11 +1401,12 @@
   },
   {
     "id": 222843398,
-    "name": "과학관",
-    "name_en": "Science Hall",
+    "name": "과학관 / 이과대학",
+    "name_en": "Science Hall / College of Science",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563902,
     "longitude": 126.934637,
+    "height": 30.42,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1394,10 +1432,11 @@
   },
   {
     "id": "science-research-center",
-    "name": "과학 연구 센터",
+    "name": "과학원",
     "name_en": "Science Research Center",
     "latitude": 37.563409,
-    "longitude": 126.934663
+    "longitude": 126.934663,
+    "height": 51.18
   },
   {
     "id": 880321355,
@@ -1406,6 +1445,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562934,
     "longitude": 126.934399,
+    "height": 23.9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1435,6 +1475,7 @@
     "name_en": "Samsung Hall",
     "latitude": 37.56504,
     "longitude": 126.934336,
+    "height": 27.74,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1461,10 +1502,11 @@
   },
   {
     "id": 429079066,
-    "name": "언더우드가기념관",
+    "name": "언더우드가 기념관",
     "name_en": "Underwood Memorial House",
     "latitude": 37.566042,
     "longitude": 126.93499,
+    "height": 7.6,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1485,6 +1527,7 @@
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565302,
     "longitude": 126.939688,
+    "height": 10.9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1526,10 +1569,11 @@
   },
   {
     "id": 472534644,
-    "name": "전파천문대",
+    "name": "천파천문대",
     "name_en": "Radio Observatory",
     "latitude": 37.565003,
     "longitude": 126.940618,
+    "height": 6.23,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1550,8 +1594,8 @@
   },
   {
     "id": 472965030,
-    "name": "법인본부",
-    "name_en": "Yonsei University Educational Foundation (University Residence A)",
+    "name": "대학사택 A",
+    "name_en": "University Residence A",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565816,
     "longitude": 126.942021,
@@ -1613,12 +1657,20 @@
     }
   },
   {
+    "id": "east-security-post",
+    "name": "동문경비실",
+    "name_en": "East Security Post",
+    "latitude": 37.566281,
+    "longitude": 126.942865
+  },
+  {
     "id": 472993695,
     "name": "유진어린이집",
     "name_en": "Eugene Childcare Center",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565346,
     "longitude": 126.941575,
+    "height": 11,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1643,6 +1695,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564901,
     "longitude": 126.942578,
+    "height": 25.35,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1675,6 +1728,7 @@
     "name_en": "Child Development Research Institute (Research Building)",
     "latitude": 37.564803,
     "longitude": 126.941319,
+    "height": 11.22,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1694,6 +1748,7 @@
     "name_en": "Child Development Research Institute",
     "latitude": 37.56448,
     "longitude": 126.941477,
+    "height": 10.6,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1723,7 +1778,7 @@
   {
     "id": 472512289,
     "name": "알렌관",
-    "name_en": "Allen Hall",
+    "name_en": "Allen Hall (Guest House)",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564366,
     "longitude": 126.942312,
@@ -1826,8 +1881,8 @@
   },
   {
     "id": 246156117,
-    "name": "성암관",
-    "name_en": "Seongam Hall",
+    "name": "성암관 / 커뮤니케이션대학원",
+    "name_en": "Seongam Hall / Graduate School of Communication and Arts",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.566803,
     "longitude": 126.93943,
@@ -1875,6 +1930,7 @@
     "address": "50 Yonsei-ro, Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.567344,
     "longitude": 126.939029,
+    "height": 22.7,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1903,6 +1959,7 @@
     "name_en": "Billingsley Hall",
     "latitude": 37.56782,
     "longitude": 126.938471,
+    "height": 12,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1919,11 +1976,12 @@
   },
   {
     "id": 242897922,
-    "name": "대우관",
+    "name": "대우관 본관",
     "name_en": "Daewoo Hall",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.568368,
     "longitude": 126.939368,
+    "height": 25.61,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1955,6 +2013,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.567745,
     "longitude": 126.939842,
+    "height": 20.26,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1997,6 +2056,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.56596,
     "longitude": 126.937344,
+    "height": 13,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2025,6 +2085,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565871,
     "longitude": 126.936679,
+    "height": 22.4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2111,6 +2172,7 @@
     "name_en": "Widang Hall",
     "latitude": 37.567209,
     "longitude": 126.937866,
+    "height": 27.9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2130,9 +2192,10 @@
   {
     "id": 472993694,
     "name": "법현학사",
-    "name_en": "Beophyeon House",
+    "name_en": "Beophyeon Dormitory",
     "latitude": 37.565685,
     "longitude": 126.945657,
+    "height": 26.99,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2149,11 +2212,12 @@
   },
   {
     "id": 472965035,
-    "name": "제중학사, 에비슨하우스",
-    "name_en": "Chejung House / Yonsei Avison House",
+    "name": "제중학사",
+    "name_en": "Chejung Dormitory",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565587,
     "longitude": 126.944576,
+    "height": 27.76,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2189,6 +2253,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565674,
     "longitude": 126.9439,
+    "height": 27.76,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2213,6 +2278,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.566067,
     "longitude": 126.943854,
+    "height": 15,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2281,7 +2347,7 @@
   },
   {
     "id": 472534642,
-    "name": "총장 공관",
+    "name": "총장공관",
     "name_en": "President's Residence",
     "latitude": 37.566961,
     "longitude": 126.942523,
@@ -2301,7 +2367,7 @@
   {
     "id": 472516999,
     "name": "차량실",
-    "name_en": "Garage",
+    "name_en": "Parking Garage",
     "latitude": 37.56726,
     "longitude": 126.941735,
     "geometry": {
@@ -2321,7 +2387,7 @@
   },
   {
     "id": 371403603,
-    "name": "한국어학당",
+    "name": "언어연구교육원",
     "name_en": "Institute of Language Research & Education (Korean Language Institute, KLI)",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565293,
@@ -2346,8 +2412,8 @@
   },
   {
     "id": 1178743320,
-    "name": "이윤제관",
-    "name_en": "Lee Youn Jae Hall",
+    "name": "미우관",
+    "name_en": "Miwu Hall",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564644,
     "longitude": 126.943725,
@@ -2373,7 +2439,7 @@
   },
   {
     "id": 429077777,
-    "name": "무학학사 1학사",
+    "name": "무악 1학사",
     "name_en": "Muak Dormitory 1",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.574644,
@@ -2402,7 +2468,7 @@
   },
   {
     "id": 429077776,
-    "name": "무악학사 2학사",
+    "name": "무악 2학사",
     "name_en": "Muak Dormitory 2",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.574577,
@@ -2432,7 +2498,7 @@
   },
   {
     "id": 429077773,
-    "name": "무학학사 3학사",
+    "name": "무악 3학사",
     "name_en": "Muak Dormitory 3",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.573747,
@@ -2459,7 +2525,7 @@
   },
   {
     "id": 429077772,
-    "name": "무악학사 4학사",
+    "name": "무악 4학사",
     "name_en": "Muak Dormitory 4",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.573403,
@@ -2488,7 +2554,7 @@
   },
   {
     "id": 429077766,
-    "name": "운동선수 기숙사",
+    "name": "운동선수기숙사",
     "name_en": "Athlete Dormitory",
     "latitude": 37.572038,
     "longitude": 126.938788,
@@ -2533,8 +2599,8 @@
   },
   {
     "id": 429077770,
-    "name": "아식설계연구소",
-    "name_en": "Research Institute for ASIC Design",
+    "name": "농업개발원",
+    "name_en": "Agricultural Development Institute",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.572281,
     "longitude": 126.940016,
