@@ -750,11 +750,12 @@
   },
   {
     "id": 252290041,
-    "name": "첨단과학관",
+    "name": "첨단과학기술연구원",
     "name_en": "Advanced Science & Technology Center",
     "address": "South Korea, Seoul, Seodaemun-gu, 134 첨단과학기술연구관 508호 연세대학교 공동기기원",
     "latitude": 37.56318,
     "longitude": 126.933803,
+    "height": 23.9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
