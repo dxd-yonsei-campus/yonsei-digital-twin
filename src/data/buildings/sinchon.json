@@ -1594,8 +1594,8 @@
   },
   {
     "id": 472965030,
-    "name": "법인본부",
-    "name_en": "Yonsei University Educational Foundation (University Residence A)",
+    "name": "대학사택 A",
+    "name_en": "University Residence A",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565816,
     "longitude": 126.942021,
@@ -1655,6 +1655,13 @@
         ]
       ]
     }
+  },
+  {
+    "id": "east-security-post",
+    "name": "동문경비실",
+    "name_en": "East Security Post",
+    "latitude": 37.566281,
+    "longitude": 126.942865
   },
   {
     "id": 472993695,
