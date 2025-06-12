@@ -6,7 +6,7 @@
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560918,
     "longitude": 126.938647,
-    "height": 800,
+    "height": 85.9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -35,11 +35,12 @@
   },
   {
     "id": 324328456,
-    "name": "연세대학교 의과대학 의학도서관",
-    "name_en": "Yonsei University Medical Library (College of Medicine)",
+    "name": "의학도서관 (의과대학)",
+    "name_en": "Medical Library (College of Medicine)",
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560795,
     "longitude": 126.939862,
+    "height": 28.8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -60,6 +61,7 @@
     "name_en": "College of Medicine",
     "latitude": 37.561027,
     "longitude": 126.940101,
+    "height": 28.8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -85,6 +87,7 @@
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560802,
     "longitude": 126.939779,
+    "height": 28.8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
