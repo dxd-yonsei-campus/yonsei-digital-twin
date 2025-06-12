@@ -1217,6 +1217,7 @@
     "name_en": "Central Library",
     "latitude": 37.563825,
     "longitude": 126.936458,
+    "height": 26.5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1238,6 +1239,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563901,
     "longitude": 126.936036,
+    "height": 40.55,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
