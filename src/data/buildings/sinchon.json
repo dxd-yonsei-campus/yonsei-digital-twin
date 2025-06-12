@@ -2172,6 +2172,7 @@
     "name_en": "Widang Hall",
     "latitude": 37.567209,
     "longitude": 126.937866,
+    "height": 27.9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2191,9 +2192,10 @@
   {
     "id": 472993694,
     "name": "법현학사",
-    "name_en": "Beophyeon House",
+    "name_en": "Beophyeon Dormitory",
     "latitude": 37.565685,
     "longitude": 126.945657,
+    "height": 26.99,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
