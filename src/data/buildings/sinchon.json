@@ -1445,6 +1445,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562934,
     "longitude": 126.934399,
+    "height": 23.9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1474,6 +1475,7 @@
     "name_en": "Samsung Hall",
     "latitude": 37.56504,
     "longitude": 126.934336,
+    "height": 27.74,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
