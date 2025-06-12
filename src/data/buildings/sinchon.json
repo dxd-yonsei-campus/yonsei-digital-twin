@@ -1034,11 +1034,12 @@
   },
   {
     "id": 240334198,
-    "name": "학생회관",
-    "name_en": "Student Union Building",
+    "name": "학생회관 / 글로벌라운지",
+    "name_en": "Student Union Building / Global Lounge",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563417,
     "longitude": 126.938408,
+    "height": 23.15,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
