@@ -135,21 +135,13 @@ const t = useTranslations(lang);
 
       const fillExtrusionHeightExpression: DataDrivenPropertyValueSpecification<number> =
         [
-          'interpolate',
-          ['linear'],
-          ['zoom'],
-          15,
-          0,
-          15.05,
-          [
-            'case',
-            // Check if custom height exists in your dictionary
-            ['has', ['to-string', ['id']], ['literal', buildingHeights]],
-            // If it exists, use the custom height
-            ['get', ['to-string', ['id']], ['literal', buildingHeights]],
-            // Otherwise, fall back to OSM height data
-            ['get', 'height'],
-          ],
+          'case',
+          // Check if custom height exists in your dictionary
+          ['has', ['to-string', ['id']], ['literal', buildingHeights]],
+          // If it exists, use the custom height
+          ['get', ['to-string', ['id']], ['literal', buildingHeights]],
+          // Otherwise, fall back to OSM height data
+          ['get', 'height'],
         ];
 
       const fillExtrusionBaseExpression: DataDrivenPropertyValueSpecification<number> =
@@ -182,7 +174,15 @@ const t = useTranslations(lang);
             // the buildings as the user zooms in.
             'fill-extrusion-height': fillExtrusionHeightExpression,
             'fill-extrusion-base': fillExtrusionBaseExpression,
-            'fill-extrusion-opacity': 1,
+            'fill-extrusion-opacity': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
+              15,
+              0, // Fully transparent at zoom 15
+              15.05,
+              1, // Fully opaque at zoom 15.05
+            ],
           },
         },
         labelLayerId,
@@ -203,7 +203,15 @@ const t = useTranslations(lang);
             'fill-extrusion-color': '#003876',
             'fill-extrusion-height': fillExtrusionHeightExpression,
             'fill-extrusion-base': fillExtrusionBaseExpression,
-            'fill-extrusion-opacity': 0.8,
+            'fill-extrusion-opacity': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
+              15,
+              0, // Fully transparent at zoom 15
+              15.05,
+              0.8, // Translucent at zoom 15.05
+            ],
           },
         },
         labelLayerId,
