@@ -1326,7 +1326,7 @@
   },
   {
     "id": 468614771,
-    "name": "광복관별관",
+    "name": "광복관 별관",
     "name_en": "Gwangbok Hall Annex",
     "latitude": 37.564449,
     "longitude": 126.936254,
@@ -1350,6 +1350,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564628,
     "longitude": 126.936716,
+    "height": 27.4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
