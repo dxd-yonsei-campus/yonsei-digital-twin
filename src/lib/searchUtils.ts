@@ -47,6 +47,12 @@ const extractRomanNumeralValue = (str: string): number | null => {
   return romanToNumber(firstRomanNumeral);
 };
 
+// Every "&" in the input string is replaced with "&and".
+// Ensures that names containing ampersands can be searched using the word "and".
+function addAndAfterAmpersand(input: string): string {
+  return input.replace(/&/g, '&and');
+}
+
 const buildSearchableName = (building: BuildingProps): string => {
   let searchName = `${building.name} ${building.name_en}`;
 
@@ -55,6 +61,8 @@ const buildSearchableName = (building: BuildingProps): string => {
   if (numberValue) {
     searchName += ` ${numberValue}`;
   }
+
+  searchName = addAndAfterAmpersand(searchName);
 
   return searchName;
 };
