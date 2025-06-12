@@ -1728,6 +1728,7 @@
     "name_en": "Child Development Research Institute (Research Building)",
     "latitude": 37.564803,
     "longitude": 126.941319,
+    "height": 11.22,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
