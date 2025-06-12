@@ -1502,10 +1502,11 @@
   },
   {
     "id": 429079066,
-    "name": "언더우드가기념관",
+    "name": "언더우드가 기념관",
     "name_en": "Underwood Memorial House",
     "latitude": 37.566042,
     "longitude": 126.93499,
+    "height": 7.6,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
