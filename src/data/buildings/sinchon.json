@@ -1062,11 +1062,12 @@
   },
   {
     "id": 429249499,
-    "name": "루스채플",
-    "name_en": "Luce Chapel",
+    "name": "루스채플 / 교목실 / 대학교회",
+    "name_en": "Luce Chapel / Office of the Chaplain / University Church",
     "address": "131 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563293,
     "longitude": 126.939018,
+    "height": 12.95,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
