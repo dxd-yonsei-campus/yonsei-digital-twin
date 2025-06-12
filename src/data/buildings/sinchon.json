@@ -142,8 +142,8 @@
   },
   {
     "id": 429249489,
-    "name": "종합관",
-    "name_en": "YUHS Administration Building",
+    "name": "종합관 / 장례식장",
+    "name_en": "YUHS Administration Building / Funeral Hall",
     "address": "103-2 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560762,
     "longitude": 126.940165,
@@ -178,11 +178,12 @@
   },
   {
     "id": 472648570,
-    "name": "연대세브란스병원",
-    "name_en": "Severance Hospital",
+    "name": "세브란스병원 본관",
+    "name_en": "Severance Hospital Main Building",
     "address": "50-1 Yonsei-ro, Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562311,
     "longitude": 126.940876,
+    "height": 104,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
