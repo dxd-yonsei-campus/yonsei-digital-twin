@@ -1286,6 +1286,7 @@
     "name_en": "Sports Science Complex",
     "latitude": 37.562707,
     "longitude": 126.935494,
+    "height": 16.61,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
