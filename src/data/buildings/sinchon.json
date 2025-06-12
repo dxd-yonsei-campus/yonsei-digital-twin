@@ -676,11 +676,12 @@
   },
   {
     "id": 421415358,
-    "name": "산학협동연구관",
+    "name": "산학협동관",
     "name_en": "Industry-University Research Center",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562737,
     "longitude": 126.932347,
+    "height": 14.9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
