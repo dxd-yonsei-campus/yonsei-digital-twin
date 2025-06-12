@@ -557,6 +557,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562884,
     "longitude": 126.942303,
+    "height": 26.4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -587,7 +588,7 @@
   },
   {
     "id": 429249495,
-    "name": "러들러교수동",
+    "name": "러들로교수동",
     "name_en": "Alfred I. Ludlow Faculty Building",
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563687,
