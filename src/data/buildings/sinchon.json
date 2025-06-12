@@ -616,6 +616,7 @@
     "address": "50 Yonsei-ro, Changcheon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560822,
     "longitude": 126.935498,
+    "height": 20.1,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
