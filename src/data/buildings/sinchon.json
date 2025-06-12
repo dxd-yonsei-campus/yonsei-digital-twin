@@ -1432,10 +1432,11 @@
   },
   {
     "id": "science-research-center",
-    "name": "과학 연구 센터",
+    "name": "과학원",
     "name_en": "Science Research Center",
     "latitude": 37.563409,
-    "longitude": 126.934663
+    "longitude": 126.934663,
+    "height": 51.18
   },
   {
     "id": 880321355,
