@@ -2347,7 +2347,7 @@
   },
   {
     "id": 472534642,
-    "name": "총장 공관",
+    "name": "총장공관",
     "name_en": "President's Residence",
     "latitude": 37.566961,
     "longitude": 126.942523,
@@ -2367,7 +2367,7 @@
   {
     "id": 472516999,
     "name": "차량실",
-    "name_en": "Garage",
+    "name_en": "Parking Garage",
     "latitude": 37.56726,
     "longitude": 126.941735,
     "geometry": {
@@ -2387,7 +2387,7 @@
   },
   {
     "id": 371403603,
-    "name": "한국어학당",
+    "name": "언어연구교육원",
     "name_en": "Institute of Language Research & Education (Korean Language Institute, KLI)",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565293,
