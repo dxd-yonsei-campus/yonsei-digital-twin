@@ -1569,10 +1569,11 @@
   },
   {
     "id": 472534644,
-    "name": "전파천문대",
+    "name": "천파천문대",
     "name_en": "Radio Observatory",
     "latitude": 37.565003,
     "longitude": 126.940618,
+    "height": 6.23,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
