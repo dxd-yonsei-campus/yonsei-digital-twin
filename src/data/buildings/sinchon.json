@@ -1011,9 +1011,10 @@
   {
     "id": 429249497,
     "name": "정자각",
-    "name_en": "Pavillion",
+    "name_en": "Pavilion",
     "latitude": 37.562787,
     "longitude": 126.938638,
+    "height": 9.2,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
