@@ -959,10 +959,11 @@
   },
   {
     "id": 324328422,
-    "name": "백주년기념관",
-    "name_en": "Centennial Hall",
+    "name": "백주년기념관 / 박물관",
+    "name_en": "Centennial Hall / University Museum",
     "latitude": 37.561732,
     "longitude": 126.937895,
+    "height": 21.1,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
