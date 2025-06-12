@@ -1145,6 +1145,7 @@
     "address": "131-2 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563996,
     "longitude": 126.940826,
+    "height": 17.7,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1169,6 +1170,7 @@
     "address": "131-2 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563971,
     "longitude": 126.940781,
+    "height": 17.7,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
