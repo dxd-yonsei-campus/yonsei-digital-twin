@@ -1401,11 +1401,12 @@
   },
   {
     "id": 222843398,
-    "name": "과학관",
-    "name_en": "Science Hall",
+    "name": "과학관 / 이과대학",
+    "name_en": "Science Hall / College of Science",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563902,
     "longitude": 126.934637,
+    "height": 30.42,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
