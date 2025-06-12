@@ -382,11 +382,12 @@
   },
   {
     "id": 324328472,
-    "name": "세브란스 안과병원",
-    "name_en": "Eye Hospital",
+    "name": "안이비인후과병원",
+    "name_en": "EYE & ENT Hospital",
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.561509,
     "longitude": 126.938255,
+    "height": 25.47,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
