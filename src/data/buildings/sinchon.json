@@ -1976,11 +1976,12 @@
   },
   {
     "id": 242897922,
-    "name": "대우관",
+    "name": "대우관 본관",
     "name_en": "Daewoo Hall",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.568368,
     "longitude": 126.939368,
+    "height": 25.61,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2012,6 +2013,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.567745,
     "longitude": 126.939842,
+    "height": 20.26,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
