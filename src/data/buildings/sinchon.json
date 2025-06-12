@@ -1263,6 +1263,7 @@
     "name_en": "Gymnasium",
     "latitude": 37.563104,
     "longitude": 126.935677,
+    "height": 17,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
