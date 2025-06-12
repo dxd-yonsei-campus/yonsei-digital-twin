@@ -2554,7 +2554,7 @@
   },
   {
     "id": 429077766,
-    "name": "운동선수 기숙사",
+    "name": "운동선수기숙사",
     "name_en": "Athlete Dormitory",
     "latitude": 37.572038,
     "longitude": 126.938788,
@@ -2599,8 +2599,8 @@
   },
   {
     "id": 429077770,
-    "name": "아식설계연구소",
-    "name_en": "Research Institute for ASIC Design",
+    "name": "농업개발원",
+    "name_en": "Agricultural Development Institute",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.572281,
     "longitude": 126.940016,
