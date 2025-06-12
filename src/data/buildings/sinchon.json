@@ -1930,6 +1930,7 @@
     "address": "50 Yonsei-ro, Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.567344,
     "longitude": 126.939029,
+    "height": 22.7,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
