@@ -847,6 +847,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562356,
     "longitude": 126.935265,
+    "height": 28,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -879,6 +880,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562356,
     "longitude": 126.935265,
+    "height": 6.6,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
