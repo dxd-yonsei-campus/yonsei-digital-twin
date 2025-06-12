@@ -697,11 +697,12 @@
   },
   {
     "id": 421415363,
-    "name": "GS칼텍스 산학협력관",
+    "name": "GS칼텍스산학협력단",
     "name_en": "GS Caltex Research Hall",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562783,
     "longitude": 126.933096,
+    "height": 20,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -726,6 +727,7 @@
     "address": "134 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563019,
     "longitude": 126.931983,
+    "height": 22.4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
