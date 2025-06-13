@@ -22,6 +22,7 @@ export const ui = {
     language: 'Language',
     'building.floor_level': 'Floor Level',
     'building.approval_date': 'Approval Date',
+    'building.construction_type': 'Construction Type',
   },
   ko: {
     'site.title': '연세 디지털 트윈',
@@ -39,5 +40,6 @@ export const ui = {
     language: '언어',
     'building.floor_level': '바닥 수준',
     'building.approval_date': '사용승인일',
+    'building.construction_type': '주구조명',
   },
 } as const;

@@ -31,7 +31,13 @@
           [126.9387833, 37.5615179]
         ]
       ]
-    }
+    },
+    "approval_date": "2014-02-19",
+    "floor_level": 15,
+    "construction_type": "철골콘크리트구조",
+    "construction_type_en": "Steel concrete",
+    "total_floor_area": 105800.48,
+    "total_building_area": 7540.17
   },
   {
     "id": 324328456,
