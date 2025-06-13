@@ -108,6 +108,26 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
               </div>
             </div>
           )}
+        {displayBuilding.total_floor_area && (
+          <div>
+            <h2 className="text-sm font-bold">
+              {t('building.total_floor_area')}
+            </h2>
+            <div>
+              {displayBuilding.total_floor_area} m<sup>2</sup>
+            </div>
+          </div>
+        )}
+        {displayBuilding.total_building_area && (
+          <div>
+            <h2 className="text-sm font-bold">
+              {t('building.total_building_area')}
+            </h2>
+            <div>
+              {displayBuilding.total_building_area} m<sup>2</sup>
+            </div>
+          </div>
+        )}
       </DialogContent>
     </Dialog>
   );
