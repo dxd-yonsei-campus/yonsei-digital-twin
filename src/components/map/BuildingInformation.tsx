@@ -62,7 +62,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
           <DialogTitle>
             {lang === 'en' ? displayBuilding.name_en : displayBuilding.name}
           </DialogTitle>
-          <div className="text-sm text-muted-foreground">
+          <div className="-mt-1 text-sm text-muted-foreground">
             {lang === 'en' ? displayBuilding.name : displayBuilding.name_en}
           </div>
           <DialogDescription className="sr-only">
@@ -74,6 +74,14 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
             )}
           </DialogDescription>
         </DialogHeader>
+        <div>
+          <h2 className="text-sm font-bold">{t('building.approval_date')}</h2>
+          <div>{new Date().toLocaleDateString()}</div>
+        </div>
+        <div>
+          <h2 className="text-sm font-bold">{t('building.floor_level')}</h2>
+          <div>4</div>
+        </div>
       </DialogContent>
     </Dialog>
   );

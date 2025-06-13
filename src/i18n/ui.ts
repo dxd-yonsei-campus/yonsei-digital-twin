@@ -20,6 +20,8 @@ export const ui = {
     mirae: 'MIRAE',
     mirae_long: 'MIRAE Campus',
     language: 'Language',
+    'building.floor_level': 'Floor Level',
+    'building.approval_date': 'Approval Date',
   },
   ko: {
     'site.title': '연세 디지털 트윈',
@@ -35,5 +37,7 @@ export const ui = {
     mirae: '미래',
     mirae_long: '미래캠퍼스',
     language: '언어',
+    'building.floor_level': '바닥 수준',
+    'building.approval_date': '사용승인일',
   },
 } as const;
