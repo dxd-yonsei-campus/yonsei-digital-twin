@@ -2390,8 +2390,7 @@
   {
     "id": 246156110,
     "name": "한경관",
-    "name_en": "Hangyeon Hall",
-    "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
+    "name_en": "Hangyeong Hall",
     "latitude": 37.56596,
     "longitude": 126.937344,
     "height": 13,
@@ -2414,7 +2413,11 @@
           [126.9374448, 37.5659328]
         ]
       ]
-    }
+    },
+    "approval_date": "1968-12-24",
+    "floor_level": 2,
+    "total_floor_area": 1012.31,
+    "total_building_area": 482.31
   },
   {
     "id": 246156121,
