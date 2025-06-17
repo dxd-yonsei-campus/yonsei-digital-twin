@@ -2760,7 +2760,13 @@
           [126.9425605, 37.5670541]
         ]
       ]
-    }
+    },
+    "approval_date": "1991-11-19",
+    "floor_level": 2,
+    "construction_type": "석구조",
+    "construction_type_en": "Masonry",
+    "total_floor_area": 555.36,
+    "total_building_area": 185.12
   },
   {
     "id": 472516999,
