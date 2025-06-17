@@ -3088,6 +3088,14 @@
     }
   },
   {
+    "id": "forest-conservation-post",
+    "name": "녹지보호실",
+    "name_en": "Forest Conservation Post",
+    "latitude": 37.57032,
+    "longitude": 126.940314,
+    "floor_level": 1
+  },
+  {
     "id": 1178743300,
     "name": "금호아트홀",
     "name_en": "Kumho Art Hall",
