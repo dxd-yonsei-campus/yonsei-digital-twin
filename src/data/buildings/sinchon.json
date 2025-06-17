@@ -1205,7 +1205,13 @@
           [126.9386136, 37.562887]
         ]
       ]
-    }
+    },
+    "approval_date": "2002-02-02",
+    "floor_level": 1,
+    "construction_type": "일반목구조",
+    "construction_type_en": "Timber structure",
+    "total_floor_area": 80.08,
+    "total_building_area": 80.08
   },
   {
     "id": 240334198,
