@@ -1160,7 +1160,7 @@
   {
     "id": 429249496,
     "name": "광혜원",
-    "name_en": "Garden of Yonsei (Gwanghyewon)",
+    "name_en": "Gwanghyewon (Garden of Yonsei)",
     "address": "107-10 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562585,
     "longitude": 126.938795,
@@ -1175,7 +1175,13 @@
           [126.9386969, 37.5626681]
         ]
       ]
-    }
+    },
+    "approval_date": "1986-12-24",
+    "floor_level": 1,
+    "construction_type": "일반목구조",
+    "construction_type_en": "Timber structure",
+    "total_floor_area": 199.31,
+    "total_building_area": 141.59
   },
   {
     "id": 429249497,
