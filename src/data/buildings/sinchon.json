@@ -759,7 +759,7 @@
   {
     "id": 421415359,
     "name": "학군단",
-    "name_en": "ROTC Headquarters",
+    "name_en": "R.O.T.C. Headquarters",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562309,
     "longitude": 126.932208,
@@ -776,7 +776,12 @@
           [126.932125, 37.5624743]
         ]
       ]
-    }
+    },
+    "floor_level": 3,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 1290.58,
+    "total_building_area": 448.23
   },
   {
     "id": 421415358,
