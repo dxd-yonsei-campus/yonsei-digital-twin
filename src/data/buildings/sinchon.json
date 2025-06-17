@@ -317,7 +317,6 @@
     "id": 324328432,
     "name": "어린이병원",
     "name_en": "Children's Hospital",
-    "address": "Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562519,
     "longitude": 126.939789,
     "geometry": {
@@ -350,7 +349,13 @@
           [126.9396001, 37.5622619]
         ]
       ]
-    }
+    },
+    "approval_date": "1999-09-10",
+    "floor_level": 10,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 12526.06,
+    "total_building_area": 1610.78
   },
   {
     "id": 324328481,
