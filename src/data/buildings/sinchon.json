@@ -468,7 +468,12 @@
           [126.9383769, 37.5618341]
         ]
       ]
-    }
+    },
+    "floor_level": 5,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 6066.96,
+    "total_building_area": 1119.36
   },
   {
     "id": 429249490,
