@@ -31,12 +31,18 @@
           [126.9387833, 37.5615179]
         ]
       ]
-    }
+    },
+    "approval_date": "2014-02-19",
+    "floor_level": 15,
+    "construction_type": "철골콘크리트구조",
+    "construction_type_en": "Steel concrete",
+    "total_floor_area": 105800.48,
+    "total_building_area": 7540.17
   },
   {
     "id": 324328456,
-    "name": "의학도서관 (의과대학)",
-    "name_en": "Medical Library (College of Medicine)",
+    "name": "의과대학 (신관 / 의학도서관)",
+    "name_en": "College of Medicine (New Building / Medical Library)",
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560795,
     "longitude": 126.939862,
@@ -53,11 +59,17 @@
           [126.9402318, 37.5613233]
         ]
       ]
-    }
+    },
+    "approval_date": "1968-07-01",
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 16221.38,
+    "total_building_area": 3941.78
   },
   {
     "id": 1178739301,
-    "name": "연세대학교 의과대학",
+    "name": "의과대학 (구관)",
     "name_en": "College of Medicine",
     "latitude": 37.561027,
     "longitude": 126.940101,
@@ -78,11 +90,17 @@
           [126.9402056, 37.5612207]
         ]
       ]
-    }
+    },
+    "approval_date": "1963-06-04",
+    "floor_level": 5,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 9491.25,
+    "total_building_area": 1935.54
   },
   {
     "id": 1178739302,
-    "name": "연세대학교 의과대학",
+    "name": "의과대학 (구관)",
     "name_en": "College of Medicine",
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560802,
@@ -101,7 +119,13 @@
           [126.9399051, 37.5609548]
         ]
       ]
-    }
+    },
+    "approval_date": "1963-06-04",
+    "floor_level": 5,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 9491.25,
+    "total_building_area": 1935.54
   },
   {
     "id": 473006251,
@@ -143,7 +167,7 @@
   {
     "id": 429249489,
     "name": "종합관 / 장례식장",
-    "name_en": "YUHS Administration Building / Funeral Hall",
+    "name_en": "Administration Building / Funeral Hall",
     "address": "103-2 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560762,
     "longitude": 126.940165,
@@ -174,7 +198,9 @@
           [126.9398229, 37.5610309]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-09-11",
+    "floor_level": 6
   },
   {
     "id": 472648570,
@@ -237,7 +263,13 @@
           [126.9405604, 37.5618295]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-08-16",
+    "floor_level": 21,
+    "construction_type": "철골철근콘크리트구조",
+    "construction_type_en": "Steel reinforced concrete",
+    "total_floor_area": 172610.99,
+    "total_building_area": 14421.34
   },
   {
     "id": 429079067,
@@ -273,13 +305,18 @@
           [126.9401679, 37.5627865]
         ]
       ]
-    }
+    },
+    "approval_date": "1988-03-18",
+    "floor_level": 10,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 14361.04,
+    "total_building_area": 1594.47
   },
   {
     "id": 324328432,
     "name": "어린이병원",
     "name_en": "Children's Hospital",
-    "address": "Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562519,
     "longitude": 126.939789,
     "geometry": {
@@ -312,7 +349,13 @@
           [126.9396001, 37.5622619]
         ]
       ]
-    }
+    },
+    "approval_date": "1999-09-10",
+    "floor_level": 10,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 12526.06,
+    "total_building_area": 1610.78
   },
   {
     "id": 324328481,
@@ -349,7 +392,13 @@
           [126.9396037, 37.5627828]
         ]
       ]
-    }
+    },
+    "approval_date": "1991-04-30",
+    "floor_level": 10,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 19096.69,
+    "total_building_area": 2181.56
   },
   {
     "id": 473006250,
@@ -378,7 +427,13 @@
           [126.9392141, 37.5625895]
         ]
       ]
-    }
+    },
+    "approval_date": "1972-02-21",
+    "floor_level": 7,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 11996.91,
+    "total_building_area": 1768.4
   },
   {
     "id": 324328472,
@@ -413,7 +468,12 @@
           [126.9383769, 37.5618341]
         ]
       ]
-    }
+    },
+    "floor_level": 5,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 6066.96,
+    "total_building_area": 1119.36
   },
   {
     "id": 429249490,
@@ -449,7 +509,13 @@
           [126.9415461, 37.5627081]
         ]
       ]
-    }
+    },
+    "approval_date": "2003-12-26",
+    "floor_level": 7,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 17305.98,
+    "total_building_area": 1947.86
   },
   {
     "id": 429249493,
@@ -480,7 +546,13 @@
           [126.9421352, 37.5632774]
         ]
       ]
-    }
+    },
+    "approval_date": "1996-05-09",
+    "floor_level": 7,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 17181.08,
+    "total_building_area": 1269.06
   },
   {
     "id": "avison-biomedical",
@@ -489,7 +561,13 @@
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563929,
     "longitude": 126.942488,
-    "height": 27.3
+    "height": 27.3,
+    "approval_date": "2013-02-07",
+    "floor_level": 6,
+    "construction_type": "철골철근콘크리트구조",
+    "construction_type_en": "Steel reinforced concrete",
+    "total_floor_area": 40229.02,
+    "total_building_area": 3931.27
   },
   {
     "id": 429249494,
@@ -514,7 +592,13 @@
           [126.9419009, 37.5634875]
         ]
       ]
-    }
+    },
+    "approval_date": "1996-08-31",
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 7078.23,
+    "total_building_area": 1139.21
   },
   {
     "id": 473014379,
@@ -548,7 +632,13 @@
           [126.939533, 37.5607423]
         ]
       ]
-    }
+    },
+    "approval_date": "1976-12-30",
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 13770.41,
+    "total_building_area": 1209.87
   },
   {
     "id": 473014385,
@@ -584,7 +674,13 @@
           [126.9421148, 37.5628878]
         ]
       ]
-    }
+    },
+    "approval_date": "1993-04-29",
+    "floor_level": 5,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 7462.18,
+    "total_building_area": 1847.94
   },
   {
     "id": 429249495,
@@ -607,7 +703,9 @@
           [126.9412741, 37.5639592]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-08-03",
+    "floor_level": 4
   },
   {
     "id": 218430716,
@@ -631,7 +729,13 @@
           [126.9348363, 37.5607252]
         ]
       ]
-    }
+    },
+    "approval_date": "1999-04-08",
+    "floor_level": 4,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 67141.18,
+    "total_building_area": 6725.16
   },
   {
     "id": 472976713,
@@ -650,12 +754,15 @@
           [126.9356908, 37.561393]
         ]
       ]
-    }
+    },
+    "floor_level": 1,
+    "construction_type": "철골구조",
+    "construction_type_en": "Steel structure"
   },
   {
     "id": 421415359,
     "name": "학군단",
-    "name_en": "ROTC Headquarters",
+    "name_en": "R.O.T.C. Headquarters",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562309,
     "longitude": 126.932208,
@@ -672,7 +779,12 @@
           [126.932125, 37.5624743]
         ]
       ]
-    }
+    },
+    "floor_level": 3,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 1290.58,
+    "total_building_area": 448.23
   },
   {
     "id": 421415358,
@@ -693,7 +805,13 @@
           [126.9322124, 37.5629472]
         ]
       ]
-    }
+    },
+    "approval_date": "2003-05-01",
+    "floor_level": 5,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 8935.31,
+    "total_building_area": 2052.64
   },
   {
     "id": 421415363,
@@ -718,7 +836,13 @@
           [126.9326315, 37.5627647]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-05-29",
+    "floor_level": 4,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 4647.5,
+    "total_building_area": 1454.67
   },
   {
     "id": 421415360,
@@ -746,7 +870,13 @@
           [126.9316238, 37.5629313]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-08-02",
+    "floor_level": 5,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 5585.85,
+    "total_building_area": 1164.84
   },
   {
     "id": 252290041,
@@ -773,7 +903,13 @@
           [126.9341524, 37.5631471]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-04-09",
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 15977.15,
+    "total_building_area": 1670.22
   },
   {
     "id": 205583531,
@@ -838,7 +974,13 @@
           [126.9356581, 37.5614004]
         ]
       ]
-    }
+    },
+    "approval_date": "1972-02-29",
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 41182.96,
+    "total_building_area": 6258.27
   },
   {
     "id": 256932940,
@@ -871,7 +1013,13 @@
           [126.9347386, 37.5625149]
         ]
       ]
-    }
+    },
+    "approval_date": "1994-03-09",
+    "floor_level": 7,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 14272.64,
+    "total_building_area": 3557.17
   },
   {
     "id": 324328471,
@@ -892,7 +1040,13 @@
           [126.9349481, 37.5626444]
         ]
       ]
-    }
+    },
+    "approval_date": "2000-11-09",
+    "floor_level": 1,
+    "construction_type": "철골구조",
+    "construction_type_en": "Steel structure",
+    "total_floor_area": 34.68,
+    "total_building_area": 34.68
   },
   {
     "id": 224955691,
@@ -926,7 +1080,13 @@
           [126.9346972, 37.5619274]
         ]
       ]
-    }
+    },
+    "approval_date": "1997-08-07",
+    "floor_level": 7,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 14784.83,
+    "total_building_area": 1482.32
   },
   {
     "id": 553898005,
@@ -955,7 +1115,10 @@
           [126.9357358, 37.5620435]
         ]
       ]
-    }
+    },
+    "floor_level": 10,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete"
   },
   {
     "id": 324328422,
@@ -986,12 +1149,18 @@
           [126.9384678, 37.5621825]
         ]
       ]
-    }
+    },
+    "approval_date": "1988-01-22",
+    "floor_level": 4,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 10620.23,
+    "total_building_area": 3110.41
   },
   {
     "id": 429249496,
     "name": "광혜원",
-    "name_en": "Garden of Yonsei (Gwanghyewon)",
+    "name_en": "Gwanghyewon (Garden of Yonsei)",
     "address": "107-10 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562585,
     "longitude": 126.938795,
@@ -1006,7 +1175,13 @@
           [126.9386969, 37.5626681]
         ]
       ]
-    }
+    },
+    "approval_date": "1986-12-24",
+    "floor_level": 1,
+    "construction_type": "일반목구조",
+    "construction_type_en": "Timber structure",
+    "total_floor_area": 199.31,
+    "total_building_area": 141.59
   },
   {
     "id": 429249497,
@@ -1030,7 +1205,13 @@
           [126.9386136, 37.562887]
         ]
       ]
-    }
+    },
+    "approval_date": "2002-02-02",
+    "floor_level": 1,
+    "construction_type": "일반목구조",
+    "construction_type_en": "Timber structure",
+    "total_floor_area": 80.08,
+    "total_building_area": 80.08
   },
   {
     "id": 240334198,
@@ -1058,7 +1239,13 @@
           [126.9383077, 37.5639968]
         ]
       ]
-    }
+    },
+    "approval_date": "1968-07-01",
+    "floor_level": 4,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 11853.93,
+    "total_building_area": 2996.79
   },
   {
     "id": 429249499,
@@ -1092,7 +1279,13 @@
           [126.9387302, 37.563467]
         ]
       ]
-    }
+    },
+    "approval_date": "2002-02-02",
+    "floor_level": 3,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 2495.32,
+    "total_building_area": 1834.28
   },
   {
     "id": 371403811,
@@ -1128,7 +1321,13 @@
           [126.9386279, 37.5645693]
         ]
       ]
-    }
+    },
+    "approval_date": "1993-10-09",
+    "floor_level": 3,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 5378.93,
+    "total_building_area": 2937.16
   },
   {
     "id": "school-of-business",
@@ -1136,7 +1335,12 @@
     "name_en": "School of Business / Graduate School of Business",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564928,
-    "longitude": 126.939169
+    "longitude": 126.939169,
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 20134.75,
+    "total_building_area": 2758.95
   },
   {
     "id": 429077789,
@@ -1161,7 +1365,13 @@
           [126.9394335, 37.5639376]
         ]
       ]
-    }
+    },
+    "approval_date": "2010-01-13",
+    "floor_level": 4,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 8804.69,
+    "total_building_area": 2977.47
   },
   {
     "id": 429077790,
@@ -1185,7 +1395,13 @@
           [126.9402345, 37.5638749]
         ]
       ]
-    }
+    },
+    "approval_date": "2010-01-13",
+    "floor_level": 4,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 8804.69,
+    "total_building_area": 2977.47
   },
   {
     "id": 163525865,
@@ -1209,28 +1425,13 @@
           [126.9367841, 37.5641248]
         ]
       ]
-    }
-  },
-  {
-    "id": 1356725505,
-    "name": "학술정보원",
-    "name_en": "Central Library",
-    "latitude": 37.563825,
-    "longitude": 126.936458,
-    "height": 26.5,
-    "geometry": {
-      "type": "Polygon",
-      "coordinates": [
-        [
-          [126.9364019, 37.5641077],
-          [126.9363157, 37.5638487],
-          [126.9362398, 37.5636204],
-          [126.9365887, 37.5635538],
-          [126.9367548, 37.5640392],
-          [126.9364019, 37.5641077]
-        ]
-      ]
-    }
+    },
+    "approval_date": "1979-04-18",
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 19359.24,
+    "total_building_area": 3122.2
   },
   {
     "id": 224955922,
@@ -1255,7 +1456,13 @@
           [126.9364433, 37.564232]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-05-15",
+    "floor_level": 7,
+    "construction_type": "철골철근콘크리트구조",
+    "construction_type_en": "Steel reinforced concrete",
+    "total_floor_area": 34236.96,
+    "total_building_area": 3764.42
   },
   {
     "id": 421415366,
@@ -1278,7 +1485,13 @@
           [126.9353651, 37.5630043]
         ]
       ]
-    }
+    },
+    "approval_date": "1960-04-15",
+    "floor_level": 2,
+    "construction_type": "철골철근콘크리트구조",
+    "construction_type_en": "Steel reinforced concrete",
+    "total_floor_area": 2984.48,
+    "total_building_area": 1836.66
   },
   {
     "id": 324328427,
@@ -1302,7 +1515,13 @@
           [126.9352161, 37.5625721]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-03-05",
+    "floor_level": 3,
+    "construction_type": "철골철근콘크리트구조",
+    "construction_type_en": "Steel reinforced concrete",
+    "total_floor_area": 6469.37,
+    "total_building_area": 2330.24
   },
   {
     "id": 421415365,
@@ -1322,7 +1541,9 @@
           [126.9350182, 37.5630732]
         ]
       ]
-    }
+    },
+    "approval_date": "1979-09-24",
+    "floor_level": 3
   },
   {
     "id": 468614771,
@@ -1341,7 +1562,9 @@
           [126.9361955, 37.5644814]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-06-01",
+    "floor_level": 2
   },
   {
     "id": 468614722,
@@ -1367,7 +1590,13 @@
           [126.9365502, 37.5647608]
         ]
       ]
-    }
+    },
+    "approval_date": "2013-10-25",
+    "floor_level": 5,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 11858.61,
+    "total_building_area": 3044.28
   },
   {
     "id": 256933753,
@@ -1397,7 +1626,13 @@
           [126.9378175, 37.564997]
         ]
       ]
-    }
+    },
+    "approval_date": "1968-07-01",
+    "floor_level": 5,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 10673.34,
+    "total_building_area": 3226.61
   },
   {
     "id": 222843398,
@@ -1428,7 +1663,13 @@
           [126.9355217, 37.5640647]
         ]
       ]
-    }
+    },
+    "approval_date": "1984-06-23",
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 25543.37,
+    "total_building_area": 6294.97
   },
   {
     "id": "science-research-center",
@@ -1436,38 +1677,13 @@
     "name_en": "Science Research Center",
     "latitude": 37.563409,
     "longitude": 126.934663,
-    "height": 51.18
-  },
-  {
-    "id": 880321355,
-    "name": "IBS관",
-    "name_en": "IBS Hall",
-    "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
-    "latitude": 37.562934,
-    "longitude": 126.934399,
-    "height": 23.9,
-    "geometry": {
-      "type": "Polygon",
-      "coordinates": [
-        [
-          [126.9341627, 37.5631741],
-          [126.9341524, 37.5631471],
-          [126.9340966, 37.5630003],
-          [126.9344168, 37.5629238],
-          [126.9345413, 37.5628002],
-          [126.9345921, 37.5627816],
-          [126.9347151, 37.5627888],
-          [126.9347925, 37.5628432],
-          [126.9346221, 37.5629955],
-          [126.9345906, 37.5630236],
-          [126.9344723, 37.5630519],
-          [126.9344954, 37.5631126],
-          [126.9342802, 37.5631641],
-          [126.9342739, 37.5631475],
-          [126.9341627, 37.5631741]
-        ]
-      ]
-    }
+    "height": 51.18,
+    "approval_date": "2000-08-03",
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 18621.5,
+    "total_building_area": 3111.28
   },
   {
     "id": 256934222,
@@ -1498,7 +1714,13 @@
           [126.9344124, 37.5645566]
         ]
       ]
-    }
+    },
+    "approval_date": "1999-01-18",
+    "floor_level": 7,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 11334.76,
+    "total_building_area": 1936.75
   },
   {
     "id": 429079066,
@@ -1518,7 +1740,11 @@
           [126.9348946, 37.5659937]
         ]
       ]
-    }
+    },
+    "approval_date": "1975-09-13",
+    "floor_level": 2,
+    "total_floor_area": 689.34,
+    "total_building_area": 266.45
   },
   {
     "id": 180788744,
@@ -1565,7 +1791,13 @@
           [126.9393725, 37.5655036]
         ]
       ]
-    }
+    },
+    "approval_date": "1999-04-30",
+    "floor_level": 2,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 1768.42,
+    "total_building_area": 150.71
   },
   {
     "id": 472534644,
@@ -1590,7 +1822,13 @@
           [126.940616, 37.5651211]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-05-02",
+    "floor_level": 1,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 638.08,
+    "total_building_area": 472.92
   },
   {
     "id": 472965030,
@@ -1615,7 +1853,9 @@
           [126.9419126, 37.5659325]
         ]
       ]
-    }
+    },
+    "approval_date": "1971-11-19",
+    "floor_level": 1
   },
   {
     "id": 472987419,
@@ -1635,7 +1875,9 @@
           [126.9423945, 37.5656764]
         ]
       ]
-    }
+    },
+    "approval_date": "2006-01-26",
+    "floor_level": 5
   },
   {
     "id": 472987415,
@@ -1654,14 +1896,17 @@
           [126.9434199, 37.5667763]
         ]
       ]
-    }
+    },
+    "approval_date": "1991-05-14",
+    "floor_level": 4
   },
   {
     "id": "east-security-post",
     "name": "동문경비실",
     "name_en": "East Security Post",
     "latitude": 37.566281,
-    "longitude": 126.942865
+    "longitude": 126.942865,
+    "floor_level": 1
   },
   {
     "id": 472993695,
@@ -1686,7 +1931,13 @@
           [126.9418329, 37.565446]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-04-30",
+    "floor_level": 3,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 1844.94,
+    "total_building_area": 500.13
   },
   {
     "id": 472516997,
@@ -1720,7 +1971,13 @@
           [126.942454, 37.5653275]
         ]
       ]
-    }
+    },
+    "approval_date": "1998-11-26",
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 6025.89,
+    "total_building_area": 1639.48
   },
   {
     "id": 472512287,
@@ -1740,7 +1997,13 @@
           [126.9416143, 37.5647779]
         ]
       ]
-    }
+    },
+    "approval_date": "2020-02-26",
+    "floor_level": 2,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 1408.7,
+    "total_building_area": 472.29
   },
   {
     "id": 472512292,
@@ -1773,12 +2036,18 @@
           [126.9413756, 37.5645191]
         ]
       ]
-    }
+    },
+    "approval_date": "2002-10-04",
+    "floor_level": 2,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 1615.63,
+    "total_building_area": 594.69
   },
   {
     "id": 472512289,
     "name": "알렌관",
-    "name_en": "Allen Hall (Guest House)",
+    "name_en": "Allen Hall",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564366,
     "longitude": 126.942312,
@@ -1797,7 +2066,13 @@
           [126.9422032, 37.5646552]
         ]
       ]
-    }
+    },
+    "approval_date": "1987-02-06",
+    "floor_level": 3,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 1695.67,
+    "total_building_area": 967.56
   },
   {
     "id": 246156115,
@@ -1817,7 +2092,12 @@
           [126.9384481, 37.5663782]
         ]
       ]
-    }
+    },
+    "floor_level": 5,
+    "construction_type": "석구조",
+    "construction_type_en": "Masonry",
+    "total_floor_area": 2707.45,
+    "total_building_area": 707.44
   },
   {
     "id": 246156118,
@@ -1837,7 +2117,13 @@
           [126.9382414, 37.5659051]
         ]
       ]
-    }
+    },
+    "approval_date": "1968-07-01",
+    "floor_level": 2,
+    "construction_type": "석구조",
+    "construction_type_en": "Masonry",
+    "total_floor_area": 1153.72,
+    "total_building_area": 449.59
   },
   {
     "id": 246156116,
@@ -1856,7 +2142,12 @@
           [126.9388945, 37.5657376]
         ]
       ]
-    }
+    },
+    "floor_level": 3,
+    "construction_type": "석구조",
+    "construction_type_en": "Masonry",
+    "total_floor_area": 1659.51,
+    "total_building_area": 472.73
   },
   {
     "id": 413217834,
@@ -1877,7 +2168,13 @@
           [126.9392704, 37.5663604]
         ]
       ]
-    }
+    },
+    "approval_date": "1956-12-31",
+    "floor_level": 1,
+    "construction_type": "벽돌구조",
+    "construction_type_en": "Masonry",
+    "total_floor_area": 236.89,
+    "total_building_area": 236.89
   },
   {
     "id": 246156117,
@@ -1901,7 +2198,13 @@
           [126.9394782, 37.5665715]
         ]
       ]
-    }
+    },
+    "approval_date": "1960-10-03",
+    "floor_level": 3,
+    "construction_type": "석구조",
+    "construction_type_en": "Masonry",
+    "total_floor_area": 1117.1,
+    "total_building_area": 496.93
   },
   {
     "id": 246156111,
@@ -1921,7 +2224,13 @@
           [126.9383984, 37.5668085]
         ]
       ]
-    }
+    },
+    "approval_date": "1962-12-10",
+    "floor_level": 4,
+    "construction_type": "석구조",
+    "construction_type_en": "Masonry",
+    "total_floor_area": 2078.65,
+    "total_building_area": 559.77
   },
   {
     "id": 245623759,
@@ -1951,7 +2260,13 @@
           [126.9387289, 37.5675755]
         ]
       ]
-    }
+    },
+    "approval_date": "1956-12-31",
+    "floor_level": 5,
+    "construction_type": "석구조",
+    "construction_type_en": "Masonry",
+    "total_floor_area": 6659.61,
+    "total_building_area": 1472.63
   },
   {
     "id": 245623193,
@@ -1972,7 +2287,12 @@
           [126.938215, 37.5679475]
         ]
       ]
-    }
+    },
+    "floor_level": 4,
+    "construction_type": "벽돌구조",
+    "construction_type_en": "Masonry",
+    "total_floor_area": 2249.75,
+    "total_building_area": 669.64
   },
   {
     "id": 242897922,
@@ -2004,7 +2324,13 @@
           [126.9390355, 37.5685172]
         ]
       ]
-    }
+    },
+    "approval_date": "1996-05-13",
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 29019.34,
+    "total_building_area": 2777.19
   },
   {
     "id": 242897923,
@@ -2028,7 +2354,13 @@
           [126.9398312, 37.5679572]
         ]
       ]
-    }
+    },
+    "approval_date": "1996-05-13",
+    "floor_level": 5,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 4367.26,
+    "total_building_area": 760.34
   },
   {
     "id": 246156113,
@@ -2047,13 +2379,18 @@
           [126.9372623, 37.5653271]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-05-02",
+    "floor_level": 3,
+    "construction_type": "석구조",
+    "construction_type_en": "Masonry",
+    "total_floor_area": 740.5,
+    "total_building_area": 300.83
   },
   {
     "id": 246156110,
     "name": "한경관",
-    "name_en": "Hangyeon Hall",
-    "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
+    "name_en": "Hangyeong Hall",
     "latitude": 37.56596,
     "longitude": 126.937344,
     "height": 13,
@@ -2076,12 +2413,16 @@
           [126.9374448, 37.5659328]
         ]
       ]
-    }
+    },
+    "approval_date": "1968-12-24",
+    "floor_level": 2,
+    "total_floor_area": 1012.31,
+    "total_building_area": 482.31
   },
   {
     "id": 246156121,
     "name": "신학관",
-    "name_en": "H.G.Underwood Theology Hall",
+    "name_en": "Theology Hall",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565871,
     "longitude": 126.936679,
@@ -2099,13 +2440,18 @@
           [126.9368782, 37.5655998]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-04-10",
+    "floor_level": 4,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 9921.92,
+    "total_building_area": 1446.2
   },
   {
     "id": 246156112,
     "name": "외솔관",
     "name_en": "Oesol Hall",
-    "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.566365,
     "longitude": 126.937083,
     "geometry": {
@@ -2120,7 +2466,13 @@
           [126.9372702, 37.5661753]
         ]
       ]
-    }
+    },
+    "approval_date": "1968-07-01",
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 7178.83,
+    "total_building_area": 1155.7
   },
   {
     "id": 246156114,
@@ -2140,7 +2492,13 @@
           [126.9372254, 37.5663828]
         ]
       ]
-    }
+    },
+    "approval_date": "1968-07-01",
+    "floor_level": 1,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 1102.96,
+    "total_building_area": 637.36
   },
   {
     "id": 246156123,
@@ -2164,7 +2522,9 @@
           [126.937565, 37.5663082]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-06-01",
+    "floor_level": 6
   },
   {
     "id": 246156119,
@@ -2187,7 +2547,13 @@
           [126.9380575, 37.5674844]
         ]
       ]
-    }
+    },
+    "approval_date": "1998-07-31",
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 8967.28,
+    "total_building_area": 1411.91
   },
   {
     "id": 472993694,
@@ -2208,7 +2574,13 @@
           [126.9459413, 37.5659198]
         ]
       ]
-    }
+    },
+    "approval_date": "2018-08-27",
+    "floor_level": 7,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 11701.34,
+    "total_building_area": 1067.3
   },
   {
     "id": 472965035,
@@ -2244,7 +2616,13 @@
           [126.9444709, 37.5658602]
         ]
       ]
-    }
+    },
+    "approval_date": "2018-08-27",
+    "floor_level": 7,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 29702.45,
+    "total_building_area": 2956.11
   },
   {
     "id": 472965026,
@@ -2269,7 +2647,13 @@
           [126.9433876, 37.566021]
         ]
       ]
-    }
+    },
+    "approval_date": "2013-10-25",
+    "floor_level": 7,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 23300.61,
+    "total_building_area": 1820.92
   },
   {
     "id": 472516998,
@@ -2292,7 +2676,13 @@
           [126.9435316, 37.5660862]
         ]
       ]
-    }
+    },
+    "approval_date": "2003-05-28",
+    "floor_level": 5,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 3498.54,
+    "total_building_area": 686.63
   },
   {
     "id": 216487503,
@@ -2324,7 +2714,9 @@
           [126.9430862, 37.5665075]
         ]
       ]
-    }
+    },
+    "approval_date": "2007-08-20",
+    "floor_level": 3
   },
   {
     "id": 472534641,
@@ -2343,7 +2735,13 @@
           [126.9429738, 37.5671689]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-05-03",
+    "floor_level": 1,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 529.51,
+    "total_building_area": 369.75
   },
   {
     "id": 472534642,
@@ -2362,7 +2760,13 @@
           [126.9425605, 37.5670541]
         ]
       ]
-    }
+    },
+    "approval_date": "1991-11-19",
+    "floor_level": 2,
+    "construction_type": "석구조",
+    "construction_type_en": "Masonry",
+    "total_floor_area": 555.36,
+    "total_building_area": 185.12
   },
   {
     "id": 472516999,
@@ -2383,12 +2787,14 @@
           [126.942015, 37.5672751]
         ]
       ]
-    }
+    },
+    "approval_date": "1972-05-30",
+    "floor_level": 2
   },
   {
     "id": 371403603,
     "name": "언어연구교육원",
-    "name_en": "Institute of Language Research & Education (Korean Language Institute, KLI)",
+    "name_en": "Institute of Language Research & Education",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565293,
     "longitude": 126.943563,
@@ -2408,7 +2814,9 @@
           [126.9432687, 37.5655771]
         ]
       ]
-    }
+    },
+    "approval_date": "1991-04-19",
+    "floor_level": 6
   },
   {
     "id": 1178743320,
@@ -2435,7 +2843,9 @@
           [126.9437484, 37.5649444]
         ]
       ]
-    }
+    },
+    "approval_date": "1972-06-29",
+    "floor_level": 5
   },
   {
     "id": 429077777,
@@ -2464,7 +2874,9 @@
           [126.9395939, 37.5744895]
         ]
       ]
-    }
+    },
+    "approval_date": "1989-11-07",
+    "floor_level": 6
   },
   {
     "id": 429077776,
@@ -2494,7 +2906,9 @@
           [126.9387894, 37.5746891]
         ]
       ]
-    }
+    },
+    "approval_date": "1989-11-07",
+    "floor_level": 6
   },
   {
     "id": 429077773,
@@ -2521,7 +2935,9 @@
           [126.9395843, 37.5734488]
         ]
       ]
-    }
+    },
+    "approval_date": "1998-04-30",
+    "floor_level": 6
   },
   {
     "id": 429077772,
@@ -2550,30 +2966,9 @@
           [126.9388515, 37.5736447]
         ]
       ]
-    }
-  },
-  {
-    "id": 429077766,
-    "name": "운동선수기숙사",
-    "name_en": "Athlete Dormitory",
-    "latitude": 37.572038,
-    "longitude": 126.938788,
-    "geometry": {
-      "type": "Polygon",
-      "coordinates": [
-        [
-          [126.9385357, 37.5721606],
-          [126.9386075, 37.572041],
-          [126.9386525, 37.572058],
-          [126.9388237, 37.571773],
-          [126.9387942, 37.5717048],
-          [126.9389408, 37.5716649],
-          [126.9389931, 37.5717856],
-          [126.9387251, 37.572232],
-          [126.9385357, 37.5721606]
-        ]
-      ]
-    }
+    },
+    "approval_date": "1998-04-30",
+    "floor_level": 6
   },
   {
     "id": 429077767,
@@ -2595,7 +2990,9 @@
           [126.9391931, 37.57208]
         ]
       ]
-    }
+    },
+    "approval_date": "1978-10-24",
+    "floor_level": 1
   },
   {
     "id": 429077770,
@@ -2617,7 +3014,9 @@
           [126.9397518, 37.572411]
         ]
       ]
-    }
+    },
+    "approval_date": "1985-12-14",
+    "floor_level": 1
   },
   {
     "id": 429077779,
@@ -2638,12 +3037,14 @@
           [126.9389933, 37.5706862]
         ]
       ]
-    }
+    },
+    "approval_date": "2013-10-25",
+    "floor_level": 4
   },
   {
     "id": 429077778,
     "name": "대창고",
-    "name_en": "Warehouse & Repair Facilities",
+    "name_en": "Warehouse",
     "latitude": 37.571202,
     "longitude": 126.939379,
     "geometry": {
@@ -2659,7 +3060,9 @@
           [126.9393306, 37.5713507]
         ]
       ]
-    }
+    },
+    "approval_date": "1981-02-20",
+    "floor_level": 2
   },
   {
     "id": 429077783,
@@ -2683,6 +3086,14 @@
         ]
       ]
     }
+  },
+  {
+    "id": "forest-conservation-post",
+    "name": "녹지보호실",
+    "name_en": "Forest Conservation Post",
+    "latitude": 37.57032,
+    "longitude": 126.940314,
+    "floor_level": 1
   },
   {
     "id": 1178743300,
@@ -2741,22 +3152,75 @@
     }
   },
   {
-    "id": 429077785,
-    "name": "영선실",
-    "name_en": "Repair Room",
-    "latitude": 37.568512,
-    "longitude": 126.941089,
+    "id": 1356725505,
+    "name": "학술정보원",
+    "name_en": "Academic Information Center",
+    "latitude": 37.563825,
+    "longitude": 126.936458,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
         [
-          [126.9411038, 37.5688616],
-          [126.9410055, 37.5687039],
-          [126.9410784, 37.5686754],
-          [126.9409565, 37.5684798],
-          [126.9411551, 37.568402],
-          [126.9413754, 37.5687552],
-          [126.9411038, 37.5688616]
+          [126.9364019, 37.5641077],
+          [126.9363157, 37.5638487],
+          [126.9362398, 37.5636204],
+          [126.9365887, 37.5635538],
+          [126.9367548, 37.5640392],
+          [126.9364019, 37.5641077]
+        ]
+      ]
+    }
+  },
+  {
+    "id": 880321355,
+    "name": "IBS관",
+    "name_en": "IBS Hall",
+    "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
+    "latitude": 37.562934,
+    "longitude": 126.934399,
+    "height": 23.9,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.9341627, 37.5631741],
+          [126.9341524, 37.5631471],
+          [126.9340966, 37.5630003],
+          [126.9344168, 37.5629238],
+          [126.9345413, 37.5628002],
+          [126.9345921, 37.5627816],
+          [126.9347151, 37.5627888],
+          [126.9347925, 37.5628432],
+          [126.9346221, 37.5629955],
+          [126.9345906, 37.5630236],
+          [126.9344723, 37.5630519],
+          [126.9344954, 37.5631126],
+          [126.9342802, 37.5631641],
+          [126.9342739, 37.5631475],
+          [126.9341627, 37.5631741]
+        ]
+      ]
+    }
+  },
+  {
+    "id": 429077766,
+    "name": "운동선수기숙사",
+    "name_en": "Athlete Dormitory",
+    "latitude": 37.572038,
+    "longitude": 126.938788,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.9385357, 37.5721606],
+          [126.9386075, 37.572041],
+          [126.9386525, 37.572058],
+          [126.9388237, 37.571773],
+          [126.9387942, 37.5717048],
+          [126.9389408, 37.5716649],
+          [126.9389931, 37.5717856],
+          [126.9387251, 37.572232],
+          [126.9385357, 37.5721606]
         ]
       ]
     }

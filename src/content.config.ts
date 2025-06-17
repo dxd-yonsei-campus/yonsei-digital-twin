@@ -17,6 +17,13 @@ const buildingsSchema = z.object({
       coordinates: z.array(z.array(positionSchema)),
     })
     .optional(),
+
+  floor_level: z.number().optional(),
+  approval_date: z.coerce.date().optional(),
+  construction_type: z.string().optional(),
+  construction_type_en: z.string().optional(),
+  total_floor_area: z.number().optional(),
+  total_building_area: z.number().optional(),
 });
 
 const buildings = defineCollection({

@@ -55,14 +55,14 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
         onEscapeKeyDown={() => selectedId.set('')}
         onCloseClick={() => selectedId.set('')}
       >
-        <DialogHeader className="text-left">
+        <DialogHeader className="mb-1 text-left">
           {campusName && (
             <Badge variant="outline">{t(`${campusName}_long`)}</Badge>
           )}
           <DialogTitle>
             {lang === 'en' ? displayBuilding.name_en : displayBuilding.name}
           </DialogTitle>
-          <div className="text-sm text-muted-foreground">
+          <div className="-mt-1 text-sm text-muted-foreground">
             {lang === 'en' ? displayBuilding.name : displayBuilding.name_en}
           </div>
           <DialogDescription className="sr-only">
@@ -74,6 +74,64 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
             )}
           </DialogDescription>
         </DialogHeader>
+        {displayBuilding.approval_date && (
+          <div>
+            <h2 className="text-sm font-semibold">
+              {t('building.approval_date')}
+            </h2>
+            <div>
+              {new Date(displayBuilding.approval_date).toLocaleDateString()}
+            </div>
+          </div>
+        )}
+        {displayBuilding.floor_level && (
+          <div>
+            <h2 className="text-sm font-semibold">
+              {t('building.floor_level')}
+            </h2>
+            <div>{displayBuilding.floor_level}</div>
+          </div>
+        )}
+        {displayBuilding.construction_type &&
+          displayBuilding.construction_type_en && (
+            <div>
+              <h2 className="text-sm font-semibold">
+                {t('building.construction_type')}
+              </h2>
+              <div className="align-middle">
+                {lang === 'en'
+                  ? displayBuilding.construction_type_en
+                  : displayBuilding.construction_type}{' '}
+                <span className="text-sm text-muted-foreground">
+                  (
+                  {lang === 'ko'
+                    ? displayBuilding.construction_type_en
+                    : displayBuilding.construction_type}
+                  )
+                </span>
+              </div>
+            </div>
+          )}
+        {displayBuilding.total_floor_area && (
+          <div>
+            <h2 className="text-sm font-semibold">
+              {t('building.total_floor_area')}
+            </h2>
+            <div>
+              {displayBuilding.total_floor_area} m<sup>2</sup>
+            </div>
+          </div>
+        )}
+        {displayBuilding.total_building_area && (
+          <div>
+            <h2 className="text-sm font-semibold">
+              {t('building.total_building_area')}
+            </h2>
+            <div>
+              {displayBuilding.total_building_area} m<sup>2</sup>
+            </div>
+          </div>
+        )}
       </DialogContent>
     </Dialog>
   );

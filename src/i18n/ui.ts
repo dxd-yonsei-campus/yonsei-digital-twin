@@ -20,6 +20,11 @@ export const ui = {
     mirae: 'MIRAE',
     mirae_long: 'MIRAE Campus',
     language: 'Language',
+    'building.floor_level': 'Floor Level',
+    'building.approval_date': 'Approval Date',
+    'building.construction_type': 'Construction Type',
+    'building.total_floor_area': 'Total Floor Area',
+    'building.total_building_area': 'Total Building Area',
   },
   ko: {
     'site.title': '연세 디지털 트윈',
@@ -35,5 +40,10 @@ export const ui = {
     mirae: '미래',
     mirae_long: '미래캠퍼스',
     language: '언어',
+    'building.floor_level': '바닥 수준',
+    'building.approval_date': '사용승인일',
+    'building.construction_type': '주구조명',
+    'building.total_floor_area': '연면적',
+    'building.total_building_area': '건축면적',
   },
 } as const;
