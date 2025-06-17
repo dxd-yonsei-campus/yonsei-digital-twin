@@ -1335,7 +1335,12 @@
     "name_en": "School of Business / Graduate School of Business",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564928,
-    "longitude": 126.939169
+    "longitude": 126.939169,
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 20134.75,
+    "total_building_area": 2758.95
   },
   {
     "id": 429077789,
