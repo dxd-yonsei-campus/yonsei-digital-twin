@@ -3044,7 +3044,7 @@
   {
     "id": 429077778,
     "name": "대창고",
-    "name_en": "Warehouse & Repair Facilities",
+    "name_en": "Warehouse",
     "latitude": 37.571202,
     "longitude": 126.939379,
     "geometry": {
@@ -3060,7 +3060,9 @@
           [126.9393306, 37.5713507]
         ]
       ]
-    }
+    },
+    "approval_date": "1981-02-20",
+    "floor_level": 2
   },
   {
     "id": 429077783,
