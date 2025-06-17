@@ -2092,7 +2092,12 @@
           [126.9384481, 37.5663782]
         ]
       ]
-    }
+    },
+    "floor_level": 5,
+    "construction_type": "석구조",
+    "construction_type_en": "Masonry",
+    "total_floor_area": 2707.45,
+    "total_building_area": 707.44
   },
   {
     "id": 246156118,
