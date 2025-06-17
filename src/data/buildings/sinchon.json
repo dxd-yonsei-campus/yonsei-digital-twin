@@ -1677,7 +1677,13 @@
     "name_en": "Science Research Center",
     "latitude": 37.563409,
     "longitude": 126.934663,
-    "height": 51.18
+    "height": 51.18,
+    "approval_date": "2000-08-03",
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 18621.5,
+    "total_building_area": 3111.28
   },
   {
     "id": 880321355,
