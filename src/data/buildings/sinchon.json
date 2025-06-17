@@ -2047,7 +2047,7 @@
   {
     "id": 472512289,
     "name": "알렌관",
-    "name_en": "Allen Hall (Guest House)",
+    "name_en": "Allen Hall",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564366,
     "longitude": 126.942312,
@@ -2066,7 +2066,13 @@
           [126.9422032, 37.5646552]
         ]
       ]
-    }
+    },
+    "approval_date": "1987-02-06",
+    "floor_level": 3,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 1695.67,
+    "total_building_area": 967.56
   },
   {
     "id": 246156115,
