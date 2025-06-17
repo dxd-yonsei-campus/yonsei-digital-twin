@@ -95,5 +95,12 @@ export const filterBuildingsForCampus = (campus: CampusName, query: string) => {
   const buildings = campusToBuilding[campus] || [];
   const names = campusToSearchableNames[campus] || [];
   const ids = searcher.filter(names, query);
-  return ids ? ids.map((i) => buildings[i]) : buildings;
+  const buildingsToReturn = ids ? ids.map((i) => buildings[i]) : buildings;
+  return removeFromSearchResults(buildingsToReturn);
+};
+
+// Explicitly remove the second college of medicine from search results.
+export const removeFromSearchResults = (buildings: BuildingProps[]) => {
+  const buildingIdsToRemove: Array<number | string> = [1178739302]; // College of Medicine, Sinchon Campus
+  return buildings.filter((b) => !buildingIdsToRemove.includes(b.id));
 };
