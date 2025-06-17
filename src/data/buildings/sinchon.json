@@ -263,7 +263,13 @@
           [126.9405604, 37.5618295]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-08-16",
+    "floor_level": 21,
+    "construction_type": "철골철근콘크리트구조",
+    "construction_type_en": "Steel reinforced concrete",
+    "total_floor_area": 172610.99,
+    "total_building_area": 14421.34
   },
   {
     "id": 429079067,
