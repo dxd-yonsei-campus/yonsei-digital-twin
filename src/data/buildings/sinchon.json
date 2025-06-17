@@ -1321,7 +1321,13 @@
           [126.9386279, 37.5645693]
         ]
       ]
-    }
+    },
+    "approval_date": "1993-10-09",
+    "floor_level": 3,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 5378.93,
+    "total_building_area": 2937.16
   },
   {
     "id": "school-of-business",
