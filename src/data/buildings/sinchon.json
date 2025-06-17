@@ -754,7 +754,10 @@
           [126.9356908, 37.561393]
         ]
       ]
-    }
+    },
+    "floor_level": 1,
+    "construction_type": "철골구조",
+    "construction_type_en": "Steel structure"
   },
   {
     "id": 421415359,
