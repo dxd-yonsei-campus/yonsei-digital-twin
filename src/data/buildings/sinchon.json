@@ -1971,7 +1971,13 @@
           [126.942454, 37.5653275]
         ]
       ]
-    }
+    },
+    "approval_date": "1998-11-26",
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 6025.89,
+    "total_building_area": 1639.48
   },
   {
     "id": 472512287,
