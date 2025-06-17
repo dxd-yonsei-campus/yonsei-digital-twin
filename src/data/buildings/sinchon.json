@@ -2422,7 +2422,7 @@
   {
     "id": 246156121,
     "name": "신학관",
-    "name_en": "H.G.Underwood Theology Hall",
+    "name_en": "Theology Hall",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565871,
     "longitude": 126.936679,
@@ -2440,7 +2440,13 @@
           [126.9368782, 37.5655998]
         ]
       ]
-    }
+    },
+    "approval_date": "2012-04-10",
+    "floor_level": 4,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 9921.92,
+    "total_building_area": 1446.2
   },
   {
     "id": 246156112,
