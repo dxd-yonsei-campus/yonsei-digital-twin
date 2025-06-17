@@ -2794,7 +2794,7 @@
   {
     "id": 371403603,
     "name": "언어연구교육원",
-    "name_en": "Institute of Language Research & Education (Korean Language Institute, KLI)",
+    "name_en": "Institute of Language Research & Education",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565293,
     "longitude": 126.943563,
@@ -2814,7 +2814,9 @@
           [126.9432687, 37.5655771]
         ]
       ]
-    }
+    },
+    "approval_date": "1991-04-19",
+    "floor_level": 6
   },
   {
     "id": 1178743320,
