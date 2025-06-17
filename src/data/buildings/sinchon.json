@@ -546,7 +546,13 @@
           [126.9421352, 37.5632774]
         ]
       ]
-    }
+    },
+    "approval_date": "1996-05-09",
+    "floor_level": 7,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 17181.08,
+    "total_building_area": 1269.06
   },
   {
     "id": "avison-biomedical",
