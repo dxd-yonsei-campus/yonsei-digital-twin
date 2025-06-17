@@ -55,7 +55,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
         onEscapeKeyDown={() => selectedId.set('')}
         onCloseClick={() => selectedId.set('')}
       >
-        <DialogHeader className="text-left">
+        <DialogHeader className="mb-1 text-left">
           {campusName && (
             <Badge variant="outline">{t(`${campusName}_long`)}</Badge>
           )}
@@ -76,7 +76,9 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
         </DialogHeader>
         {displayBuilding.approval_date && (
           <div>
-            <h2 className="text-sm font-bold">{t('building.approval_date')}</h2>
+            <h2 className="text-sm font-semibold">
+              {t('building.approval_date')}
+            </h2>
             <div>
               {new Date(displayBuilding.approval_date).toLocaleDateString()}
             </div>
@@ -84,14 +86,16 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
         )}
         {displayBuilding.floor_level && (
           <div>
-            <h2 className="text-sm font-bold">{t('building.floor_level')}</h2>
+            <h2 className="text-sm font-semibold">
+              {t('building.floor_level')}
+            </h2>
             <div>{displayBuilding.floor_level}</div>
           </div>
         )}
         {displayBuilding.construction_type &&
           displayBuilding.construction_type_en && (
             <div>
-              <h2 className="text-sm font-bold">
+              <h2 className="text-sm font-semibold">
                 {t('building.construction_type')}
               </h2>
               <div className="align-middle">
@@ -110,7 +114,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
           )}
         {displayBuilding.total_floor_area && (
           <div>
-            <h2 className="text-sm font-bold">
+            <h2 className="text-sm font-semibold">
               {t('building.total_floor_area')}
             </h2>
             <div>
@@ -120,7 +124,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
         )}
         {displayBuilding.total_building_area && (
           <div>
-            <h2 className="text-sm font-bold">
+            <h2 className="text-sm font-semibold">
               {t('building.total_building_area')}
             </h2>
             <div>
