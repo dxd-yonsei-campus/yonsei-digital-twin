@@ -111,6 +111,9 @@ const t = useTranslations(lang);
       updateSelectedCampus(center.lng, center.lat);
     });
 
+    const allBuildingIds = getAllBuildingIds();
+    const allBuildingData = getAllBuildings();
+
     map.on('style.load', () => {
       // Insert the layer beneath any symbol layer.
       const layers = map.getStyle().layers;
@@ -123,9 +126,6 @@ const t = useTranslations(lang);
       if (!labelLayerId) {
         return;
       }
-
-      const allBuildingIds = getAllBuildingIds();
-      const allBuildingData = getAllBuildings();
 
       const buildingHeights = Object.fromEntries(
         allBuildingData
@@ -233,9 +233,22 @@ const t = useTranslations(lang);
       }
     });
 
+    const COLLEGE_OF_MEDICINE_IDS: Array<string | number> = [
+      1178739301, 1178739302,
+    ];
+
     selectedId.listen((selectedId) => {
       if (selectedId) {
-        map.setFilter('selected-building', ['==', ['id'], selectedId]);
+        // If the selected ID is part of the College of Medicine buildings,
+        // set the filter to include both buildings.
+        if (COLLEGE_OF_MEDICINE_IDS.includes(selectedId)) {
+          map.setFilter('selected-building', [
+            'all',
+            ['in', ['id'], ['literal', COLLEGE_OF_MEDICINE_IDS]],
+          ]);
+        } else {
+          map.setFilter('selected-building', ['==', ['id'], selectedId]);
+        }
         if (buildingLayer.get() == 'osm') {
           map.setLayoutProperty('selected-building', 'visibility', 'visible');
         }

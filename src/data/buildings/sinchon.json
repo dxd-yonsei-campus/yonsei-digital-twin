@@ -41,8 +41,8 @@
   },
   {
     "id": 324328456,
-    "name": "의학도서관 (의과대학)",
-    "name_en": "Medical Library (College of Medicine)",
+    "name": "의과대학 (신관 / 의학도서관)",
+    "name_en": "College of Medicine (New Building / Medical Library)",
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560795,
     "longitude": 126.939862,
@@ -63,7 +63,7 @@
   },
   {
     "id": 1178739301,
-    "name": "연세대학교 의과대학",
+    "name": "의과대학 (구관)",
     "name_en": "College of Medicine",
     "latitude": 37.561027,
     "longitude": 126.940101,
@@ -88,7 +88,7 @@
   },
   {
     "id": 1178739302,
-    "name": "연세대학교 의과대학",
+    "name": "의과대학 (구관)",
     "name_en": "College of Medicine",
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560802,
