@@ -1094,7 +1094,10 @@
           [126.9357358, 37.5620435]
         ]
       ]
-    }
+    },
+    "floor_level": 10,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete"
   },
   {
     "id": 324328422,
