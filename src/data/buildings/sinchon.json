@@ -1365,7 +1365,13 @@
           [126.9394335, 37.5639376]
         ]
       ]
-    }
+    },
+    "approval_date": "2010-01-13",
+    "floor_level": 4,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 8804.69,
+    "total_building_area": 2977.47
   },
   {
     "id": 429077790,
@@ -1389,7 +1395,13 @@
           [126.9402345, 37.5638749]
         ]
       ]
-    }
+    },
+    "approval_date": "2010-01-13",
+    "floor_level": 4,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 8804.69,
+    "total_building_area": 2977.47
   },
   {
     "id": 163525865,
