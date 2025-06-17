@@ -561,7 +561,13 @@
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563929,
     "longitude": 126.942488,
-    "height": 27.3
+    "height": 27.3,
+    "approval_date": "2013-02-07",
+    "floor_level": 6,
+    "construction_type": "철골철근콘크리트구조",
+    "construction_type_en": "Steel reinforced concrete",
+    "total_floor_area": 40229.02,
+    "total_building_area": 3931.27
   },
   {
     "id": 429249494,
