@@ -1663,7 +1663,13 @@
           [126.9355217, 37.5640647]
         ]
       ]
-    }
+    },
+    "approval_date": "1984-06-23",
+    "floor_level": 6,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 25543.37,
+    "total_building_area": 6294.97
   },
   {
     "id": "science-research-center",
