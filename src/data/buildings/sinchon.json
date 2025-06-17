@@ -2142,7 +2142,12 @@
           [126.9388945, 37.5657376]
         ]
       ]
-    }
+    },
+    "floor_level": 3,
+    "construction_type": "석구조",
+    "construction_type_en": "masonry",
+    "total_floor_area": 1659.51,
+    "total_building_area": 472.73
   },
   {
     "id": 413217834,
