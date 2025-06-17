@@ -1740,7 +1740,11 @@
           [126.9348946, 37.5659937]
         ]
       ]
-    }
+    },
+    "approval_date": "1975-09-13",
+    "floor_level": 2,
+    "total_floor_area": 689.34,
+    "total_building_area": 266.45
   },
   {
     "id": 180788744,
