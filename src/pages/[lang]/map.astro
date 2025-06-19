@@ -142,8 +142,6 @@ const t = useTranslations(lang);
       scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits(),
     };
 
-    console.log('Model transform parameters:', modelTransform);
-
     const createCustomLayer = (map: Map): CustomLayerInterface => {
       const camera = new THREE.Camera();
       const scene = new THREE.Scene();
@@ -157,12 +155,9 @@ const t = useTranslations(lang);
       scene.add(directionalLight2);
 
       const loader = new GLTFLoader();
-      loader.load(
-        'https://docs.mapbox.com/mapbox-gl-js/assets/34M_17/34M_17.gltf',
-        (gltf) => {
-          scene.add(gltf.scene);
-        },
-      );
+      loader.load('/models/rhino.gltf', (gltf) => {
+        scene.add(gltf.scene);
+      });
 
       const renderer = new THREE.WebGLRenderer({
         canvas: map.getCanvas(),
@@ -323,7 +318,7 @@ const t = useTranslations(lang);
       );
 
       const customLayer = createCustomLayer(map);
-      map.addLayer(customLayer);
+      map.addLayer(customLayer, labelLayerId);
     });
 
     map.on('click', (e) => {
