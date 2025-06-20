@@ -81,16 +81,35 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
             )}
           </DialogDescription>
         </DialogHeader>
-        <Carousel className="w-full">
+        <Carousel className="aspect-video w-full overflow-hidden rounded-xs">
           <CarouselContent>
             <CarouselItem>
-              <img src="https://cataas.com/cat" />
+              <img
+                className="aspect-video object-cover"
+                src="https://cataas.com/cat"
+              />
             </CarouselItem>
-            <CarouselItem>...</CarouselItem>
-            <CarouselItem>...</CarouselItem>
+            <CarouselItem>
+              <img
+                className="aspect-video object-cover"
+                src="https://cataas.com/cat"
+              />
+            </CarouselItem>
+            <CarouselItem>
+              <img
+                className="aspect-video object-cover"
+                src="https://cataas.com/cat"
+              />
+            </CarouselItem>
           </CarouselContent>
-          <CarouselPrevious className="top-[unset] bottom-2 left-2 translate-y-0" />
-          <CarouselNext className="top-[unset] bottom-2 left-12 translate-y-0" />
+          <CarouselPrevious
+            variant="secondary"
+            className="top-[unset] bottom-1.5 left-1.5 size-7 translate-y-0"
+          />
+          <CarouselNext
+            variant="secondary"
+            className="top-[unset] bottom-1.5 left-9.5 size-7 translate-y-0"
+          />
         </Carousel>
         {displayBuilding.approval_date && (
           <div>
