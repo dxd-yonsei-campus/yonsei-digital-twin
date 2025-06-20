@@ -28,7 +28,12 @@ const buildingsSchema = z.object({
 
 const buildings = defineCollection({
   loader: glob({ pattern: ['[^_]*.json'], base: 'src/data/buildings' }),
-  schema: z.array(buildingsSchema),
+  schema: ({ image }) =>
+    z.array(
+      buildingsSchema.extend({
+        images: z.array(image()).optional(),
+      }),
+    ),
 });
 
 export const collections = { buildings };
