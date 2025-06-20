@@ -1,4 +1,4 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z, type SchemaContext } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const positionSchema = z.tuple([z.number(), z.number()]);
@@ -26,14 +26,15 @@ const buildingsSchema = z.object({
   total_building_area: z.number().optional(),
 });
 
+const buildingWithImageSchema = ({ image }: SchemaContext) =>
+  z.object({
+    ...buildingsSchema.shape,
+    images: z.array(image()).optional(),
+  });
+
 const buildings = defineCollection({
   loader: glob({ pattern: ['[^_]*.json'], base: 'src/data/buildings' }),
-  schema: ({ image }) =>
-    z.array(
-      buildingsSchema.extend({
-        images: z.array(image()).optional(),
-      }),
-    ),
+  schema: (schema) => z.array(buildingWithImageSchema(schema)),
 });
 
 export const collections = { buildings };

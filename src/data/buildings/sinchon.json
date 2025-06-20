@@ -32,6 +32,7 @@
         ]
       ]
     },
+    "images": ["/assets/image.png"],
     "approval_date": "2014-02-19",
     "floor_level": 15,
     "construction_type": "철골콘크리트구조",
