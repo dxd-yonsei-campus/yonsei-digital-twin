@@ -13,6 +13,13 @@ import { getAllBuildings, getCampusForBuildingId } from '@/lib/mapApi';
 import { Badge } from '@/components/ui/badge';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 
 const allBuildings = getAllBuildings();
 
@@ -74,6 +81,17 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
             )}
           </DialogDescription>
         </DialogHeader>
+        <Carousel className="w-full">
+          <CarouselContent>
+            <CarouselItem>
+              <img src="https://cataas.com/cat" />
+            </CarouselItem>
+            <CarouselItem>...</CarouselItem>
+            <CarouselItem>...</CarouselItem>
+          </CarouselContent>
+          <CarouselPrevious className="top-[unset] bottom-2 left-2 translate-y-0" />
+          <CarouselNext className="top-[unset] bottom-2 left-12 translate-y-0" />
+        </Carousel>
         {displayBuilding.approval_date && (
           <div>
             <h2 className="text-sm font-semibold">
