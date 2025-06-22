@@ -47,6 +47,12 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
 
   const campusName = getCampusForBuildingId(displayBuilding.id);
 
+  // If approval_date is a year only (e.g., "2023"), we want to display it as such.
+  const hasApprovalYearOnly = /^\d{4}$/.test(
+    displayBuilding.approval_date?.toString() || '',
+  );
+  const approvalDate = new Date(displayBuilding.approval_date || '');
+
   return (
     <Dialog modal={false} open={!!$selectedId}>
       <DialogContent
@@ -80,7 +86,9 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
               {t('building.approval_date')}
             </h2>
             <div>
-              {new Date(displayBuilding.approval_date).toLocaleDateString()}
+              {hasApprovalYearOnly
+                ? approvalDate.getFullYear()
+                : approvalDate.toLocaleDateString()}
             </div>
           </div>
         )}
