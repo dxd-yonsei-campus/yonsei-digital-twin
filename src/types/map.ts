@@ -1,4 +1,4 @@
-export type BuildingLayerType = '' | 'osm';
+export type BuildingLayerType = '' | 'osm' | 'rhino-simple';
 
 export const campuses = <const>[
   'sinchon',

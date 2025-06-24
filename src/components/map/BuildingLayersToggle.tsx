@@ -12,7 +12,12 @@ const BuildingLayerToggle = () => {
       onValueChange={(val) => buildingLayer.set(val)}
       type="single"
     >
-      <ToggleGroupItem<BuildingLayerType> value="osm">OSM</ToggleGroupItem>
+      <ToggleGroupItem<BuildingLayerType> className="w-32" value="osm">
+        OSM
+      </ToggleGroupItem>
+      <ToggleGroupItem<BuildingLayerType> value="rhino-simple">
+        Rhino Simple
+      </ToggleGroupItem>
     </ToggleGroup>
   );
 };

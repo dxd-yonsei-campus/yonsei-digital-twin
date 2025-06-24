@@ -170,7 +170,7 @@ const t = useTranslations(lang);
       renderer.autoClear = false;
 
       return {
-        id: '3d-model',
+        id: 'rhino-simple',
         type: 'custom',
         renderingMode: '3d',
         onAdd: () => {
@@ -333,6 +333,7 @@ const t = useTranslations(lang);
 
       const customLayer = createCustomLayer(map);
       map.addLayer(customLayer, labelLayerId);
+      map.setLayoutProperty('rhino-simple', 'visibility', 'none');
     });
 
     map.on('click', (e) => {
@@ -378,9 +379,14 @@ const t = useTranslations(lang);
     buildingLayer.listen((layer) => {
       map.setLayoutProperty('osm-buildings', 'visibility', 'none');
       map.setLayoutProperty('selected-building', 'visibility', 'none');
+      map.setLayoutProperty('rhino-simple', 'visibility', 'none');
       if (layer === 'osm') {
         map.setLayoutProperty('selected-building', 'visibility', 'visible');
         map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
+      }
+
+      if (layer === 'rhino-simple') {
+        map.setLayoutProperty('rhino-simple', 'visibility', 'visible');
       }
     });
   </script>
