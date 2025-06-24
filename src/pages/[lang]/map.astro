@@ -208,18 +208,15 @@ const t = useTranslations(lang);
             .multiply(rotationY)
             .multiply(rotationZ);
 
-          // Fix: Set camera projection matrix with extended clipping planes
+          // Set camera projection matrix with extended clipping planes
           const finalMatrix = m.multiply(l);
-
-          // Extract the existing projection parameters and modify clipping planes
           camera.projectionMatrix = finalMatrix.clone();
-
-          // Override near and far clipping planes to prevent clipping
-          // Adjust these values based on your model size and viewing distance
           const near = 0.1;
           const far = 1000000; // Very large far plane to prevent clipping when panning
 
           // Modify the projection matrix to use custom near/far planes
+          // elements[10]: Controls the Z-buffer depth mapping
+          // elements[14]: Controls the near/far plane relationship
           camera.projectionMatrix.elements[10] = -(far + near) / (far - near);
           camera.projectionMatrix.elements[14] =
             -(2 * far * near) / (far - near);
