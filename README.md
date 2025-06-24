@@ -1,6 +1,6 @@
 # Yonsei Digital Twin
 
-Yonsei Digital Twin is built using
+Yonsei Digital Twin is built using [Astro](https://astro.build/), [Mapbox GL JS](https://www.mapbox.com/mapbox-gljs) and React.
 
 ## Getting Started
 
@@ -16,7 +16,7 @@ Yonsei Digital Twin is built using
 
 The application supports custom 3D models using [three.js](https://threejs.org/). It is recommended to optimise the size of 3D models before hosting them using tools such as [`gltfpack`](https://github.com/zeux/meshoptimizer).
 
-```bash
+```sh
 # If you do not want to install gltfpack package
 npx gltfpack -i rhino.gltf -o rhino-output.gltf -cc
 
