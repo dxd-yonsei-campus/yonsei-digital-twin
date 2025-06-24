@@ -1,3 +1,5 @@
 .vscode
 pnpm-lock.yaml
 package.json
+*.gltf
+*.glb
