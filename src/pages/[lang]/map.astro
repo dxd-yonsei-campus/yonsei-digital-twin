@@ -376,18 +376,25 @@ const t = useTranslations(lang);
       }
     });
 
-    buildingLayer.listen((layer) => {
+    const setBuildingLayer = (layer: string) => {
       map.setLayoutProperty('osm-buildings', 'visibility', 'none');
       map.setLayoutProperty('selected-building', 'visibility', 'none');
       map.setLayoutProperty('rhino-simple', 'visibility', 'none');
       if (layer === 'osm') {
-        map.setLayoutProperty('selected-building', 'visibility', 'visible');
         map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
-      }
-
-      if (layer === 'rhino-simple') {
+        map.setLayoutProperty('selected-building', 'visibility', 'visible');
+      } else if (layer === 'rhino-simple') {
         map.setLayoutProperty('rhino-simple', 'visibility', 'visible');
       }
+    };
+
+    map.on('style.load', () => {
+      const initialBuildingLayer = buildingLayer.get();
+      setBuildingLayer(initialBuildingLayer);
+    });
+
+    buildingLayer.listen((layer) => {
+      setBuildingLayer(layer);
     });
   </script>
 </Layout>
