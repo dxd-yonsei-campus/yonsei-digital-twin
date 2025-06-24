@@ -85,6 +85,7 @@ const t = useTranslations(lang);
     import * as THREE from 'three';
     import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
     import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
+    import type { BuildingLayerType } from '@/types/map';
 
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
@@ -129,7 +130,6 @@ const t = useTranslations(lang);
       modelAltitude,
     );
 
-    // transformation parameters to position, rotate and scale the 3D model onto the map
     const modelTransform = {
       translateX: modelAsMercatorCoordinate.x,
       translateY: modelAsMercatorCoordinate.y,
@@ -376,7 +376,7 @@ const t = useTranslations(lang);
       }
     });
 
-    const setBuildingLayer = (layer: string) => {
+    const setBuildingLayer = (layer: BuildingLayerType) => {
       map.setLayoutProperty('osm-buildings', 'visibility', 'none');
       map.setLayoutProperty('selected-building', 'visibility', 'none');
       map.setLayoutProperty('rhino-simple', 'visibility', 'none');
