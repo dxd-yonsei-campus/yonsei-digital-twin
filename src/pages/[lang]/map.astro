@@ -84,6 +84,7 @@ const t = useTranslations(lang);
     } from '@/lib/mapApi';
     import * as THREE from 'three';
     import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+    import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
@@ -155,7 +156,8 @@ const t = useTranslations(lang);
       scene.add(directionalLight2);
 
       const loader = new GLTFLoader();
-      loader.load('/models/rhino.gltf', (gltf) => {
+      loader.setMeshoptDecoder(MeshoptDecoder); // Required for gltfpack models
+      loader.load('/models/gltfpack-rhino.gltf', (gltf) => {
         scene.add(gltf.scene);
       });
 
