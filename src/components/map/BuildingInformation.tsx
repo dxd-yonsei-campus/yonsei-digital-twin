@@ -13,6 +13,16 @@ import { getAllBuildings, getCampusForBuildingId } from '@/lib/mapApi';
 import { Badge } from '@/components/ui/badge';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
+const imageAssets = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/**/*.{jpeg,jpg,png,gif}',
+);
 
 const allBuildings = getAllBuildings();
 
@@ -25,6 +35,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
   const [displayBuilding, setDisplayBuilding] = useState<BuildingProps | null>(
     null,
   );
+  const [resolvedImages, setResolvedImages] = useState<ImageMetadata[]>([]);
   const t = useTranslations(lang);
 
   useEffect(() => {
@@ -41,11 +52,36 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
     }
   }, [$selectedId]);
 
+  // Resolve images when displayBuilding changes
+  useEffect(() => {
+    async function resolveImages() {
+      if (displayBuilding && displayBuilding.images) {
+        const imports = await Promise.all(
+          displayBuilding.images.map(async (imgPath) => {
+            const importer = imageAssets[imgPath];
+            const mod = await importer();
+            return mod.default;
+          }),
+        );
+        setResolvedImages(imports);
+      } else {
+        setResolvedImages([]);
+      }
+    }
+    resolveImages();
+  }, [displayBuilding]);
+
   if (!displayBuilding) {
     return null;
   }
 
   const campusName = getCampusForBuildingId(displayBuilding.id);
+
+  // If approval_date is a year only (e.g., "2023"), we want to display it as such.
+  const hasApprovalYearOnly = /^\d{4}$/.test(
+    displayBuilding.approval_date?.toString() || '',
+  );
+  const approvalDate = new Date(displayBuilding.approval_date || '');
 
   return (
     <Dialog modal={false} open={!!$selectedId}>
@@ -74,13 +110,38 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
             )}
           </DialogDescription>
         </DialogHeader>
+        {resolvedImages.length > 0 && (
+          <Carousel className="aspect-video w-full overflow-hidden rounded-xs">
+            <CarouselContent>
+              {resolvedImages.map(({ src }, idx) => (
+                <CarouselItem key={src + idx}>
+                  <img
+                    className="aspect-video object-cover"
+                    src={src}
+                    alt={displayBuilding.name + ' image ' + (idx + 1)}
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious
+              variant="secondary"
+              className="top-[unset] bottom-1.5 left-1.5 size-7 translate-y-0"
+            />
+            <CarouselNext
+              variant="secondary"
+              className="top-[unset] bottom-1.5 left-9.5 size-7 translate-y-0"
+            />
+          </Carousel>
+        )}
         {displayBuilding.approval_date && (
           <div>
             <h2 className="text-sm font-semibold">
               {t('building.approval_date')}
             </h2>
             <div>
-              {new Date(displayBuilding.approval_date).toLocaleDateString()}
+              {hasApprovalYearOnly
+                ? approvalDate.getFullYear()
+                : approvalDate.toLocaleDateString()}
             </div>
           </div>
         )}
