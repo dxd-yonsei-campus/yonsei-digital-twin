@@ -157,7 +157,7 @@ const t = useTranslations(lang);
 
       const loader = new GLTFLoader();
       loader.setMeshoptDecoder(MeshoptDecoder); // Required for gltfpack models
-      loader.load('/models/gltfpack-rhino.gltf', (gltf) => {
+      loader.load('/models/rhino-simple/model.gltf', (gltf) => {
         scene.add(gltf.scene);
       });
 
