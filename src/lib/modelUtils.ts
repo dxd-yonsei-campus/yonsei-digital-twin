@@ -3,7 +3,7 @@ import mapboxgl, { type Map, type CustomLayerInterface } from 'mapbox-gl';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
-const modelOrigin: [number, number] = [126.9384, 37.5647];
+const modelOrigin: [number, number] = [126.93892757389328, 37.56738472115946];
 const modelAltitude = 0;
 const modelRotate = [Math.PI / 2, 0, 0];
 
