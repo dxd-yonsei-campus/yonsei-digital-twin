@@ -4,7 +4,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
 const modelOrigin: [number, number] = [126.93892757389328, 37.56738472115946];
-const modelAltitude = 0;
+const modelAltitude = 104.9;
 const modelRotate = [Math.PI / 2, 0, 0];
 
 const modelAsMercatorCoordinate = mapboxgl.MercatorCoordinate.fromLngLat(
@@ -91,16 +91,7 @@ export const createCustomLayer = (map: Map): CustomLayerInterface => {
         .multiply(rotationZ);
 
       // Set camera projection matrix with extended clipping planes
-      const finalMatrix = m.multiply(l);
-      camera.projectionMatrix = finalMatrix.clone();
-      const near = 0.1;
-      const far = 1000000; // Very large far plane to prevent clipping when panning
-
-      // Modify the projection matrix to use custom near/far planes
-      // elements[10]: Controls the Z-buffer depth mapping
-      // elements[14]: Controls the near/far plane relationship
-      camera.projectionMatrix.elements[10] = -(far + near) / (far - near);
-      camera.projectionMatrix.elements[14] = -(2 * far * near) / (far - near);
+      camera.projectionMatrix = m.multiply(l);
 
       renderer.resetState();
       renderer.render(scene, camera);
