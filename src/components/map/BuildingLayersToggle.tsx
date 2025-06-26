@@ -1,6 +1,6 @@
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { buildingLayer } from '@/store';
-import type { BuildingLayerType } from '@/types/map';
+import { buildingLayers, type BuildingLayerType } from '@/types/map';
 import { useStore } from '@nanostores/react';
 import {
   DropdownMenu,
@@ -11,6 +11,12 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Button } from '../ui/button';
 import { ChevronUp } from 'lucide-react';
+
+const buildingLayersMap: Record<BuildingLayerType, string> = {
+  '': '',
+  osm: 'OSM',
+  'rhino-simple': 'Rhino Simple',
+};
 
 const BuildingLayerToggle = () => {
   const $buildingLayer = useStore(buildingLayer);
@@ -49,18 +55,19 @@ const BuildingLayerToggle = () => {
                 }
               }}
             >
-              {/* TODO: Use the types in type.ts  */}
-              <DropdownMenuRadioItem
-                value="osm"
-                onSelect={(e) => {
-                  e.preventDefault();
-                }}
-              >
-                OSM
-              </DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="rhino-simple">
-                Rhino Simple
-              </DropdownMenuRadioItem>
+              {buildingLayers.map((layer) => {
+                return (
+                  <DropdownMenuRadioItem
+                    value={layer}
+                    key={layer}
+                    onSelect={(e) => {
+                      e.preventDefault();
+                    }}
+                  >
+                    {buildingLayersMap[layer]}
+                  </DropdownMenuRadioItem>
+                );
+              })}
             </DropdownMenuRadioGroup>
           </DropdownMenuContent>
         </DropdownMenu>
