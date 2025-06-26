@@ -49,7 +49,15 @@ const BuildingLayerToggle = () => {
                 }
               }}
             >
-              <DropdownMenuRadioItem value="osm">OSM</DropdownMenuRadioItem>
+              {/* TODO: Use the types in type.ts  */}
+              <DropdownMenuRadioItem
+                value="osm"
+                onSelect={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                OSM
+              </DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="rhino-simple">
                 Rhino Simple
               </DropdownMenuRadioItem>
