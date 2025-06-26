@@ -11,14 +11,15 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Button } from '../ui/button';
 import { ChevronUp } from 'lucide-react';
+import type { ui } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
 
-const buildingLayersMap: Record<BuildingLayerType, string> = {
-  '': '',
-  osm: 'OSM',
-  'rhino-simple': 'Rhino Simple',
+type BuildingLayerToggleProps = {
+  lang: keyof typeof ui;
 };
 
-const BuildingLayerToggle = () => {
+const BuildingLayerToggle = ({ lang }: BuildingLayerToggleProps) => {
+  const t = useTranslations(lang);
   const $buildingLayer = useStore(buildingLayer);
   return (
     <>
@@ -29,49 +30,52 @@ const BuildingLayerToggle = () => {
         type="single"
         className="hidden lg:flex"
       >
-        <ToggleGroupItem<BuildingLayerType> className="w-32" value="osm">
-          OSM
-        </ToggleGroupItem>
-        <ToggleGroupItem<BuildingLayerType> value="rhino-simple">
-          Rhino Simple
-        </ToggleGroupItem>
-      </ToggleGroup>
-      <div className="block lg:hidden">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline">
-              Models
-              <ChevronUp className="hidden xs:block" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-38">
-            <DropdownMenuRadioGroup
-              value={$buildingLayer}
-              onValueChange={(val) => {
-                if (val === $buildingLayer) {
-                  buildingLayer.set('');
-                } else {
-                  buildingLayer.set(val as BuildingLayerType);
-                }
-              }}
+        {buildingLayers.map((layer) => {
+          return (
+            <ToggleGroupItem<BuildingLayerType>
+              className="w-32"
+              value={layer}
+              key={layer}
             >
-              {buildingLayers.map((layer) => {
-                return (
-                  <DropdownMenuRadioItem
-                    value={layer}
-                    key={layer}
-                    onSelect={(e) => {
-                      e.preventDefault();
-                    }}
-                  >
-                    {buildingLayersMap[layer]}
-                  </DropdownMenuRadioItem>
-                );
-              })}
-            </DropdownMenuRadioGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
+              {t(layer)}
+            </ToggleGroupItem>
+          );
+        })}
+      </ToggleGroup>
+      <DropdownMenu>
+        <DropdownMenuTrigger className="flex lg:hidden" asChild>
+          <Button variant="outline">
+            Models
+            <ChevronUp className="hidden xs:block" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="block w-38 lg:hidden">
+          <DropdownMenuRadioGroup
+            value={$buildingLayer}
+            onValueChange={(val) => {
+              if (val === $buildingLayer) {
+                buildingLayer.set('');
+              } else {
+                buildingLayer.set(val as BuildingLayerType);
+              }
+            }}
+          >
+            {buildingLayers.map((layer) => {
+              return (
+                <DropdownMenuRadioItem
+                  value={layer}
+                  key={layer}
+                  onSelect={(e) => {
+                    e.preventDefault();
+                  }}
+                >
+                  {t(layer)}
+                </DropdownMenuRadioItem>
+              );
+            })}
+          </DropdownMenuRadioGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </>
   );
 };

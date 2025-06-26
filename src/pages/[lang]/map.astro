@@ -46,7 +46,7 @@ const t = useTranslations(lang);
       </div>
       <SearchBar client:load lang={lang} />
       <div class="flex items-center gap-2">
-        <BuildingLayersToggle client:load />
+        <BuildingLayersToggle lang={lang} client:load />
         <Separator orientation="vertical" className="h-6!" />
         <ResetViewGroup lang={lang} client:only="react" />
       </div>
