@@ -221,9 +221,16 @@ const t = useTranslations(lang);
         labelLayerId,
       );
 
-      const customLayer = createCustomLayer(map);
-      map.addLayer(customLayer, labelLayerId);
-      map.setLayoutProperty('rhino-simple', 'visibility', 'none');
+      const rhinoSimpleLayer = createCustomLayer({
+        map: map,
+        longitude: 126.93892757389328,
+        latitude: 37.56738472115946,
+        modelUrl: '/models/rhino-simple/model.gltf',
+        id: 'rhino-simple',
+        altitude: 104.9,
+        rotateX: Math.PI / 2,
+      });
+      map.addLayer(rhinoSimpleLayer, labelLayerId);
     });
 
     map.on('click', (e) => {

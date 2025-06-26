@@ -3,29 +3,48 @@ import mapboxgl, { type Map, type CustomLayerInterface } from 'mapbox-gl';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
-const modelOrigin: [number, number] = [126.93892757389328, 37.56738472115946];
-const modelAltitude = 104.9;
-const modelRotate = [Math.PI / 2, 0, 0];
-
-const modelAsMercatorCoordinate = mapboxgl.MercatorCoordinate.fromLngLat(
-  modelOrigin,
-  modelAltitude,
-);
-
-const modelTransform = {
-  translateX: modelAsMercatorCoordinate.x,
-  translateY: modelAsMercatorCoordinate.y,
-  translateZ: modelAsMercatorCoordinate.z,
-  rotateX: modelRotate[0],
-  rotateY: modelRotate[1],
-  rotateZ: modelRotate[2],
-  /* Since the 3D model is in real world meters, a scale transform needs to be
-   * applied since the CustomLayerInterface expects units in MercatorCoordinates.
-   */
-  scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits(),
+type CustomLayerProps = {
+  map: Map;
+  latitude: number;
+  longitude: number;
+  id: string;
+  modelUrl: string;
+  altitude?: number;
+  rotateX?: number;
+  rotateY?: number;
+  rotateZ?: number;
 };
 
-export const createCustomLayer = (map: Map): CustomLayerInterface => {
+export const createCustomLayer = ({
+  map,
+  latitude,
+  longitude,
+  id,
+  modelUrl,
+  altitude = 0,
+  rotateX = 0,
+  rotateY = 0,
+  rotateZ = 0,
+}: CustomLayerProps): CustomLayerInterface => {
+  const origin: [number, number] = [longitude, latitude];
+  const modelAsMercatorCoordinate = mapboxgl.MercatorCoordinate.fromLngLat(
+    origin,
+    altitude,
+  );
+
+  const modelTransform = {
+    translateX: modelAsMercatorCoordinate.x,
+    translateY: modelAsMercatorCoordinate.y,
+    translateZ: modelAsMercatorCoordinate.z,
+    rotateX: rotateX,
+    rotateY: rotateY,
+    rotateZ: rotateZ,
+    /* Since the 3D model is in real world meters, a scale transform needs to be
+     * applied since the CustomLayerInterface expects units in MercatorCoordinates.
+     */
+    scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits(),
+  };
+
   const camera = new THREE.Camera();
   const scene = new THREE.Scene();
 
@@ -39,7 +58,7 @@ export const createCustomLayer = (map: Map): CustomLayerInterface => {
 
   const loader = new GLTFLoader();
   loader.setMeshoptDecoder(MeshoptDecoder); // Required for gltfpack models
-  loader.load('/models/rhino-simple/model.gltf', (gltf) => {
+  loader.load(modelUrl, (gltf) => {
     scene.add(gltf.scene);
   });
 
@@ -52,7 +71,7 @@ export const createCustomLayer = (map: Map): CustomLayerInterface => {
   renderer.autoClear = false;
 
   return {
-    id: 'rhino-simple',
+    id: id,
     type: 'custom',
     renderingMode: '3d',
     onAdd: () => {
