@@ -46,7 +46,7 @@ const t = useTranslations(lang);
       </div>
       <SearchBar client:load lang={lang} />
       <div class="flex items-center gap-2">
-        <BuildingLayersToggle client:load />
+        <BuildingLayersToggle lang={lang} client:load />
         <Separator orientation="vertical" className="h-6!" />
         <ResetViewGroup lang={lang} client:only="react" />
       </div>
@@ -80,6 +80,9 @@ const t = useTranslations(lang);
       getCameraForCampus,
       updateSelectedCampus,
     } from '@/lib/mapApi';
+    import type { BuildingLayerType } from '@/types/map';
+    import { createCustomLayer } from '@/lib/modelUtils';
+
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
     const initialCamera = getCameraForCampus(selectedCampus.get());
@@ -91,6 +94,7 @@ const t = useTranslations(lang);
       attributionControl: false,
       logoPosition: 'top-right',
       minZoom: 14,
+      maxZoom: 18,
       language:
         document.querySelector('html')?.getAttribute('lang') === 'ko'
           ? 'ko'
@@ -216,6 +220,17 @@ const t = useTranslations(lang);
         },
         labelLayerId,
       );
+
+      const rhinoSimpleLayer = createCustomLayer({
+        map: map,
+        longitude: 126.939225,
+        latitude: 37.56606,
+        modelUrl: '/models/rhino-simple/model.gltf',
+        id: 'rhino-simple',
+        altitude: 104.9,
+        rotateX: Math.PI / 2,
+      });
+      map.addLayer(rhinoSimpleLayer, labelLayerId);
     });
 
     map.on('click', (e) => {
@@ -258,13 +273,25 @@ const t = useTranslations(lang);
       }
     });
 
-    buildingLayer.listen((layer) => {
+    const setBuildingLayer = (layer: BuildingLayerType) => {
       map.setLayoutProperty('osm-buildings', 'visibility', 'none');
       map.setLayoutProperty('selected-building', 'visibility', 'none');
+      map.setLayoutProperty('rhino-simple', 'visibility', 'none');
       if (layer === 'osm') {
-        map.setLayoutProperty('selected-building', 'visibility', 'visible');
         map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
+        map.setLayoutProperty('selected-building', 'visibility', 'visible');
+      } else if (layer === 'rhino-simple') {
+        map.setLayoutProperty('rhino-simple', 'visibility', 'visible');
       }
+    };
+
+    map.on('style.load', () => {
+      const initialBuildingLayer = buildingLayer.get();
+      setBuildingLayer(initialBuildingLayer);
+    });
+
+    buildingLayer.listen((layer) => {
+      setBuildingLayer(layer);
     });
   </script>
 </Layout>

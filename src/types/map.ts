@@ -1,4 +1,6 @@
-export type BuildingLayerType = '' | 'osm';
+export const buildingLayers = <const>['osm', 'rhino-simple'];
+
+export type BuildingLayerType = '' | (typeof buildingLayers)[number];
 
 export const campuses = <const>[
   'sinchon',
