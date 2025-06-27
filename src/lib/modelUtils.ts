@@ -76,6 +76,26 @@ export const createCustomLayer = ({
     renderingMode: '3d',
     onAdd: () => {
       // Add logic that runs on layer addition if necessary.
+      // Set model color after loading
+      loader.load(modelUrl, (gltf) => {
+        gltf.scene.traverse((child) => {
+          if ((child as THREE.Mesh).isMesh) {
+            const mesh = child as THREE.Mesh;
+            console.log(mesh);
+
+            if (Array.isArray(mesh.material)) {
+              mesh.material.forEach((mat) => {
+                if ((mat as THREE.MeshStandardMaterial).color) {
+                  (mat as THREE.MeshStandardMaterial).color.set(0xff0000); // red
+                }
+              });
+            } else if ((mesh.material as THREE.MeshStandardMaterial).color) {
+              (mesh.material as THREE.MeshStandardMaterial).color.set(0xff0000); // red
+            }
+          }
+        });
+        scene.add(gltf.scene);
+      });
     },
     render: (gl, matrix) => {
       const rotationX = new THREE.Matrix4().makeRotationAxis(
