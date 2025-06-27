@@ -1352,6 +1352,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564928,
     "longitude": 126.939169,
+    "height": 31.4,
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
     "construction_type_en": "Reinforced concrete",
@@ -1545,6 +1546,7 @@
     "name_en": "Physical Education Center",
     "latitude": 37.563204,
     "longitude": 126.935185,
+    "height": 9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1567,6 +1569,7 @@
     "name_en": "Gwangbok Hall Annex",
     "latitude": 37.564449,
     "longitude": 126.936254,
+    "height": 6,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1853,6 +1856,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565816,
     "longitude": 126.942021,
+    "height": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1879,6 +1883,7 @@
     "name_en": "University Residence B",
     "latitude": 37.565564,
     "longitude": 126.942498,
+    "height": 15,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1901,6 +1906,7 @@
     "name_en": "University Residence C",
     "latitude": 37.5667,
     "longitude": 126.943485,
+    "height": 12,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1922,6 +1928,7 @@
     "name_en": "East Security Post",
     "latitude": 37.566281,
     "longitude": 126.942865,
+    "height": 3,
     "floor_level": 1
   },
   {
@@ -2067,6 +2074,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564366,
     "longitude": 126.942312,
+    "height": 9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2097,6 +2105,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.566375,
     "longitude": 126.938726,
+    "height": 15,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2122,6 +2131,7 @@
     "address": "134 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.566072,
     "longitude": 126.938189,
+    "height": 6,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2147,6 +2157,7 @@
     "name_en": "Appenzeller Hall",
     "latitude": 37.56588,
     "longitude": 126.93901,
+    "height": 9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2171,6 +2182,7 @@
     "name_en": "Nonjidang",
     "latitude": 37.566288,
     "longitude": 126.939348,
+    "height": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2199,6 +2211,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.566803,
     "longitude": 126.93943,
+    "height": 9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2228,6 +2241,7 @@
     "name_en": "Yu Eok-Gyeom Memorial Hall",
     "latitude": 37.566968,
     "longitude": 126.938347,
+    "height": 12,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2384,6 +2398,7 @@
     "name_en": "Pinson Hall",
     "latitude": 37.565433,
     "longitude": 126.937217,
+    "height": 12,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2470,6 +2485,7 @@
     "name_en": "Oesol Hall",
     "latitude": 37.566365,
     "longitude": 126.937083,
+    "height": 18,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2497,6 +2513,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.566552,
     "longitude": 126.93712,
+    "height": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2522,6 +2539,7 @@
     "name_en": "Education Sciences Hall",
     "latitude": 37.566683,
     "longitude": 126.937411,
+    "height": 18,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2605,7 +2623,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565587,
     "longitude": 126.944576,
-    "height": 27.76,
+    "height": 27.61,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2707,6 +2725,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.566221,
     "longitude": 126.943121,
+    "height": 9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2740,6 +2759,7 @@
     "name_en": "Presidential Reception Hall",
     "latitude": 37.567022,
     "longitude": 126.942939,
+    "height": 7.9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2765,6 +2785,7 @@
     "name_en": "President's Residence",
     "latitude": 37.566961,
     "longitude": 126.942523,
+    "height": 6,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2790,6 +2811,7 @@
     "name_en": "Parking Garage",
     "latitude": 37.56726,
     "longitude": 126.941735,
+    "height": 6,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2814,6 +2836,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.565293,
     "longitude": 126.943563,
+    "height": 18,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2841,6 +2864,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564644,
     "longitude": 126.943725,
+    "height": 15,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2870,6 +2894,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.574644,
     "longitude": 126.939872,
+    "height": 18,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2901,6 +2926,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.574577,
     "longitude": 126.939133,
+    "height": 18,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2933,6 +2959,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.573747,
     "longitude": 126.93966,
+    "height": 18,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2962,6 +2989,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.573403,
     "longitude": 126.939055,
+    "height": 18,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2993,6 +3021,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.572006,
     "longitude": 126.939424,
+    "height": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3017,6 +3046,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.572281,
     "longitude": 126.940016,
+    "height": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3040,6 +3070,7 @@
     "name_en": "Woojungwon",
     "latitude": 37.570738,
     "longitude": 126.939385,
+    "height": 12,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3063,6 +3094,7 @@
     "name_en": "Warehouse",
     "latitude": 37.571202,
     "longitude": 126.939379,
+    "height": 6,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3086,6 +3118,7 @@
     "name_en": "Greenhouses",
     "latitude": 37.570874,
     "longitude": 126.94089,
+    "height": 12,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3109,6 +3142,7 @@
     "name_en": "Forest Conservation Post",
     "latitude": 37.57032,
     "longitude": 126.940314,
+    "height": 3,
     "floor_level": 1
   }
 ]
