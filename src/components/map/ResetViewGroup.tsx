@@ -27,12 +27,13 @@ const ResetButtonGroup = ({ lang }: ResetButtonGroupProps) => {
     <ButtonGroup>
       <Button variant="outline" onClick={() => flyToCampus($selectedCampus)}>
         <HomeIcon />
-        <span className="hidden xs:block">{t($selectedCampus)}</span>
+        <span className="sr-only xs:not-sr-only">{t($selectedCampus)}</span>
       </Button>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="icon">
             <ChevronUp />
+            <span className="sr-only">Select Campus</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-32">

@@ -90,6 +90,7 @@ const SearchBar = ({ lang }: SearchBarProps) => {
       >
         <div className="flex items-center gap-2 overflow-hidden">
           <SearchIcon />
+          <span className="sr-only sm:hidden">Search</span>
           <span
             className={cn('hidden overflow-hidden text-ellipsis sm:block', {
               'text-foreground': building,
