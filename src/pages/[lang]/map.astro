@@ -134,7 +134,20 @@ const t = useTranslations(lang);
       const buildingHeights = Object.fromEntries(
         allBuildingData
           .filter((building) => Boolean(building.height))
-          .map((building) => [String(building.id), building.height]),
+          .map((building) => {
+            const height = building.height || 0;
+            const extrusionOffset = building.extrusionOffset || 0;
+            const totalHeight = height + extrusionOffset;
+            return [String(building.id), totalHeight];
+          }),
+      );
+
+      const extrusionOffsets = Object.fromEntries(
+        allBuildingData
+          .filter((building) => Boolean(building.extrusionOffset))
+          .map((building) => {
+            return [String(building.id), building.extrusionOffset || 0];
+          }),
       );
 
       const fillExtrusionHeightExpression: DataDrivenPropertyValueSpecification<number> =
@@ -150,12 +163,9 @@ const t = useTranslations(lang);
 
       const fillExtrusionBaseExpression: DataDrivenPropertyValueSpecification<number> =
         [
-          'interpolate',
-          ['linear'],
-          ['zoom'],
-          15,
-          0,
-          15.05,
+          'case',
+          ['has', ['to-string', ['id']], ['literal', extrusionOffsets]],
+          ['get', ['to-string', ['id']], ['literal', extrusionOffsets]],
           ['get', 'min_height'],
         ];
 

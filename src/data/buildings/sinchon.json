@@ -755,6 +755,7 @@
     "latitude": 37.561274,
     "longitude": 126.935694,
     "height": 3,
+    "extrusionOffset": 9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
