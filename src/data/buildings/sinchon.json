@@ -178,6 +178,7 @@
     "address": "103-2 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.560762,
     "longitude": 126.940165,
+    "height": 18,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -326,6 +327,7 @@
     "name_en": "Children's Hospital",
     "latitude": 37.562519,
     "longitude": 126.939789,
+    "height": 30,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -414,6 +416,7 @@
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562368,
     "longitude": 126.939115,
+    "height": 21,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -696,6 +699,7 @@
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563687,
     "longitude": 126.941348,
+    "height": 12,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -750,6 +754,7 @@
     "name_en": "POSCO Bridge",
     "latitude": 37.561274,
     "longitude": 126.935694,
+    "height": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -774,6 +779,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562309,
     "longitude": 126.932208,
+    "height": 9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1103,6 +1109,7 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.561824,
     "longitude": 126.936214,
+    "height": 30,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1172,6 +1179,7 @@
     "address": "107-10 Sinchon-dong, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.562585,
     "longitude": 126.938795,
+    "height": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
