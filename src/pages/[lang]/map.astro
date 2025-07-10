@@ -79,6 +79,7 @@ const t = useTranslations(lang);
       getAllBuildings,
       getCameraForCampus,
       updateSelectedCampus,
+      getNearestBuildingId,
     } from '@/lib/mapApi';
     import type { BuildingLayerType } from '@/types/map';
     import { createCustomLayer } from '@/lib/modelUtils';
@@ -244,6 +245,13 @@ const t = useTranslations(lang);
     });
 
     map.on('click', (e) => {
+      if (buildingLayer.get() !== 'osm') {
+        const [longitude, latitude] = e.lngLat.toArray();
+        const buildingId = getNearestBuildingId(longitude, latitude);
+        selectedId.set(buildingId || '');
+        return;
+      }
+
       const features = map.queryRenderedFeatures(e.point, {
         layers: ['osm-buildings'], // make sure this matches your layer name
       });
