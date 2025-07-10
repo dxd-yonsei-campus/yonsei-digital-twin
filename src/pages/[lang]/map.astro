@@ -248,7 +248,8 @@ const t = useTranslations(lang);
       if (buildingLayer.get() !== 'osm') {
         const [longitude, latitude] = e.lngLat.toArray();
         const buildingId = getNearestBuildingId(longitude, latitude);
-        console.log('Nearest building ID:', buildingId);
+        selectedId.set(buildingId || '');
+        return;
       }
 
       const features = map.queryRenderedFeatures(e.point, {

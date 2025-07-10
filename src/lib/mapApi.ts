@@ -147,7 +147,10 @@ export const updateSelectedCampus = (longitude: number, latitude: number) => {
   }
 };
 
-export const getNearestBuildingId = (longitude: number, latitude: number) => {
+export const getNearestBuildingId = (
+  longitude: number,
+  latitude: number,
+): number | string | null => {
   const allBuildings = getAllBuildings();
   let nearestBuildingId = null;
   let minDistance = Infinity;
