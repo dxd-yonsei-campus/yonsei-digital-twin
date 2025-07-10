@@ -146,3 +146,23 @@ export const updateSelectedCampus = (longitude: number, latitude: number) => {
     selectedCampus.set('mirae');
   }
 };
+
+export const getNearestBuildingId = (longitude: number, latitude: number) => {
+  const allBuildings = getAllBuildings();
+  let nearestBuildingId = null;
+  let minDistance = Infinity;
+
+  allBuildings.forEach((building) => {
+    const distance = Math.sqrt(
+      Math.pow(building.longitude - longitude, 2) +
+        Math.pow(building.latitude - latitude, 2),
+    );
+
+    if (distance < minDistance) {
+      minDistance = distance;
+      nearestBuildingId = building.id;
+    }
+  });
+
+  return nearestBuildingId;
+};
