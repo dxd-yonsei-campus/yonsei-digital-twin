@@ -153,7 +153,7 @@ export const getNearestBuildingId = (
 ): number | string | null => {
   const allBuildings = getAllBuildings();
   let nearestBuildingId = null;
-  let minDistance = Infinity;
+  let minDistance = 0.0008;
 
   allBuildings.forEach((building) => {
     const distance = Math.sqrt(
