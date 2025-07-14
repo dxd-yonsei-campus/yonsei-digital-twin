@@ -315,6 +315,7 @@ const t = useTranslations(lang);
         toast.warning('No building model selected.', {
           duration: Infinity,
           id: 'no-model',
+          dismissible: false,
         });
       } else {
         toast.dismiss('no-model');
