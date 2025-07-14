@@ -323,5 +323,16 @@ const t = useTranslations(lang);
       setBuildingLayer(layer);
     });
   </script>
-  <Toaster position="bottom-center" offset={88} client:load />
+  <Toaster
+    position="bottom-left"
+    offset={{
+      bottom: 88,
+      left: 12,
+    }}
+    mobileOffset={{
+      bottom: 88,
+      left: 12,
+    }}
+    client:load
+  />
 </Layout>
