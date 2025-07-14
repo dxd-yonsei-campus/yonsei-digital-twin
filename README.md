@@ -1,6 +1,11 @@
 # Yonsei Digital Twin
 
-Yonsei Digital Twin is built using [Astro](https://astro.build/), [Mapbox GL JS](https://www.mapbox.com/mapbox-gljs) and React.
+Yonsei Digital Twin is built using [Astro](https://astro.build/), [Mapbox GL JS](https://www.mapbox.com/mapbox-gljs) and [React](https://react.dev/).
+
+## Prerequisites
+
+- [Node.js v22.0.0 or higher](https://nodejs.org/)
+- [pnpm v10](https://pnpm.io/)
 
 ## Getting Started
 
@@ -24,3 +29,25 @@ npx gltfpack -i rhino.gltf -o rhino-output.gltf -cc
 npm install -g gltfpack
 gltfpack -i rhino.gltf -o rhino-output.gltf -cc
 ```
+
+## Updating Building Data
+
+The data for each building can be found in `src/data/buildings/`. Each campus is stored as a separate `JSON` file. The accepted keys are described below. Keys in **_bold italics_** are required.
+
+| Key                  | Data Type          | Description                                                                                |
+| -------------------- | ------------------ | ------------------------------------------------------------------------------------------ |
+| **_id_**             | `string`, `number` | Unique id for the building. Corresponds to the OSM id (if available).                      |
+| **_name_**           | `string`           | Name of the building in Korean.                                                            |
+| **_name_en_**        | `string`           | Name of the building in English.                                                           |
+| address              | `string`           | Address of the building in English.                                                        |
+| **_latitude_**       | `number`           | Latitude of the building, used to position the camera upon search.                         |
+| **_longitude_**      | `number`           | Longitude of the building, used to position the camera upon search.                        |
+| extrusionOffset      | `number`           | Height above ground level (in meters) where the building begins.                           |
+| height               | `number`           | Height of the building.                                                                    |
+| geometry             | `object`           | Specifies the `type` (e.g. polygon) and `coordinates` i.e. bounding box for the building   |
+| floor_level          | `number`           | The number of floors for the building.                                                     |
+| approval_date        | `date`             | A date when the building was approved in the `YYYY-MM-DD` format. `YYYY` is also accepted. |
+| construction_type    | `string`           | Construction type in Korean.                                                               |
+| construction_type_en | `string`           | Construction type in English.                                                              |
+| total_floor_area     | `number`           | Total floor area in square metres.                                                         |
+| total_building_area  | `number`           | Total building area in square metres.                                                      |
