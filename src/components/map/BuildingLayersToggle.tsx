@@ -45,7 +45,7 @@ const BuildingLayerToggle = ({ lang }: BuildingLayerToggleProps) => {
       <DropdownMenu>
         <DropdownMenuTrigger className="flex lg:hidden" asChild>
           <Button variant="outline">
-            Models
+            {t('models')}
             <ChevronUp className="hidden xs:block" />
           </Button>
         </DropdownMenuTrigger>

@@ -85,6 +85,13 @@ const t = useTranslations(lang);
     import type { BuildingLayerType } from '@/types/map';
     import { createCustomLayer } from '@/lib/modelUtils';
     import { toast } from 'sonner';
+    import { useTranslations } from '@/i18n/utils';
+
+    const lang =
+      document.querySelector('html')?.getAttribute('lang') === 'ko'
+        ? 'ko'
+        : 'en';
+    const t = useTranslations(lang);
 
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
@@ -98,10 +105,7 @@ const t = useTranslations(lang);
       logoPosition: 'top-right',
       minZoom: 14,
       maxZoom: 18,
-      language:
-        document.querySelector('html')?.getAttribute('lang') === 'ko'
-          ? 'ko'
-          : 'en',
+      language: lang,
       ...initialCamera,
     });
 
@@ -312,7 +316,7 @@ const t = useTranslations(lang);
 
     buildingLayer.listen((layer) => {
       if (!layer) {
-        toast.warning('No building model selected.', {
+        toast.warning(t('notify.no_model'), {
           duration: Infinity,
           id: 'no-model',
           dismissible: false,

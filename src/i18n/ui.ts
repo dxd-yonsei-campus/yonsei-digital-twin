@@ -27,6 +27,8 @@ export const ui = {
     'building.total_building_area': 'Total Building Area',
     osm: 'OSM',
     'rhino-simple': 'Rhino (Simple)',
+    models: 'Models',
+    'notify.no_model': 'No building model selected.',
   },
   ko: {
     'site.title': '연세 디지털 트윈',
@@ -48,5 +50,7 @@ export const ui = {
     'building.total_floor_area': '연면적',
     'building.total_building_area': '건축면적',
     'rhino-simple': 'Rhino (단순한)',
+    models: '건물 모델들',
+    'notify.no_model': '선택된 건물 모델이 없습니다.',
   },
 } as const;
