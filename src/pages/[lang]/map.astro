@@ -14,6 +14,7 @@ export function getStaticPaths() {
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import LanguagePicker from '@/components/map/LanguagePicker.astro';
 import ThemePicker from '@/components/ThemePicker';
+import { Toaster } from '@/components/ui/sonner';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -83,6 +84,7 @@ const t = useTranslations(lang);
     } from '@/lib/mapApi';
     import type { BuildingLayerType } from '@/types/map';
     import { createCustomLayer } from '@/lib/modelUtils';
+    import { toast } from 'sonner';
 
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
 
@@ -309,7 +311,17 @@ const t = useTranslations(lang);
     });
 
     buildingLayer.listen((layer) => {
+      if (!layer) {
+        toast.warning('No building model selected.', {
+          duration: Infinity,
+          id: 'no-model',
+        });
+      } else {
+        toast.dismiss('no-model');
+      }
+
       setBuildingLayer(layer);
     });
   </script>
+  <Toaster position="bottom-center" offset={88} client:load />
 </Layout>
