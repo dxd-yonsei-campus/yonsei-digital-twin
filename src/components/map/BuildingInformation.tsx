@@ -20,6 +20,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { ChevronDown } from 'lucide-react';
+import { Button } from '../ui/button';
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from '../ui/collapsible';
 const imageAssets = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/**/*.{jpeg,jpg,png,gif}',
 );
@@ -91,108 +98,118 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
         onEscapeKeyDown={() => selectedId.set('')}
         onCloseClick={() => selectedId.set('')}
       >
-        <DialogHeader className="mb-1 text-left">
-          {campusName && (
-            <Badge variant="outline">{t(`${campusName}_long`)}</Badge>
-          )}
-          <DialogTitle>
-            {lang === 'en' ? displayBuilding.name_en : displayBuilding.name}
-          </DialogTitle>
-          <div className="-mt-1 text-sm text-muted-foreground">
-            {lang === 'en' ? displayBuilding.name : displayBuilding.name_en}
-          </div>
-          <DialogDescription className="sr-only">
-            Information about {displayBuilding.name_en}
-            {lang === 'en' ? (
-              <>Information about {displayBuilding.name_en}</>
-            ) : (
-              <>에 대한 정보 {displayBuilding.name}</>
+        <Collapsible defaultOpen={true}>
+          <DialogHeader className="mb-1 text-left">
+            {campusName && (
+              <Badge variant="outline">{t(`${campusName}_long`)}</Badge>
             )}
-          </DialogDescription>
-        </DialogHeader>
-        {resolvedImages.length > 0 && (
-          <Carousel className="aspect-video w-full overflow-hidden rounded-xs">
-            <CarouselContent>
-              {resolvedImages.map(({ src }, idx) => (
-                <CarouselItem key={src + idx}>
-                  <img
-                    className="aspect-video object-cover"
-                    src={src}
-                    alt={displayBuilding.name + ' image ' + (idx + 1)}
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious
-              variant="secondary"
-              className="top-[unset] bottom-1.5 left-1.5 size-7 translate-y-0"
-            />
-            <CarouselNext
-              variant="secondary"
-              className="top-[unset] bottom-1.5 left-9.5 size-7 translate-y-0"
-            />
-          </Carousel>
-        )}
-        {displayBuilding.approval_date && (
-          <div>
-            <h2 className="text-sm font-semibold">
-              {t('building.approval_date')}
-            </h2>
-            <div>
-              {hasApprovalYearOnly
-                ? approvalDate.getFullYear()
-                : approvalDate.toLocaleDateString()}
+            <DialogTitle>
+              {lang === 'en' ? displayBuilding.name_en : displayBuilding.name}
+            </DialogTitle>
+            <div className="-mt-1 text-sm text-muted-foreground">
+              {lang === 'en' ? displayBuilding.name : displayBuilding.name_en}
             </div>
-          </div>
-        )}
-        {displayBuilding.floor_level && (
-          <div>
-            <h2 className="text-sm font-semibold">
-              {t('building.floor_level')}
-            </h2>
-            <div>{displayBuilding.floor_level}</div>
-          </div>
-        )}
-        {displayBuilding.construction_type &&
-          displayBuilding.construction_type_en && (
-            <div>
-              <h2 className="text-sm font-semibold">
-                {t('building.construction_type')}
-              </h2>
-              <div className="align-middle">
-                {lang === 'en'
-                  ? displayBuilding.construction_type_en
-                  : displayBuilding.construction_type}{' '}
-                <span className="text-sm text-muted-foreground">
-                  (
-                  {lang === 'ko'
-                    ? displayBuilding.construction_type_en
-                    : displayBuilding.construction_type}
-                  )
-                </span>
+            <DialogDescription className="sr-only">
+              Information about {displayBuilding.name_en}
+              {lang === 'en' ? (
+                <>Information about {displayBuilding.name_en}</>
+              ) : (
+                <>에 대한 정보 {displayBuilding.name}</>
+              )}
+            </DialogDescription>
+            <CollapsibleTrigger asChild>
+              <Button variant="ghost" size="icon" className="size-8">
+                <ChevronDown />
+                <span className="sr-only">Toggle</span>
+              </Button>
+            </CollapsibleTrigger>
+          </DialogHeader>
+          <CollapsibleContent className="space-y-4">
+            {resolvedImages.length > 0 && (
+              <Carousel className="aspect-video w-full overflow-hidden rounded-xs">
+                <CarouselContent>
+                  {resolvedImages.map(({ src }, idx) => (
+                    <CarouselItem key={src + idx}>
+                      <img
+                        className="aspect-video object-cover"
+                        src={src}
+                        alt={displayBuilding.name + ' image ' + (idx + 1)}
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious
+                  variant="secondary"
+                  className="top-[unset] bottom-1.5 left-1.5 size-7 translate-y-0"
+                />
+                <CarouselNext
+                  variant="secondary"
+                  className="top-[unset] bottom-1.5 left-9.5 size-7 translate-y-0"
+                />
+              </Carousel>
+            )}
+            {displayBuilding.approval_date && (
+              <div>
+                <h2 className="text-sm font-semibold">
+                  {t('building.approval_date')}
+                </h2>
+                <div>
+                  {hasApprovalYearOnly
+                    ? approvalDate.getFullYear()
+                    : approvalDate.toLocaleDateString()}
+                </div>
               </div>
-            </div>
-          )}
-        {displayBuilding.total_floor_area && (
-          <div>
-            <h2 className="text-sm font-semibold">
-              {t('building.total_floor_area')}
-            </h2>
-            <div>
-              {displayBuilding.total_floor_area} m<sup>2</sup>
-            </div>
-          </div>
-        )}
-        {displayBuilding.total_building_area && (
-          <div>
-            <h2 className="text-sm font-semibold">
-              {t('building.total_building_area')}
-            </h2>
-            <div>
-              {displayBuilding.total_building_area} m<sup>2</sup>
-            </div>
-          </div>
-        )}
+            )}
+            {displayBuilding.floor_level && (
+              <div>
+                <h2 className="text-sm font-semibold">
+                  {t('building.floor_level')}
+                </h2>
+                <div>{displayBuilding.floor_level}</div>
+              </div>
+            )}
+            {displayBuilding.construction_type &&
+              displayBuilding.construction_type_en && (
+                <div>
+                  <h2 className="text-sm font-semibold">
+                    {t('building.construction_type')}
+                  </h2>
+                  <div className="align-middle">
+                    {lang === 'en'
+                      ? displayBuilding.construction_type_en
+                      : displayBuilding.construction_type}{' '}
+                    <span className="text-sm text-muted-foreground">
+                      (
+                      {lang === 'ko'
+                        ? displayBuilding.construction_type_en
+                        : displayBuilding.construction_type}
+                      )
+                    </span>
+                  </div>
+                </div>
+              )}
+            {displayBuilding.total_floor_area && (
+              <div>
+                <h2 className="text-sm font-semibold">
+                  {t('building.total_floor_area')}
+                </h2>
+                <div>
+                  {displayBuilding.total_floor_area} m<sup>2</sup>
+                </div>
+              </div>
+            )}
+            {displayBuilding.total_building_area && (
+              <div>
+                <h2 className="text-sm font-semibold">
+                  {t('building.total_building_area')}
+                </h2>
+                <div>
+                  {displayBuilding.total_building_area} m<sup>2</sup>
+                </div>
+              </div>
+            )}
+          </CollapsibleContent>
+        </Collapsible>
       </DialogContent>
     </Dialog>
   );
