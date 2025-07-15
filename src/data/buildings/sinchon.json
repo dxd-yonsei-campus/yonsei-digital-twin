@@ -1444,10 +1444,6 @@
         ]
       ]
     },
-    "images": [
-      "/src/assets/central-library/Central Library Image 1.jpg",
-      "/src/assets/central-library/Central Library Image 2.jpg"
-    ],
     "approval_date": "1979-04-18",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
