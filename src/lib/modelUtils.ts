@@ -67,6 +67,14 @@ export const createCustomLayer = ({
   const loader = new GLTFLoader();
   loader.setMeshoptDecoder(MeshoptDecoder); // Required for gltfpack models
   loader.load(modelUrl, (gltf) => {
+    gltf.scene.traverse((child) => {
+      if (child instanceof THREE.Mesh && child.material) {
+        const material = child.material;
+        if (material.opacity < 1) {
+          material.transparent = true;
+        }
+      }
+    });
     scene.add(gltf.scene);
   });
 
