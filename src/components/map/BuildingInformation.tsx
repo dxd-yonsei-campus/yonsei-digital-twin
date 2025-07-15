@@ -136,14 +136,14 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
               </Button>
             </CollapsibleTrigger>
           </DialogHeader>
-          <CollapsibleContent className="space-y-4">
+          <CollapsibleContent className="max-h-[62vh] space-y-4 overflow-scroll">
             {resolvedImages.length > 0 && (
               <Carousel className="aspect-video w-full overflow-hidden rounded-xs">
                 <CarouselContent>
                   {resolvedImages.map(({ src }, idx) => (
                     <CarouselItem key={src + idx}>
                       <img
-                        className="aspect-video object-cover"
+                        className="aspect-video object-contain"
                         src={src}
                         alt={displayBuilding.name + ' image ' + (idx + 1)}
                       />
