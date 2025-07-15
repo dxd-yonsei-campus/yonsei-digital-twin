@@ -21,7 +21,6 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { ChevronDown } from 'lucide-react';
-import { Button } from '../ui/button';
 import {
   Collapsible,
   CollapsibleTrigger,
@@ -101,16 +100,18 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
         onCloseClick={() => selectedId.set('')}
       >
         <Collapsible open={showDetails} onOpenChange={setShowDetails}>
-          <DialogHeader className="mb-1 text-left">
+          <DialogHeader className="text-left">
             {campusName && (
               <Badge variant="outline">{t(`${campusName}_long`)}</Badge>
             )}
             <DialogTitle>
               {lang === 'en' ? displayBuilding.name_en : displayBuilding.name}
             </DialogTitle>
-            <div className="-mt-1 text-sm text-muted-foreground">
-              {lang === 'en' ? displayBuilding.name : displayBuilding.name_en}
-            </div>
+            <CollapsibleContent>
+              <div className="-mt-1 text-sm text-muted-foreground">
+                {lang === 'en' ? displayBuilding.name : displayBuilding.name_en}
+              </div>
+            </CollapsibleContent>
             <DialogDescription className="sr-only">
               Information about {displayBuilding.name_en}
               {lang === 'en' ? (
@@ -119,24 +120,8 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
                 <>에 대한 정보 {displayBuilding.name}</>
               )}
             </DialogDescription>
-            <CollapsibleTrigger asChild>
-              <Button
-                size="sm"
-                variant="outline"
-                className="mb-1 h-7 gap-1 text-xs shadow-none"
-              >
-                <span>{showDetails ? 'Hide' : 'Show'} Details</span>
-                <ChevronDown
-                  className={cn(
-                    'size-3.5 transition-transform duration-300 ease-in-out',
-                    showDetails ? '-rotate-180' : 'rotate-0',
-                  )}
-                />
-                <span className="sr-only">Toggle</span>
-              </Button>
-            </CollapsibleTrigger>
           </DialogHeader>
-          <CollapsibleContent className="max-h-[62vh] space-y-4 overflow-scroll">
+          <CollapsibleContent className="max-h-[62vh] space-y-4 overflow-scroll [&>:first-child]:pt-5">
             {resolvedImages.length > 0 && (
               <Carousel className="aspect-video w-full overflow-hidden rounded-xs">
                 <CarouselContent>
@@ -221,6 +206,17 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
               </div>
             )}
           </CollapsibleContent>
+          <CollapsibleTrigger asChild>
+            <button className="absolute top-4 right-11 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4.5">
+              <ChevronDown
+                className={cn(
+                  'transition-transform duration-300 ease-in-out',
+                  showDetails ? '-rotate-180' : 'rotate-0',
+                )}
+              />
+              <span className="sr-only">Toggle</span>
+            </button>
+          </CollapsibleTrigger>
         </Collapsible>
       </DialogContent>
     </Dialog>
