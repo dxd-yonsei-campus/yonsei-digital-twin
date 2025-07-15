@@ -211,7 +211,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
               <ChevronDown
                 className={cn(
                   'transition-transform duration-300 ease-in-out',
-                  showDetails ? '-rotate-180' : 'rotate-0',
+                  showDetails ? 'rotate-0' : '-rotate-180',
                 )}
               />
               <span className="sr-only">Toggle</span>
