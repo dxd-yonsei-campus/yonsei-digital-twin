@@ -94,7 +94,10 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
   return (
     <Dialog modal={false} open={!!$selectedId}>
       <DialogContent
-        className="top-12 left-4 w-full translate-x-0 translate-y-0 p-6 sm:w-108"
+        className={cn(
+          'top-12 left-4 w-full translate-x-0 translate-y-0 p-6 sm:w-108',
+          !showDetails && 'w-92 sm:w-92',
+        )}
         onPointerDownOutside={(e) => e.preventDefault()}
         onEscapeKeyDown={() => selectedId.set('')}
         onCloseClick={() => selectedId.set('')}
@@ -211,7 +214,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
               <ChevronDown
                 className={cn(
                   'transition-transform duration-300 ease-in-out',
-                  showDetails ? 'rotate-0' : '-rotate-180',
+                  showDetails ? '-rotate-180' : 'rotate-0',
                 )}
               />
               <span className="sr-only">Toggle</span>
