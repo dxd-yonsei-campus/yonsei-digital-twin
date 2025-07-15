@@ -25,7 +25,7 @@ import {
   Collapsible,
   CollapsibleTrigger,
   CollapsibleContent,
-} from '../ui/collapsible';
+} from '@/components/ui/collapsible';
 import { cn } from '@/lib/utils';
 const imageAssets = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/**/*.{jpeg,jpg,png,gif}',

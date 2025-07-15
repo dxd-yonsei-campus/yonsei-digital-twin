@@ -9,7 +9,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
 import { ChevronUp } from 'lucide-react';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
