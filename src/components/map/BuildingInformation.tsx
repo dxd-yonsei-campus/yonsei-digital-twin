@@ -126,7 +126,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
           </DialogHeader>
           <CollapsibleContent className="max-h-[52vh] space-y-4 overflow-scroll [&>:first-child]:pt-5">
             {resolvedImages.length > 0 && (
-              <Carousel className="aspect-video w-full overflow-hidden rounded-xs">
+              <Carousel className="aspect-video w-full overflow-hidden rounded-xs [&>.carousel-actions]:opacity-35 hover:[&>.carousel-actions]:opacity-100">
                 <CarouselContent key={`images-${displayBuilding.id}`}>
                   {resolvedImages.map(({ src }, idx) => (
                     <CarouselItem key={src + idx}>
@@ -138,14 +138,16 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious
-                  variant="secondary"
-                  className="top-[unset] bottom-1.5 left-1.5 size-7 translate-y-0"
-                />
-                <CarouselNext
-                  variant="secondary"
-                  className="top-[unset] bottom-1.5 left-9.5 size-7 translate-y-0"
-                />
+                <div className="carousel-actions transition-opacity duration-200">
+                  <CarouselPrevious
+                    variant="secondary"
+                    className="top-[unset] bottom-1.5 left-1.5 size-7 translate-y-0"
+                  />
+                  <CarouselNext
+                    variant="secondary"
+                    className="top-[unset] bottom-1.5 left-9.5 size-7 translate-y-0"
+                  />
+                </div>
               </Carousel>
             )}
             {displayBuilding.approval_date && (
