@@ -115,6 +115,7 @@ const SearchBar = ({ lang }: SearchBarProps) => {
         onOpenChange={setOpen}
       >
         <CommandInput
+          autoFocus
           placeholder={t('search.placeholder')}
           value={search}
           onValueChange={handleSearch}

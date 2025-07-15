@@ -990,6 +990,7 @@
         ]
       ]
     },
+    "images": ["/src/assets/engineering-hall-1/engineering-hall-1.jpg"],
     "approval_date": "1972-02-29",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -1479,6 +1480,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/yonsei-samsung-library/yonsei-samsung-library-1.png",
+      "/src/assets/yonsei-samsung-library/yonsei-samsung-library-2.png"
+    ],
     "approval_date": "2012-05-15",
     "floor_level": 7,
     "construction_type": "철골철근콘크리트구조",
@@ -1538,6 +1543,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/sports-science-complex/sports-science-complex-1.png",
+      "/src/assets/sports-science-complex/sports-science-complex-2.png"
+    ],
     "approval_date": "2012-03-05",
     "floor_level": 3,
     "construction_type": "철골철근콘크리트구조",
@@ -2149,6 +2158,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/stimson-hall/stimson-hall-1.jpg",
+      "/src/assets/stimson-hall/stimson-hall-2.jpg"
+    ],
     "approval_date": "1968-07-01",
     "floor_level": 2,
     "construction_type": "석구조",
