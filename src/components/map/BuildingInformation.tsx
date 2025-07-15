@@ -95,7 +95,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
   return (
     <Dialog modal={false} open={!!$selectedId}>
       <DialogContent
-        className="top-12 left-4 w-full translate-x-0 translate-y-0 p-7 sm:w-108"
+        className="top-12 left-4 w-full translate-x-0 translate-y-0 p-6 sm:w-108"
         onPointerDownOutside={(e) => e.preventDefault()}
         onEscapeKeyDown={() => selectedId.set('')}
         onCloseClick={() => selectedId.set('')}
