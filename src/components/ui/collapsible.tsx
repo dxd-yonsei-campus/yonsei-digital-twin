@@ -24,6 +24,11 @@ function CollapsibleContent({
 }: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleContent>) {
   return (
     <CollapsiblePrimitive.CollapsibleContent
+      style={
+        {
+          '--element-height': 'var(--radix-collapsible-content-height)',
+        } as React.CSSProperties
+      }
       className={cn(
         'overflow-hidden data-[state=closed]:animate-[slideUp_200ms_ease-out] data-[state=open]:animate-[slideDown_200ms_ease-out]',
         className,

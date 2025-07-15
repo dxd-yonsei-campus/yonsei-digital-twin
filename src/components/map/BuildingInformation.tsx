@@ -21,12 +21,11 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { ChevronDown } from 'lucide-react';
-import { Button } from '../ui/button';
 import {
   Collapsible,
   CollapsibleTrigger,
   CollapsibleContent,
-} from '../ui/collapsible';
+} from '@/components/ui/collapsible';
 import { cn } from '@/lib/utils';
 const imageAssets = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/**/*.{jpeg,jpg,png,gif}',
@@ -95,22 +94,27 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
   return (
     <Dialog modal={false} open={!!$selectedId}>
       <DialogContent
-        className="top-12 left-4 w-full translate-x-0 translate-y-0 p-6 sm:w-108"
+        className={cn(
+          'top-12 left-4 w-full translate-x-0 translate-y-0 p-6 sm:w-108',
+          !showDetails && 'w-92 sm:w-92',
+        )}
         onPointerDownOutside={(e) => e.preventDefault()}
         onEscapeKeyDown={() => selectedId.set('')}
         onCloseClick={() => selectedId.set('')}
       >
         <Collapsible open={showDetails} onOpenChange={setShowDetails}>
-          <DialogHeader className="mb-1 text-left">
+          <DialogHeader className="text-left">
             {campusName && (
               <Badge variant="outline">{t(`${campusName}_long`)}</Badge>
             )}
             <DialogTitle>
               {lang === 'en' ? displayBuilding.name_en : displayBuilding.name}
             </DialogTitle>
-            <div className="-mt-1 text-sm text-muted-foreground">
-              {lang === 'en' ? displayBuilding.name : displayBuilding.name_en}
-            </div>
+            <CollapsibleContent>
+              <div className="-mt-1 text-sm text-muted-foreground">
+                {lang === 'en' ? displayBuilding.name : displayBuilding.name_en}
+              </div>
+            </CollapsibleContent>
             <DialogDescription className="sr-only">
               Information about {displayBuilding.name_en}
               {lang === 'en' ? (
@@ -119,31 +123,15 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
                 <>에 대한 정보 {displayBuilding.name}</>
               )}
             </DialogDescription>
-            <CollapsibleTrigger asChild>
-              <Button
-                size="sm"
-                variant="outline"
-                className="mb-1 h-7 gap-1 text-xs shadow-none"
-              >
-                <span>{showDetails ? 'Hide' : 'Show'} Details</span>
-                <ChevronDown
-                  className={cn(
-                    'size-3.5 transition-transform duration-300 ease-in-out',
-                    showDetails ? '-rotate-180' : 'rotate-0',
-                  )}
-                />
-                <span className="sr-only">Toggle</span>
-              </Button>
-            </CollapsibleTrigger>
           </DialogHeader>
-          <CollapsibleContent className="space-y-4">
+          <CollapsibleContent className="max-h-[62vh] space-y-4 overflow-scroll [&>:first-child]:pt-5">
             {resolvedImages.length > 0 && (
               <Carousel className="aspect-video w-full overflow-hidden rounded-xs">
                 <CarouselContent>
                   {resolvedImages.map(({ src }, idx) => (
                     <CarouselItem key={src + idx}>
                       <img
-                        className="aspect-video object-cover"
+                        className="aspect-video object-contain"
                         src={src}
                         alt={displayBuilding.name + ' image ' + (idx + 1)}
                       />
@@ -221,6 +209,17 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
               </div>
             )}
           </CollapsibleContent>
+          <CollapsibleTrigger asChild>
+            <button className="absolute top-4 right-11 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4.5">
+              <ChevronDown
+                className={cn(
+                  'transition-transform duration-300 ease-in-out',
+                  showDetails ? '-rotate-180' : 'rotate-0',
+                )}
+              />
+              <span className="sr-only">Toggle</span>
+            </button>
+          </CollapsibleTrigger>
         </Collapsible>
       </DialogContent>
     </Dialog>

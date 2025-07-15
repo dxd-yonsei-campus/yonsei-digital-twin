@@ -158,13 +158,13 @@
     height: 0;
   }
   to {
-    height: var(--radix-collapsible-content-height);
+    height: var(--element-height);
   }
 }
 
 @keyframes slideUp {
   from {
-    height: var(--radix-collapsible-content-height);
+    height: var(--element-height);
   }
   to {
     height: 0;
