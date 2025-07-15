@@ -124,7 +124,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
               )}
             </DialogDescription>
           </DialogHeader>
-          <CollapsibleContent className="max-h-[62vh] space-y-4 overflow-scroll [&>:first-child]:pt-5">
+          <CollapsibleContent className="max-h-[52vh] space-y-4 overflow-scroll [&>:first-child]:pt-5">
             {resolvedImages.length > 0 && (
               <Carousel className="aspect-video w-full overflow-hidden rounded-xs">
                 <CarouselContent key={`images-${displayBuilding.id}`}>
