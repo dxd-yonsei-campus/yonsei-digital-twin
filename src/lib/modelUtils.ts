@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import mapboxgl, { type Map, type CustomLayerInterface } from 'mapbox-gl';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
@@ -47,28 +48,27 @@ export const createCustomLayer = ({
 
   const camera = new THREE.Camera();
   const scene = new THREE.Scene();
+  const renderer = new THREE.WebGLRenderer({
+    canvas: map.getCanvas(),
+    context: map.painter.context.gl,
+    antialias: true,
+  });
+  renderer.autoClear = false;
 
-  const directionalLight1 = new THREE.DirectionalLight(0xffffff);
-  directionalLight1.position.set(0, -70, 100).normalize();
-  scene.add(directionalLight1);
-
-  const directionalLight2 = new THREE.DirectionalLight(0xffffff);
-  directionalLight2.position.set(0, 70, 100).normalize();
-  scene.add(directionalLight2);
+  // Lighting Setup
+  renderer.toneMapping = THREE.LinearToneMapping;
+  renderer.toneMappingExposure = Math.pow(2, -0.6); // reduce intensity of toneMapping
+  const pmremGenerator = new THREE.PMREMGenerator(renderer);
+  pmremGenerator.compileEquirectangularShader();
+  const roomEnvironment = new RoomEnvironment();
+  const envTexture = pmremGenerator.fromScene(roomEnvironment).texture;
+  scene.environment = envTexture;
 
   const loader = new GLTFLoader();
   loader.setMeshoptDecoder(MeshoptDecoder); // Required for gltfpack models
   loader.load(modelUrl, (gltf) => {
     scene.add(gltf.scene);
   });
-
-  const renderer = new THREE.WebGLRenderer({
-    canvas: map.getCanvas(),
-    context: map.painter.context.gl,
-    antialias: true,
-  });
-
-  renderer.autoClear = false;
 
   return {
     id: id,
