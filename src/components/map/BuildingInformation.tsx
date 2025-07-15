@@ -27,6 +27,7 @@ import {
   CollapsibleTrigger,
   CollapsibleContent,
 } from '../ui/collapsible';
+import { cn } from '@/lib/utils';
 const imageAssets = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/**/*.{jpeg,jpg,png,gif}',
 );
@@ -43,6 +44,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
     null,
   );
   const [resolvedImages, setResolvedImages] = useState<ImageMetadata[]>([]);
+  const [showDetails, setShowDetails] = useState(true);
   const t = useTranslations(lang);
 
   useEffect(() => {
@@ -98,7 +100,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
         onEscapeKeyDown={() => selectedId.set('')}
         onCloseClick={() => selectedId.set('')}
       >
-        <Collapsible defaultOpen={true}>
+        <Collapsible open={showDetails} onOpenChange={setShowDetails}>
           <DialogHeader className="mb-1 text-left">
             {campusName && (
               <Badge variant="outline">{t(`${campusName}_long`)}</Badge>
@@ -118,8 +120,18 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
               )}
             </DialogDescription>
             <CollapsibleTrigger asChild>
-              <Button variant="ghost" size="icon" className="size-8">
-                <ChevronDown />
+              <Button
+                size="sm"
+                variant="outline"
+                className="mb-1 h-7 gap-1 text-xs shadow-none"
+              >
+                <span>{showDetails ? 'Hide' : 'Show'} Details</span>
+                <ChevronDown
+                  className={cn(
+                    'size-3.5 transition-transform duration-300 ease-in-out',
+                    showDetails ? '-rotate-180' : 'rotate-0',
+                  )}
+                />
                 <span className="sr-only">Toggle</span>
               </Button>
             </CollapsibleTrigger>
