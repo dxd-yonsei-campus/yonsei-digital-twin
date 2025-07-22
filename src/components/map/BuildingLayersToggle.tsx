@@ -33,7 +33,7 @@ const BuildingLayerToggle = ({ lang }: BuildingLayerToggleProps) => {
         {buildingLayers.map((layer) => {
           return (
             <ToggleGroupItem<BuildingLayerType>
-              className="w-32"
+              className="w-36"
               value={layer}
               key={layer}
             >
@@ -49,7 +49,7 @@ const BuildingLayerToggle = ({ lang }: BuildingLayerToggleProps) => {
             <ChevronUp className="hidden xs:block" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="block w-38 lg:hidden">
+        <DropdownMenuContent align="end" className="block w-42 lg:hidden">
           <DropdownMenuRadioGroup
             value={$buildingLayer}
             onValueChange={(val) => {
