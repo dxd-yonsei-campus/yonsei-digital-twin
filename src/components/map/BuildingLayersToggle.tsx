@@ -33,7 +33,7 @@ const BuildingLayerToggle = ({ lang }: BuildingLayerToggleProps) => {
         {buildingLayers.map((layer) => {
           return (
             <ToggleGroupItem<BuildingLayerType>
-              className="w-32"
+              className="w-36"
               value={layer}
               key={layer}
             >
