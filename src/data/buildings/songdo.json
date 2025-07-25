@@ -103,6 +103,7 @@
     "name_en": "Wisdom Hall B",
     "latitude": 37.380701,
     "longitude": 126.670551,
+    "height": 10.5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -115,7 +116,11 @@
           [126.6704795, 37.3808233]
         ]
       ]
-    }
+    },
+    "floor_level": 3,
+    "approval_date": "2010-06-09",
+    "total_floor_area": 864.38,
+    "total_building_area": 288.13
   },
   {
     "id": 1098131937,
