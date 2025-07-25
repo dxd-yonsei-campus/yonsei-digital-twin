@@ -568,6 +568,7 @@
     "name_en": "Power Plant",
     "latitude": 37.380414,
     "longitude": 126.669327,
+    "height": 14,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -579,14 +580,20 @@
           [126.6693256, 37.3807261]
         ]
       ]
-    }
+    },
+    "floor_level": 4,
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 5785.2,
+    "total_building_area": 2564.4
   },
   {
     "id": 377645831,
-    "name": "저에너지환경실험주택",
-    "name_en": "Low-Energy Environment Experimental House",
+    "name": "저에너지친환경실험주택",
+    "name_en": "Low-Energy Environmentally Friendly Experiment House",
     "latitude": 37.380042,
     "longitude": 126.670025,
+    "height": 14,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -598,7 +605,10 @@
           [126.6698993, 37.37992]
         ]
       ]
-    }
+    },
+    "floor_level": 4,
+    "total_floor_area": 4027.16,
+    "total_building_area": 1006.79
   },
   {
     "id": 523772218,
