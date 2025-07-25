@@ -514,10 +514,11 @@
   },
   {
     "id": 479492300,
-    "name": "크리스틴 채플",
-    "name_en": "Christine Kang Chapel",
+    "name": "크리스틴채플",
+    "name_en": "Christine Chapel",
     "latitude": 37.381179,
     "longitude": 126.669814,
+    "height": 7,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -530,7 +531,10 @@
           [126.669622, 37.3811906]
         ]
       ]
-    }
+    },
+    "floor_level": 2,
+    "total_floor_area": 1518.82,
+    "total_building_area": 759.41
   },
   {
     "id": 377505233,
