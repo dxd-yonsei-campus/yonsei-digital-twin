@@ -1,7 +1,7 @@
 [
   {
     "id": 377561220,
-    "name": "언더우드 기념도서관",
+    "name": "언더우드기념도서관",
     "name_en": "Underwood Memorial Library",
     "latitude": 37.382344,
     "longitude": 126.671061,
@@ -18,7 +18,10 @@
           [126.6707315, 37.3823064]
         ]
       ]
-    }
+    },
+    "floor_level": 7,
+    "total_floor_area": 12366.12,
+    "total_building_area": 1766.59
   },
   {
     "id": "libertas-hall-a",
