@@ -542,6 +542,7 @@
     "name_en": "International Campus Memorial Hall",
     "latitude": 37.380862,
     "longitude": 126.668444,
+    "height": 14,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -553,7 +554,13 @@
           [126.6684586, 37.381005]
         ]
       ]
-    }
+    },
+    "floor_level": 4,
+    "approval_date": "2010-06-09",
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 1287.42,
+    "total_building_area": 371.11
   },
   {
     "id": 377645830,
