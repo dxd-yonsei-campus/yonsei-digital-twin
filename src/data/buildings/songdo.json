@@ -459,6 +459,7 @@
       ]
     },
     "floor_level": 4,
+    "approval_date": "2010-06-09",
     "total_floor_area": 15115.27,
     "total_building_area": 3778.82
   },
@@ -468,6 +469,7 @@
     "name_en": "Veritas Hall D",
     "latitude": 37.381236,
     "longitude": 126.671439,
+    "height": 14,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -479,7 +481,11 @@
           [126.6709684, 37.3813287]
         ]
       ]
-    }
+    },
+    "floor_level": 4,
+    "approval_date": "2010-06-09",
+    "total_floor_area": 12093.82,
+    "total_building_area": 3023.46
   },
   {
     "id": 478869586,
