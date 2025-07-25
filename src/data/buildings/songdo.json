@@ -128,6 +128,7 @@
     "name_en": "Wisdom Hall C",
     "latitude": 37.382294,
     "longitude": 126.673654,
+    "height": 3.5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -142,7 +143,10 @@
           [126.6734067, 37.3824043]
         ]
       ]
-    }
+    },
+    "floor_level": 1,
+    "total_floor_area": 372.79,
+    "total_building_area": 372.79
   },
   {
     "id": 377505228,
