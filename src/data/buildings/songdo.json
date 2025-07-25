@@ -445,6 +445,7 @@
     "name_en": "Veritas Hall C",
     "latitude": 37.381828,
     "longitude": 126.670389,
+    "height": 14,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -456,7 +457,10 @@
           [126.670041, 37.3819198]
         ]
       ]
-    }
+    },
+    "floor_level": 4,
+    "total_floor_area": 15115.27,
+    "total_building_area": 3778.82
   },
   {
     "id": 478869584,
