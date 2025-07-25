@@ -60,7 +60,11 @@
           [126.6688679, 37.3833972]
         ]
       ]
-    }
+    },
+    "floor_level": 6,
+    "approval_date": "2010-06-09",
+    "total_floor_area": 19483.12,
+    "total_building_area": 3247.19
   },
   {
     "id": 377561218,
