@@ -5,6 +5,7 @@
     "name_en": "Underwood Memorial Library",
     "latitude": 37.382344,
     "longitude": 126.671061,
+    "height": 24.5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -28,7 +29,12 @@
     "name": "자유관 A",
     "name_en": "Libertas Hall A",
     "latitude": 37.382675,
-    "longitude": 126.669179
+    "longitude": 126.669179,
+    "height": 21,
+    "floor_level": 6,
+    "approval_date": "2010-06-09",
+    "total_floor_area": 14802.73,
+    "total_building_area": 2467.12
   },
   {
     "id": 377561217,
@@ -36,6 +42,7 @@
     "name_en": "Libertas Hall B",
     "latitude": 37.383364,
     "longitude": 126.668102,
+    "height": 21,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
