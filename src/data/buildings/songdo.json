@@ -422,6 +422,7 @@
     "name_en": "Veritas Hall B",
     "latitude": 37.382897,
     "longitude": 126.671625,
+    "height": 14,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -433,7 +434,10 @@
           [126.6714257, 37.3832647]
         ]
       ]
-    }
+    },
+    "floor_level": 4,
+    "total_floor_area": 13819.59,
+    "total_building_area": 3454.9
   },
   {
     "id": 478869585,
