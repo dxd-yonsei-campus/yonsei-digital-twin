@@ -191,6 +191,7 @@
     "name_en": "Songdo Dormitory B",
     "latitude": 37.381849,
     "longitude": 126.667647,
+    "height": 7,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -206,7 +207,13 @@
           [126.6671692, 37.3820897]
         ]
       ]
-    }
+    },
+    "floor_level": 2,
+    "approval_date": "2010-06-09",
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 2964.36,
+    "total_building_area": 1482.18
   },
   {
     "id": 377505229,
