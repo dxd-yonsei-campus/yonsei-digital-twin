@@ -287,6 +287,7 @@
     "name_en": "Songdo Dormitory D",
     "latitude": 37.383372,
     "longitude": 126.672369,
+    "height": 21,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -298,7 +299,13 @@
           [126.6718234, 37.3836321]
         ]
       ]
-    }
+    },
+    "floor_level": 6,
+    "approval_date": "2010-06-09",
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 69102.06,
+    "total_building_area": 11517.01
   },
   {
     "id": 472542679,
@@ -306,6 +313,7 @@
     "name_en": "Songdo Dormitory E",
     "latitude": 37.384016,
     "longitude": 126.671759,
+    "height": 21,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -319,7 +327,13 @@
           [126.6714821, 37.3838383]
         ]
       ]
-    }
+    },
+    "floor_level": 6,
+    "approval_date": "2010-06-09",
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 69102.06,
+    "total_building_area": 11517.01
   },
   {
     "id": 1096876551,
@@ -327,6 +341,7 @@
     "name_en": "Songdo Dormitory F",
     "latitude": 37.38385,
     "longitude": 126.67257,
+    "height": 21,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -338,7 +353,13 @@
           [126.6723034, 37.3841581]
         ]
       ]
-    }
+    },
+    "floor_level": 6,
+    "approval_date": "2010-06-09",
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 69102.06,
+    "total_building_area": 11517.01
   },
   {
     "id": 318063115,
@@ -346,6 +367,7 @@
     "name_en": "Songdo Dormitory G",
     "latitude": 37.383083,
     "longitude": 126.673412,
+    "height": 21,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -359,7 +381,13 @@
           [126.6732098, 37.3835955]
         ]
       ]
-    }
+    },
+    "floor_level": 6,
+    "approval_date": "2010-06-09",
+    "construction_type": "철근콘크리트구조",
+    "construction_type_en": "Reinforced concrete",
+    "total_floor_area": 69102.06,
+    "total_building_area": 11517.01
   },
   {
     "id": 377561221,
