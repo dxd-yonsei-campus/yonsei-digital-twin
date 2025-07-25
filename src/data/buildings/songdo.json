@@ -616,6 +616,7 @@
     "name_en": "POSCO Green Building",
     "latitude": 37.379494,
     "longitude": 126.67065,
+    "height": 11.5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -631,7 +632,12 @@
           [126.6703716, 37.3795615]
         ]
       ]
-    }
+    },
+    "floor_level": 3,
+    "construction_type": "철골철근콘크리트구조",
+    "construction_type_en": "Steel reinforced concrete",
+    "total_floor_area": 5571.2,
+    "total_building_area": 1967.33
   },
   {
     "id": 1096167991,
