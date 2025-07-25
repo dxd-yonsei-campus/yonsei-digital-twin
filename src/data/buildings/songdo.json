@@ -493,6 +493,7 @@
     "name_en": "General Education Hall",
     "latitude": 37.382303,
     "longitude": 126.669769,
+    "height": 14,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -506,7 +507,10 @@
           [126.6699468, 37.3827389]
         ]
       ]
-    }
+    },
+    "floor_level": 4,
+    "total_floor_area": 12675.36,
+    "total_building_area": 3168.84
   },
   {
     "id": 479492300,
