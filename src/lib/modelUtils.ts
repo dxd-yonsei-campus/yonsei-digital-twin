@@ -14,6 +14,7 @@ type CustomLayerProps = {
   rotateX?: number;
   rotateY?: number;
   rotateZ?: number;
+  scale?: number;
 };
 
 export const createCustomLayer = ({
@@ -26,6 +27,7 @@ export const createCustomLayer = ({
   rotateX = 0,
   rotateY = 0,
   rotateZ = 0,
+  scale = 1,
 }: CustomLayerProps): CustomLayerInterface => {
   const origin: [number, number] = [longitude, latitude];
   const modelAsMercatorCoordinate = mapboxgl.MercatorCoordinate.fromLngLat(
@@ -43,7 +45,7 @@ export const createCustomLayer = ({
     /* Since the 3D model is in real world meters, a scale transform needs to be
      * applied since the CustomLayerInterface expects units in MercatorCoordinates.
      */
-    scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits(),
+    scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits() * scale,
   };
 
   const camera = new THREE.Camera();
