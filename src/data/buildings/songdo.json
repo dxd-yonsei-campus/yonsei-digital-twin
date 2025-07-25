@@ -395,6 +395,7 @@
     "name_en": "Veritas Hall A",
     "latitude": 37.383315,
     "longitude": 126.670776,
+    "height": 17.5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -410,7 +411,10 @@
           [126.6703568, 37.3832058]
         ]
       ]
-    }
+    },
+    "floor_level": 5,
+    "total_floor_area": 14339.67,
+    "total_building_area": 2867.93
   },
   {
     "id": 377561222,
