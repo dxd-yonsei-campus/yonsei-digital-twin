@@ -270,6 +270,7 @@
     "name_en": "Bridge from Songdo Dormitory B to Songdo Dormitory C",
     "latitude": 37.381608,
     "longitude": 126.667554,
+    "height": 3.5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -281,7 +282,8 @@
           [126.6675682, 37.3818351]
         ]
       ]
-    }
+    },
+    "extrusionOffset": 14
   },
   {
     "id": 478869582,
