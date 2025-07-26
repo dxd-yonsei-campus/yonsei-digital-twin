@@ -642,24 +642,5 @@
     "construction_type_en": "Steel reinforced concrete",
     "total_floor_area": 5571.2,
     "total_building_area": 1967.33
-  },
-  {
-    "id": 1096167991,
-    "name": "에스엘바이젠산학협력관",
-    "name_en": "SL Weizen Industry-Academia Cooperation Building",
-    "latitude": 37.380871,
-    "longitude": 126.67213,
-    "geometry": {
-      "type": "Polygon",
-      "coordinates": [
-        [
-          [126.671736, 37.380851],
-          [126.6720107, 37.380692],
-          [126.6724491, 37.3811705],
-          [126.6721878, 37.3813243],
-          [126.671736, 37.380851]
-        ]
-      ]
-    }
   }
 ]
