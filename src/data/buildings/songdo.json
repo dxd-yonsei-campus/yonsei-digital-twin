@@ -154,7 +154,7 @@
     "name_en": "Songdo Dormitory A",
     "latitude": 37.381976,
     "longitude": 126.66656,
-    "height": 3.5,
+    "height": 31.5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -178,11 +178,11 @@
         ]
       ]
     },
-    "floor_level": 1,
+    "floor_level": 9,
     "approval_date": "2010-06-09",
     "construction_type": "철근콘크리트구조",
     "construction_type_en": "Reinforced concrete",
-    "total_floor_area": 2782.29,
+    "total_floor_area": 25040.61,
     "total_building_area": 2782.29
   },
   {
@@ -191,7 +191,7 @@
     "name_en": "Songdo Dormitory B",
     "latitude": 37.381849,
     "longitude": 126.667647,
-    "height": 7,
+    "height": 28,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -208,11 +208,11 @@
         ]
       ]
     },
-    "floor_level": 2,
+    "floor_level": 8,
     "approval_date": "2010-06-09",
     "construction_type": "철근콘크리트구조",
     "construction_type_en": "Reinforced concrete",
-    "total_floor_area": 2964.36,
+    "total_floor_area": 11857.44,
     "total_building_area": 1482.18
   },
   {
@@ -249,6 +249,7 @@
     "name_en": "Bridge from Songdo Dormitory A to Songdo Dormitory B",
     "latitude": 37.381849,
     "longitude": 126.667148,
+    "height": 3.5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -260,7 +261,8 @@
           [126.6672388, 37.3820443]
         ]
       ]
-    }
+    },
+    "extrusionOffset": 21
   },
   {
     "id": 377505232,
@@ -268,6 +270,7 @@
     "name_en": "Bridge from Songdo Dormitory B to Songdo Dormitory C",
     "latitude": 37.381608,
     "longitude": 126.667554,
+    "height": 3.5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -279,7 +282,8 @@
           [126.6675682, 37.3818351]
         ]
       ]
-    }
+    },
+    "extrusionOffset": 14
   },
   {
     "id": 478869582,
@@ -638,24 +642,5 @@
     "construction_type_en": "Steel reinforced concrete",
     "total_floor_area": 5571.2,
     "total_building_area": 1967.33
-  },
-  {
-    "id": 1096167991,
-    "name": "에스엘바이젠산학협력관",
-    "name_en": "SL Weizen Industry-Academia Cooperation Building",
-    "latitude": 37.380871,
-    "longitude": 126.67213,
-    "geometry": {
-      "type": "Polygon",
-      "coordinates": [
-        [
-          [126.671736, 37.380851],
-          [126.6720107, 37.380692],
-          [126.6724491, 37.3811705],
-          [126.6721878, 37.3813243],
-          [126.671736, 37.380851]
-        ]
-      ]
-    }
   }
 ]
