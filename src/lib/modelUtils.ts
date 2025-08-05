@@ -88,6 +88,11 @@ export const createCustomLayer = ({
       // Add logic that runs on layer addition if necessary.
     },
     render: (gl, matrix) => {
+      const canvas = map.getCanvas();
+
+      // Trigger repaint to render the model with the correct aspect ratio
+      renderer.setSize(canvas.width, canvas.height, false);
+
       const rotationX = new THREE.Matrix4().makeRotationAxis(
         new THREE.Vector3(1, 0, 0),
         modelTransform.rotateX,

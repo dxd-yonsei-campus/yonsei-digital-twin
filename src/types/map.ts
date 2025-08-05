@@ -1,4 +1,4 @@
-export const buildingLayers = <const>['osm', 'rhino-simple'];
+export const buildingLayers = <const>['osm', 'rhino-simple', 'rhino-detailed'];
 
 export type BuildingLayerType = '' | (typeof buildingLayers)[number];
 
