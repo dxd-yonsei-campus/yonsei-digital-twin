@@ -113,7 +113,7 @@ export const getCameraForCampus = (campus: CampusName): EasingOptions => {
 
 export const flyToCampus = (campus: CampusName) => {
   const cameraSettings = getCameraForCampus(campus);
-  window.map.flyTo(cameraSettings);
+  window.map.jumpTo(cameraSettings);
 };
 
 export const updateSelectedCampus = (longitude: number, latitude: number) => {
