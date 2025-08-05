@@ -259,6 +259,17 @@ const t = useTranslations(lang);
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoSimpleSongdoLayer, labelLayerId);
+
+      const rhinoDetailedSinchon = createCustomLayer({
+        map: map,
+        longitude: 126.939304,
+        latitude: 37.566086,
+        modelUrl: '/models/rhino-detailed/sinchon.gltf',
+        id: 'rhino-detailed-sinchon',
+        altitude: 96,
+        rotateX: Math.PI / 2,
+      });
+      map.addLayer(rhinoDetailedSinchon, labelLayerId);
     });
 
     map.on('click', (e) => {
@@ -313,12 +324,19 @@ const t = useTranslations(lang);
       map.setLayoutProperty('selected-building', 'visibility', 'none');
       map.setLayoutProperty('rhino-simple-sinchon', 'visibility', 'none');
       map.setLayoutProperty('rhino-simple-songdo', 'visibility', 'none');
+      map.setLayoutProperty('rhino-detailed-sinchon', 'visibility', 'none');
       if (layer === 'osm') {
         map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
         map.setLayoutProperty('selected-building', 'visibility', 'visible');
       } else if (layer === 'rhino-simple') {
         map.setLayoutProperty('rhino-simple-sinchon', 'visibility', 'visible');
         map.setLayoutProperty('rhino-simple-songdo', 'visibility', 'visible');
+      } else if (layer === 'rhino-detailed') {
+        map.setLayoutProperty(
+          'rhino-detailed-sinchon',
+          'visibility',
+          'visible',
+        );
       }
     };
 
