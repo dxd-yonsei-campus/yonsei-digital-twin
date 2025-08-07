@@ -25,7 +25,10 @@ const ResetButtonGroup = ({ lang }: ResetButtonGroupProps) => {
 
   return (
     <ButtonGroup>
-      <Button variant="outline" onClick={() => flyToCampus($selectedCampus)}>
+      <Button
+        variant="outline"
+        onClick={() => flyToCampus($selectedCampus, true)}
+      >
         <HomeIcon />
         <span className="sr-only xs:not-sr-only">{t($selectedCampus)}</span>
       </Button>
