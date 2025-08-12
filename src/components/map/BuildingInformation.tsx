@@ -85,12 +85,6 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
 
   const campusName = getCampusForBuildingId(displayBuilding.id);
 
-  // If approval_date is a year only (e.g., "2023"), we want to display it as such.
-  const hasApprovalYearOnly = /^\d{4}$/.test(
-    displayBuilding.approval_date?.toString() || '',
-  );
-  const approvalDate = new Date(displayBuilding.approval_date || '');
-
   return (
     <Dialog modal={false} open={!!$selectedId}>
       <DialogContent
@@ -125,91 +119,11 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
             </DialogDescription>
           </DialogHeader>
           <CollapsibleContent className="max-h-[52vh] space-y-4 overflow-scroll [&>:first-child]:pt-5">
-            {resolvedImages.length > 0 && (
-              <Carousel className="aspect-video w-full overflow-hidden rounded-xs [&>.carousel-actions]:opacity-35 hover:[&>.carousel-actions]:opacity-100">
-                <CarouselContent key={`images-${displayBuilding.id}`}>
-                  {resolvedImages.map(({ src }, idx) => (
-                    <CarouselItem key={src + idx}>
-                      <img
-                        className="aspect-video object-contain"
-                        src={src}
-                        alt={displayBuilding.name + ' image ' + (idx + 1)}
-                      />
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <div className="carousel-actions transition-opacity duration-200">
-                  <CarouselPrevious
-                    variant="secondary"
-                    className="top-[unset] bottom-1.5 left-1.5 size-7 translate-y-0"
-                  />
-                  <CarouselNext
-                    variant="secondary"
-                    className="top-[unset] bottom-1.5 left-9.5 size-7 translate-y-0"
-                  />
-                </div>
-              </Carousel>
-            )}
-            {displayBuilding.approval_date && (
-              <div>
-                <h2 className="text-sm font-semibold">
-                  {t('building.approval_date')}
-                </h2>
-                <div>
-                  {hasApprovalYearOnly
-                    ? approvalDate.getFullYear()
-                    : approvalDate.toLocaleDateString()}
-                </div>
-              </div>
-            )}
-            {displayBuilding.floor_level && (
-              <div>
-                <h2 className="text-sm font-semibold">
-                  {t('building.floor_level')}
-                </h2>
-                <div>{displayBuilding.floor_level}</div>
-              </div>
-            )}
-            {displayBuilding.construction_type &&
-              displayBuilding.construction_type_en && (
-                <div>
-                  <h2 className="text-sm font-semibold">
-                    {t('building.construction_type')}
-                  </h2>
-                  <div className="align-middle">
-                    {lang === 'en'
-                      ? displayBuilding.construction_type_en
-                      : displayBuilding.construction_type}{' '}
-                    <span className="text-sm text-muted-foreground">
-                      (
-                      {lang === 'ko'
-                        ? displayBuilding.construction_type_en
-                        : displayBuilding.construction_type}
-                      )
-                    </span>
-                  </div>
-                </div>
-              )}
-            {displayBuilding.total_floor_area && (
-              <div>
-                <h2 className="text-sm font-semibold">
-                  {t('building.total_floor_area')}
-                </h2>
-                <div>
-                  {displayBuilding.total_floor_area} m<sup>2</sup>
-                </div>
-              </div>
-            )}
-            {displayBuilding.total_building_area && (
-              <div>
-                <h2 className="text-sm font-semibold">
-                  {t('building.total_building_area')}
-                </h2>
-                <div>
-                  {displayBuilding.total_building_area} m<sup>2</sup>
-                </div>
-              </div>
-            )}
+            <ConstructionInformation
+              lang={lang}
+              building={displayBuilding}
+              images={resolvedImages}
+            />
           </CollapsibleContent>
           <CollapsibleTrigger asChild>
             <button className="absolute top-4 right-11 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4.5">
@@ -229,3 +143,108 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
 };
 
 export default BuildingInformation;
+
+const ConstructionInformation = ({
+  lang,
+  images,
+  building,
+}: {
+  lang: keyof typeof ui;
+  images: ImageMetadata[];
+  building: BuildingProps;
+}) => {
+  const t = useTranslations(lang);
+
+  // If approval_date is a year only (e.g., "2023"), we want to display it as such.
+  const hasApprovalYearOnly = /^\d{4}$/.test(
+    building.approval_date?.toString() || '',
+  );
+  const approvalDate = new Date(building.approval_date || '');
+
+  return (
+    <>
+      {images.length > 0 && (
+        <Carousel className="aspect-video w-full overflow-hidden rounded-xs [&>.carousel-actions]:opacity-35 hover:[&>.carousel-actions]:opacity-100">
+          <CarouselContent key={`images-${building.id}`}>
+            {images.map(({ src }, idx) => (
+              <CarouselItem key={src + idx}>
+                <img
+                  className="aspect-video object-contain"
+                  src={src}
+                  alt={building.name + ' image ' + (idx + 1)}
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="carousel-actions transition-opacity duration-200">
+            <CarouselPrevious
+              variant="secondary"
+              className="top-[unset] bottom-1.5 left-1.5 size-7 translate-y-0"
+            />
+            <CarouselNext
+              variant="secondary"
+              className="top-[unset] bottom-1.5 left-9.5 size-7 translate-y-0"
+            />
+          </div>
+        </Carousel>
+      )}
+      {building.approval_date && (
+        <div>
+          <h2 className="text-sm font-semibold">
+            {t('building.approval_date')}
+          </h2>
+          <div>
+            {hasApprovalYearOnly
+              ? approvalDate.getFullYear()
+              : approvalDate.toLocaleDateString()}
+          </div>
+        </div>
+      )}
+      {building.floor_level && (
+        <div>
+          <h2 className="text-sm font-semibold">{t('building.floor_level')}</h2>
+          <div>{building.floor_level}</div>
+        </div>
+      )}
+      {building.construction_type && building.construction_type_en && (
+        <div>
+          <h2 className="text-sm font-semibold">
+            {t('building.construction_type')}
+          </h2>
+          <div className="align-middle">
+            {lang === 'en'
+              ? building.construction_type_en
+              : building.construction_type}{' '}
+            <span className="text-sm text-muted-foreground">
+              (
+              {lang === 'ko'
+                ? building.construction_type_en
+                : building.construction_type}
+              )
+            </span>
+          </div>
+        </div>
+      )}
+      {building.total_floor_area && (
+        <div>
+          <h2 className="text-sm font-semibold">
+            {t('building.total_floor_area')}
+          </h2>
+          <div>
+            {building.total_floor_area} m<sup>2</sup>
+          </div>
+        </div>
+      )}
+      {building.total_building_area && (
+        <div>
+          <h2 className="text-sm font-semibold">
+            {t('building.total_building_area')}
+          </h2>
+          <div>
+            {building.total_building_area} m<sup>2</sup>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
