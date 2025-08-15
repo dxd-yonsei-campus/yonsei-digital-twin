@@ -13,7 +13,12 @@ import { getAllBuildings, getCampusForBuildingId } from '@/lib/mapApi';
 import { Badge } from '@/components/ui/badge';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
-import { ChartContainer, type ChartConfig } from '@/components/ui/chart';
+import {
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  type ChartConfig,
+} from '@/components/ui/chart';
 import {
   Carousel,
   CarouselContent,
@@ -264,6 +269,9 @@ const EnergyChart = () => {
     { month: 'April', desktop: 73, mobile: 190 },
     { month: 'May', desktop: 209, mobile: 130 },
     { month: 'June', desktop: 214, mobile: 140 },
+    { month: 'July', desktop: 214, mobile: 140 },
+    { month: 'Aug', desktop: 284, mobile: 140 },
+    { month: 'Sep', desktop: 21, mobile: 10 },
   ];
 
   const chartConfig = {
@@ -278,9 +286,13 @@ const EnergyChart = () => {
   } satisfies ChartConfig;
 
   return (
-    <ChartContainer config={chartConfig} className="w-full">
+    <ChartContainer
+      config={chartConfig}
+      className="aspect-auto h-[300px] max-w-full"
+    >
       <BarChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
+        <ChartLegend content={<ChartLegendContent />} />
         <XAxis
           dataKey="month"
           tickLine={false}
@@ -294,8 +306,18 @@ const EnergyChart = () => {
           axisLine={false}
           tickFormatter={(value) => value.toString()}
         />
-        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-        <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+        <Bar
+          dataKey="desktop"
+          stackId="a"
+          fill="var(--color-desktop)"
+          radius={[0, 0, 4, 4]}
+        />
+        <Bar
+          dataKey="mobile"
+          stackId="a"
+          fill="var(--color-mobile)"
+          radius={[4, 4, 0, 0]}
+        />
       </BarChart>
     </ChartContainer>
   );
