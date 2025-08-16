@@ -22,9 +22,6 @@ import {
 import { cn } from '@/lib/utils';
 import ConstructionInformation from '@/components/map/building-info/ConstructionInformation';
 import EnergyChart from '@/components/map/building-info/EnergyChart';
-const imageAssets = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/**/*.{jpeg,jpg,png,gif}',
-);
 
 const allBuildings = getAllBuildings();
 
@@ -38,7 +35,6 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
   const [displayBuilding, setDisplayBuilding] = useState<BuildingProps | null>(
     null,
   );
-  const [resolvedImages, setResolvedImages] = useState<ImageMetadata[]>([]);
   const [showDetails, setShowDetails] = useState(true);
   const t = useTranslations(lang);
 
@@ -55,25 +51,6 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
       }
     }
   }, [$selectedId]);
-
-  // Resolve images when displayBuilding changes
-  useEffect(() => {
-    async function resolveImages() {
-      if (displayBuilding && displayBuilding.images) {
-        const imports = await Promise.all(
-          displayBuilding.images.map(async (imgPath) => {
-            const importer = imageAssets[imgPath];
-            const mod = await importer();
-            return mod.default;
-          }),
-        );
-        setResolvedImages(imports);
-      } else {
-        setResolvedImages([]);
-      }
-    }
-    resolveImages();
-  }, [displayBuilding]);
 
   if (!displayBuilding) {
     return null;
@@ -116,11 +93,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
           </DialogHeader>
           <CollapsibleContent className="max-h-[52vh] space-y-4 overflow-scroll [&>:first-child]:pt-5">
             {$buildingLayer !== 'rhino-simple' ? (
-              <ConstructionInformation
-                lang={lang}
-                building={displayBuilding}
-                images={resolvedImages}
-              />
+              <ConstructionInformation lang={lang} building={displayBuilding} />
             ) : (
               <EnergyChart />
             )}

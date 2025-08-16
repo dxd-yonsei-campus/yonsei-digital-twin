@@ -8,16 +8,40 @@ import {
 import type { BuildingProps } from '@/content.config';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
+import { useEffect, useState } from 'react';
+
+const imageAssets = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/**/*.{jpeg,jpg,png,gif}',
+);
 
 const ConstructionInformation = ({
   lang,
-  images,
   building,
 }: {
   lang: keyof typeof ui;
-  images: ImageMetadata[];
   building: BuildingProps;
 }) => {
+  const [images, setImages] = useState<ImageMetadata[]>([]);
+
+  // Resolve images when displayBuilding changes
+  useEffect(() => {
+    async function resolveImages() {
+      if (building && building.images) {
+        const imports = await Promise.all(
+          building.images.map(async (imgPath) => {
+            const importer = imageAssets[imgPath];
+            const mod = await importer();
+            return mod.default;
+          }),
+        );
+        setImages(imports);
+      } else {
+        setImages([]);
+      }
+    }
+    resolveImages();
+  }, [building]);
+
   const t = useTranslations(lang);
 
   // If approval_date is a year only (e.g., "2023"), we want to display it as such.
@@ -26,6 +50,7 @@ const ConstructionInformation = ({
   );
   const approvalDate = new Date(building.approval_date || '');
 
+  console.log(images.length);
   return (
     <>
       {images.length > 0 && (
