@@ -13,13 +13,6 @@ import { getAllBuildings, getCampusForBuildingId } from '@/lib/mapApi';
 import { Badge } from '@/components/ui/badge';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
 import { ChevronDown } from 'lucide-react';
 import {
   Collapsible,
@@ -27,9 +20,7 @@ import {
   CollapsibleContent,
 } from '@/components/ui/collapsible';
 import { cn } from '@/lib/utils';
-const imageAssets = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/**/*.{jpeg,jpg,png,gif}',
-);
+import ConstructionInformation from '@/components/map/building-info/ConstructionInformation';
 
 const allBuildings = getAllBuildings();
 
@@ -42,7 +33,6 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
   const [displayBuilding, setDisplayBuilding] = useState<BuildingProps | null>(
     null,
   );
-  const [resolvedImages, setResolvedImages] = useState<ImageMetadata[]>([]);
   const [showDetails, setShowDetails] = useState(true);
   const t = useTranslations(lang);
 
@@ -60,36 +50,11 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
     }
   }, [$selectedId]);
 
-  // Resolve images when displayBuilding changes
-  useEffect(() => {
-    async function resolveImages() {
-      if (displayBuilding && displayBuilding.images) {
-        const imports = await Promise.all(
-          displayBuilding.images.map(async (imgPath) => {
-            const importer = imageAssets[imgPath];
-            const mod = await importer();
-            return mod.default;
-          }),
-        );
-        setResolvedImages(imports);
-      } else {
-        setResolvedImages([]);
-      }
-    }
-    resolveImages();
-  }, [displayBuilding]);
-
   if (!displayBuilding) {
     return null;
   }
 
   const campusName = getCampusForBuildingId(displayBuilding.id);
-
-  // If approval_date is a year only (e.g., "2023"), we want to display it as such.
-  const hasApprovalYearOnly = /^\d{4}$/.test(
-    displayBuilding.approval_date?.toString() || '',
-  );
-  const approvalDate = new Date(displayBuilding.approval_date || '');
 
   return (
     <Dialog modal={false} open={!!$selectedId}>
@@ -125,91 +90,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
             </DialogDescription>
           </DialogHeader>
           <CollapsibleContent className="max-h-[52vh] space-y-4 overflow-scroll [&>:first-child]:pt-5">
-            {resolvedImages.length > 0 && (
-              <Carousel className="aspect-video w-full overflow-hidden rounded-xs [&>.carousel-actions]:opacity-35 hover:[&>.carousel-actions]:opacity-100">
-                <CarouselContent key={`images-${displayBuilding.id}`}>
-                  {resolvedImages.map(({ src }, idx) => (
-                    <CarouselItem key={src + idx}>
-                      <img
-                        className="aspect-video object-contain"
-                        src={src}
-                        alt={displayBuilding.name + ' image ' + (idx + 1)}
-                      />
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <div className="carousel-actions transition-opacity duration-200">
-                  <CarouselPrevious
-                    variant="secondary"
-                    className="top-[unset] bottom-1.5 left-1.5 size-7 translate-y-0"
-                  />
-                  <CarouselNext
-                    variant="secondary"
-                    className="top-[unset] bottom-1.5 left-9.5 size-7 translate-y-0"
-                  />
-                </div>
-              </Carousel>
-            )}
-            {displayBuilding.approval_date && (
-              <div>
-                <h2 className="text-sm font-semibold">
-                  {t('building.approval_date')}
-                </h2>
-                <div>
-                  {hasApprovalYearOnly
-                    ? approvalDate.getFullYear()
-                    : approvalDate.toLocaleDateString()}
-                </div>
-              </div>
-            )}
-            {displayBuilding.floor_level && (
-              <div>
-                <h2 className="text-sm font-semibold">
-                  {t('building.floor_level')}
-                </h2>
-                <div>{displayBuilding.floor_level}</div>
-              </div>
-            )}
-            {displayBuilding.construction_type &&
-              displayBuilding.construction_type_en && (
-                <div>
-                  <h2 className="text-sm font-semibold">
-                    {t('building.construction_type')}
-                  </h2>
-                  <div className="align-middle">
-                    {lang === 'en'
-                      ? displayBuilding.construction_type_en
-                      : displayBuilding.construction_type}{' '}
-                    <span className="text-sm text-muted-foreground">
-                      (
-                      {lang === 'ko'
-                        ? displayBuilding.construction_type_en
-                        : displayBuilding.construction_type}
-                      )
-                    </span>
-                  </div>
-                </div>
-              )}
-            {displayBuilding.total_floor_area && (
-              <div>
-                <h2 className="text-sm font-semibold">
-                  {t('building.total_floor_area')}
-                </h2>
-                <div>
-                  {displayBuilding.total_floor_area} m<sup>2</sup>
-                </div>
-              </div>
-            )}
-            {displayBuilding.total_building_area && (
-              <div>
-                <h2 className="text-sm font-semibold">
-                  {t('building.total_building_area')}
-                </h2>
-                <div>
-                  {displayBuilding.total_building_area} m<sup>2</sup>
-                </div>
-              </div>
-            )}
+            <ConstructionInformation lang={lang} building={displayBuilding} />
           </CollapsibleContent>
           <CollapsibleTrigger asChild>
             <button className="absolute top-4 right-11 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4.5">
