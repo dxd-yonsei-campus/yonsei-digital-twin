@@ -50,6 +50,7 @@ export const ui = {
     'building.construction_type': '주구조명',
     'building.total_floor_area': '연면적',
     'building.total_building_area': '건축면적',
+    osm: 'OSM',
     'rhino-simple': 'Rhino (단순한)',
     'rhino-detailed': 'Rhino (상세한)',
     models: '건물 모델들',
