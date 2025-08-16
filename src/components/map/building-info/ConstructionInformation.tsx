@@ -21,7 +21,7 @@ const ConstructionInformation = ({
   lang: keyof typeof ui;
   building: BuildingProps;
 }) => {
-  const [images, setImages] = useState<ImageMetadata[]>([]);
+  const [resolvedImages, setResolvedImages] = useState<ImageMetadata[]>([]);
 
   // Resolve images when displayBuilding changes
   useEffect(() => {
@@ -34,9 +34,9 @@ const ConstructionInformation = ({
             return mod.default;
           }),
         );
-        setImages(imports);
+        setResolvedImages(imports);
       } else {
-        setImages([]);
+        setResolvedImages([]);
       }
     }
     resolveImages();
@@ -50,13 +50,16 @@ const ConstructionInformation = ({
   );
   const approvalDate = new Date(building.approval_date || '');
 
-  console.log(images.length);
+  // building.images are used instead of resolvedImages
+  // to reserve space for the carousel.
+  const hasImages = (building.images?.length || 0) > 0;
+
   return (
     <>
-      {images.length > 0 && (
+      {hasImages && (
         <Carousel className="aspect-video w-full overflow-hidden rounded-xs [&>.carousel-actions]:opacity-35 hover:[&>.carousel-actions]:opacity-100">
           <CarouselContent key={`images-${building.id}`}>
-            {images.map(({ src }, idx) => (
+            {resolvedImages.map(({ src }, idx) => (
               <CarouselItem key={src + idx}>
                 <img
                   className="aspect-video object-contain"
