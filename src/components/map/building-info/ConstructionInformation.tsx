@@ -57,7 +57,7 @@ const ConstructionInformation = ({
   return (
     <>
       {hasImages && (
-        <Carousel className="aspect-video w-full overflow-hidden rounded-xs [&>.carousel-actions]:opacity-35 hover:[&>.carousel-actions]:opacity-100">
+        <Carousel className="aspect-video w-full overflow-hidden [&>.carousel-actions]:opacity-35 hover:[&>.carousel-actions]:opacity-100">
           <CarouselContent key={`images-${building.id}`}>
             {resolvedImages.map(({ src }, idx) => (
               <CarouselItem key={src + idx}>
