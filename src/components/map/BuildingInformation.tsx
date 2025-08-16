@@ -17,6 +17,8 @@ import {
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
   type ChartConfig,
 } from '@/components/ui/chart';
 import {
@@ -292,6 +294,7 @@ const EnergyChart = () => {
     >
       <BarChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
+        <ChartTooltip content={<ChartTooltipContent hideLabel />} />
         <ChartLegend content={<ChartLegendContent />} />
         <XAxis
           dataKey="month"
