@@ -21,13 +21,6 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from '@/components/ui/chart';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
 import { ChevronDown } from 'lucide-react';
 import {
   Collapsible,
@@ -36,6 +29,7 @@ import {
 } from '@/components/ui/collapsible';
 import { cn } from '@/lib/utils';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
+import ConstructionInformation from '@/components/map/building-info/ConstructionInformation';
 const imageAssets = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/**/*.{jpeg,jpg,png,gif}',
 );
@@ -157,111 +151,6 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
 };
 
 export default BuildingInformation;
-
-const ConstructionInformation = ({
-  lang,
-  images,
-  building,
-}: {
-  lang: keyof typeof ui;
-  images: ImageMetadata[];
-  building: BuildingProps;
-}) => {
-  const t = useTranslations(lang);
-
-  // If approval_date is a year only (e.g., "2023"), we want to display it as such.
-  const hasApprovalYearOnly = /^\d{4}$/.test(
-    building.approval_date?.toString() || '',
-  );
-  const approvalDate = new Date(building.approval_date || '');
-
-  return (
-    <>
-      {images.length > 0 && (
-        <Carousel className="aspect-video w-full overflow-hidden rounded-xs [&>.carousel-actions]:opacity-35 hover:[&>.carousel-actions]:opacity-100">
-          <CarouselContent key={`images-${building.id}`}>
-            {images.map(({ src }, idx) => (
-              <CarouselItem key={src + idx}>
-                <img
-                  className="aspect-video object-contain"
-                  src={src}
-                  alt={building.name + ' image ' + (idx + 1)}
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="carousel-actions transition-opacity duration-200">
-            <CarouselPrevious
-              variant="secondary"
-              className="top-[unset] bottom-1.5 left-1.5 size-7 translate-y-0"
-            />
-            <CarouselNext
-              variant="secondary"
-              className="top-[unset] bottom-1.5 left-9.5 size-7 translate-y-0"
-            />
-          </div>
-        </Carousel>
-      )}
-      {building.approval_date && (
-        <div>
-          <h2 className="text-sm font-semibold">
-            {t('building.approval_date')}
-          </h2>
-          <div>
-            {hasApprovalYearOnly
-              ? approvalDate.getFullYear()
-              : approvalDate.toLocaleDateString()}
-          </div>
-        </div>
-      )}
-      {building.floor_level && (
-        <div>
-          <h2 className="text-sm font-semibold">{t('building.floor_level')}</h2>
-          <div>{building.floor_level}</div>
-        </div>
-      )}
-      {building.construction_type && building.construction_type_en && (
-        <div>
-          <h2 className="text-sm font-semibold">
-            {t('building.construction_type')}
-          </h2>
-          <div className="align-middle">
-            {lang === 'en'
-              ? building.construction_type_en
-              : building.construction_type}{' '}
-            <span className="text-sm text-muted-foreground">
-              (
-              {lang === 'ko'
-                ? building.construction_type_en
-                : building.construction_type}
-              )
-            </span>
-          </div>
-        </div>
-      )}
-      {building.total_floor_area && (
-        <div>
-          <h2 className="text-sm font-semibold">
-            {t('building.total_floor_area')}
-          </h2>
-          <div>
-            {building.total_floor_area} m<sup>2</sup>
-          </div>
-        </div>
-      )}
-      {building.total_building_area && (
-        <div>
-          <h2 className="text-sm font-semibold">
-            {t('building.total_building_area')}
-          </h2>
-          <div>
-            {building.total_building_area} m<sup>2</sup>
-          </div>
-        </div>
-      )}
-    </>
-  );
-};
 
 const EnergyChart = () => {
   const chartData = [
