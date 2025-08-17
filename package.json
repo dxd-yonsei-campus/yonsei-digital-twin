@@ -16,7 +16,7 @@
     "@astrojs/react": "^4.3.0",
     "@astrojs/sitemap": "^3.5.0",
     "@leeoniya/ufuzzy": "^1.0.18",
-    "@nanostores/persistent": "^1.0.0",
+    "@nanostores/persistent": "^1.1.0",
     "@nanostores/react": "^1.0.0",
     "@tailwindcss/vite": "^4.1.6",
     "@types/react": "^19.1.10",
