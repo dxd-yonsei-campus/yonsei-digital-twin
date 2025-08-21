@@ -1293,6 +1293,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/201-centennial-hall/centennial-hall.jpg",
+      "/src/assets/201-centennial-hall/centennial-hall-thermal.png"
+    ],
     "approval_date": "1988-01-22",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
@@ -1320,6 +1324,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/202-gwanghyewon/gwanghyewon.jpg",
+      "/src/assets/202-gwanghyewon/gwanghyewon-thermal.png"
+    ],
     "approval_date": "1986-12-24",
     "floor_level": 1,
     "construction_type": "일반목구조",
@@ -1350,6 +1358,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/203-pavilion/pavilion.jpg",
+      "/src/assets/203-pavilion/pavilion-thermal.png"
+    ],
     "approval_date": "2002-02-02",
     "floor_level": 1,
     "construction_type": "일반목구조",
@@ -1384,6 +1396,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/207-student-union-building/student-union-building.jpg",
+      "/src/assets/207-student-union-building/student-union-building-thermal.png"
+    ],
     "approval_date": "1968-07-01",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
@@ -1424,6 +1440,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/208-luce-chapel/luce-chapel.jpg",
+      "/src/assets/208-luce-chapel/luce-chapel-thermal.png"
+    ],
     "approval_date": "2002-02-02",
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
@@ -1466,6 +1486,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/211-main-auditorium/main-auditorium.jpg",
+      "/src/assets/211-main-auditorium/main-auditorium-thermal.png"
+    ],
     "approval_date": "1993-10-09",
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
@@ -1480,6 +1504,10 @@
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.564928,
     "longitude": 126.939169,
+    "images": [
+      "/src/assets/212-school-of-business/school-of-business.jpg",
+      "/src/assets/212-school-of-business/school-of-business-thermal.png"
+    ],
     "height": 31.4,
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -1511,6 +1539,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/213-college-of-music/college-of-music.jpg",
+      "/src/assets/213-college-of-music/college-of-music-thermal.png"
+    ],
     "approval_date": "2010-01-13",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
@@ -1541,6 +1573,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/213-college-of-music/college-of-music.jpg",
+      "/src/assets/213-college-of-music/college-of-music-thermal.png"
+    ],
     "approval_date": "2010-01-13",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
