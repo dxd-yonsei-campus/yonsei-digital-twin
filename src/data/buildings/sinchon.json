@@ -819,6 +819,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/102-engineering-research-park/engineering-research-park.jpg",
+      "/src/assets/102-engineering-research-park/engineering-research-park-thermal.png"
+    ],
     "approval_date": "1999-04-08",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
@@ -846,6 +850,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/126-posco-bridge/posco-bridge.jpg",
+      "/src/assets/126-posco-bridge/posco-bridge-thermal.png"
+    ],
     "approval_date": "1999",
     "floor_level": 1,
     "construction_type": "철골구조",
@@ -873,6 +881,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/113-rotc-headquarters/rotc-headquarters.jpg",
+      "/src/assets/113-rotc-headquarters/rotc-headquarters-thermal.png"
+    ],
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
     "construction_type_en": "Reinforced concrete",
@@ -899,6 +911,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/114-industry-university-research-center/industry-university-research-center.jpg",
+      "/src/assets/114-industry-university-research-center/industry-university-research-center-thermal.png"
+    ],
     "approval_date": "2003-05-01",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -930,6 +946,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/115-gs-caltex-research-hall/gs-caltex-research-hall.jpg",
+      "/src/assets/115-gs-caltex-research-hall/gs-caltex-research-hall-thermal.png"
+    ],
     "approval_date": "2012-05-29",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
@@ -964,6 +984,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/116-yonsei-rehabilitation-school/yonsei-rehabilitation-school.jpg",
+      "/src/assets/116-yonsei-rehabilitation-school/yonsei-rehabilitation-school-thermal.png"
+    ],
     "approval_date": "2012-08-02",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -997,6 +1021,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/117-advanced-science-and-technology-center/advanced-science-and-technology-center.jpg",
+      "/src/assets/117-advanced-science-and-technology-center/advanced-science-and-technology-center-thermal.png"
+    ],
     "approval_date": "2012-04-09",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -1068,7 +1096,11 @@
         ]
       ]
     },
-    "images": ["/src/assets/engineering-hall-1/engineering-hall-1.jpg"],
+    "images": [
+      "/src/assets/121-engineering-hall-1/engineering-hall-1.jpg",
+      "/src/assets/121-engineering-hall-1/engineering-hall-1-thermal.png",
+      "/src/assets/121-engineering-hall-1/engineering-hall-1-2.jpg"
+    ],
     "approval_date": "1972-02-29",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -1108,6 +1140,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/123-engineering-hall-2/engineering-hall-2.jpg",
+      "/src/assets/123-engineering-hall-2/engineering-hall-2-thermal.png"
+    ],
     "approval_date": "1994-03-09",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -1135,6 +1171,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/125-engineering-hall-2-annex/engineering-hall-2-annex.jpg",
+      "/src/assets/125-engineering-hall-2-annex/engineering-hall-2-annex-thermal.png"
+    ],
     "approval_date": "2000-11-09",
     "floor_level": 1,
     "construction_type": "철골구조",
@@ -1175,6 +1215,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/124-engineering-hall-3/engineering-hall-3.jpg",
+      "/src/assets/124-engineering-hall-3/engineering-hall-3-thermal.png"
+    ],
     "approval_date": "1997-08-07",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -1211,6 +1255,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/122-engineering-hall-4/engineering-hall-4.jpg",
+      "/src/assets/122-engineering-hall-4/engineering-hall-4-thermal.png"
+    ],
     "floor_level": 10,
     "construction_type": "철근콘크리트구조",
     "construction_type_en": "Reinforced concrete"
