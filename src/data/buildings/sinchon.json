@@ -1608,8 +1608,10 @@
       ]
     },
     "images": [
-      "/src/assets/central-library/central-library-1.jpg",
-      "/src/assets/central-library/central-library-2.jpg"
+      "/src/assets/301-central-library/central-library.jpg",
+      "/src/assets/301-central-library/central-library-thermal.png",
+      "/src/assets/301-central-library/central-library-1.jpg",
+      "/src/assets/301-central-library/central-library-2.jpg"
     ],
     "approval_date": "1979-04-18",
     "floor_level": 6,
@@ -1643,8 +1645,10 @@
       ]
     },
     "images": [
-      "/src/assets/yonsei-samsung-library/yonsei-samsung-library-1.png",
-      "/src/assets/yonsei-samsung-library/yonsei-samsung-library-2.png"
+      "/src/assets/302-yonsei-samsung-library/yonsei-samsung-library.jpg",
+      "/src/assets/302-yonsei-samsung-library/yonsei-samsung-library-thermal.png",
+      "/src/assets/302-yonsei-samsung-library/yonsei-samsung-library-1.png",
+      "/src/assets/302-yonsei-samsung-library/yonsei-samsung-library-2.png"
     ],
     "approval_date": "2012-05-15",
     "floor_level": 7,
@@ -1675,6 +1679,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/304-gymnasium/gymnasium.jpg",
+      "/src/assets/304-gymnasium/gymnasium-thermal.png"
+    ],
     "approval_date": "1960-04-15",
     "floor_level": 2,
     "construction_type": "철골철근콘크리트구조",
@@ -1706,8 +1714,10 @@
       ]
     },
     "images": [
-      "/src/assets/sports-science-complex/sports-science-complex-1.png",
-      "/src/assets/sports-science-complex/sports-science-complex-2.png"
+      "/src/assets/305-sports-science-complex/sports-science-complex.jpg",
+      "/src/assets/305-sports-science-complex/sports-science-complex-thermal.png",
+      "/src/assets/305-sports-science-complex/sports-science-complex-1.png",
+      "/src/assets/305-sports-science-complex/sports-science-complex-2.png"
     ],
     "approval_date": "2012-03-05",
     "floor_level": 3,
@@ -1736,6 +1746,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/306-physical-education-center/physical-education-center.jpg",
+      "/src/assets/306-physical-education-center/physical-education-center-thermal.png"
+    ],
     "approval_date": "1979-09-24",
     "floor_level": 3
   },
@@ -1758,6 +1772,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/307-gwangbok-hall-annex/gwangbok-hall-annex.jpg",
+      "/src/assets/307-gwangbok-hall-annex/gwangbok-hall-annex-thermal.png"
+    ],
     "approval_date": "2012-06-01",
     "floor_level": 2
   },
@@ -1786,6 +1804,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/308-gwangbok-hall/gwangbok-hall.jpg",
+      "/src/assets/308-gwangbok-hall/gwangbok-hall-thermal.png"
+    ],
     "approval_date": "2013-10-25",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -1822,6 +1844,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/310-baekyang-hall/baekyang-hall.jpg",
+      "/src/assets/310-baekyang-hall/baekyang-hall-thermal.png"
+    ],
     "approval_date": "1968-07-01",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -1859,6 +1885,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/322-science-hall/science-hall.jpg",
+      "/src/assets/322-science-hall/science-hall-thermal.png"
+    ],
     "approval_date": "1984-06-23",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -1873,6 +1903,10 @@
     "latitude": 37.563409,
     "longitude": 126.934663,
     "height": 51.18,
+    "images": [
+      "/src/assets/323-science-research-center/science-research-center.jpg",
+      "/src/assets/323-science-research-center/science-research-center-thermal.png"
+    ],
     "approval_date": "2000-08-03",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -1910,6 +1944,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/325-samsung-hall/samsung-hall.jpg",
+      "/src/assets/325-samsung-hall/samsung-hall-thermal.png"
+    ],
     "approval_date": "1999-01-18",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -1936,6 +1974,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/326-underwood-memorial-house/underwood-memorial-house.jpg",
+      "/src/assets/326-underwood-memorial-house/underwood-memorial-house-thermal.png"
+    ],
     "approval_date": "1975-09-13",
     "floor_level": 2,
     "total_floor_area": 689.34,
