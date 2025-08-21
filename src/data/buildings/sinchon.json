@@ -2153,6 +2153,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/607-university-residence-c/university-residence-c.jpg",
+      "/src/assets/607-university-residence-c/university-residence-c-thermal.png"
+    ],
     "approval_date": "1991-05-14",
     "floor_level": 4
   },
@@ -2929,6 +2933,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/602-beophyeon-dormitory/beophyeon-dormitory.jpg",
+      "/src/assets/602-beophyeon-dormitory/beophyeon-dormitory-thermal.png"
+    ],
     "approval_date": "2018-08-27",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -2971,6 +2979,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/603-chejung-dormitory/chejung-dormitory.jpg",
+      "/src/assets/603-chejung-dormitory/chejung-dormitory-thermal.png"
+    ],
     "approval_date": "2018-08-27",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -3002,6 +3014,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/604-sk-global-house/sk-global-house.jpg",
+      "/src/assets/604-sk-global-house/sk-global-house-thermal.png"
+    ],
     "approval_date": "2013-10-25",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -3031,6 +3047,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/605-international-house/international-house.jpg",
+      "/src/assets/605-international-house/international-house-thermal.png"
+    ],
     "approval_date": "2003-05-28",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -3070,6 +3090,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/606-new-millennium-hall/new-millennium-hall.jpg",
+      "/src/assets/606-new-millennium-hall/new-millennium-hall-thermal.png"
+    ],
     "approval_date": "2007-08-20",
     "floor_level": 3
   },
@@ -3092,6 +3116,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/608-presidential-reception-hall/presidential-reception-hall.jpg",
+      "/src/assets/608-presidential-reception-hall/presidential-reception-hall-thermal.png"
+    ],
     "approval_date": "2012-05-03",
     "floor_level": 1,
     "construction_type": "철근콘크리트구조",
@@ -3118,6 +3146,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/609-presidents-residence/presidents-residence.jpg",
+      "/src/assets/609-presidents-residence/presidents-residence-thermal.png"
+    ],
     "approval_date": "1991-11-19",
     "floor_level": 2,
     "construction_type": "석구조",
@@ -3146,6 +3178,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/610-parking-garage/parking-garage.jpg",
+      "/src/assets/610-parking-garage/parking-garage-thermal.png"
+    ],
     "approval_date": "1972-05-30",
     "floor_level": 2
   },
@@ -3174,6 +3210,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/621-institute-of-language-research-and-education/institute-of-language-research-and-education.jpg",
+      "/src/assets/621-institute-of-language-research-and-education/institute-of-language-research-and-education-thermal.png"
+    ],
     "approval_date": "1991-04-19",
     "floor_level": 6
   },
@@ -3204,6 +3244,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/622-miwu-hall/miwu-hall.jpg",
+      "/src/assets/622-miwu-hall/miwu-hall-thermal.png"
+    ],
     "approval_date": "1972-06-29",
     "floor_level": 5
   },
