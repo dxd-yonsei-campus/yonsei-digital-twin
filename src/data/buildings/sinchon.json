@@ -298,6 +298,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/005-severance-hospital/severance-hospital.jpg",
+      "/src/assets/005-severance-hospital/severance-hospital-thermal.png"
+    ],
     "approval_date": "2012-08-16",
     "floor_level": 21,
     "construction_type": "철골철근콘크리트구조",
