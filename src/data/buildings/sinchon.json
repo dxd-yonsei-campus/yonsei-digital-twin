@@ -132,6 +132,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/002-college-of-medicine/college-of-medicine.jpg",
+      "/src/assets/002-college-of-medicine/college-of-medicine-thermal.png"
+    ],
     "approval_date": "1963-06-04",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -176,6 +180,12 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/003-chejung-building/chejung-building-1.jpg",
+      "/src/assets/002-college-of-medicine/college-of-medicine-1-thermal.png",
+      "/src/assets/003-chejung-building/chejung-building-2.jpg",
+      "/src/assets/002-college-of-medicine/college-of-medicine-2-thermal.png"
+    ],
     "approval_date": "1955-09-29",
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
