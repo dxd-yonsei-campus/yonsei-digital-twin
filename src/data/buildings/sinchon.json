@@ -525,6 +525,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/010-eye-ent-hospital/eye-ent-hospital.jpg",
+      "/src/assets/010-eye-ent-hospital/eye-ent-hospital-thermal.png"
+    ],
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
     "construction_type_en": "Reinforced concrete",
@@ -566,6 +570,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/011-dental-hospital/dental-hospital.jpg",
+      "/src/assets/011-dental-hospital/dental-hospital-thermal.png"
+    ],
     "approval_date": "2003-12-26",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -603,6 +611,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/012-college-of-dentistry/college-of-dentistry.jpg",
+      "/src/assets/012-college-of-dentistry/college-of-dentistry-thermal.png"
+    ],
     "approval_date": "1996-05-09",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -617,6 +629,10 @@
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
     "latitude": 37.563929,
     "longitude": 126.942488,
+    "images": [
+      "/src/assets/013-avison-biomedical-research-center/avison-biomedical-research-center.jpg",
+      "/src/assets/013-avison-biomedical-research-center/avison-biomedical-research-center-thermal.png"
+    ],
     "height": 27.3,
     "approval_date": "2013-02-07",
     "floor_level": 6,
@@ -649,6 +665,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/014-college-of-nursing/college-of-nursing.jpg",
+      "/src/assets/014-college-of-nursing/college-of-nursing-thermal.png"
+    ],
     "approval_date": "1996-08-31",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -689,6 +709,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/015-medical-research-center/medical-research-center.jpg",
+      "/src/assets/015-medical-research-center/medical-research-center-thermal.png"
+    ],
     "approval_date": "1976-12-30",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -731,6 +755,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/016-alumni-center/alumni-center.jpg",
+      "/src/assets/016-alumni-center/alumni-center-thermal.png"
+    ],
     "approval_date": "1993-04-29",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -761,6 +789,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/017-alfred-faculty-building/alfred-faculty-building.jpg",
+      "/src/assets/017-alfred-faculty-building/alfred-faculty-building-thermal.png"
+    ],
     "approval_date": "2012-08-03",
     "floor_level": 4
   },
