@@ -344,6 +344,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/006-rehabilitation-hospital/rehabilitation-hospital.jpg",
+      "/src/assets/006-rehabilitation-hospital/rehabilitation-hospital-thermal.png"
+    ],
     "approval_date": "1988-03-18",
     "floor_level": 10,
     "construction_type": "철근콘크리트구조",
