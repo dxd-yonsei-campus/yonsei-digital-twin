@@ -440,6 +440,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/008-cardiovascular-hospital/cardiovascular-hospital.jpg",
+      "/src/assets/008-cardiovascular-hospital/cardiovascular-hospital-thermal.png"
+    ],
     "approval_date": "1991-04-30",
     "floor_level": 10,
     "construction_type": "철근콘크리트구조",
