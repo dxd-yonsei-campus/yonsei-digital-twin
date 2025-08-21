@@ -2372,6 +2372,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/501-underwood-hall/underwood-hall.jpg",
+      "/src/assets/501-underwood-hall/underwood-hall-thermal.png"
+    ],
     "floor_level": 5,
     "construction_type": "석구조",
     "construction_type_en": "Masonry",
@@ -2399,8 +2403,10 @@
       ]
     },
     "images": [
-      "/src/assets/stimson-hall/stimson-hall-1.jpg",
-      "/src/assets/stimson-hall/stimson-hall-2.jpg"
+      "/src/assets/502-stimson-hall/stimson-hall.jpg",
+      "/src/assets/502-stimson-hall/stimson-hall-thermal.png",
+      "/src/assets/502-stimson-hall/stimson-hall-1.jpg",
+      "/src/assets/502-stimson-hall/stimson-hall-2.jpg"
     ],
     "approval_date": "1968-07-01",
     "floor_level": 2,
@@ -2428,6 +2434,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/503-appenzeller-hall/appenzeller-hall.jpg",
+      "/src/assets/503-appenzeller-hall/appenzeller-hall-thermal.png"
+    ],
     "floor_level": 3,
     "construction_type": "석구조",
     "construction_type_en": "Masonry",
@@ -2455,6 +2465,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/505-nonjidang/nonjidang.jpg",
+      "/src/assets/505-nonjidang/nonjidang-thermal.png"
+    ],
     "approval_date": "1956-12-31",
     "floor_level": 1,
     "construction_type": "벽돌구조",
@@ -2486,6 +2500,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/506-seongam-hall/seongam-hall.jpg",
+      "/src/assets/506-seongam-hall/seongam-hall-thermal.png"
+    ],
     "approval_date": "1960-10-03",
     "floor_level": 3,
     "construction_type": "석구조",
@@ -2513,6 +2531,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/507-yu-eok-gyeom-memorial-hall/yu-eok-gyeom-memorial-hall.jpg",
+      "/src/assets/507-yu-eok-gyeom-memorial-hall/yu-eok-gyeom-memorial-hall-thermal.png"
+    ],
     "approval_date": "1962-12-10",
     "floor_level": 4,
     "construction_type": "석구조",
@@ -2549,6 +2571,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/511-yeonhi-hall/yeonhi-hall.jpg",
+      "/src/assets/511-yeonhi-hall/yeonhi-hall-thermal.png"
+    ],
     "approval_date": "1956-12-31",
     "floor_level": 5,
     "construction_type": "석구조",
@@ -2576,6 +2602,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/512-billingsley-hall/billingsley-hall.jpg",
+      "/src/assets/512-billingsley-hall/billingsley-hall-thermal.png"
+    ],
     "floor_level": 4,
     "construction_type": "벽돌구조",
     "construction_type_en": "Masonry",
@@ -2613,6 +2643,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/513-daewoo-hall/daewoo-hall.jpg",
+      "/src/assets/513-daewoo-hall/daewoo-hall-thermal.png"
+    ],
     "approval_date": "1996-05-13",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -2643,6 +2677,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/514-daewoo-hall-annex/daewoo-hall-annex.jpg",
+      "/src/assets/514-daewoo-hall-annex/daewoo-hall-annex-thermal.png"
+    ],
     "approval_date": "1996-05-13",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -2669,6 +2707,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/521-pinson-hall/pinson-hall.jpg",
+      "/src/assets/521-pinson-hall/pinson-hall-thermal.png"
+    ],
     "approval_date": "2012-05-02",
     "floor_level": 3,
     "construction_type": "석구조",
@@ -2703,6 +2745,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/522-hangyeong-hall/hangyeong-hall.jpg",
+      "/src/assets/522-hangyeong-hall/hangyeong-hall-thermal.png"
+    ],
     "approval_date": "1968-12-24",
     "floor_level": 2,
     "total_floor_area": 1012.31,
@@ -2730,6 +2776,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/523-theology-hall/theology-hall.jpg",
+      "/src/assets/523-theology-hall/theology-hall-thermal.png"
+    ],
     "approval_date": "2012-04-10",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
@@ -2784,6 +2834,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/525-oesol-hall-2/oesol-hall-2.jpg",
+      "/src/assets/525-oesol-hall-2/oesol-hall-2-thermal.png"
+    ],
     "approval_date": "1968-07-01",
     "floor_level": 1,
     "construction_type": "철근콘크리트구조",
@@ -2815,6 +2869,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/526-education-sciences-hall/education-sciences-hall.jpg",
+      "/src/assets/526-education-sciences-hall/education-sciences-hall-thermal.png"
+    ],
     "approval_date": "2012-06-01",
     "floor_level": 6
   },
@@ -2840,6 +2898,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/527-widang-hall/widang-hall.jpg",
+      "/src/assets/527-widang-hall/widang-hall-thermal.png"
+    ],
     "approval_date": "1998-07-31",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
