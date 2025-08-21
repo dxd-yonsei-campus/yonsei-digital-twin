@@ -182,9 +182,9 @@
     },
     "images": [
       "/src/assets/003-chejung-building/chejung-building-1.jpg",
-      "/src/assets/002-college-of-medicine/college-of-medicine-1-thermal.png",
+      "/src/assets/003-chejung-building/chejung-building-1-thermal.png",
       "/src/assets/003-chejung-building/chejung-building-2.jpg",
-      "/src/assets/002-college-of-medicine/college-of-medicine-2-thermal.png"
+      "/src/assets/003-chejung-building/chejung-building-2-thermal.png"
     ],
     "approval_date": "1955-09-29",
     "floor_level": 3,
@@ -229,6 +229,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/004-administration-building/administration-building.jpg",
+      "/src/assets/004-administration-building/administration-building-thermal.png"
+    ],
     "approval_date": "2012-09-11",
     "floor_level": 6
   },
