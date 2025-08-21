@@ -18,7 +18,7 @@
     "@leeoniya/ufuzzy": "^1.0.18",
     "@nanostores/persistent": "^1.1.0",
     "@nanostores/react": "^1.0.0",
-    "@tailwindcss/vite": "^4.1.6",
+    "@tailwindcss/vite": "^4.1.12",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
     "@typescript-eslint/parser": "^8.39.1",
@@ -39,8 +39,8 @@
     "react-dom": "^19.1.1",
     "recharts": "2.15.4",
     "sonner": "^2.0.7",
-    "tailwind-merge": "^3.3.0",
-    "tailwindcss": "^4.1.6",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.12",
     "three": "^0.177.0"
   },
   "devDependencies": {
@@ -49,7 +49,7 @@
     "prettier": "3.5.3",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "tw-animate-css": "^1.3.0",
+    "tw-animate-css": "^1.3.7",
     "typescript-eslint": "^8.39.1"
   },
   "lint-staged": {
