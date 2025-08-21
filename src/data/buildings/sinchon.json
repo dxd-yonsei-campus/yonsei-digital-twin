@@ -393,6 +393,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/007-childrens-hospital/childrens-hospital.jpg",
+      "/src/assets/007-childrens-hospital/childrens-hospital-thermal.png"
+    ],
     "approval_date": "1999-09-10",
     "floor_level": 10,
     "construction_type": "철근콘크리트구조",
