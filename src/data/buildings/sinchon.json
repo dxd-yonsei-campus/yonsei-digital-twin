@@ -64,6 +64,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/002-college-of-medicine/college-of-medicine-new.jpg",
+      "/src/assets/002-college-of-medicine/college-of-medicine-new-thermal.png"
+    ],
     "approval_date": "1968-07-01",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
