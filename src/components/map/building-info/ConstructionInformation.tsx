@@ -62,7 +62,11 @@ const ConstructionInformation = ({
             {resolvedImages.map(({ src }, idx) => (
               <CarouselItem key={src + idx}>
                 <img
-                  className="aspect-video object-contain"
+                  onLoad={(e) => {
+                    const currentImage = e.currentTarget;
+                    currentImage.classList.remove('opacity-0');
+                  }}
+                  className="aspect-video object-contain opacity-0 transition-opacity duration-200"
                   src={src}
                   alt={building.name + ' image ' + (idx + 1)}
                 />
