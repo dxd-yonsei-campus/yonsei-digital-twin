@@ -45,7 +45,7 @@ const t = useTranslations(lang);
     <ThemePicker client:load />
   </div>
   <main
-    class="relative flex h-svh w-fit flex-col items-center justify-center gap-8 pr-88 pl-6 md:pl-12"
+    class="relative flex h-svh w-fit flex-col items-center justify-center gap-8 px-6 md:px-12"
   >
     <div class="min-w-none relative w-full text-left">
       <h1 class="text-4xl font-bold">{t('site.title')}</h1>
@@ -61,7 +61,7 @@ const t = useTranslations(lang);
       </div>
     </div>
     <div
-      class="absolute top-0 right-0 bottom-0 left-0 -z-10 bg-background/78 mask-r-from-40% mask-r-to-100%"
+      class="absolute top-0 -right-88 bottom-0 left-0 -z-10 max-w-dvw bg-background/70 sm:bg-background/78 sm:mask-r-from-40% sm:mask-r-to-100%"
     >
     </div>
   </main>
