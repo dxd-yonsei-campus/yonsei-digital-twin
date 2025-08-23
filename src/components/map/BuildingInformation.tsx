@@ -90,7 +90,11 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
             </DialogDescription>
           </DialogHeader>
           <CollapsibleContent className="max-h-[52vh] space-y-4 overflow-scroll [&>:first-child]:pt-5">
-            <ConstructionInformation lang={lang} building={displayBuilding} />
+            <ConstructionInformation
+              key={displayBuilding.id}
+              lang={lang}
+              building={displayBuilding}
+            />
           </CollapsibleContent>
           <CollapsibleTrigger asChild>
             <button className="absolute top-4 right-11 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4.5">
