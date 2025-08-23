@@ -1,6 +1,5 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import HeroVideo from '@/components/landing/HeroVideo';
 import LanguagePicker from '@/components/landing/LanguagePicker';
 import MapLink from '@/components/landing/MapLink';
 import { campuses } from '@/types/map';
@@ -14,16 +13,30 @@ import { ChevronDown, Languages } from 'lucide-react';
 import { languages } from '@/i18n/ui';
 import ThemePicker from '@/components/ThemePicker';
 import Footer from '@/components/Footer.astro';
+import { Image } from 'astro:assets';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
 <Layout>
-  <div
-    class="absolute top-8 right-4 flex items-center text-muted-foreground lg:right-6"
-  >
-    <LanguagePicker client:load lang={lang} align="end">
+  <div class="absolute top-0 right-0 bottom-0 left-0 -z-10">
+    <Image
+      src="/src/assets/landing-bg.png"
+      alt="Background"
+      class="h-full w-full object-cover"
+      loading="eager"
+      width={1920}
+      height={1080}
+      quality={80}
+    />
+    <div
+      class="absolute top-0 right-0 bottom-0 left-0 bg-background/65 mask-r-from-30% mask-r-to-80% backdrop-blur-[1px]"
+    >
+    </div>
+  </div>
+  <div class="absolute top-8 left-4 flex items-center text-foreground/70">
+    <LanguagePicker client:load lang={lang} align="start">
       <>
         <Languages className="size-4.5" />
         {languages[lang]}
@@ -33,18 +46,14 @@ const t = useTranslations(lang);
     <ThemePicker client:load />
   </div>
   <main
-    class="mx-auto flex h-svh max-w-6xl flex-col items-center justify-center gap-8 px-4 lg:flex-row lg:justify-between"
+    class="flex h-svh w-full flex-col items-center justify-center gap-8 px-12"
   >
-    <div
-      class="min-w-none w-full text-center md:w-auto md:min-w-md lg:text-left"
-    >
+    <div class="min-w-none w-full text-left">
       <h1 class="text-4xl font-bold">{t('site.title')}</h1>
       <p class="mt-0.5 text-lg text-muted-foreground">
         {t('home.description')}
       </p>
-      <div
-        class="mt-4 flex flex-col items-center justify-center gap-1.5 sm:flex-row lg:justify-start"
-      >
+      <div class="mt-4 flex flex-row justify-start gap-1.5">
         {
           campuses.map((campus) => {
             return <MapLink client:load campus={campus} lang={lang} />;
@@ -52,7 +61,6 @@ const t = useTranslations(lang);
         }
       </div>
     </div>
-    <HeroVideo client:load />
   </main>
   <Footer />
 </Layout>
