@@ -14,6 +14,7 @@ import { languages } from '@/i18n/ui';
 import ThemePicker from '@/components/ThemePicker';
 import Footer from '@/components/Footer.astro';
 import { Image } from 'astro:assets';
+import landingBgImage from '@/assets/landing-bg.png';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -22,20 +23,15 @@ const t = useTranslations(lang);
 <Layout>
   <div class="absolute top-0 right-0 bottom-0 left-0 -z-10">
     <Image
-      src="/src/assets/landing-bg.png"
-      alt="Background"
+      src={landingBgImage}
+      alt=""
       class="h-full w-full object-cover"
       loading="eager"
-      width={1920}
-      height={1080}
-      quality={80}
     />
-    <div
-      class="absolute top-0 right-0 bottom-0 left-0 bg-background/65 mask-r-from-30% mask-r-to-80% backdrop-blur-[1px]"
-    >
-    </div>
   </div>
-  <div class="absolute top-8 left-4 flex items-center text-foreground/70">
+  <div
+    class="absolute top-8 left-1 z-10 flex items-center text-foreground/70 md:left-4"
+  >
     <LanguagePicker client:load lang={lang} align="start">
       <>
         <Languages className="size-4.5" />
@@ -46,11 +42,11 @@ const t = useTranslations(lang);
     <ThemePicker client:load />
   </div>
   <main
-    class="flex h-svh w-full flex-col items-center justify-center gap-8 px-12"
+    class="relative flex h-svh w-fit flex-col items-center justify-center gap-8 pr-88 pl-6 md:pl-12"
   >
-    <div class="min-w-none w-full text-left">
+    <div class="min-w-none relative w-full text-left">
       <h1 class="text-4xl font-bold">{t('site.title')}</h1>
-      <p class="mt-0.5 text-lg text-muted-foreground">
+      <p class="mt-0.5 text-lg leading-6 text-foreground/60">
         {t('home.description')}
       </p>
       <div class="mt-4 flex flex-row justify-start gap-1.5">
@@ -60,6 +56,10 @@ const t = useTranslations(lang);
           })
         }
       </div>
+    </div>
+    <div
+      class="absolute top-0 right-0 bottom-0 left-0 -z-10 bg-background/78 mask-r-from-40% mask-r-to-100%"
+    >
     </div>
   </main>
   <Footer />
