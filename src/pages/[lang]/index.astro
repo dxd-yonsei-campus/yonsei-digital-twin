@@ -21,6 +21,9 @@ const t = useTranslations(lang);
 ---
 
 <Layout>
+  <Fragment slot="head">
+    <link rel="preload" as="image" href={landingBgImage.src} />
+  </Fragment>
   <div class="absolute top-0 right-0 bottom-0 left-0 -z-10">
     <Image
       src={landingBgImage}
