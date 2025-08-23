@@ -13,11 +13,7 @@ const MapLink = ({ campus, lang }: MapLinkProps) => {
   const t = useTranslations(lang);
 
   return (
-    <Button
-      variant="default"
-      className="w-full min-w-32 cursor-pointer sm:w-fit"
-      asChild
-    >
+    <Button variant="default" className="w-fit min-w-32 cursor-pointer" asChild>
       <a onClick={() => selectedCampus.set(campus)} href={`/${lang}/map`}>
         {t(`${campus}_long`)}
       </a>

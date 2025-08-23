@@ -71,6 +71,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         }
       });
     </script>
+    <slot name="head" />
   </head>
   <body>
     <slot />
