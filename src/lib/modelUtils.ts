@@ -72,11 +72,8 @@ export const createCustomLayer = ({
   loader.setDRACOLoader(dracoLoader);
   dracoLoader.setDecoderPath('/draco/');
   loader.setMeshoptDecoder(MeshoptDecoder); // Required for gltfpack models
-  const allMeshes: THREE.Object3D<THREE.Object3DEventMap>[] = [];
   loader.load(modelUrl, (gltf) => {
     gltf.scene.traverse((child) => {
-      allMeshes.push(child);
-
       if (child instanceof THREE.Mesh && child.material) {
         const material = child.material;
         if (material.opacity < 1) {
