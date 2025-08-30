@@ -80,7 +80,6 @@ const t = useTranslations(lang);
       getAllBuildings,
       getCameraForCampus,
       updateSelectedCampus,
-      // getNearestBuildingId,
     } from '@/lib/mapApi';
     import type { BuildingLayerType } from '@/types/map';
     import { createCustomLayer } from '@/lib/modelUtils';
@@ -292,7 +291,7 @@ const t = useTranslations(lang);
 
     map.on('click', (e) => {
       const features = map.queryRenderedFeatures(e.point, {
-        layers: ['buildings-clickable'], // Always available for clicks
+        layers: ['buildings-clickable'],
       });
 
       if (features.length) {

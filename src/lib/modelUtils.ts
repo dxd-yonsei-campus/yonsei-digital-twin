@@ -49,7 +49,7 @@ export const createCustomLayer = ({
     scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits() * scale,
   };
 
-  const camera = new THREE.PerspectiveCamera();
+  const camera = new THREE.Camera();
   const scene = new THREE.Scene();
   const renderer = new THREE.WebGLRenderer({
     canvas: map.getCanvas(),
