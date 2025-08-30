@@ -8,7 +8,7 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 import { useEffect, useState } from 'react';
-import type { BuildingProps } from '@/content.config';
+import type { BuildingProps, MonthlyEnergyUseProps } from '@/content.config';
 import { getAllBuildings, getCampusForBuildingId } from '@/lib/mapApi';
 import { Badge } from '@/components/ui/badge';
 import type { ui } from '@/i18n/ui';
@@ -21,7 +21,11 @@ import {
 } from '@/components/ui/collapsible';
 import { cn } from '@/lib/utils';
 import ConstructionInformation from '@/components/map/building-info/ConstructionInformation';
+import EnergyChart from './building-info/EnergyChart';
 
+const allMonthlyEnergyUse = import.meta.glob<{
+  default: MonthlyEnergyUseProps;
+}>('/src/data/monthly-energy-use/*.json');
 const allBuildings = getAllBuildings();
 
 type BuildingInformationProps = {
@@ -55,6 +59,13 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
   }
 
   const campusName = getCampusForBuildingId(displayBuilding.id);
+
+  // TODO: Properly handle the monthly energy use data
+  const test =
+    allMonthlyEnergyUse['/src/data/monthly-energy-use/example.json']();
+  test.then((data) => {
+    console.log(data.default);
+  });
 
   return (
     <Dialog modal={false} open={!!$selectedId}>
@@ -95,6 +106,7 @@ const BuildingInformation = ({ lang }: BuildingInformationProps) => {
               lang={lang}
               building={displayBuilding}
             />
+            <EnergyChart />
           </CollapsibleContent>
           <CollapsibleTrigger asChild>
             <button className="absolute top-4 right-11 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4.5">

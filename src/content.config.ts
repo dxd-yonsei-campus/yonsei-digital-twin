@@ -1,4 +1,9 @@
-import { defineCollection, z, type SchemaContext } from 'astro:content';
+import {
+  defineCollection,
+  reference,
+  z,
+  type SchemaContext,
+} from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const positionSchema = z.tuple([z.number(), z.number()]);
@@ -24,6 +29,7 @@ const buildingsSchema = z.object({
   construction_type: z.string().optional(),
   construction_type_en: z.string().optional(),
   total_floor_area: z.number().optional(),
+  monthly_energy_use: reference('monthlyEnergyUse').optional(),
   total_building_area: z.number().optional(),
 });
 
@@ -38,7 +44,31 @@ const buildings = defineCollection({
   schema: (schema) => z.array(buildingWithImageSchema(schema)),
 });
 
-export const collections = { buildings };
+const energyUseSchema = z.object({
+  heating: z.number(),
+  cooling: z.number(),
+  lighting: z.number(),
+  equipment: z.number(),
+  dhw: z.number(),
+  windowRadiation: z.number(),
+});
+
+const monthlyEnergyUseSchema = z.object({
+  ...energyUseSchema.shape,
+  month: z.number().min(1).max(12),
+});
+
+const monthlyEnergyUse = defineCollection({
+  loader: glob({
+    pattern: ['[^_]*.json'],
+    base: 'src/data/monthly-energy-use',
+  }),
+  schema: () => z.array(monthlyEnergyUseSchema),
+});
+
+export const collections = { buildings, monthlyEnergyUse };
+
 export type BuildingProps = z.infer<typeof buildingsSchema> & {
   images?: string[];
 };
+export type MonthlyEnergyUseProps = z.infer<typeof monthlyEnergyUseSchema>;
