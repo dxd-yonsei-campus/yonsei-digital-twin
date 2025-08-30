@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "packageManager": "pnpm@10.11.0",
   "scripts": {
+    "draco": "cp -r node_modules/three/examples/jsm/libs/draco public/draco",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",

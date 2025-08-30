@@ -52,3 +52,13 @@ The data for each building can be found in `src/data/buildings/`. Each campus is
 | total_floor_area     | `number`           | Total floor area in square metres.                                                                                                       |
 | total_building_area  | `number`           | Total building area in square metres.                                                                                                    |
 | images               | `string[]`         | An array of string containing the file path to the images. Images should be stored within `src` to allow for Astro's image optimisation. |
+
+## Draco Loader
+
+The application supports custom models compressed by both Draco and Meshoptimiser using Three.js. The `public/draco` folder contains the necessary decoders for using the Draco loaders.
+
+To re-generate the decoders, run the following command:
+
+```
+pnpm draco
+```
