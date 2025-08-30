@@ -87,25 +87,6 @@ export const createCustomLayer = ({
     scene.add(gltf.scene);
   });
 
-  const raycaster = new THREE.Raycaster();
-  const mouse = new THREE.Vector2();
-
-  map.getCanvas().addEventListener('click', (event) => {
-    const rect = map.getCanvas().getBoundingClientRect();
-    mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-    mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-
-    raycaster.setFromCamera(mouse, camera);
-    const intersects = raycaster.intersectObjects(allMeshes, true);
-
-    if (intersects.length > 0) {
-      const picked = intersects[0].object;
-      const allPicked = intersects.map((p) => p.object.name);
-      console.log('PICKED', picked);
-      console.log('PICKED ALL', allPicked);
-    }
-  });
-
   return {
     id: id,
     type: 'custom',

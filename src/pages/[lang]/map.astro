@@ -211,6 +211,24 @@ const t = useTranslations(lang);
 
       map.addLayer(
         {
+          id: 'buildings-clickable',
+          source: 'composite',
+          'source-layer': 'building',
+          filter: ['all', ['in', ['id'], ['literal', allBuildingIds]]],
+          type: 'fill-extrusion',
+          minzoom: 15,
+          paint: {
+            'fill-extrusion-color': '#aaa',
+            'fill-extrusion-height': fillExtrusionHeightExpression,
+            'fill-extrusion-base': fillExtrusionBaseExpression,
+            'fill-extrusion-opacity': 0,
+          },
+        },
+        labelLayerId,
+      );
+
+      map.addLayer(
+        {
           id: 'selected-building',
           source: 'composite',
           'source-layer': 'building',
@@ -272,27 +290,19 @@ const t = useTranslations(lang);
       map.addLayer(rhinoDetailedSinchon, labelLayerId);
     });
 
-    // map.on('click', (e) => {
-    //   if (buildingLayer.get() !== 'osm') {
-    //     const [longitude, latitude] = e.lngLat.toArray();
-    //     const buildingId = getNearestBuildingId(longitude, latitude);
-    //     selectedId.set(buildingId || '');
-    //     return;
-    //   }
+    map.on('click', (e) => {
+      const features = map.queryRenderedFeatures(e.point, {
+        layers: ['buildings-clickable'], // Always available for clicks
+      });
 
-    //   const features = map.queryRenderedFeatures(e.point, {
-    //     layers: ['osm-buildings'], // make sure this matches your layer name
-    //   });
-
-    //   if (features.length) {
-    //     const building = features[0];
-    //     const buildingId = building.id;
-    //     selectedId.set(buildingId || '');
-    //   } else {
-    //     selectedId.set('');
-    //     map.setFilter('selected-building', ['==', ['id'], '']);
-    //   }
-    // });
+      if (features.length) {
+        const building = features[0];
+        const buildingId = building.id;
+        selectedId.set(buildingId || '');
+      } else {
+        selectedId.set('');
+      }
+    });
 
     const COLLEGE_OF_MEDICINE_IDS: Array<string | number> = [
       1178739301, 1178739302,
