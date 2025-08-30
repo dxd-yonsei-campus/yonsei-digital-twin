@@ -3,6 +3,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import mapboxgl, { type Map, type CustomLayerInterface } from 'mapbox-gl';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 
 type CustomLayerProps = {
   map: Map;
@@ -48,7 +49,7 @@ export const createCustomLayer = ({
     scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits() * scale,
   };
 
-  const camera = new THREE.Camera();
+  const camera = new THREE.PerspectiveCamera();
   const scene = new THREE.Scene();
   const renderer = new THREE.WebGLRenderer({
     canvas: map.getCanvas(),
@@ -66,10 +67,16 @@ export const createCustomLayer = ({
   const envTexture = pmremGenerator.fromScene(roomEnvironment).texture;
   scene.environment = envTexture;
 
+  const dracoLoader = new DRACOLoader();
   const loader = new GLTFLoader();
+  loader.setDRACOLoader(dracoLoader);
+  dracoLoader.setDecoderPath('/draco/');
   loader.setMeshoptDecoder(MeshoptDecoder); // Required for gltfpack models
+  const allMeshes: THREE.Object3D<THREE.Object3DEventMap>[] = [];
   loader.load(modelUrl, (gltf) => {
     gltf.scene.traverse((child) => {
+      allMeshes.push(child);
+
       if (child instanceof THREE.Mesh && child.material) {
         const material = child.material;
         if (material.opacity < 1) {
@@ -78,6 +85,25 @@ export const createCustomLayer = ({
       }
     });
     scene.add(gltf.scene);
+  });
+
+  const raycaster = new THREE.Raycaster();
+  const mouse = new THREE.Vector2();
+
+  map.getCanvas().addEventListener('click', (event) => {
+    const rect = map.getCanvas().getBoundingClientRect();
+    mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObjects(allMeshes, true);
+
+    if (intersects.length > 0) {
+      const picked = intersects[0].object;
+      const allPicked = intersects.map((p) => p.object.name);
+      console.log('PICKED', picked);
+      console.log('PICKED ALL', allPicked);
+    }
   });
 
   return {

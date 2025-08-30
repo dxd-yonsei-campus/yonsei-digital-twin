@@ -80,7 +80,7 @@ const t = useTranslations(lang);
       getAllBuildings,
       getCameraForCampus,
       updateSelectedCampus,
-      getNearestBuildingId,
+      // getNearestBuildingId,
     } from '@/lib/mapApi';
     import type { BuildingLayerType } from '@/types/map';
     import { createCustomLayer } from '@/lib/modelUtils';
@@ -242,7 +242,7 @@ const t = useTranslations(lang);
         map: map,
         longitude: 126.939304,
         latitude: 37.566086,
-        modelUrl: '/models/rhino-simple/sinchon.gltf',
+        modelUrl: '/models/rhino-simple/Untitled.gltf',
         id: 'rhino-simple-sinchon',
         altitude: 96,
         rotateX: Math.PI / 2,
@@ -272,27 +272,27 @@ const t = useTranslations(lang);
       map.addLayer(rhinoDetailedSinchon, labelLayerId);
     });
 
-    map.on('click', (e) => {
-      if (buildingLayer.get() !== 'osm') {
-        const [longitude, latitude] = e.lngLat.toArray();
-        const buildingId = getNearestBuildingId(longitude, latitude);
-        selectedId.set(buildingId || '');
-        return;
-      }
+    // map.on('click', (e) => {
+    //   if (buildingLayer.get() !== 'osm') {
+    //     const [longitude, latitude] = e.lngLat.toArray();
+    //     const buildingId = getNearestBuildingId(longitude, latitude);
+    //     selectedId.set(buildingId || '');
+    //     return;
+    //   }
 
-      const features = map.queryRenderedFeatures(e.point, {
-        layers: ['osm-buildings'], // make sure this matches your layer name
-      });
+    //   const features = map.queryRenderedFeatures(e.point, {
+    //     layers: ['osm-buildings'], // make sure this matches your layer name
+    //   });
 
-      if (features.length) {
-        const building = features[0];
-        const buildingId = building.id;
-        selectedId.set(buildingId || '');
-      } else {
-        selectedId.set('');
-        map.setFilter('selected-building', ['==', ['id'], '']);
-      }
-    });
+    //   if (features.length) {
+    //     const building = features[0];
+    //     const buildingId = building.id;
+    //     selectedId.set(buildingId || '');
+    //   } else {
+    //     selectedId.set('');
+    //     map.setFilter('selected-building', ['==', ['id'], '']);
+    //   }
+    // });
 
     const COLLEGE_OF_MEDICINE_IDS: Array<string | number> = [
       1178739301, 1178739302,
