@@ -334,6 +334,13 @@ const t = useTranslations(lang);
       map.setLayoutProperty('rhino-simple-sinchon', 'visibility', 'none');
       map.setLayoutProperty('rhino-simple-songdo', 'visibility', 'none');
       map.setLayoutProperty('rhino-detailed-sinchon', 'visibility', 'none');
+
+      if (layer) {
+        map.setLayoutProperty('buildings-clickable', 'visibility', 'visible');
+      } else {
+        map.setLayoutProperty('buildings-clickable', 'visibility', 'none');
+      }
+
       if (layer === 'osm') {
         map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
         map.setLayoutProperty('selected-building', 'visibility', 'visible');
