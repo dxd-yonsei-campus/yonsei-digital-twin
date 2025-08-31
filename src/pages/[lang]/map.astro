@@ -289,6 +289,11 @@ const t = useTranslations(lang);
     });
 
     map.on('click', (e) => {
+      if (buildingLayer.get() === '') {
+        selectedId.set('');
+        return;
+      }
+
       const features = map.queryRenderedFeatures(e.point, {
         layers: ['buildings-clickable'],
       });
@@ -333,12 +338,6 @@ const t = useTranslations(lang);
       map.setLayoutProperty('rhino-simple-sinchon', 'visibility', 'none');
       map.setLayoutProperty('rhino-simple-songdo', 'visibility', 'none');
       map.setLayoutProperty('rhino-detailed-sinchon', 'visibility', 'none');
-
-      if (layer) {
-        map.setLayoutProperty('buildings-clickable', 'visibility', 'visible');
-      } else {
-        map.setLayoutProperty('buildings-clickable', 'visibility', 'none');
-      }
 
       if (layer === 'osm') {
         map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
