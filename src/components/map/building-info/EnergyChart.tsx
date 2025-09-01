@@ -35,7 +35,7 @@ const EnergyChart = ({ chartData }: EnergyChartProps) => {
     },
     dhw: {
       label: 'Domestic Hot Water',
-      color: '#d2b48c',
+      color: '#ff9b29',
     },
     windowRadiation: {
       label: 'Window Radiation',
@@ -70,10 +70,10 @@ const EnergyChart = ({ chartData }: EnergyChartProps) => {
         {[
           'equipment',
           'lighting',
-          'windowRadiation',
-          'cooling',
           'dhw',
           'heating',
+          'windowRadiation',
+          'cooling',
         ].map((type, index, arr) => {
           const isTop = index === arr.length - 1;
           const barRadius: [number, number, number, number] = isTop
