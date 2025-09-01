@@ -7,7 +7,7 @@ import {
   type ChartConfig,
 } from '@/components/ui/chart';
 import type { CollectionEntry } from 'astro:content';
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
 
 type MonthlyEnergyUse = CollectionEntry<'monthlyEnergyUse'>['data'];
 
@@ -53,10 +53,12 @@ const EnergyChart = ({ chartData }: EnergyChartProps) => {
         <ChartTooltip
           content={<ChartTooltipContent className="w-12" hideLabel />}
         />
-        <ChartLegend content={<ChartLegendContent className="flex-row" />} />
+        <ChartLegend
+          content={<ChartLegendContent className="flex-row pt-6" />}
+        />
         <XAxis
           dataKey="month"
-          tickLine={false}
+          tickLine={true}
           tickMargin={10}
           axisLine={false}
           tickFormatter={(value) => value}
@@ -66,7 +68,14 @@ const EnergyChart = ({ chartData }: EnergyChartProps) => {
           tickMargin={10}
           axisLine={false}
           tickFormatter={(value) => value.toString()}
-        />
+        >
+          <Label
+            angle={-90}
+            value="Energy Use (kWh/m&sup2;)"
+            position="insideLeft"
+            style={{ textAnchor: 'middle' }}
+          />
+        </YAxis>
         {[
           'equipment',
           'lighting',
