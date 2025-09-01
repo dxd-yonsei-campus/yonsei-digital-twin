@@ -71,7 +71,7 @@ const EnergyChart = ({ chartData }: EnergyChartProps) => {
         >
           <Label
             angle={-90}
-            value="Energy Use (kWh/m&sup2;)"
+            value="EUI (kWh/m&sup2;)"
             position="insideLeft"
             style={{ textAnchor: 'middle' }}
           />
