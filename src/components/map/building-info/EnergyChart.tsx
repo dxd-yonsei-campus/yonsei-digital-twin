@@ -54,7 +54,7 @@ const EnergyChart = ({ chartData }: EnergyChartProps) => {
           content={<ChartTooltipContent className="w-12" hideLabel />}
         />
         <ChartLegend
-          content={<ChartLegendContent className="flex-row pt-6" />}
+          content={<ChartLegendContent className="flex-wrap pt-6" />}
         />
         <XAxis
           dataKey="month"
