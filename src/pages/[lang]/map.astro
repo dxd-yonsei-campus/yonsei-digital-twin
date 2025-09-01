@@ -15,9 +15,12 @@ import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import LanguagePicker from '@/components/map/LanguagePicker.astro';
 import ThemePicker from '@/components/ThemePicker';
 import { Toaster } from '@/components/ui/sonner';
+import { getCollection } from 'astro:content';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const allMonthlyEnergyUse = await getCollection('monthlyEnergyUse');
 ---
 
 <Layout title={t('site.map')}>
@@ -26,7 +29,11 @@ const t = useTranslations(lang);
     {t('site.map')}
   </h1>
   <div id="map" class="h-dvh w-screen"></div>
-  <BuildingInformation client:load lang={lang} />
+  <BuildingInformation
+    client:load
+    lang={lang}
+    allMonthlyEnergyUse={allMonthlyEnergyUse}
+  />
   <div class="fixed bottom-0 w-full border-t main-bg px-4 py-2">
     <div class="mb-2 flex items-center justify-between gap-3">
       <div class="shrink-0">

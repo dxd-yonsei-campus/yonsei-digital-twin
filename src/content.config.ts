@@ -71,4 +71,3 @@ export const collections = { buildings, monthlyEnergyUse };
 export type BuildingProps = z.infer<typeof buildingsSchema> & {
   images?: string[];
 };
-export type MonthlyEnergyUseProps = z.infer<typeof monthlyEnergyUseSchema>;

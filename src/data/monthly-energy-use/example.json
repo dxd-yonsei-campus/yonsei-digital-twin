@@ -1,11 +1,20 @@
 [
   {
     "month": 1,
-    "heating": 0,
-    "cooling": 0,
-    "lighting": 0,
-    "equipment": 0,
-    "dhw": 0,
-    "windowRadiation": 0
+    "heating": 10,
+    "cooling": 20,
+    "lighting": 30,
+    "equipment": 40,
+    "dhw": 50,
+    "windowRadiation": 60
+  },
+  {
+    "month": 2,
+    "heating": 10,
+    "cooling": 20,
+    "lighting": 30,
+    "equipment": 40,
+    "dhw": 20,
+    "windowRadiation": 60
   }
 ]

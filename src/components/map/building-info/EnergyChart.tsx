@@ -6,29 +6,40 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from '@/components/ui/chart';
+import type { CollectionEntry } from 'astro:content';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
-const EnergyChart = () => {
-  const chartData = [
-    { month: 'January', desktop: 186, mobile: 80 },
-    { month: 'February', desktop: 305, mobile: 200 },
-    { month: 'March', desktop: 237, mobile: 120 },
-    { month: 'April', desktop: 73, mobile: 190 },
-    { month: 'May', desktop: 209, mobile: 130 },
-    { month: 'June', desktop: 214, mobile: 140 },
-    { month: 'July', desktop: 214, mobile: 140 },
-    { month: 'Aug', desktop: 284, mobile: 140 },
-    { month: 'Sep', desktop: 21, mobile: 10 },
-  ];
+type MonthlyEnergyUse = CollectionEntry<'monthlyEnergyUse'>['data'];
 
+type EnergyChartProps = {
+  chartData: MonthlyEnergyUse;
+};
+
+const EnergyChart = ({ chartData }: EnergyChartProps) => {
   const chartConfig = {
-    desktop: {
-      label: 'Desktop',
-      color: '#2563eb',
+    heating: {
+      label: 'Heating',
+      color: '#e76f51',
     },
-    mobile: {
-      label: 'Mobile',
-      color: '#60a5fa',
+    cooling: {
+      label: 'Cooling',
+      color: '#8ecae6',
+    },
+    lighting: {
+      label: 'Lighting',
+      color: '#ffdd57',
+    },
+    equipment: {
+      label: 'Equipment',
+      color: '#adb5bd',
+    },
+    dhw: {
+      label: 'Domestic Hot Water',
+      color: '#d2b48c',
+    },
+    windowRadiation: {
+      label: 'Window Radiation',
+      color: '#219ebc',
     },
   } satisfies ChartConfig;
 
@@ -39,14 +50,16 @@ const EnergyChart = () => {
     >
       <BarChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
-        <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-        <ChartLegend content={<ChartLegendContent />} />
+        <ChartTooltip
+          content={<ChartTooltipContent className="w-12" hideLabel />}
+        />
+        <ChartLegend content={<ChartLegendContent className="flex-row" />} />
         <XAxis
           dataKey="month"
           tickLine={false}
           tickMargin={10}
           axisLine={false}
-          tickFormatter={(value) => value.slice(0, 3)}
+          tickFormatter={(value) => value}
         />
         <YAxis
           tickLine={false}
@@ -54,18 +67,28 @@ const EnergyChart = () => {
           axisLine={false}
           tickFormatter={(value) => value.toString()}
         />
-        <Bar
-          dataKey="desktop"
-          stackId="a"
-          fill="var(--color-desktop)"
-          radius={[0, 0, 4, 4]}
-        />
-        <Bar
-          dataKey="mobile"
-          stackId="a"
-          fill="var(--color-mobile)"
-          radius={[4, 4, 0, 0]}
-        />
+        {[
+          'equipment',
+          'lighting',
+          'windowRadiation',
+          'cooling',
+          'dhw',
+          'heating',
+        ].map((type, index, arr) => {
+          const isTop = index === arr.length - 1;
+          const barRadius: [number, number, number, number] = isTop
+            ? [4, 4, 0, 0]
+            : [0, 0, 0, 0];
+
+          return (
+            <Bar
+              dataKey={type}
+              stackId="a"
+              fill={`var(--color-${type})`}
+              radius={barRadius}
+            />
+          );
+        })}
       </BarChart>
     </ChartContainer>
   );
