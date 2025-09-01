@@ -104,7 +104,10 @@ const BuildingInformation = ({
           <CollapsibleContent className="max-h-[52vh] space-y-4 overflow-scroll [&>:first-child]:pt-5">
             {$buildingLayer === 'rhino-simple' ? (
               monthlyEnergyUse ? (
-                <EnergyChart chartData={monthlyEnergyUse} />
+                <EnergyChart
+                  chartData={monthlyEnergyUse}
+                  totalFloorArea={displayBuilding?.total_floor_area || 1}
+                />
               ) : (
                 <div>Energy use data not available yet.</div>
               )

@@ -1,20 +1,20 @@
 [
   {
     "month": 1,
-    "heating": 10,
-    "cooling": 20,
-    "lighting": 30,
-    "equipment": 40,
-    "dhw": 50,
-    "windowRadiation": 60
+    "heating": 100000,
+    "cooling": 200000,
+    "lighting": 300000,
+    "equipment": 400000,
+    "dhw": 500000,
+    "windowRadiation": 600000
   },
   {
     "month": 2,
-    "heating": 10,
-    "cooling": 20,
-    "lighting": 30,
-    "equipment": 40,
-    "dhw": 20,
-    "windowRadiation": 60
+    "heating": 100001,
+    "cooling": 200001,
+    "lighting": 300010,
+    "equipment": 400010,
+    "dhw": 200001,
+    "windowRadiation": 600010
   }
 ]

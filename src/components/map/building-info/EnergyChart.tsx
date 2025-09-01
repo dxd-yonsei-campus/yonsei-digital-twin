@@ -6,16 +6,19 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from '@/components/ui/chart';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import type { CollectionEntry } from 'astro:content';
+import { useState } from 'react';
 import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
 
 type MonthlyEnergyUse = CollectionEntry<'monthlyEnergyUse'>['data'];
 
 type EnergyChartProps = {
   chartData: MonthlyEnergyUse;
+  totalFloorArea: number;
 };
 
-const EnergyChart = ({ chartData }: EnergyChartProps) => {
+const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
   const chartConfig = {
     heating: {
       label: 'Heating',
@@ -43,63 +46,97 @@ const EnergyChart = ({ chartData }: EnergyChartProps) => {
     },
   } satisfies ChartConfig;
 
-  return (
-    <ChartContainer
-      config={chartConfig}
-      className="aspect-auto h-[300px] max-w-full"
-    >
-      <BarChart accessibilityLayer data={chartData}>
-        <CartesianGrid vertical={false} />
-        <ChartTooltip
-          content={<ChartTooltipContent className="w-12" hideLabel />}
-        />
-        <ChartLegend
-          content={<ChartLegendContent className="flex-wrap pt-6" />}
-        />
-        <XAxis
-          dataKey="month"
-          tickLine={true}
-          tickMargin={10}
-          axisLine={false}
-          tickFormatter={(value) => value}
-        />
-        <YAxis
-          tickLine={false}
-          tickMargin={10}
-          axisLine={false}
-          tickFormatter={(value) => value.toString()}
-        >
-          <Label
-            angle={-90}
-            value="EUI (kWh/m&sup2;)"
-            position="insideLeft"
-            style={{ textAnchor: 'middle' }}
-          />
-        </YAxis>
-        {[
-          'equipment',
-          'lighting',
-          'dhw',
-          'heating',
-          'windowRadiation',
-          'cooling',
-        ].map((type, index, arr) => {
-          const isTop = index === arr.length - 1;
-          const barRadius: [number, number, number, number] = isTop
-            ? [4, 4, 0, 0]
-            : [0, 0, 0, 0];
+  const [energyUseType, setEnergyUseType] = useState<'eu' | 'eui'>('eu');
 
-          return (
-            <Bar
-              dataKey={type}
-              stackId="a"
-              fill={`var(--color-${type})`}
-              radius={barRadius}
+  const transformedChartData = chartData.map((monthData) => {
+    if (energyUseType === 'eui') {
+      return {
+        month: monthData.month,
+        heating: monthData.heating / totalFloorArea,
+        cooling: monthData.cooling / totalFloorArea,
+        lighting: monthData.lighting / totalFloorArea,
+        equipment: monthData.equipment / totalFloorArea,
+        dhw: monthData.dhw / totalFloorArea,
+        windowRadiation: monthData.windowRadiation / totalFloorArea,
+      };
+    }
+
+    return monthData;
+  });
+
+  return (
+    <>
+      <ToggleGroup
+        className="w-full"
+        variant="outline"
+        type={'single'}
+        onValueChange={(val) => setEnergyUseType(val)}
+        value={energyUseType}
+      >
+        <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
+          Energy Use
+        </ToggleGroupItem>
+        <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
+          Energy Use Intensity
+        </ToggleGroupItem>
+      </ToggleGroup>
+      <ChartContainer
+        config={chartConfig}
+        className="aspect-auto h-[300px] max-w-full"
+      >
+        <BarChart accessibilityLayer data={transformedChartData}>
+          <CartesianGrid vertical={false} />
+          <ChartTooltip
+            content={<ChartTooltipContent className="w-12" hideLabel />}
+          />
+          <ChartLegend
+            content={<ChartLegendContent className="flex-wrap pt-6" />}
+          />
+          <XAxis
+            dataKey="month"
+            tickLine={true}
+            tickMargin={10}
+            axisLine={false}
+            tickFormatter={(value) => value}
+          />
+          <YAxis
+            tickLine={false}
+            tickMargin={10}
+            axisLine={false}
+            tickFormatter={(value) => value.toString()}
+          >
+            <Label
+              angle={-90}
+              value={energyUseType === 'eu' ? 'EU (kWh)' : 'EUI (kWh/m²)'}
+              position="insideLeft"
+              style={{ textAnchor: 'middle' }}
             />
-          );
-        })}
-      </BarChart>
-    </ChartContainer>
+          </YAxis>
+          {[
+            'equipment',
+            'lighting',
+            'dhw',
+            'heating',
+            'windowRadiation',
+            'cooling',
+          ].map((type, index, arr) => {
+            const isTop = index === arr.length - 1;
+            const barRadius: [number, number, number, number] = isTop
+              ? [4, 4, 0, 0]
+              : [0, 0, 0, 0];
+
+            return (
+              <Bar
+                dataKey={type}
+                stackId="a"
+                fill={`var(--color-${type})`}
+                radius={barRadius}
+              />
+            );
+          })}
+        </BarChart>
+      </ChartContainer>
+    </>
   );
 };
 
