@@ -2178,6 +2178,7 @@
       "/src/assets/607-university-residence-c/university-residence-c.jpg",
       "/src/assets/607-university-residence-c/university-residence-c-thermal.png"
     ],
+    "monthly_energy_use": "607-university-residence-c",
     "approval_date": "1991-05-14",
     "floor_level": 4
   },
@@ -2438,6 +2439,7 @@
       "/src/assets/502-stimson-hall/stimson-hall-1.jpg",
       "/src/assets/502-stimson-hall/stimson-hall-2.jpg"
     ],
+    "monthly_energy_use": "502-stimson-hall",
     "approval_date": "1968-07-01",
     "floor_level": 2,
     "construction_type": "석구조",
@@ -2468,6 +2470,7 @@
       "/src/assets/503-appenzeller-hall/appenzeller-hall.jpg",
       "/src/assets/503-appenzeller-hall/appenzeller-hall-thermal.png"
     ],
+    "monthly_energy_use": "503-appenzeller-hall",
     "floor_level": 3,
     "construction_type": "석구조",
     "construction_type_en": "Masonry",
@@ -2499,6 +2502,7 @@
       "/src/assets/505-nonjidang/nonjidang.jpg",
       "/src/assets/505-nonjidang/nonjidang-thermal.png"
     ],
+    "monthly_energy_use": "505-nonjidang",
     "approval_date": "1956-12-31",
     "floor_level": 1,
     "construction_type": "벽돌구조",
@@ -2534,6 +2538,7 @@
       "/src/assets/506-seongam-hall/seongam-hall.jpg",
       "/src/assets/506-seongam-hall/seongam-hall-thermal.png"
     ],
+    "monthly_energy_use": "506-seongam-hall",
     "approval_date": "1960-10-03",
     "floor_level": 3,
     "construction_type": "석구조",
@@ -2565,6 +2570,7 @@
       "/src/assets/507-yu-eok-gyeom-memorial-hall/yu-eok-gyeom-memorial-hall.jpg",
       "/src/assets/507-yu-eok-gyeom-memorial-hall/yu-eok-gyeom-memorial-hall-thermal.png"
     ],
+    "monthly_energy_use": "507-yu-eok-gyeom-memorial-hall",
     "approval_date": "1962-12-10",
     "floor_level": 4,
     "construction_type": "석구조",
@@ -2912,6 +2918,7 @@
       "/src/assets/526-education-sciences-hall/education-sciences-hall.jpg",
       "/src/assets/526-education-sciences-hall/education-sciences-hall-thermal.png"
     ],
+    "monthly_energy_use": "526-education-sciences-hall",
     "approval_date": "2012-06-01",
     "floor_level": 6
   },
@@ -2941,6 +2948,7 @@
       "/src/assets/527-widang-hall/widang-hall.jpg",
       "/src/assets/527-widang-hall/widang-hall-thermal.png"
     ],
+    "monthly_energy_use": "527-widang-hall",
     "approval_date": "1998-07-31",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -2972,6 +2980,7 @@
       "/src/assets/602-beophyeon-dormitory/beophyeon-dormitory.jpg",
       "/src/assets/602-beophyeon-dormitory/beophyeon-dormitory-thermal.png"
     ],
+    "monthly_energy_use": "602-beophyeon-dormitory",
     "approval_date": "2018-08-27",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -3018,6 +3027,7 @@
       "/src/assets/603-chejung-dormitory/chejung-dormitory.jpg",
       "/src/assets/603-chejung-dormitory/chejung-dormitory-thermal.png"
     ],
+    "monthly_energy_use": "603-chejung-dormitory",
     "approval_date": "2018-08-27",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -3087,6 +3097,7 @@
       "/src/assets/605-international-house/international-house.jpg",
       "/src/assets/605-international-house/international-house-thermal.png"
     ],
+    "monthly_energy_use": "605-international-house",
     "approval_date": "2003-05-28",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -3130,6 +3141,7 @@
       "/src/assets/606-new-millennium-hall/new-millennium-hall.jpg",
       "/src/assets/606-new-millennium-hall/new-millennium-hall-thermal.png"
     ],
+    "monthly_energy_use": "606-new-millennium-hall",
     "approval_date": "2007-08-20",
     "floor_level": 3
   },
@@ -3156,6 +3168,7 @@
       "/src/assets/608-presidential-reception-hall/presidential-reception-hall.jpg",
       "/src/assets/608-presidential-reception-hall/presidential-reception-hall-thermal.png"
     ],
+    "monthly_energy_use": "608-presidential-reception-hall",
     "approval_date": "2012-05-03",
     "floor_level": 1,
     "construction_type": "철근콘크리트구조",
@@ -3186,6 +3199,7 @@
       "/src/assets/609-presidents-residence/presidents-residence.jpg",
       "/src/assets/609-presidents-residence/presidents-residence-thermal.png"
     ],
+    "monthly_energy_use": "609-presidents-residence",
     "approval_date": "1991-11-19",
     "floor_level": 2,
     "construction_type": "석구조",
@@ -3250,6 +3264,7 @@
       "/src/assets/621-institute-of-language-research-and-education/institute-of-language-research-and-education.jpg",
       "/src/assets/621-institute-of-language-research-and-education/institute-of-language-research-and-education-thermal.png"
     ],
+    "monthly_energy_use": "621-institute-of-language-research-and-education",
     "approval_date": "1991-04-19",
     "floor_level": 6
   },
