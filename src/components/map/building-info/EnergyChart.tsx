@@ -103,7 +103,12 @@ const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
             tickLine={false}
             tickMargin={10}
             axisLine={false}
-            tickFormatter={(value) => value.toString()}
+            tickFormatter={(value) => {
+              if (energyUseType === 'eu') {
+                return (value / 1000).toString() + 'k';
+              }
+              return value;
+            }}
           >
             <Label
               angle={-90}
