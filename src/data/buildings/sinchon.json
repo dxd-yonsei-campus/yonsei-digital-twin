@@ -3025,6 +3025,7 @@
       "/src/assets/604-sk-global-house/sk-global-house.jpg",
       "/src/assets/604-sk-global-house/sk-global-house-thermal.png"
     ],
+    "monthly_energy_use": "604-sk-global-house",
     "approval_date": "2013-10-25",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
