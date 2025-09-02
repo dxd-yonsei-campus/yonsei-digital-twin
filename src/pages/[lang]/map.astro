@@ -20,7 +20,7 @@ import { getCollection } from 'astro:content';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const allMonthlyEnergyUse = await getCollection('monthlyEnergyUse');
+const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
 ---
 
 <Layout title={t('site.map')}>
@@ -32,7 +32,7 @@ const allMonthlyEnergyUse = await getCollection('monthlyEnergyUse');
   <BuildingInformation
     client:load
     lang={lang}
-    allMonthlyEnergyUse={allMonthlyEnergyUse}
+    monthlyEnergyUseCollection={monthlyEnergyUseCollection}
   />
   <div class="fixed bottom-0 w-full border-t main-bg px-4 py-2">
     <div class="mb-2 flex items-center justify-between gap-3">

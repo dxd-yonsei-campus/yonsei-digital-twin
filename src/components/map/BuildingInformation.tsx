@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/collapsible';
 import { cn } from '@/lib/utils';
 import ConstructionInformation from '@/components/map/building-info/ConstructionInformation';
-import EnergyChart from './building-info/EnergyChart';
+import EnergyChart from '@/components/map/building-info/EnergyChart';
 import type { CollectionEntry } from 'astro:content';
 
 const allBuildings = getAllBuildings();
@@ -30,12 +30,12 @@ type MonthlyEnergyUseEntry = CollectionEntry<'monthlyEnergyUse'>;
 
 type BuildingInformationProps = {
   lang: keyof typeof ui;
-  allMonthlyEnergyUse: MonthlyEnergyUseEntry[];
+  monthlyEnergyUseCollection: MonthlyEnergyUseEntry[];
 };
 
 const BuildingInformation = ({
   lang,
-  allMonthlyEnergyUse,
+  monthlyEnergyUseCollection,
 }: BuildingInformationProps) => {
   const $selectedId = useStore(selectedId);
   const $buildingLayer = useStore(buildingLayer);
@@ -64,7 +64,7 @@ const BuildingInformation = ({
   }
 
   const campusName = getCampusForBuildingId(displayBuilding.id);
-  const monthlyEnergyUse = allMonthlyEnergyUse.find(
+  const monthlyEnergyUse = monthlyEnergyUseCollection.find(
     (data) => data.id === String(displayBuilding?.monthly_energy_use),
   )?.data;
 
