@@ -18,34 +18,43 @@ type EnergyChartProps = {
   totalFloorArea: number;
 };
 
-const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
-  const chartConfig = {
-    heating: {
-      label: 'Heating',
-      color: '#e76f51',
-    },
-    cooling: {
-      label: 'Cooling',
-      color: '#8ecae6',
-    },
-    lighting: {
-      label: 'Lighting',
-      color: '#ffdd57',
-    },
-    equipment: {
-      label: 'Equipment',
-      color: '#adb5bd',
-    },
-    dhw: {
-      label: 'Domestic Hot Water',
-      color: '#ff9b29',
-    },
-    windowRadiation: {
-      label: 'Window Radiation',
-      color: '#219ebc',
-    },
-  } satisfies ChartConfig;
+const chartConfig = {
+  heating: {
+    label: 'Heating',
+    color: '#e76f51',
+  },
+  cooling: {
+    label: 'Cooling',
+    color: '#8ecae6',
+  },
+  lighting: {
+    label: 'Lighting',
+    color: '#ffdd57',
+  },
+  equipment: {
+    label: 'Equipment',
+    color: '#adb5bd',
+  },
+  dhw: {
+    label: 'Domestic Hot Water',
+    color: '#ff9b29',
+  },
+  windowRadiation: {
+    label: 'Window Radiation',
+    color: '#219ebc',
+  },
+} satisfies ChartConfig;
 
+const stackOrder: (keyof MonthlyEnergyUse[number])[] = [
+  'equipment',
+  'lighting',
+  'dhw',
+  'heating',
+  'windowRadiation',
+  'cooling',
+];
+
+const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
   const [energyUseType, setEnergyUseType] = useState<'eu' | 'eui'>('eu');
 
   const transformedChartData = chartData.map((monthData) => {
@@ -117,28 +126,9 @@ const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
               style={{ textAnchor: 'middle' }}
             />
           </YAxis>
-          {[
-            'equipment',
-            'lighting',
-            'dhw',
-            'heating',
-            'windowRadiation',
-            'cooling',
-          ].map((type, index, arr) => {
-            const isTop = index === arr.length - 1;
-            const barRadius: [number, number, number, number] = isTop
-              ? [4, 4, 0, 0]
-              : [0, 0, 0, 0];
-
-            return (
-              <Bar
-                dataKey={type}
-                stackId="a"
-                fill={`var(--color-${type})`}
-                radius={barRadius}
-              />
-            );
-          })}
+          {stackOrder.map((type) => (
+            <Bar dataKey={type} stackId="a" fill={`var(--color-${type})`} />
+          ))}
         </BarChart>
       </ChartContainer>
     </>

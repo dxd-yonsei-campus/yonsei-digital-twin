@@ -26,11 +26,11 @@ import type { CollectionEntry } from 'astro:content';
 
 const allBuildings = getAllBuildings();
 
-type MonthlyEnergyUse = CollectionEntry<'monthlyEnergyUse'>;
+type MonthlyEnergyUseEntry = CollectionEntry<'monthlyEnergyUse'>;
 
 type BuildingInformationProps = {
   lang: keyof typeof ui;
-  allMonthlyEnergyUse: MonthlyEnergyUse[];
+  allMonthlyEnergyUse: MonthlyEnergyUseEntry[];
 };
 
 const BuildingInformation = ({
