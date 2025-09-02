@@ -80,7 +80,11 @@ const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
           className="w-full"
           variant="outline"
           type={'single'}
-          onValueChange={(val) => setEnergyUseType(val)}
+          onValueChange={(val) => {
+            if (val) {
+              setEnergyUseType(val);
+            }
+          }}
           value={energyUseType}
         >
           <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
