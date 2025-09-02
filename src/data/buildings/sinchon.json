@@ -484,6 +484,7 @@
       "/src/assets/009-kwanghye-building/kwanghye-building.jpg",
       "/src/assets/009-kwanghye-building/kwanghye-building-thermal.png"
     ],
+    "monthly_energy_use": "009-kwanghye-building",
     "approval_date": "1972-02-21",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
