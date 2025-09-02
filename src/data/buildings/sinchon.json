@@ -1903,6 +1903,7 @@
       "/src/assets/322-science-hall/science-hall.jpg",
       "/src/assets/322-science-hall/science-hall-thermal.png"
     ],
+    "monthly_energy_use": "322-science-hall",
     "approval_date": "1984-06-23",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -1921,6 +1922,7 @@
       "/src/assets/323-science-research-center/science-research-center.jpg",
       "/src/assets/323-science-research-center/science-research-center-thermal.png"
     ],
+    "monthly_energy_use": "323-science-research-center",
     "approval_date": "2000-08-03",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -1993,6 +1995,7 @@
       "/src/assets/326-underwood-memorial-house/underwood-memorial-house.jpg",
       "/src/assets/326-underwood-memorial-house/underwood-memorial-house-thermal.png"
     ],
+    "monthly_energy_use": "326-underwood-memorial-house",
     "approval_date": "1975-09-13",
     "floor_level": 2,
     "total_floor_area": 689.34,
@@ -2083,6 +2086,7 @@
       "/src/assets/403-radio-observatory/radio-observatory.jpg",
       "/src/assets/403-radio-observatory/radio-observatory-thermal.png"
     ],
+    "monthly_energy_use": "403-radio-observatory",
     "approval_date": "2012-05-02",
     "floor_level": 1,
     "construction_type": "철근콘크리트구조",
@@ -2119,6 +2123,7 @@
       "/src/assets/404-university-residence-a/university-residence-a.jpg",
       "/src/assets/404-university-residence-a/university-residence-a-thermal.png"
     ],
+    "monthly_energy_use": "404-university-residence-a",
     "approval_date": "1971-11-19",
     "floor_level": 1
   },
