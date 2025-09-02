@@ -616,6 +616,7 @@
       "/src/assets/012-college-of-dentistry/college-of-dentistry.jpg",
       "/src/assets/012-college-of-dentistry/college-of-dentistry-thermal.png"
     ],
+    "monthly_energy_use": "012-college-of-dentistry",
     "approval_date": "1996-05-09",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -634,6 +635,7 @@
       "/src/assets/013-avison-biomedical-research-center/avison-biomedical-research-center.jpg",
       "/src/assets/013-avison-biomedical-research-center/avison-biomedical-research-center-thermal.png"
     ],
+    "monthly_energy_use": "013-avison-biomedical-research-center",
     "height": 27.3,
     "approval_date": "2013-02-07",
     "floor_level": 6,
@@ -670,6 +672,7 @@
       "/src/assets/014-college-of-nursing/college-of-nursing.jpg",
       "/src/assets/014-college-of-nursing/college-of-nursing-thermal.png"
     ],
+    "monthly_energy_use": "014-college-of-nursing",
     "approval_date": "1996-08-31",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -760,6 +763,7 @@
       "/src/assets/016-alumni-center/alumni-center.jpg",
       "/src/assets/016-alumni-center/alumni-center-thermal.png"
     ],
+    "monthly_energy_use": "016-alumni-center",
     "approval_date": "1993-04-29",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -794,6 +798,7 @@
       "/src/assets/017-alfred-faculty-building/alfred-faculty-building.jpg",
       "/src/assets/017-alfred-faculty-building/alfred-faculty-building-thermal.png"
     ],
+    "monthly_energy_use": "017-alfred-faculty-building",
     "approval_date": "2012-08-03",
     "floor_level": 4
   },
@@ -824,6 +829,7 @@
       "/src/assets/102-engineering-research-park/engineering-research-park.jpg",
       "/src/assets/102-engineering-research-park/engineering-research-park-thermal.png"
     ],
+    "monthly_energy_use": "102-engineering-research-park",
     "approval_date": "1999-04-08",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
@@ -886,6 +892,7 @@
       "/src/assets/113-rotc-headquarters/rotc-headquarters.jpg",
       "/src/assets/113-rotc-headquarters/rotc-headquarters-thermal.png"
     ],
+    "monthly_energy_use": "113-rotc-headquarters",
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
     "construction_type_en": "Reinforced concrete",
@@ -916,6 +923,7 @@
       "/src/assets/114-industry-university-research-center/industry-university-research-center.jpg",
       "/src/assets/114-industry-university-research-center/industry-university-research-center-thermal.png"
     ],
+    "monthly_energy_use": "114-industry-university-research-center",
     "approval_date": "2003-05-01",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -951,6 +959,7 @@
       "/src/assets/115-gs-caltex-research-hall/gs-caltex-research-hall.jpg",
       "/src/assets/115-gs-caltex-research-hall/gs-caltex-research-hall-thermal.png"
     ],
+    "monthly_energy_use": "115-gs-caltex-research-hall",
     "approval_date": "2012-05-29",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
@@ -989,6 +998,7 @@
       "/src/assets/116-yonsei-rehabilitation-school/yonsei-rehabilitation-school.jpg",
       "/src/assets/116-yonsei-rehabilitation-school/yonsei-rehabilitation-school-thermal.png"
     ],
+    "monthly_energy_use": "116-yonsei-rehabilitation-school",
     "approval_date": "2012-08-02",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -1026,6 +1036,7 @@
       "/src/assets/117-advanced-science-and-technology-center/advanced-science-and-technology-center.jpg",
       "/src/assets/117-advanced-science-and-technology-center/advanced-science-and-technology-center-thermal.png"
     ],
+    "monthly_energy_use": "117-advanced-science-and-technology-center",
     "approval_date": "2012-04-09",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
