@@ -2725,6 +2725,7 @@
       "/src/assets/521-pinson-hall/pinson-hall.jpg",
       "/src/assets/521-pinson-hall/pinson-hall-thermal.png"
     ],
+    "monthly_energy_use": "521-pinson-hall",
     "approval_date": "2012-05-02",
     "floor_level": 3,
     "construction_type": "석구조",
@@ -2763,6 +2764,7 @@
       "/src/assets/522-hangyeong-hall/hangyeong-hall.jpg",
       "/src/assets/522-hangyeong-hall/hangyeong-hall-thermal.png"
     ],
+    "monthly_energy_use": "522-hangyeong-hall",
     "approval_date": "1968-12-24",
     "floor_level": 2,
     "total_floor_area": 1012.31,
@@ -2794,6 +2796,7 @@
       "/src/assets/523-theology-hall/theology-hall.jpg",
       "/src/assets/523-theology-hall/theology-hall-thermal.png"
     ],
+    "monthly_energy_use": "523-theology-hall",
     "approval_date": "2012-04-10",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
@@ -2821,6 +2824,7 @@
         ]
       ]
     },
+    "monthly_energy_use": "524-oesol-hall",
     "approval_date": "1968-07-01",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -2852,6 +2856,7 @@
       "/src/assets/525-oesol-hall-2/oesol-hall-2.jpg",
       "/src/assets/525-oesol-hall-2/oesol-hall-2-thermal.png"
     ],
+    "monthly_energy_use": "525-oesol-hall-2",
     "approval_date": "1968-07-01",
     "floor_level": 1,
     "construction_type": "철근콘크리트구조",
