@@ -1329,6 +1329,7 @@
       "/src/assets/202-gwanghyewon/gwanghyewon.jpg",
       "/src/assets/202-gwanghyewon/gwanghyewon-thermal.png"
     ],
+    "monthly_energy_use": "202-gwanghyewon",
     "approval_date": "1986-12-24",
     "floor_level": 1,
     "construction_type": "일반목구조",
