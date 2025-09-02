@@ -15,7 +15,7 @@ type MonthlyEnergyUse = CollectionEntry<'monthlyEnergyUse'>['data'];
 
 type EnergyChartProps = {
   chartData: MonthlyEnergyUse;
-  totalFloorArea: number;
+  totalFloorArea?: number;
 };
 
 const chartConfig = {
@@ -58,7 +58,7 @@ const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
   const [energyUseType, setEnergyUseType] = useState<'eu' | 'eui'>('eu');
 
   const transformedChartData = chartData.map((monthData) => {
-    if (energyUseType === 'eui') {
+    if (totalFloorArea && energyUseType === 'eui') {
       return {
         month: monthData.month,
         heating: monthData.heating / totalFloorArea,
@@ -75,22 +75,24 @@ const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
 
   return (
     <>
-      <ToggleGroup
-        className="w-full"
-        variant="outline"
-        type={'single'}
-        onValueChange={(val) => setEnergyUseType(val)}
-        value={energyUseType}
-      >
-        <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
-          <span className="hidden xs:block">Energy Use</span>
-          <span className="block xs:hidden">EU</span>
-        </ToggleGroupItem>
-        <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
-          <span className="hidden xs:block">Energy Use Intensity</span>
-          <span className="block xs:hidden">EUI</span>
-        </ToggleGroupItem>
-      </ToggleGroup>
+      {totalFloorArea && (
+        <ToggleGroup
+          className="w-full"
+          variant="outline"
+          type={'single'}
+          onValueChange={(val) => setEnergyUseType(val)}
+          value={energyUseType}
+        >
+          <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
+            <span className="hidden xs:block">Energy Use</span>
+            <span className="block xs:hidden">EU</span>
+          </ToggleGroupItem>
+          <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
+            <span className="hidden xs:block">Energy Use Intensity</span>
+            <span className="block xs:hidden">EUI</span>
+          </ToggleGroupItem>
+        </ToggleGroup>
+      )}
       <ChartContainer
         config={chartConfig}
         className="aspect-auto h-[300px] max-w-full"
@@ -114,6 +116,7 @@ const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
             tickLine={false}
             tickMargin={10}
             axisLine={false}
+            width={energyUseType === 'eu' ? 75 : 60}
             tickFormatter={(value) => {
               if (energyUseType === 'eu') {
                 return (value / 1000).toString() + 'k';

@@ -105,8 +105,9 @@ const BuildingInformation = ({
             {$buildingLayer === 'rhino-simple' ? (
               monthlyEnergyUse ? (
                 <EnergyChart
+                  key={displayBuilding.id}
                   chartData={monthlyEnergyUse}
-                  totalFloorArea={displayBuilding?.total_floor_area || 1}
+                  totalFloorArea={displayBuilding?.total_floor_area}
                 />
               ) : (
                 <div>Energy use data is unavailable.</div>
