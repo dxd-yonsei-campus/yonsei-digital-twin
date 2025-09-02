@@ -6,68 +6,134 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from '@/components/ui/chart';
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import type { CollectionEntry } from 'astro:content';
+import { useState } from 'react';
+import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
 
-const EnergyChart = () => {
-  const chartData = [
-    { month: 'January', desktop: 186, mobile: 80 },
-    { month: 'February', desktop: 305, mobile: 200 },
-    { month: 'March', desktop: 237, mobile: 120 },
-    { month: 'April', desktop: 73, mobile: 190 },
-    { month: 'May', desktop: 209, mobile: 130 },
-    { month: 'June', desktop: 214, mobile: 140 },
-    { month: 'July', desktop: 214, mobile: 140 },
-    { month: 'Aug', desktop: 284, mobile: 140 },
-    { month: 'Sep', desktop: 21, mobile: 10 },
-  ];
+type MonthlyEnergyUse = CollectionEntry<'monthlyEnergyUse'>['data'];
 
-  const chartConfig = {
-    desktop: {
-      label: 'Desktop',
-      color: '#2563eb',
-    },
-    mobile: {
-      label: 'Mobile',
-      color: '#60a5fa',
-    },
-  } satisfies ChartConfig;
+type EnergyChartProps = {
+  chartData: MonthlyEnergyUse;
+  totalFloorArea: number;
+};
+
+const chartConfig = {
+  heating: {
+    label: 'Heating',
+    color: '#e76f51',
+  },
+  cooling: {
+    label: 'Cooling',
+    color: '#8ecae6',
+  },
+  lighting: {
+    label: 'Lighting',
+    color: '#ffdd57',
+  },
+  equipment: {
+    label: 'Equipment',
+    color: '#adb5bd',
+  },
+  dhw: {
+    label: 'Domestic Hot Water',
+    color: '#ff9b29',
+  },
+  windowRadiation: {
+    label: 'Window Radiation',
+    color: '#219ebc',
+  },
+} satisfies ChartConfig;
+
+const stackOrder: (keyof MonthlyEnergyUse[number])[] = [
+  'equipment',
+  'lighting',
+  'dhw',
+  'heating',
+  'windowRadiation',
+  'cooling',
+];
+
+const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
+  const [energyUseType, setEnergyUseType] = useState<'eu' | 'eui'>('eu');
+
+  const transformedChartData = chartData.map((monthData) => {
+    if (energyUseType === 'eui') {
+      return {
+        month: monthData.month,
+        heating: monthData.heating / totalFloorArea,
+        cooling: monthData.cooling / totalFloorArea,
+        lighting: monthData.lighting / totalFloorArea,
+        equipment: monthData.equipment / totalFloorArea,
+        dhw: monthData.dhw / totalFloorArea,
+        windowRadiation: monthData.windowRadiation / totalFloorArea,
+      };
+    }
+
+    return monthData;
+  });
 
   return (
-    <ChartContainer
-      config={chartConfig}
-      className="aspect-auto h-[300px] max-w-full"
-    >
-      <BarChart accessibilityLayer data={chartData}>
-        <CartesianGrid vertical={false} />
-        <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-        <ChartLegend content={<ChartLegendContent />} />
-        <XAxis
-          dataKey="month"
-          tickLine={false}
-          tickMargin={10}
-          axisLine={false}
-          tickFormatter={(value) => value.slice(0, 3)}
-        />
-        <YAxis
-          tickLine={false}
-          tickMargin={10}
-          axisLine={false}
-          tickFormatter={(value) => value.toString()}
-        />
-        <Bar
-          dataKey="desktop"
-          stackId="a"
-          fill="var(--color-desktop)"
-          radius={[0, 0, 4, 4]}
-        />
-        <Bar
-          dataKey="mobile"
-          stackId="a"
-          fill="var(--color-mobile)"
-          radius={[4, 4, 0, 0]}
-        />
-      </BarChart>
-    </ChartContainer>
+    <>
+      <ToggleGroup
+        className="w-full"
+        variant="outline"
+        type={'single'}
+        onValueChange={(val) => setEnergyUseType(val)}
+        value={energyUseType}
+      >
+        <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
+          <span className="hidden xs:block">Energy Use</span>
+          <span className="block xs:hidden">EU</span>
+        </ToggleGroupItem>
+        <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
+          <span className="hidden xs:block">Energy Use Intensity</span>
+          <span className="block xs:hidden">EUI</span>
+        </ToggleGroupItem>
+      </ToggleGroup>
+      <ChartContainer
+        config={chartConfig}
+        className="aspect-auto h-[300px] max-w-full"
+      >
+        <BarChart accessibilityLayer data={transformedChartData}>
+          <CartesianGrid vertical={false} />
+          <ChartTooltip
+            content={<ChartTooltipContent className="w-50" hideLabel />}
+          />
+          <ChartLegend
+            content={<ChartLegendContent className="flex-wrap pt-6" />}
+          />
+          <XAxis
+            dataKey="month"
+            tickLine={true}
+            tickMargin={10}
+            axisLine={false}
+            tickFormatter={(value) => value}
+          />
+          <YAxis
+            tickLine={false}
+            tickMargin={10}
+            axisLine={false}
+            tickFormatter={(value) => {
+              if (energyUseType === 'eu') {
+                return (value / 1000).toString() + 'k';
+              }
+              return value;
+            }}
+          >
+            <Label
+              angle={-90}
+              value={energyUseType === 'eu' ? 'EU (kWh)' : 'EUI (kWh/m²)'}
+              position="insideLeft"
+              style={{ textAnchor: 'middle' }}
+            />
+          </YAxis>
+          {stackOrder.map((type) => (
+            <Bar dataKey={type} stackId="a" fill={`var(--color-${type})`} />
+          ))}
+        </BarChart>
+      </ChartContainer>
+    </>
   );
 };
 

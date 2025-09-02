@@ -2610,6 +2610,7 @@
       "/src/assets/512-billingsley-hall/billingsley-hall.jpg",
       "/src/assets/512-billingsley-hall/billingsley-hall-thermal.png"
     ],
+    "monthly_energy_use": "512-billingsley-hall",
     "floor_level": 4,
     "construction_type": "벽돌구조",
     "construction_type_en": "Masonry",
