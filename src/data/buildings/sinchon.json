@@ -2585,6 +2585,7 @@
       "/src/assets/511-yeonhi-hall/yeonhi-hall.jpg",
       "/src/assets/511-yeonhi-hall/yeonhi-hall-thermal.png"
     ],
+    "monthly_energy_use": "511-yeonhi-hall",
     "approval_date": "1956-12-31",
     "floor_level": 5,
     "construction_type": "석구조",
