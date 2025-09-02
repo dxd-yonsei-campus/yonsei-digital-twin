@@ -2151,6 +2151,7 @@
       "/src/assets/412-university-residence-b/university-residence-b.jpg",
       "/src/assets/412-university-residence-b/university-residence-b-thermal.png"
     ],
+    "monthly_energy_use": "412-university-residence-b",
     "approval_date": "2006-01-26",
     "floor_level": 5
   },
@@ -2217,6 +2218,7 @@
       "/src/assets/413-eugene-childcare-center/eugene-childcare-center.jpg",
       "/src/assets/413-eugene-childcare-center/eugene-childcare-center-thermal.png"
     ],
+    "monthly_energy_use": "413-eugene-childcare-center",
     "approval_date": "2012-04-30",
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
@@ -2261,6 +2263,7 @@
       "/src/assets/414-sangnam-institute-of-management/sangnam-institute-of-management.jpg",
       "/src/assets/414-sangnam-institute-of-management/sangnam-institute-of-management-thermal.png"
     ],
+    "monthly_energy_use": "414-sangnam-institute-of-management",
     "approval_date": "1998-11-26",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -2291,6 +2294,7 @@
       "/src/assets/415-child-development-research-institute-research-building/child-development-research-institute-research-building.jpg",
       "/src/assets/415-child-development-research-institute-research-building/child-development-research-institute-research-building-thermal.png"
     ],
+    "monthly_energy_use": "415-child-development-research-institute-research-building",
     "approval_date": "2020-02-26",
     "floor_level": 2,
     "construction_type": "철근콘크리트구조",
@@ -2334,6 +2338,7 @@
       "/src/assets/416-child-development-research-institute/child-development-research-institute.jpg",
       "/src/assets/416-child-development-research-institute/child-development-research-institute-thermal.png"
     ],
+    "monthly_energy_use": "416-child-development-research-institute",
     "approval_date": "2002-10-04",
     "floor_level": 2,
     "construction_type": "철근콘크리트구조",
