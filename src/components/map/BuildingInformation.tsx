@@ -106,7 +106,7 @@ const BuildingInformation = ({
               monthlyEnergyUse ? (
                 <EnergyChart
                   chartData={monthlyEnergyUse}
-                  totalFloorArea={displayBuilding?.total_floor_area || 1}
+                  totalFloorArea={displayBuilding?.total_floor_area}
                 />
               ) : (
                 <div>Energy use data is unavailable.</div>
