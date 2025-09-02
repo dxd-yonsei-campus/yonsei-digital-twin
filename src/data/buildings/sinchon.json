@@ -1692,6 +1692,7 @@
       "/src/assets/304-gymnasium/gymnasium.jpg",
       "/src/assets/304-gymnasium/gymnasium-thermal.png"
     ],
+    "monthly_energy_use": "304-gymnasium",
     "approval_date": "1960-04-15",
     "floor_level": 2,
     "construction_type": "철골철근콘크리트구조",
@@ -1728,6 +1729,7 @@
       "/src/assets/305-sports-science-complex/sports-science-complex-1.png",
       "/src/assets/305-sports-science-complex/sports-science-complex-2.png"
     ],
+    "monthly_energy_use": "305-sports-science-complex",
     "approval_date": "2012-03-05",
     "floor_level": 3,
     "construction_type": "철골철근콘크리트구조",
@@ -1759,6 +1761,7 @@
       "/src/assets/306-physical-education-center/physical-education-center.jpg",
       "/src/assets/306-physical-education-center/physical-education-center-thermal.png"
     ],
+    "monthly_energy_use": "306-physical-education-center",
     "approval_date": "1979-09-24",
     "floor_level": 3
   },
@@ -1785,6 +1788,7 @@
       "/src/assets/307-gwangbok-hall-annex/gwangbok-hall-annex.jpg",
       "/src/assets/307-gwangbok-hall-annex/gwangbok-hall-annex-thermal.png"
     ],
+    "monthly_energy_use": "307-gwangbok-hall-annex",
     "approval_date": "2012-06-01",
     "floor_level": 2
   },
@@ -1817,6 +1821,7 @@
       "/src/assets/308-gwangbok-hall/gwangbok-hall.jpg",
       "/src/assets/308-gwangbok-hall/gwangbok-hall-thermal.png"
     ],
+    "monthly_energy_use": "308-gwangbok-hall",
     "approval_date": "2013-10-25",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
