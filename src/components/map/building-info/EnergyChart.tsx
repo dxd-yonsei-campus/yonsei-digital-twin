@@ -87,7 +87,7 @@ const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
         <BarChart accessibilityLayer data={transformedChartData}>
           <CartesianGrid vertical={false} />
           <ChartTooltip
-            content={<ChartTooltipContent className="w-12" hideLabel />}
+            content={<ChartTooltipContent className="w-50" hideLabel />}
           />
           <ChartLegend
             content={<ChartLegendContent className="flex-wrap pt-6" />}
