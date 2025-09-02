@@ -2380,6 +2380,7 @@
       "/src/assets/501-underwood-hall/underwood-hall.jpg",
       "/src/assets/501-underwood-hall/underwood-hall-thermal.png"
     ],
+    "monthly_energy_use": "501-underwood-hall",
     "floor_level": 5,
     "construction_type": "석구조",
     "construction_type_en": "Masonry",
