@@ -233,6 +233,7 @@
       "/src/assets/004-administration-building/administration-building.jpg",
       "/src/assets/004-administration-building/administration-building-thermal.png"
     ],
+    "monthly_energy_use": "004-administration-building",
     "approval_date": "2012-09-11",
     "floor_level": 6
   },
@@ -348,6 +349,7 @@
       "/src/assets/006-rehabilitation-hospital/rehabilitation-hospital.jpg",
       "/src/assets/006-rehabilitation-hospital/rehabilitation-hospital-thermal.png"
     ],
+    "monthly_energy_use": "006-rehabilitation-hospital",
     "approval_date": "1988-03-18",
     "floor_level": 10,
     "construction_type": "철근콘크리트구조",
@@ -397,6 +399,7 @@
       "/src/assets/007-childrens-hospital/childrens-hospital.jpg",
       "/src/assets/007-childrens-hospital/childrens-hospital-thermal.png"
     ],
+    "monthly_energy_use": "007-childrens-hospital",
     "approval_date": "1999-09-10",
     "floor_level": 10,
     "construction_type": "철근콘크리트구조",
