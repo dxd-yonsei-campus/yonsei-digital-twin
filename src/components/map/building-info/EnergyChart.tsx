@@ -83,10 +83,12 @@ const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
         value={energyUseType}
       >
         <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
-          Energy Use
+          <span className="hidden xs:block">Energy Use</span>
+          <span className="block xs:hidden">EU</span>
         </ToggleGroupItem>
         <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
-          Energy Use Intensity
+          <span className="hidden xs:block">Energy Use Intensity</span>
+          <span className="block xs:hidden">EUI</span>
         </ToggleGroupItem>
       </ToggleGroup>
       <ChartContainer
