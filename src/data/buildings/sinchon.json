@@ -1948,6 +1948,7 @@
       "/src/assets/325-samsung-hall/samsung-hall.jpg",
       "/src/assets/325-samsung-hall/samsung-hall-thermal.png"
     ],
+    "monthly_energy_use": "325-samsung-hall",
     "approval_date": "1999-01-18",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
