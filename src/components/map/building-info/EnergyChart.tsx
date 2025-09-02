@@ -114,6 +114,7 @@ const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
             tickLine={false}
             tickMargin={10}
             axisLine={false}
+            width={energyUseType === 'eu' ? 75 : 60}
             tickFormatter={(value) => {
               if (energyUseType === 'eu') {
                 return (value / 1000).toString() + 'k';
