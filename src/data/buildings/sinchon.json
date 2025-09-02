@@ -3446,6 +3446,7 @@
       "/src/assets/708-yonsei-milk-company/yonsei-milk-company.jpg",
       "/src/assets/708-yonsei-milk-company/yonsei-milk-company-thermal.png"
     ],
+    "monthly_energy_use": "708-yonsei-milk-company",
     "approval_date": "1978-10-24",
     "floor_level": 1
   },
@@ -3503,6 +3504,7 @@
       "/src/assets/711-woojungwon/woojungwon.jpg",
       "/src/assets/711-woojungwon/woojungwon-thermal.png"
     ],
+    "monthly_energy_use": "711-woojungwon",
     "approval_date": "2013-10-25",
     "floor_level": 4
   },
@@ -3570,6 +3572,7 @@
     "longitude": 126.940314,
     "height": 3,
     "floor_level": 1,
+    "monthly_energy_use": "723-forest-conservation-post",
     "images": [
       "/src/assets/723-forest-conservation-post/forest-conservation-post.jpg",
       "/src/assets/723-forest-conservation-post/forest-conservation-post-thermal.png"
