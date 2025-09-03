@@ -16,6 +16,7 @@ import LanguagePicker from '@/components/map/LanguagePicker.astro';
 import ThemePicker from '@/components/ThemePicker';
 import { Toaster } from '@/components/ui/sonner';
 import { getCollection } from 'astro:content';
+import RhinoSimpleLegend from '@/components/map/RhinoSimpleLegend';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -34,6 +35,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     lang={lang}
     monthlyEnergyUseCollection={monthlyEnergyUseCollection}
   />
+  <RhinoSimpleLegend client:load lang={lang} />
   <div class="fixed bottom-0 w-full border-t main-bg px-4 py-2">
     <div class="mb-2 flex items-center justify-between gap-3">
       <div class="shrink-0">
