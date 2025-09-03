@@ -39,10 +39,6 @@ const chartConfig = {
     label: 'Domestic Hot Water',
     color: '#ff9b29',
   },
-  windowRadiation: {
-    label: 'Window Radiation',
-    color: '#219ebc',
-  },
 } satisfies ChartConfig;
 
 const stackOrder: (keyof MonthlyEnergyUse[number])[] = [
@@ -50,7 +46,6 @@ const stackOrder: (keyof MonthlyEnergyUse[number])[] = [
   'lighting',
   'dhw',
   'heating',
-  'windowRadiation',
   'cooling',
 ];
 
@@ -66,7 +61,7 @@ const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
         lighting: monthData.lighting / totalFloorArea,
         equipment: monthData.equipment / totalFloorArea,
         dhw: monthData.dhw / totalFloorArea,
-        windowRadiation: monthData.windowRadiation / totalFloorArea,
+        windowRadiation: monthData.windowRadiation,
       };
     }
 
