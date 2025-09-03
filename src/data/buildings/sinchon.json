@@ -533,6 +533,7 @@
       "/src/assets/010-eye-ent-hospital/eye-ent-hospital.jpg",
       "/src/assets/010-eye-ent-hospital/eye-ent-hospital-thermal.png"
     ],
+    "monthly_energy_use": "010-eye-ent-hospital",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
     "construction_type_en": "Reinforced concrete",
@@ -1465,6 +1466,7 @@
       "/src/assets/208-luce-chapel/luce-chapel.jpg",
       "/src/assets/208-luce-chapel/luce-chapel-thermal.png"
     ],
+    "monthly_energy_use": "208-luce-chapel",
     "approval_date": "2002-02-02",
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
@@ -1511,6 +1513,7 @@
       "/src/assets/211-main-auditorium/main-auditorium.jpg",
       "/src/assets/211-main-auditorium/main-auditorium-thermal.png"
     ],
+    "monthly_energy_use": "211-main-auditorium",
     "approval_date": "1993-10-09",
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
@@ -1529,6 +1532,7 @@
       "/src/assets/212-school-of-business/school-of-business.jpg",
       "/src/assets/212-school-of-business/school-of-business-thermal.png"
     ],
+    "monthly_energy_use": "212-school-of-business",
     "height": 31.4,
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -2203,7 +2207,8 @@
     "latitude": 37.566281,
     "longitude": 126.942865,
     "height": 3,
-    "floor_level": 1
+    "floor_level": 1,
+    "monthly_energy_use": "411-east-security-post"
   },
   {
     "id": 472993695,
