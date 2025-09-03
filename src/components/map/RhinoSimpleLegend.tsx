@@ -30,7 +30,7 @@ const RhinoSimpleLegend = ({ lang }: RhinoSimpleLegendProps) => {
           className="h-4 w-full rounded bg-white"
           style={{
             background:
-              'linear-gradient(90deg, #2F6CF4 0%, #9DC175 33%, #FFFF54 50%, #F2AB40 70%, #EA3440 100%)',
+              'linear-gradient(90deg, #0D54F2 0%, #9DC175 33%, #FFFF54 50%, #F2AB40 70%, #DE1724 100%)',
           }}
         ></div>
         <div className="mt-0.5 flex justify-between text-xs text-muted-foreground">
