@@ -7,6 +7,8 @@ import {
   type ChartConfig,
 } from '@/components/ui/chart';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import type { ui } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
 import type { CollectionEntry } from 'astro:content';
 import { useState } from 'react';
 import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
@@ -14,6 +16,7 @@ import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
 type MonthlyEnergyUse = CollectionEntry<'monthlyEnergyUse'>['data'];
 
 type EnergyChartProps = {
+  lang: keyof typeof ui;
   chartData: MonthlyEnergyUse;
   totalFloorArea?: number;
 };
@@ -49,7 +52,8 @@ const stackOrder: (keyof MonthlyEnergyUse[number])[] = [
   'cooling',
 ];
 
-const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
+const EnergyChart = ({ lang, chartData, totalFloorArea }: EnergyChartProps) => {
+  const t = useTranslations(lang);
   const [energyUseType, setEnergyUseType] = useState<'eu' | 'eui'>('eu');
 
   const transformedChartData = chartData.map((monthData) => {
@@ -83,12 +87,14 @@ const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
           value={energyUseType}
         >
           <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
-            <span className="hidden xs:block">Energy Use</span>
-            <span className="block xs:hidden">EU</span>
+            <span className="hidden xs:block">{t('energy_use_long')}</span>
+            <span className="block xs:hidden">{t('energy_use')}</span>
           </ToggleGroupItem>
           <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
-            <span className="hidden xs:block">Energy Use Intensity</span>
-            <span className="block xs:hidden">EUI</span>
+            <span className="hidden xs:block">
+              {t('energy_use_intensity_long')}
+            </span>
+            <span className="block xs:hidden">{t('energy_use_intensity')}</span>
           </ToggleGroupItem>
         </ToggleGroup>
       )}
