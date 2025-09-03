@@ -7,6 +7,8 @@ import {
   type ChartConfig,
 } from '@/components/ui/chart';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import type { ui } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
 import type { CollectionEntry } from 'astro:content';
 import { useState } from 'react';
 import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
@@ -14,32 +16,10 @@ import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
 type MonthlyEnergyUse = CollectionEntry<'monthlyEnergyUse'>['data'];
 
 type EnergyChartProps = {
+  lang: keyof typeof ui;
   chartData: MonthlyEnergyUse;
   totalFloorArea?: number;
 };
-
-const chartConfig = {
-  heating: {
-    label: 'Heating',
-    color: '#e76f51',
-  },
-  cooling: {
-    label: 'Cooling',
-    color: '#8ecae6',
-  },
-  lighting: {
-    label: 'Lighting',
-    color: '#ffdd57',
-  },
-  equipment: {
-    label: 'Equipment',
-    color: '#adb5bd',
-  },
-  dhw: {
-    label: 'Domestic Hot Water',
-    color: '#ff9b29',
-  },
-} satisfies ChartConfig;
 
 const stackOrder: (keyof MonthlyEnergyUse[number])[] = [
   'equipment',
@@ -49,8 +29,32 @@ const stackOrder: (keyof MonthlyEnergyUse[number])[] = [
   'cooling',
 ];
 
-const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
+const EnergyChart = ({ lang, chartData, totalFloorArea }: EnergyChartProps) => {
+  const t = useTranslations(lang);
   const [energyUseType, setEnergyUseType] = useState<'eu' | 'eui'>('eu');
+
+  const chartConfig = {
+    heating: {
+      label: t('energy_use.heating'),
+      color: '#e76f51',
+    },
+    cooling: {
+      label: t('energy_use.cooling'),
+      color: '#8ecae6',
+    },
+    lighting: {
+      label: t('energy_use.lighting'),
+      color: '#ffdd57',
+    },
+    equipment: {
+      label: t('energy_use.equipment'),
+      color: '#adb5bd',
+    },
+    dhw: {
+      label: t('energy_use.domestic_hot_water'),
+      color: '#ff9b29',
+    },
+  } satisfies ChartConfig;
 
   const transformedChartData = chartData.map((monthData) => {
     if (totalFloorArea && energyUseType === 'eui') {
@@ -83,12 +87,14 @@ const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
           value={energyUseType}
         >
           <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
-            <span className="hidden xs:block">Energy Use</span>
-            <span className="block xs:hidden">EU</span>
+            <span className="hidden xs:block">{t('energy_use_long')}</span>
+            <span className="block xs:hidden">{t('energy_use')}</span>
           </ToggleGroupItem>
           <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
-            <span className="hidden xs:block">Energy Use Intensity</span>
-            <span className="block xs:hidden">EUI</span>
+            <span className="hidden xs:block">
+              {t('energy_use_intensity_long')}
+            </span>
+            <span className="block xs:hidden">{t('energy_use_intensity')}</span>
           </ToggleGroupItem>
         </ToggleGroup>
       )}
@@ -127,7 +133,11 @@ const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
           >
             <Label
               angle={-90}
-              value={energyUseType === 'eu' ? 'EU (kWh)' : 'EUI (kWh/m²)'}
+              value={
+                energyUseType === 'eu'
+                  ? `${t('energy_use')} (kWh)`
+                  : `${t('energy_use_intensity')} (kWh/m²)`
+              }
               position="insideLeft"
               style={{ textAnchor: 'middle' }}
             />

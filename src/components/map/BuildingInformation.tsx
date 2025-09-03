@@ -106,6 +106,7 @@ const BuildingInformation = ({
               monthlyEnergyUse ? (
                 <EnergyChart
                   key={displayBuilding.id}
+                  lang={lang}
                   chartData={monthlyEnergyUse}
                   totalFloorArea={displayBuilding?.total_floor_area}
                 />
