@@ -105,7 +105,14 @@ const EnergyChart = ({ lang, chartData, totalFloorArea }: EnergyChartProps) => {
         <BarChart accessibilityLayer data={transformedChartData}>
           <CartesianGrid vertical={false} />
           <ChartTooltip
-            content={<ChartTooltipContent className="w-50" hideLabel />}
+            content={
+              <ChartTooltipContent
+                className={
+                  lang === 'ko' && energyUseType === 'eui' ? 'w-32' : 'w-50'
+                }
+                hideLabel
+              />
+            }
           />
           <ChartLegend
             content={
