@@ -34,6 +34,11 @@ export const ui = {
     energy_use_intensity: 'EUI',
     energy_use_long: 'Energy Use',
     energy_use_intensity_long: 'Energy Use Intensity',
+    'energy_use.equipment': 'Equipment',
+    'energy_use.lighting': 'Lighting',
+    'energy_use.domestic_hot_water': 'Domestic Hot Water',
+    'energy_use.heating': 'Heating',
+    'energy_use.cooling': 'Cooling',
   },
   ko: {
     'site.title': '연세 디지털 트윈',
@@ -63,5 +68,10 @@ export const ui = {
     energy_use_intensity: '에너지 사용 지표',
     energy_use_long: '에너지 사용량',
     energy_use_intensity_long: '에너지 사용 지표',
+    'energy_use.equipment': '장비',
+    'energy_use.lighting': '조명',
+    'energy_use.domestic_hot_water': '온수',
+    'energy_use.heating': '난방',
+    'energy_use.cooling': '냉방',
   },
 } as const;
