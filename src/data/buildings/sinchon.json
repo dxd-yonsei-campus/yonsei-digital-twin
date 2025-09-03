@@ -2864,6 +2864,10 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/524-oesol-hall/oesol-hall.jpg",
+      "/src/assets/524-oesol-hall/oesol-hall-thermal.png"
+    ],
     "monthly_energy_use": "524-oesol-hall",
     "approval_date": "1968-07-01",
     "floor_level": 6,
