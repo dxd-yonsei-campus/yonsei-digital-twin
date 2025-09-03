@@ -102,7 +102,9 @@ const EnergyChart = ({ chartData, totalFloorArea }: EnergyChartProps) => {
             content={<ChartTooltipContent className="w-50" hideLabel />}
           />
           <ChartLegend
-            content={<ChartLegendContent className="flex-wrap pt-6" />}
+            content={
+              <ChartLegendContent className="mx-auto w-84 max-w-full flex-wrap pt-6" />
+            }
           />
           <XAxis
             dataKey="month"
