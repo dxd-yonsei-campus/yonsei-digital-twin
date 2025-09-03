@@ -101,7 +101,7 @@ const BuildingInformation = ({
               )}
             </DialogDescription>
           </DialogHeader>
-          <CollapsibleContent className="max-h-[52vh] space-y-4 overflow-scroll [&>:first-child]:pt-5">
+          <CollapsibleContent className="max-h-[52vh] space-y-4 overflow-auto [&>:first-child]:pt-5">
             {$buildingLayer === 'rhino-simple' ? (
               monthlyEnergyUse ? (
                 <EnergyChart
