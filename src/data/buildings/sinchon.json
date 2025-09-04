@@ -103,6 +103,7 @@
       "/src/assets/002-college-of-medicine/college-of-medicine.jpg",
       "/src/assets/002-college-of-medicine/college-of-medicine-thermal.png"
     ],
+    "monthly_energy_use": "002-college-of-medicine",
     "approval_date": "1963-06-04",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -136,6 +137,7 @@
       "/src/assets/002-college-of-medicine/college-of-medicine.jpg",
       "/src/assets/002-college-of-medicine/college-of-medicine-thermal.png"
     ],
+    "monthly_energy_use": "002-college-of-medicine",
     "approval_date": "1963-06-04",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -186,6 +188,7 @@
       "/src/assets/003-chejung-building/chejung-building-2.jpg",
       "/src/assets/003-chejung-building/chejung-building-2-thermal.png"
     ],
+    "monthly_energy_use": "003-chejung-building",
     "approval_date": "1955-09-29",
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
@@ -233,6 +236,7 @@
       "/src/assets/004-administration-building/administration-building.jpg",
       "/src/assets/004-administration-building/administration-building-thermal.png"
     ],
+    "monthly_energy_use": "004-administration-building",
     "approval_date": "2012-09-11",
     "floor_level": 6
   },
@@ -348,6 +352,7 @@
       "/src/assets/006-rehabilitation-hospital/rehabilitation-hospital.jpg",
       "/src/assets/006-rehabilitation-hospital/rehabilitation-hospital-thermal.png"
     ],
+    "monthly_energy_use": "006-rehabilitation-hospital",
     "approval_date": "1988-03-18",
     "floor_level": 10,
     "construction_type": "철근콘크리트구조",
@@ -397,6 +402,7 @@
       "/src/assets/007-childrens-hospital/childrens-hospital.jpg",
       "/src/assets/007-childrens-hospital/childrens-hospital-thermal.png"
     ],
+    "monthly_energy_use": "007-childrens-hospital",
     "approval_date": "1999-09-10",
     "floor_level": 10,
     "construction_type": "철근콘크리트구조",
@@ -444,6 +450,7 @@
       "/src/assets/008-cardiovascular-hospital/cardiovascular-hospital.jpg",
       "/src/assets/008-cardiovascular-hospital/cardiovascular-hospital-thermal.png"
     ],
+    "monthly_energy_use": "008-cardiovascular-hospital",
     "approval_date": "1991-04-30",
     "floor_level": 10,
     "construction_type": "철근콘크리트구조",
@@ -484,6 +491,7 @@
       "/src/assets/009-kwanghye-building/kwanghye-building.jpg",
       "/src/assets/009-kwanghye-building/kwanghye-building-thermal.png"
     ],
+    "monthly_energy_use": "009-kwanghye-building",
     "approval_date": "1972-02-21",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -529,6 +537,7 @@
       "/src/assets/010-eye-ent-hospital/eye-ent-hospital.jpg",
       "/src/assets/010-eye-ent-hospital/eye-ent-hospital-thermal.png"
     ],
+    "monthly_energy_use": "010-eye-ent-hospital",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
     "construction_type_en": "Reinforced concrete",
@@ -574,6 +583,7 @@
       "/src/assets/011-dental-hospital/dental-hospital.jpg",
       "/src/assets/011-dental-hospital/dental-hospital-thermal.png"
     ],
+    "monthly_energy_use": "011-dental-hospital",
     "approval_date": "2003-12-26",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -615,6 +625,7 @@
       "/src/assets/012-college-of-dentistry/college-of-dentistry.jpg",
       "/src/assets/012-college-of-dentistry/college-of-dentistry-thermal.png"
     ],
+    "monthly_energy_use": "012-college-of-dentistry",
     "approval_date": "1996-05-09",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -633,6 +644,7 @@
       "/src/assets/013-avison-biomedical-research-center/avison-biomedical-research-center.jpg",
       "/src/assets/013-avison-biomedical-research-center/avison-biomedical-research-center-thermal.png"
     ],
+    "monthly_energy_use": "013-avison-biomedical-research-center",
     "height": 27.3,
     "approval_date": "2013-02-07",
     "floor_level": 6,
@@ -669,6 +681,7 @@
       "/src/assets/014-college-of-nursing/college-of-nursing.jpg",
       "/src/assets/014-college-of-nursing/college-of-nursing-thermal.png"
     ],
+    "monthly_energy_use": "014-college-of-nursing",
     "approval_date": "1996-08-31",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -759,6 +772,7 @@
       "/src/assets/016-alumni-center/alumni-center.jpg",
       "/src/assets/016-alumni-center/alumni-center-thermal.png"
     ],
+    "monthly_energy_use": "016-alumni-center",
     "approval_date": "1993-04-29",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -793,6 +807,7 @@
       "/src/assets/017-alfred-faculty-building/alfred-faculty-building.jpg",
       "/src/assets/017-alfred-faculty-building/alfred-faculty-building-thermal.png"
     ],
+    "monthly_energy_use": "017-alfred-faculty-building",
     "approval_date": "2012-08-03",
     "floor_level": 4
   },
@@ -823,6 +838,7 @@
       "/src/assets/102-engineering-research-park/engineering-research-park.jpg",
       "/src/assets/102-engineering-research-park/engineering-research-park-thermal.png"
     ],
+    "monthly_energy_use": "102-engineering-research-park",
     "approval_date": "1999-04-08",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
@@ -885,6 +901,7 @@
       "/src/assets/113-rotc-headquarters/rotc-headquarters.jpg",
       "/src/assets/113-rotc-headquarters/rotc-headquarters-thermal.png"
     ],
+    "monthly_energy_use": "113-rotc-headquarters",
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
     "construction_type_en": "Reinforced concrete",
@@ -915,6 +932,7 @@
       "/src/assets/114-industry-university-research-center/industry-university-research-center.jpg",
       "/src/assets/114-industry-university-research-center/industry-university-research-center-thermal.png"
     ],
+    "monthly_energy_use": "114-industry-university-research-center",
     "approval_date": "2003-05-01",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -950,6 +968,7 @@
       "/src/assets/115-gs-caltex-research-hall/gs-caltex-research-hall.jpg",
       "/src/assets/115-gs-caltex-research-hall/gs-caltex-research-hall-thermal.png"
     ],
+    "monthly_energy_use": "115-gs-caltex-research-hall",
     "approval_date": "2012-05-29",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
@@ -988,6 +1007,7 @@
       "/src/assets/116-yonsei-rehabilitation-school/yonsei-rehabilitation-school.jpg",
       "/src/assets/116-yonsei-rehabilitation-school/yonsei-rehabilitation-school-thermal.png"
     ],
+    "monthly_energy_use": "116-yonsei-rehabilitation-school",
     "approval_date": "2012-08-02",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -1025,6 +1045,7 @@
       "/src/assets/117-advanced-science-and-technology-center/advanced-science-and-technology-center.jpg",
       "/src/assets/117-advanced-science-and-technology-center/advanced-science-and-technology-center-thermal.png"
     ],
+    "monthly_energy_use": "117-advanced-science-and-technology-center",
     "approval_date": "2012-04-09",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -1101,6 +1122,7 @@
       "/src/assets/121-engineering-hall-1/engineering-hall-1-thermal.png",
       "/src/assets/121-engineering-hall-1/engineering-hall-1-2.jpg"
     ],
+    "monthly_energy_use": "121-engineering-hall-1",
     "approval_date": "1972-02-29",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -1144,6 +1166,7 @@
       "/src/assets/123-engineering-hall-2/engineering-hall-2.jpg",
       "/src/assets/123-engineering-hall-2/engineering-hall-2-thermal.png"
     ],
+    "monthly_energy_use": "123-engineering-hall-2",
     "approval_date": "1994-03-09",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -1175,6 +1198,7 @@
       "/src/assets/125-engineering-hall-2-annex/engineering-hall-2-annex.jpg",
       "/src/assets/125-engineering-hall-2-annex/engineering-hall-2-annex-thermal.png"
     ],
+    "monthly_energy_use": "125-engineering-hall-2-annex",
     "approval_date": "2000-11-09",
     "floor_level": 1,
     "construction_type": "철골구조",
@@ -1219,6 +1243,7 @@
       "/src/assets/124-engineering-hall-3/engineering-hall-3.jpg",
       "/src/assets/124-engineering-hall-3/engineering-hall-3-thermal.png"
     ],
+    "monthly_energy_use": "124-engineering-hall-3",
     "approval_date": "1997-08-07",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -1259,6 +1284,7 @@
       "/src/assets/122-engineering-hall-4/engineering-hall-4.jpg",
       "/src/assets/122-engineering-hall-4/engineering-hall-4-thermal.png"
     ],
+    "monthly_energy_use": "122-engineering-hall-4",
     "floor_level": 10,
     "construction_type": "철근콘크리트구조",
     "construction_type_en": "Reinforced concrete"
@@ -1328,6 +1354,7 @@
       "/src/assets/202-gwanghyewon/gwanghyewon.jpg",
       "/src/assets/202-gwanghyewon/gwanghyewon-thermal.png"
     ],
+    "monthly_energy_use": "202-gwanghyewon",
     "approval_date": "1986-12-24",
     "floor_level": 1,
     "construction_type": "일반목구조",
@@ -1400,6 +1427,7 @@
       "/src/assets/207-student-union-building/student-union-building.jpg",
       "/src/assets/207-student-union-building/student-union-building-thermal.png"
     ],
+    "monthly_energy_use": "207-student-union-building",
     "approval_date": "1968-07-01",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
@@ -1444,6 +1472,7 @@
       "/src/assets/208-luce-chapel/luce-chapel.jpg",
       "/src/assets/208-luce-chapel/luce-chapel-thermal.png"
     ],
+    "monthly_energy_use": "208-luce-chapel",
     "approval_date": "2002-02-02",
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
@@ -1490,6 +1519,7 @@
       "/src/assets/211-main-auditorium/main-auditorium.jpg",
       "/src/assets/211-main-auditorium/main-auditorium-thermal.png"
     ],
+    "monthly_energy_use": "211-main-auditorium",
     "approval_date": "1993-10-09",
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
@@ -1508,6 +1538,7 @@
       "/src/assets/212-school-of-business/school-of-business.jpg",
       "/src/assets/212-school-of-business/school-of-business-thermal.png"
     ],
+    "monthly_energy_use": "212-school-of-business",
     "height": 31.4,
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -1543,6 +1574,7 @@
       "/src/assets/213-college-of-music/college-of-music.jpg",
       "/src/assets/213-college-of-music/college-of-music-thermal.png"
     ],
+    "monthly_energy_use": "213-college-of-music",
     "approval_date": "2010-01-13",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
@@ -1577,6 +1609,7 @@
       "/src/assets/213-college-of-music/college-of-music.jpg",
       "/src/assets/213-college-of-music/college-of-music-thermal.png"
     ],
+    "monthly_energy_use": "213-college-of-music",
     "approval_date": "2010-01-13",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
@@ -1613,6 +1646,7 @@
       "/src/assets/301-central-library/central-library-1.jpg",
       "/src/assets/301-central-library/central-library-2.jpg"
     ],
+    "monthly_energy_use": "301-central-library",
     "approval_date": "1979-04-18",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -1650,6 +1684,7 @@
       "/src/assets/302-yonsei-samsung-library/yonsei-samsung-library-1.png",
       "/src/assets/302-yonsei-samsung-library/yonsei-samsung-library-2.png"
     ],
+    "monthly_energy_use": "302-yonsei-samsung-library",
     "approval_date": "2012-05-15",
     "floor_level": 7,
     "construction_type": "철골철근콘크리트구조",
@@ -1683,6 +1718,7 @@
       "/src/assets/304-gymnasium/gymnasium.jpg",
       "/src/assets/304-gymnasium/gymnasium-thermal.png"
     ],
+    "monthly_energy_use": "304-gymnasium",
     "approval_date": "1960-04-15",
     "floor_level": 2,
     "construction_type": "철골철근콘크리트구조",
@@ -1719,6 +1755,7 @@
       "/src/assets/305-sports-science-complex/sports-science-complex-1.png",
       "/src/assets/305-sports-science-complex/sports-science-complex-2.png"
     ],
+    "monthly_energy_use": "305-sports-science-complex",
     "approval_date": "2012-03-05",
     "floor_level": 3,
     "construction_type": "철골철근콘크리트구조",
@@ -1750,6 +1787,7 @@
       "/src/assets/306-physical-education-center/physical-education-center.jpg",
       "/src/assets/306-physical-education-center/physical-education-center-thermal.png"
     ],
+    "monthly_energy_use": "306-physical-education-center",
     "approval_date": "1979-09-24",
     "floor_level": 3
   },
@@ -1776,6 +1814,7 @@
       "/src/assets/307-gwangbok-hall-annex/gwangbok-hall-annex.jpg",
       "/src/assets/307-gwangbok-hall-annex/gwangbok-hall-annex-thermal.png"
     ],
+    "monthly_energy_use": "307-gwangbok-hall-annex",
     "approval_date": "2012-06-01",
     "floor_level": 2
   },
@@ -1808,6 +1847,7 @@
       "/src/assets/308-gwangbok-hall/gwangbok-hall.jpg",
       "/src/assets/308-gwangbok-hall/gwangbok-hall-thermal.png"
     ],
+    "monthly_energy_use": "308-gwangbok-hall",
     "approval_date": "2013-10-25",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -1848,6 +1888,7 @@
       "/src/assets/310-baekyang-hall/baekyang-hall.jpg",
       "/src/assets/310-baekyang-hall/baekyang-hall-thermal.png"
     ],
+    "monthly_energy_use": "310-baekyang-hall",
     "approval_date": "1968-07-01",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -1889,6 +1930,7 @@
       "/src/assets/322-science-hall/science-hall.jpg",
       "/src/assets/322-science-hall/science-hall-thermal.png"
     ],
+    "monthly_energy_use": "322-science-hall",
     "approval_date": "1984-06-23",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -1907,6 +1949,7 @@
       "/src/assets/323-science-research-center/science-research-center.jpg",
       "/src/assets/323-science-research-center/science-research-center-thermal.png"
     ],
+    "monthly_energy_use": "323-science-research-center",
     "approval_date": "2000-08-03",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -1948,6 +1991,7 @@
       "/src/assets/325-samsung-hall/samsung-hall.jpg",
       "/src/assets/325-samsung-hall/samsung-hall-thermal.png"
     ],
+    "monthly_energy_use": "325-samsung-hall",
     "approval_date": "1999-01-18",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -1978,6 +2022,7 @@
       "/src/assets/326-underwood-memorial-house/underwood-memorial-house.jpg",
       "/src/assets/326-underwood-memorial-house/underwood-memorial-house-thermal.png"
     ],
+    "monthly_energy_use": "326-underwood-memorial-house",
     "approval_date": "1975-09-13",
     "floor_level": 2,
     "total_floor_area": 689.34,
@@ -2068,6 +2113,7 @@
       "/src/assets/403-radio-observatory/radio-observatory.jpg",
       "/src/assets/403-radio-observatory/radio-observatory-thermal.png"
     ],
+    "monthly_energy_use": "403-radio-observatory",
     "approval_date": "2012-05-02",
     "floor_level": 1,
     "construction_type": "철근콘크리트구조",
@@ -2104,6 +2150,7 @@
       "/src/assets/404-university-residence-a/university-residence-a.jpg",
       "/src/assets/404-university-residence-a/university-residence-a-thermal.png"
     ],
+    "monthly_energy_use": "404-university-residence-a",
     "approval_date": "1971-11-19",
     "floor_level": 1
   },
@@ -2131,6 +2178,7 @@
       "/src/assets/412-university-residence-b/university-residence-b.jpg",
       "/src/assets/412-university-residence-b/university-residence-b-thermal.png"
     ],
+    "monthly_energy_use": "412-university-residence-b",
     "approval_date": "2006-01-26",
     "floor_level": 5
   },
@@ -2157,6 +2205,7 @@
       "/src/assets/607-university-residence-c/university-residence-c.jpg",
       "/src/assets/607-university-residence-c/university-residence-c-thermal.png"
     ],
+    "monthly_energy_use": "607-university-residence-c",
     "approval_date": "1991-05-14",
     "floor_level": 4
   },
@@ -2167,7 +2216,8 @@
     "latitude": 37.566281,
     "longitude": 126.942865,
     "height": 3,
-    "floor_level": 1
+    "floor_level": 1,
+    "monthly_energy_use": "411-east-security-post"
   },
   {
     "id": 472993695,
@@ -2197,6 +2247,7 @@
       "/src/assets/413-eugene-childcare-center/eugene-childcare-center.jpg",
       "/src/assets/413-eugene-childcare-center/eugene-childcare-center-thermal.png"
     ],
+    "monthly_energy_use": "413-eugene-childcare-center",
     "approval_date": "2012-04-30",
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
@@ -2241,6 +2292,7 @@
       "/src/assets/414-sangnam-institute-of-management/sangnam-institute-of-management.jpg",
       "/src/assets/414-sangnam-institute-of-management/sangnam-institute-of-management-thermal.png"
     ],
+    "monthly_energy_use": "414-sangnam-institute-of-management",
     "approval_date": "1998-11-26",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -2271,6 +2323,7 @@
       "/src/assets/415-child-development-research-institute-research-building/child-development-research-institute-research-building.jpg",
       "/src/assets/415-child-development-research-institute-research-building/child-development-research-institute-research-building-thermal.png"
     ],
+    "monthly_energy_use": "415-child-development-research-institute-research-building",
     "approval_date": "2020-02-26",
     "floor_level": 2,
     "construction_type": "철근콘크리트구조",
@@ -2314,6 +2367,7 @@
       "/src/assets/416-child-development-research-institute/child-development-research-institute.jpg",
       "/src/assets/416-child-development-research-institute/child-development-research-institute-thermal.png"
     ],
+    "monthly_energy_use": "416-child-development-research-institute",
     "approval_date": "2002-10-04",
     "floor_level": 2,
     "construction_type": "철근콘크리트구조",
@@ -2349,6 +2403,7 @@
       "/src/assets/417-allen-hall/allen-hall.jpg",
       "/src/assets/417-allen-hall/allen-hall-thermal.png"
     ],
+    "monthly_energy_use": "417-allen-hall",
     "approval_date": "1987-02-06",
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
@@ -2380,6 +2435,7 @@
       "/src/assets/501-underwood-hall/underwood-hall.jpg",
       "/src/assets/501-underwood-hall/underwood-hall-thermal.png"
     ],
+    "monthly_energy_use": "501-underwood-hall",
     "floor_level": 5,
     "construction_type": "석구조",
     "construction_type_en": "Masonry",
@@ -2412,6 +2468,7 @@
       "/src/assets/502-stimson-hall/stimson-hall-1.jpg",
       "/src/assets/502-stimson-hall/stimson-hall-2.jpg"
     ],
+    "monthly_energy_use": "502-stimson-hall",
     "approval_date": "1968-07-01",
     "floor_level": 2,
     "construction_type": "석구조",
@@ -2442,6 +2499,7 @@
       "/src/assets/503-appenzeller-hall/appenzeller-hall.jpg",
       "/src/assets/503-appenzeller-hall/appenzeller-hall-thermal.png"
     ],
+    "monthly_energy_use": "503-appenzeller-hall",
     "floor_level": 3,
     "construction_type": "석구조",
     "construction_type_en": "Masonry",
@@ -2473,6 +2531,7 @@
       "/src/assets/505-nonjidang/nonjidang.jpg",
       "/src/assets/505-nonjidang/nonjidang-thermal.png"
     ],
+    "monthly_energy_use": "505-nonjidang",
     "approval_date": "1956-12-31",
     "floor_level": 1,
     "construction_type": "벽돌구조",
@@ -2508,6 +2567,7 @@
       "/src/assets/506-seongam-hall/seongam-hall.jpg",
       "/src/assets/506-seongam-hall/seongam-hall-thermal.png"
     ],
+    "monthly_energy_use": "506-seongam-hall",
     "approval_date": "1960-10-03",
     "floor_level": 3,
     "construction_type": "석구조",
@@ -2539,6 +2599,7 @@
       "/src/assets/507-yu-eok-gyeom-memorial-hall/yu-eok-gyeom-memorial-hall.jpg",
       "/src/assets/507-yu-eok-gyeom-memorial-hall/yu-eok-gyeom-memorial-hall-thermal.png"
     ],
+    "monthly_energy_use": "507-yu-eok-gyeom-memorial-hall",
     "approval_date": "1962-12-10",
     "floor_level": 4,
     "construction_type": "석구조",
@@ -2579,6 +2640,7 @@
       "/src/assets/511-yeonhi-hall/yeonhi-hall.jpg",
       "/src/assets/511-yeonhi-hall/yeonhi-hall-thermal.png"
     ],
+    "monthly_energy_use": "511-yeonhi-hall",
     "approval_date": "1956-12-31",
     "floor_level": 5,
     "construction_type": "석구조",
@@ -2610,6 +2672,7 @@
       "/src/assets/512-billingsley-hall/billingsley-hall.jpg",
       "/src/assets/512-billingsley-hall/billingsley-hall-thermal.png"
     ],
+    "monthly_energy_use": "512-billingsley-hall",
     "floor_level": 4,
     "construction_type": "벽돌구조",
     "construction_type_en": "Masonry",
@@ -2651,6 +2714,7 @@
       "/src/assets/513-daewoo-hall/daewoo-hall.jpg",
       "/src/assets/513-daewoo-hall/daewoo-hall-thermal.png"
     ],
+    "monthly_energy_use": "513-daewoo-hall",
     "approval_date": "1996-05-13",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -2685,6 +2749,7 @@
       "/src/assets/514-daewoo-hall-annex/daewoo-hall-annex.jpg",
       "/src/assets/514-daewoo-hall-annex/daewoo-hall-annex-thermal.png"
     ],
+    "monthly_energy_use": "514-daewoo-hall-annex",
     "approval_date": "1996-05-13",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -2715,6 +2780,7 @@
       "/src/assets/521-pinson-hall/pinson-hall.jpg",
       "/src/assets/521-pinson-hall/pinson-hall-thermal.png"
     ],
+    "monthly_energy_use": "521-pinson-hall",
     "approval_date": "2012-05-02",
     "floor_level": 3,
     "construction_type": "석구조",
@@ -2753,6 +2819,7 @@
       "/src/assets/522-hangyeong-hall/hangyeong-hall.jpg",
       "/src/assets/522-hangyeong-hall/hangyeong-hall-thermal.png"
     ],
+    "monthly_energy_use": "522-hangyeong-hall",
     "approval_date": "1968-12-24",
     "floor_level": 2,
     "total_floor_area": 1012.31,
@@ -2784,6 +2851,7 @@
       "/src/assets/523-theology-hall/theology-hall.jpg",
       "/src/assets/523-theology-hall/theology-hall-thermal.png"
     ],
+    "monthly_energy_use": "523-theology-hall",
     "approval_date": "2012-04-10",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
@@ -2811,6 +2879,11 @@
         ]
       ]
     },
+    "images": [
+      "/src/assets/524-oesol-hall/oesol-hall.jpg",
+      "/src/assets/524-oesol-hall/oesol-hall-thermal.png"
+    ],
+    "monthly_energy_use": "524-oesol-hall",
     "approval_date": "1968-07-01",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -2842,6 +2915,7 @@
       "/src/assets/525-oesol-hall-2/oesol-hall-2.jpg",
       "/src/assets/525-oesol-hall-2/oesol-hall-2-thermal.png"
     ],
+    "monthly_energy_use": "525-oesol-hall-2",
     "approval_date": "1968-07-01",
     "floor_level": 1,
     "construction_type": "철근콘크리트구조",
@@ -2877,6 +2951,7 @@
       "/src/assets/526-education-sciences-hall/education-sciences-hall.jpg",
       "/src/assets/526-education-sciences-hall/education-sciences-hall-thermal.png"
     ],
+    "monthly_energy_use": "526-education-sciences-hall",
     "approval_date": "2012-06-01",
     "floor_level": 6
   },
@@ -2906,6 +2981,7 @@
       "/src/assets/527-widang-hall/widang-hall.jpg",
       "/src/assets/527-widang-hall/widang-hall-thermal.png"
     ],
+    "monthly_energy_use": "527-widang-hall",
     "approval_date": "1998-07-31",
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
@@ -2937,6 +3013,7 @@
       "/src/assets/602-beophyeon-dormitory/beophyeon-dormitory.jpg",
       "/src/assets/602-beophyeon-dormitory/beophyeon-dormitory-thermal.png"
     ],
+    "monthly_energy_use": "602-beophyeon-dormitory",
     "approval_date": "2018-08-27",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -2983,6 +3060,7 @@
       "/src/assets/603-chejung-dormitory/chejung-dormitory.jpg",
       "/src/assets/603-chejung-dormitory/chejung-dormitory-thermal.png"
     ],
+    "monthly_energy_use": "603-chejung-dormitory",
     "approval_date": "2018-08-27",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -3018,6 +3096,7 @@
       "/src/assets/604-sk-global-house/sk-global-house.jpg",
       "/src/assets/604-sk-global-house/sk-global-house-thermal.png"
     ],
+    "monthly_energy_use": "604-sk-global-house",
     "approval_date": "2013-10-25",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
@@ -3051,6 +3130,7 @@
       "/src/assets/605-international-house/international-house.jpg",
       "/src/assets/605-international-house/international-house-thermal.png"
     ],
+    "monthly_energy_use": "605-international-house",
     "approval_date": "2003-05-28",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
@@ -3094,6 +3174,7 @@
       "/src/assets/606-new-millennium-hall/new-millennium-hall.jpg",
       "/src/assets/606-new-millennium-hall/new-millennium-hall-thermal.png"
     ],
+    "monthly_energy_use": "606-new-millennium-hall",
     "approval_date": "2007-08-20",
     "floor_level": 3
   },
@@ -3120,6 +3201,7 @@
       "/src/assets/608-presidential-reception-hall/presidential-reception-hall.jpg",
       "/src/assets/608-presidential-reception-hall/presidential-reception-hall-thermal.png"
     ],
+    "monthly_energy_use": "608-presidential-reception-hall",
     "approval_date": "2012-05-03",
     "floor_level": 1,
     "construction_type": "철근콘크리트구조",
@@ -3150,6 +3232,7 @@
       "/src/assets/609-presidents-residence/presidents-residence.jpg",
       "/src/assets/609-presidents-residence/presidents-residence-thermal.png"
     ],
+    "monthly_energy_use": "609-presidents-residence",
     "approval_date": "1991-11-19",
     "floor_level": 2,
     "construction_type": "석구조",
@@ -3214,6 +3297,7 @@
       "/src/assets/621-institute-of-language-research-and-education/institute-of-language-research-and-education.jpg",
       "/src/assets/621-institute-of-language-research-and-education/institute-of-language-research-and-education-thermal.png"
     ],
+    "monthly_energy_use": "621-institute-of-language-research-and-education",
     "approval_date": "1991-04-19",
     "floor_level": 6
   },
@@ -3248,6 +3332,7 @@
       "/src/assets/622-miwu-hall/miwu-hall.jpg",
       "/src/assets/622-miwu-hall/miwu-hall-thermal.png"
     ],
+    "monthly_energy_use": "622-miwu-hall",
     "approval_date": "1972-06-29",
     "floor_level": 5
   },
@@ -3284,6 +3369,7 @@
       "/src/assets/701-muak-dormitory-1/muak-dormitory-1.jpg",
       "/src/assets/701-muak-dormitory-1/muak-dormitory-1-thermal.png"
     ],
+    "monthly_energy_use": "701-muak-dormitory-1",
     "approval_date": "1989-11-07",
     "floor_level": 6
   },
@@ -3321,6 +3407,7 @@
       "/src/assets/702-muak-dormitory-2/muak-dormitory-2.jpg",
       "/src/assets/702-muak-dormitory-2/muak-dormitory-2-thermal.png"
     ],
+    "monthly_energy_use": "702-muak-dormitory-2",
     "approval_date": "1989-11-07",
     "floor_level": 6
   },
@@ -3355,6 +3442,7 @@
       "/src/assets/703-muak-dormitory-3/muak-dormitory-3.jpg",
       "/src/assets/703-muak-dormitory-3/muak-dormitory-3-thermal.png"
     ],
+    "monthly_energy_use": "703-muak-dormitory-3",
     "approval_date": "1998-04-30",
     "floor_level": 6
   },
@@ -3391,6 +3479,7 @@
       "/src/assets/704-muak-dormitory-4/muak-dormitory-4.jpg",
       "/src/assets/704-muak-dormitory-4/muak-dormitory-4-thermal.png"
     ],
+    "monthly_energy_use": "704-muak-dormitory-4",
     "approval_date": "1998-04-30",
     "floor_level": 6
   },
@@ -3420,6 +3509,7 @@
       "/src/assets/708-yonsei-milk-company/yonsei-milk-company.jpg",
       "/src/assets/708-yonsei-milk-company/yonsei-milk-company-thermal.png"
     ],
+    "monthly_energy_use": "708-yonsei-milk-company",
     "approval_date": "1978-10-24",
     "floor_level": 1
   },
@@ -3477,6 +3567,7 @@
       "/src/assets/711-woojungwon/woojungwon.jpg",
       "/src/assets/711-woojungwon/woojungwon-thermal.png"
     ],
+    "monthly_energy_use": "711-woojungwon",
     "approval_date": "2013-10-25",
     "floor_level": 4
   },
@@ -3544,6 +3635,7 @@
     "longitude": 126.940314,
     "height": 3,
     "floor_level": 1,
+    "monthly_energy_use": "723-forest-conservation-post",
     "images": [
       "/src/assets/723-forest-conservation-post/forest-conservation-post.jpg",
       "/src/assets/723-forest-conservation-post/forest-conservation-post-thermal.png"

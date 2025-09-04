@@ -1,0 +1,122 @@
+[
+  {
+    "month": 1,
+    "cooling": 0.0,
+    "dhw": 441.97119238607996,
+    "equipment": 664.6660707156943,
+    "heating": 6667.558155477508,
+    "lighting": 958.5992805594973,
+    "totalOperationalEnergy": 8732.79469913878,
+    "windowRadiation": 1965.7768864216343
+  },
+  {
+    "month": 2,
+    "cooling": 0.0,
+    "dhw": 400.9635559791246,
+    "equipment": 603.2263498932346,
+    "heating": 3932.2229027828557,
+    "lighting": 869.9305925543595,
+    "totalOperationalEnergy": 5806.343401209574,
+    "windowRadiation": 2162.772570758439
+  },
+  {
+    "month": 3,
+    "cooling": 0.0,
+    "dhw": 455.640404521733,
+    "equipment": 687.0077873784064,
+    "heating": 2142.659231309616,
+    "lighting": 990.3664089392936,
+    "totalOperationalEnergy": 4275.673832149049,
+    "windowRadiation": 2422.397564154542
+  },
+  {
+    "month": 4,
+    "cooling": 41.13444621917332,
+    "dhw": 410.07636406955834,
+    "equipment": 614.3972082245912,
+    "heating": 377.90882545345954,
+    "lighting": 886.6868800513927,
+    "totalOperationalEnergy": 2330.203724018175,
+    "windowRadiation": 2270.5635190221647
+  },
+  {
+    "month": 5,
+    "cooling": 292.91848990062175,
+    "dhw": 455.6404045217321,
+    "equipment": 687.0077873784069,
+    "heating": 0.0,
+    "lighting": 990.3664089392934,
+    "totalOperationalEnergy": 2425.933090740054,
+    "windowRadiation": 2266.414262301349
+  },
+  {
+    "month": 6,
+    "cooling": 854.6620430951094,
+    "dhw": 437.4147883408635,
+    "equipment": 659.0806415500155,
+    "heating": 0.0,
+    "lighting": 950.2211368109819,
+    "totalOperationalEnergy": 2901.3786097969705,
+    "windowRadiation": 2096.5590809257324
+  },
+  {
+    "month": 7,
+    "cooling": 1160.6124865889915,
+    "dhw": 428.30198025042785,
+    "equipment": 642.3243540529817,
+    "heating": 0.0,
+    "lighting": 926.8321521797036,
+    "totalOperationalEnergy": 3158.0709730721046,
+    "windowRadiation": 1719.95327220706
+  },
+  {
+    "month": 8,
+    "cooling": 1468.9315115792572,
+    "dhw": 455.640404521733,
+    "equipment": 687.0077873784064,
+    "heating": 0.0,
+    "lighting": 990.3664089392936,
+    "totalOperationalEnergy": 3601.9461124186905,
+    "windowRadiation": 1829.421924959524
+  },
+  {
+    "month": 9,
+    "cooling": 624.0931560315712,
+    "dhw": 423.7455762052107,
+    "equipment": 636.7389248873036,
+    "heating": 0.0,
+    "lighting": 918.4540084311872,
+    "totalOperationalEnergy": 2603.0316655552724,
+    "windowRadiation": 1895.3502306461546
+  },
+  {
+    "month": 10,
+    "cooling": 0.0,
+    "dhw": 441.97119238607996,
+    "equipment": 664.6660707156943,
+    "heating": 129.34748021911594,
+    "lighting": 958.5992805594973,
+    "totalOperationalEnergy": 2194.5840238803876,
+    "windowRadiation": 2174.100961275897
+  },
+  {
+    "month": 11,
+    "cooling": 0.0,
+    "dhw": 437.4147883408632,
+    "equipment": 659.0806415500153,
+    "heating": 2265.616891342723,
+    "lighting": 950.2211368109811,
+    "totalOperationalEnergy": 4312.333458044583,
+    "windowRadiation": 1766.8738459146277
+  },
+  {
+    "month": 12,
+    "cooling": 0.0,
+    "dhw": 428.3019802504279,
+    "equipment": 642.3243540529814,
+    "heating": 4878.556670777979,
+    "lighting": 926.8321521797036,
+    "totalOperationalEnergy": 6876.015157261091,
+    "windowRadiation": 1797.6211413188194
+  }
+]
