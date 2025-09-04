@@ -2400,6 +2400,7 @@
       "/src/assets/417-allen-hall/allen-hall.jpg",
       "/src/assets/417-allen-hall/allen-hall-thermal.png"
     ],
+    "monthly_energy_use": "417-allen-hall",
     "approval_date": "1987-02-06",
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
