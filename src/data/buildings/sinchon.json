@@ -1423,6 +1423,7 @@
       "/src/assets/207-student-union-building/student-union-building.jpg",
       "/src/assets/207-student-union-building/student-union-building-thermal.png"
     ],
+    "monthly_energy_use": "207-student-union-building",
     "approval_date": "1968-07-01",
     "floor_level": 4,
     "construction_type": "철근콘크리트구조",
