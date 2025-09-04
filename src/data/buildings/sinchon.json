@@ -186,6 +186,7 @@
       "/src/assets/003-chejung-building/chejung-building-2.jpg",
       "/src/assets/003-chejung-building/chejung-building-2-thermal.png"
     ],
+    "monthly_energy_use": "003-chejung-building",
     "approval_date": "1955-09-29",
     "floor_level": 3,
     "construction_type": "철근콘크리트구조",
