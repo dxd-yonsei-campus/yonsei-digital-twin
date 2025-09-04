@@ -3365,6 +3365,7 @@
       "/src/assets/701-muak-dormitory-1/muak-dormitory-1.jpg",
       "/src/assets/701-muak-dormitory-1/muak-dormitory-1-thermal.png"
     ],
+    "monthly_energy_use": "701-muak-dormitory-1",
     "approval_date": "1989-11-07",
     "floor_level": 6
   },
@@ -3402,6 +3403,7 @@
       "/src/assets/702-muak-dormitory-2/muak-dormitory-2.jpg",
       "/src/assets/702-muak-dormitory-2/muak-dormitory-2-thermal.png"
     ],
+    "monthly_energy_use": "702-muak-dormitory-2",
     "approval_date": "1989-11-07",
     "floor_level": 6
   },
@@ -3436,6 +3438,7 @@
       "/src/assets/703-muak-dormitory-3/muak-dormitory-3.jpg",
       "/src/assets/703-muak-dormitory-3/muak-dormitory-3-thermal.png"
     ],
+    "monthly_energy_use": "703-muak-dormitory-3",
     "approval_date": "1998-04-30",
     "floor_level": 6
   },
@@ -3472,6 +3475,7 @@
       "/src/assets/704-muak-dormitory-4/muak-dormitory-4.jpg",
       "/src/assets/704-muak-dormitory-4/muak-dormitory-4-thermal.png"
     ],
+    "monthly_energy_use": "704-muak-dormitory-4",
     "approval_date": "1998-04-30",
     "floor_level": 6
   },
