@@ -3323,6 +3323,7 @@
       "/src/assets/622-miwu-hall/miwu-hall.jpg",
       "/src/assets/622-miwu-hall/miwu-hall-thermal.png"
     ],
+    "monthly_energy_use": "622-miwu-hall",
     "approval_date": "1972-06-29",
     "floor_level": 5
   },
