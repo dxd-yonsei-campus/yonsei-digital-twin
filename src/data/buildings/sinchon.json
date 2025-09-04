@@ -1880,6 +1880,7 @@
       "/src/assets/310-baekyang-hall/baekyang-hall.jpg",
       "/src/assets/310-baekyang-hall/baekyang-hall-thermal.png"
     ],
+    "monthly_energy_use": "310-baekyang-hall",
     "approval_date": "1968-07-01",
     "floor_level": 5,
     "construction_type": "철근콘크리트구조",
