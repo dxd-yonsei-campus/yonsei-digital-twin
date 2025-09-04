@@ -580,6 +580,7 @@
       "/src/assets/011-dental-hospital/dental-hospital.jpg",
       "/src/assets/011-dental-hospital/dental-hospital-thermal.png"
     ],
+    "monthly_energy_use": "011-dental-hospital",
     "approval_date": "2003-12-26",
     "floor_level": 7,
     "construction_type": "철근콘크리트구조",
