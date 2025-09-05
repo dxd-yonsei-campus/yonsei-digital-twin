@@ -1991,6 +1991,7 @@
       "/src/assets/325-samsung-hall/samsung-hall.jpg",
       "/src/assets/325-samsung-hall/samsung-hall-thermal.png"
     ],
+    "terrainOffset": 26.152955,
     "monthly_energy_use": "325-samsung-hall",
     "approval_date": "1999-01-18",
     "floor_level": 7,
@@ -2114,6 +2115,7 @@
       "/src/assets/403-radio-observatory/radio-observatory.jpg",
       "/src/assets/403-radio-observatory/radio-observatory-thermal.png"
     ],
+    "terrainOffset": 53.134491,
     "monthly_energy_use": "403-radio-observatory",
     "approval_date": "2012-05-02",
     "floor_level": 1,
@@ -2953,6 +2955,7 @@
       "/src/assets/526-education-sciences-hall/education-sciences-hall.jpg",
       "/src/assets/526-education-sciences-hall/education-sciences-hall-thermal.png"
     ],
+    "terrainOffset": 31.223097,
     "monthly_energy_use": "526-education-sciences-hall",
     "approval_date": "2012-06-01",
     "floor_level": 6
