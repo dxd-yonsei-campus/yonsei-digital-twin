@@ -22,7 +22,7 @@ const RhinoSimpleLegend = ({ lang }: RhinoSimpleLegendProps) => {
           : 'pointer-events-none translate-y-0.5 scale-95 opacity-0',
       )}
     >
-      <div className="mx-4 rounded-md main-bg px-3.5 py-2.5 shadow-sm">
+      <div className="mx-4 rounded-md main-bg px-3.5 py-2.5 shadow-sm transition-colors duration-200">
         <div className="mb-1 text-xs text-muted-foreground">
           {t('energy_use_intensity_long')} (kWh/m<sup>2</sup>)
         </div>
