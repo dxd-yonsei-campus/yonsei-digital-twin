@@ -42,7 +42,8 @@ The data for each building can be found in `src/data/buildings/`. Each campus is
 | address              | `string`           | Address of the building in English.                                                                                                      |
 | **_latitude_**       | `number`           | Latitude of the building, used to position the camera upon search.                                                                       |
 | **_longitude_**      | `number`           | Longitude of the building, used to position the camera upon search.                                                                      |
-| extrusionOffset      | `number`           | Height above ground level (in meters) where the building begins.                                                                         |
+| extrusionOffset      | `number`           | Height above ground level (in meters) where the building begins, relative to the terrain.                                                |
+| terrainOffset        | `number`           | Height above ground level (in meters) where the terrain for this building begins, used for the invisible picking layer.                  |
 | height               | `number`           | Height of the building.                                                                                                                  |
 | geometry             | `object`           | Specifies the `type` (e.g. polygon) and `coordinates` i.e. bounding box for the building                                                 |
 | floor_level          | `number`           | The number of floors for the building.                                                                                                   |

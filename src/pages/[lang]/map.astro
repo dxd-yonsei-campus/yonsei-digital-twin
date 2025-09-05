@@ -184,6 +184,56 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
           ['get', 'min_height'],
         ];
 
+      const buildingHeightsWithOffset = Object.fromEntries(
+        allBuildingData
+          .filter((building) => Boolean(building.height))
+          .map((building) => {
+            const height = building.height || 0;
+            const extrusionOffset = building.extrusionOffset || 0;
+            const terrainOffset = building.terrainOffset || 0;
+            const totalHeight = height + extrusionOffset + terrainOffset;
+            return [String(building.id), totalHeight];
+          }),
+      );
+
+      const totalOffsets = Object.fromEntries(
+        allBuildingData
+          .filter(
+            (building) =>
+              Boolean(building.terrainOffset) ||
+              Boolean(building.extrusionOffset),
+          )
+          .map((building) => {
+            const extrusionOffset = building?.extrusionOffset || 0;
+            const terrainOffset = building?.terrainOffset || 0;
+            return [String(building.id), terrainOffset + extrusionOffset];
+          }),
+      );
+
+      const fillExtrusionOffsetHeightExpression: DataDrivenPropertyValueSpecification<number> =
+        [
+          'case',
+          [
+            'has',
+            ['to-string', ['id']],
+            ['literal', buildingHeightsWithOffset],
+          ],
+          [
+            'get',
+            ['to-string', ['id']],
+            ['literal', buildingHeightsWithOffset],
+          ],
+          ['get', 'height'],
+        ];
+
+      const fillExtrusionOffsetBaseExpression: DataDrivenPropertyValueSpecification<number> =
+        [
+          'case',
+          ['has', ['to-string', ['id']], ['literal', totalOffsets]],
+          ['get', ['to-string', ['id']], ['literal', totalOffsets]],
+          ['get', 'min_height'],
+        ];
+
       // The 'building' layer in the Mapbox Streets
       // vector tileset contains building height data
       // from OpenStreetMap.
@@ -226,9 +276,9 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
           type: 'fill-extrusion',
           minzoom: 15,
           paint: {
-            'fill-extrusion-height': fillExtrusionHeightExpression,
-            'fill-extrusion-base': fillExtrusionBaseExpression,
-            'fill-extrusion-opacity': 0,
+            'fill-extrusion-height': fillExtrusionOffsetHeightExpression,
+            'fill-extrusion-base': fillExtrusionOffsetBaseExpression,
+            'fill-extrusion-opacity': 1,
           },
         },
         labelLayerId,
@@ -265,11 +315,11 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
 
       const rhinoSimpleSinchonLayer = createCustomLayer({
         map: map,
-        longitude: 126.939304,
-        latitude: 37.566086,
+        longitude: 126.939328994,
+        latitude: 37.5660631348,
         modelUrl: '/models/rhino-simple/sinchon.gltf',
         id: 'rhino-simple-sinchon',
-        altitude: 96,
+        altitude: 104,
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoSimpleSinchonLayer, labelLayerId);
@@ -287,11 +337,11 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
 
       const rhinoDetailedSinchon = createCustomLayer({
         map: map,
-        longitude: 126.939304,
-        latitude: 37.566086,
+        longitude: 126.939328994,
+        latitude: 37.5660631348,
         modelUrl: '/models/rhino-detailed/sinchon.gltf',
         id: 'rhino-detailed-sinchon',
-        altitude: 96,
+        altitude: 104,
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoDetailedSinchon, labelLayerId);

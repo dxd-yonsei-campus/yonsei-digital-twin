@@ -2022,6 +2022,7 @@
       "/src/assets/326-underwood-memorial-house/underwood-memorial-house.jpg",
       "/src/assets/326-underwood-memorial-house/underwood-memorial-house-thermal.png"
     ],
+    "terrainOffset": 34.322144,
     "monthly_energy_use": "326-underwood-memorial-house",
     "approval_date": "1975-09-13",
     "floor_level": 2,
@@ -2780,6 +2781,7 @@
       "/src/assets/521-pinson-hall/pinson-hall.jpg",
       "/src/assets/521-pinson-hall/pinson-hall-thermal.png"
     ],
+    "terrainOffset": 21.476824,
     "monthly_energy_use": "521-pinson-hall",
     "approval_date": "2012-05-02",
     "floor_level": 3,
