@@ -102,6 +102,9 @@ importers:
       '@eslint/js':
         specifier: ^9.33.0
         version: 9.33.0
+      '@types/geojson':
+        specifier: ^7946.0.16
+        version: 7946.0.16
       '@types/three':
         specifier: ^0.177.0
         version: 0.177.0

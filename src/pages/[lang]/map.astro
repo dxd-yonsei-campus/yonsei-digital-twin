@@ -89,12 +89,12 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       getAllBuildings,
       getCameraForCampus,
       updateSelectedCampus,
-      getNearestBuildingId,
     } from '@/lib/mapApi';
     import type { BuildingLayerType } from '@/types/map';
     import { createCustomLayer } from '@/lib/modelUtils';
     import { toast } from 'sonner';
     import { useTranslations } from '@/i18n/utils';
+    import type { Feature, Polygon, GeoJsonProperties } from 'geojson';
 
     const lang =
       document.querySelector('html')?.getAttribute('lang') === 'ko'
@@ -134,6 +134,18 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     const allBuildingIds = getAllBuildingIds();
     const allBuildingData = getAllBuildings();
 
+    const featureCollectionData = allBuildingData.map((building) => {
+      return {
+        type: 'Feature',
+        geometry: building.geometry,
+        properties: {
+          id: building.id,
+          height: building.height || 0,
+          min_height: 0,
+        },
+      };
+    }) as Feature<Polygon, GeoJsonProperties>[];
+
     map.on('style.load', () => {
       // Insert the layer beneath any symbol layer.
       const layers = map.getStyle().layers;
@@ -170,9 +182,17 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
         [
           'case',
           // Check if custom height exists in your dictionary
-          ['has', ['to-string', ['id']], ['literal', buildingHeights]],
+          [
+            'has',
+            ['to-string', ['coalesce', ['get', 'id'], ['id']]],
+            ['literal', buildingHeights],
+          ],
           // If it exists, use the custom height
-          ['get', ['to-string', ['id']], ['literal', buildingHeights]],
+          [
+            'get',
+            ['to-string', ['coalesce', ['get', 'id'], ['id']]],
+            ['literal', buildingHeights],
+          ],
           // Otherwise, fall back to OSM height data
           ['get', 'height'],
         ];
@@ -180,10 +200,26 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       const fillExtrusionBaseExpression: DataDrivenPropertyValueSpecification<number> =
         [
           'case',
-          ['has', ['to-string', ['id']], ['literal', extrusionOffsets]],
-          ['get', ['to-string', ['id']], ['literal', extrusionOffsets]],
+          [
+            'has',
+            ['to-string', ['coalesce', ['get', 'id'], ['id']]],
+            ['literal', extrusionOffsets],
+          ],
+          [
+            'get',
+            ['to-string', ['coalesce', ['get', 'id'], ['id']]],
+            ['literal', extrusionOffsets],
+          ],
           ['get', 'min_height'],
         ];
+
+      map.addSource('custom-extrusions', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: featureCollectionData,
+        },
+      });
 
       // The 'building' layer in the Mapbox Streets
       // vector tileset contains building height data
@@ -279,23 +315,37 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoDetailedSinchon, labelLayerId);
+
+      map.addLayer({
+        id: 'custom-extrusions-layer',
+        type: 'fill-extrusion',
+        source: 'custom-extrusions',
+        paint: {
+          'fill-extrusion-color': '#aaa',
+          'fill-extrusion-height': fillExtrusionHeightExpression,
+          'fill-extrusion-base': fillExtrusionBaseExpression,
+          'fill-extrusion-opacity': 1,
+        },
+      });
     });
 
     map.on('click', (e) => {
-      if (buildingLayer.get() !== 'osm') {
-        const [longitude, latitude] = e.lngLat.toArray();
-        const buildingId = getNearestBuildingId(longitude, latitude);
-        selectedId.set(buildingId || '');
-        return;
-      }
-
       const features = map.queryRenderedFeatures(e.point, {
-        layers: ['osm-buildings'], // make sure this matches your layer name
+        layers: ['custom-extrusions-layer'],
       });
+
+      if (features.length > 0) {
+        const clickedBuilding = features[0];
+        console.log('Clicked building:', clickedBuilding.properties);
+      }
 
       if (features.length) {
         const building = features[0];
-        const buildingId = building.id;
+        const props = building.properties as
+          | Record<string, unknown>
+          | undefined;
+        const buildingId =
+          (props?.id as string | number | undefined) ?? building.id;
         selectedId.set(buildingId || '');
       } else {
         selectedId.set('');
