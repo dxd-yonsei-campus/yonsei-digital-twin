@@ -278,7 +278,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
           paint: {
             'fill-extrusion-height': fillExtrusionOffsetHeightExpression,
             'fill-extrusion-base': fillExtrusionOffsetBaseExpression,
-            'fill-extrusion-opacity': 0,
+            'fill-extrusion-opacity': 1,
           },
         },
         labelLayerId,
@@ -353,9 +353,17 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
         return;
       }
 
-      const features = map.queryRenderedFeatures(e.point, {
-        layers: ['buildings-clickable'],
-      });
+      let features;
+
+      if (buildingLayer.get() === 'osm') {
+        features = map.queryRenderedFeatures(e.point, {
+          layers: ['osm-buildings'],
+        });
+      } else {
+        features = map.queryRenderedFeatures(e.point, {
+          layers: ['buildings-clickable'],
+        });
+      }
 
       if (features.length) {
         const building = features[0];
