@@ -3,6 +3,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import mapboxgl, { type Map, type CustomLayerInterface } from 'mapbox-gl';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 
 type CustomLayerProps = {
   map: Map;
@@ -66,7 +67,10 @@ export const createCustomLayer = ({
   const envTexture = pmremGenerator.fromScene(roomEnvironment).texture;
   scene.environment = envTexture;
 
+  const dracoLoader = new DRACOLoader();
   const loader = new GLTFLoader();
+  loader.setDRACOLoader(dracoLoader);
+  dracoLoader.setDecoderPath('/draco/');
   loader.setMeshoptDecoder(MeshoptDecoder); // Required for gltfpack models
   loader.load(modelUrl, (gltf) => {
     gltf.scene.traverse((child) => {
