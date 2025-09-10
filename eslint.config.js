@@ -11,6 +11,7 @@ export default tseslint.config(
       '**/.astro',
       '**/.github',
       '**/.changeset',
+      '**/draco',
     ],
   },
 
