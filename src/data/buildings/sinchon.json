@@ -2855,6 +2855,7 @@
       "/src/assets/523-theology-hall/theology-hall.jpg",
       "/src/assets/523-theology-hall/theology-hall-thermal.png"
     ],
+    "terrainOffset": 31.428676,
     "monthly_energy_use": "523-theology-hall",
     "approval_date": "2012-04-10",
     "floor_level": 4,
@@ -3374,6 +3375,7 @@
       "/src/assets/701-muak-dormitory-1/muak-dormitory-1.jpg",
       "/src/assets/701-muak-dormitory-1/muak-dormitory-1-thermal.png"
     ],
+    "terrainOffset": 50,
     "monthly_energy_use": "701-muak-dormitory-1",
     "approval_date": "1989-11-07",
     "floor_level": 6
