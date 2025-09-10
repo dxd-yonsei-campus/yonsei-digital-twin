@@ -327,6 +327,19 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
           'fill-extrusion-opacity': 1,
         },
       });
+
+      map.addLayer({
+        id: 'custom-extrusions-selected',
+        type: 'fill-extrusion',
+        source: 'custom-extrusions',
+        filter: ['==', ['get', 'id'], ''],
+        paint: {
+          'fill-extrusion-color': '#003876',
+          'fill-extrusion-height': fillExtrusionHeightExpression,
+          'fill-extrusion-base': fillExtrusionBaseExpression,
+          'fill-extrusion-opacity': 1,
+        },
+      });
     });
 
     map.on('click', (e) => {
@@ -362,18 +375,22 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
         // If the selected ID is part of the College of Medicine buildings,
         // set the filter to include both buildings.
         if (COLLEGE_OF_MEDICINE_IDS.includes(selectedId)) {
-          map.setFilter('selected-building', [
+          map.setFilter('custom-extrusions-selected', [
             'all',
-            ['in', ['id'], ['literal', COLLEGE_OF_MEDICINE_IDS]],
+            ['in', ['get', 'id'], ['literal', COLLEGE_OF_MEDICINE_IDS]],
           ]);
         } else {
-          map.setFilter('selected-building', ['==', ['id'], selectedId]);
+          map.setFilter('custom-extrusions-selected', [
+            '==',
+            ['get', 'id'],
+            selectedId,
+          ]);
         }
         if (buildingLayer.get() == 'osm') {
           map.setLayoutProperty('selected-building', 'visibility', 'visible');
         }
       } else {
-        map.setFilter('selected-building', ['==', ['id'], '']);
+        map.setFilter('custom-extrusions-selected', ['==', ['get', 'id'], '']);
         map.setLayoutProperty('selected-building', 'visibility', 'none');
       }
     });
