@@ -1545,7 +1545,7 @@
     "total_building_area": 2937.16
   },
   {
-    "id": "school-of-business",
+    "id": 675327351,
     "name": "경영관",
     "name_en": "School of Business / Graduate School of Business",
     "address": "50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
@@ -1555,6 +1555,22 @@
       "/src/assets/212-school-of-business/school-of-business.jpg",
       "/src/assets/212-school-of-business/school-of-business-thermal.png"
     ],
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.9388273, 37.5651612],
+          [126.9387728, 37.5650061],
+          [126.9386705, 37.5647152],
+          [126.9392739, 37.5645819],
+          [126.9392717, 37.5646453],
+          [126.9392577, 37.5650661],
+          [126.9391381, 37.5650925],
+          [126.9389714, 37.5651294],
+          [126.9388273, 37.5651612]
+        ]
+      ]
+    },
     "monthly_energy_use": "212-school-of-business",
     "height": 31.4,
     "floor_level": 6,
