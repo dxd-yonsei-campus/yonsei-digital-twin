@@ -634,7 +634,7 @@
     "total_building_area": 1269.06
   },
   {
-    "id": "avison-biomedical",
+    "id": 472534636,
     "name": "에비슨의생명연구센터",
     "name_en": "Avison Biomedical Research Center",
     "address": "50-1 Yonsei-ro, Seodaemun-gu, Seoul, South Korea",
@@ -646,6 +646,23 @@
     ],
     "monthly_energy_use": "013-avison-biomedical-research-center",
     "height": 27.3,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [126.9418307, 37.5639627],
+          [126.9418458, 37.5640063],
+          [126.9419685, 37.5642836],
+          [126.9428431, 37.5640821],
+          [126.9431626, 37.563827],
+          [126.9428658, 37.5636104],
+          [126.942773, 37.5636831],
+          [126.9427386, 37.563712],
+          [126.9425977, 37.5638196],
+          [126.9418307, 37.5639627]
+        ]
+      ]
+    },
     "approval_date": "2013-02-07",
     "floor_level": 6,
     "construction_type": "철골철근콘크리트구조",
