@@ -294,6 +294,8 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       1178739301, 1178739302,
     ];
 
+    const LIBERTAS_HALL_A_IDS: Array<string | number> = [1096854782, 478878023];
+
     selectedId.listen((selectedId) => {
       if (selectedId) {
         // If the selected ID is part of the College of Medicine buildings,
@@ -302,6 +304,11 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
           map.setFilter('selected-building', [
             'all',
             ['in', ['id'], ['literal', COLLEGE_OF_MEDICINE_IDS]],
+          ]);
+        } else if (LIBERTAS_HALL_A_IDS.includes(selectedId)) {
+          map.setFilter('selected-building', [
+            'all',
+            ['in', ['id'], ['literal', LIBERTAS_HALL_A_IDS]],
           ]);
         } else {
           map.setFilter('selected-building', ['==', ['id'], selectedId]);
