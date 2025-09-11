@@ -136,8 +136,8 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       return {
         type: 'Feature',
         geometry: building.geometry,
+        id: building.id,
         properties: {
-          id: building.id,
           height: building.height || 0,
           min_height: 0,
         },
