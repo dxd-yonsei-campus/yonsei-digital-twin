@@ -45,6 +45,7 @@ The data for each building can be found in `src/data/buildings/`. Each campus is
 | extrusionOffset      | `number`           | Height above ground level (in meters) where the building begins.                                                                         |
 | height               | `number`           | Height of the building. Used to draw extrusions for the OSM model.                                                                       |
 | geometry             | `object`           | Specifies the `type` (e.g. polygon) and `coordinates` i.e. bounding box for the building. Used to draw extrusions for the OSM model.     |
+| monthly_energy_use   | `string`           | The filename for the monthly energy use `.json` file found in `src/data/monthly-energy-use/`                                             |
 | floor_level          | `number`           | The number of floors for the building.                                                                                                   |
 | approval_date        | `date`             | A date when the building was approved in the `YYYY-MM-DD` format. `YYYY` is also accepted.                                               |
 | construction_type    | `string`           | Construction type in Korean.                                                                                                             |
