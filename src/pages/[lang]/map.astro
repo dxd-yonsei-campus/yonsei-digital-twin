@@ -85,7 +85,6 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       type DataDrivenPropertyValueSpecification,
     } from 'mapbox-gl';
     import {
-      getAllBuildingIds,
       getAllBuildings,
       getCameraForCampus,
       updateSelectedCampus,
@@ -95,6 +94,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     import { createCustomLayer } from '@/lib/modelUtils';
     import { toast } from 'sonner';
     import { useTranslations } from '@/i18n/utils';
+    import type { Feature, Polygon, GeoJsonProperties } from 'geojson';
 
     const lang =
       document.querySelector('html')?.getAttribute('lang') === 'ko'
@@ -131,8 +131,18 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       updateSelectedCampus(center.lng, center.lat);
     });
 
-    const allBuildingIds = getAllBuildingIds();
     const allBuildingData = getAllBuildings();
+    const buildingsFeaturesData = allBuildingData.map((building) => {
+      return {
+        type: 'Feature',
+        geometry: building.geometry,
+        id: building.id,
+        properties: {
+          height: building.height || 0,
+          min_height: 0,
+        },
+      };
+    }) as Feature<Polygon, GeoJsonProperties>[];
 
     map.on('style.load', () => {
       // Insert the layer beneath any symbol layer.
@@ -185,34 +195,24 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
           ['get', 'min_height'],
         ];
 
-      // The 'building' layer in the Mapbox Streets
-      // vector tileset contains building height data
-      // from OpenStreetMap.
+      map.addSource('custom-extrusions', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: buildingsFeaturesData,
+        },
+      });
+
       map.addLayer(
         {
           id: 'osm-buildings',
-          source: 'composite',
-          'source-layer': 'building',
-          filter: ['all', ['in', ['id'], ['literal', allBuildingIds]]],
           type: 'fill-extrusion',
-          minzoom: 15,
+          source: 'custom-extrusions',
           paint: {
             'fill-extrusion-color': '#aaa',
-
-            // Use an 'interpolate' expression to
-            // add a smooth transition effect to
-            // the buildings as the user zooms in.
             'fill-extrusion-height': fillExtrusionHeightExpression,
             'fill-extrusion-base': fillExtrusionBaseExpression,
-            'fill-extrusion-opacity': [
-              'interpolate',
-              ['linear'],
-              ['zoom'],
-              15,
-              0, // Fully transparent at zoom 15
-              15.05,
-              1, // Fully opaque at zoom 15.05
-            ],
+            'fill-extrusion-opacity': 1,
           },
         },
         labelLayerId,
@@ -221,27 +221,14 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       map.addLayer(
         {
           id: 'selected-building',
-          source: 'composite',
-          'source-layer': 'building',
           type: 'fill-extrusion',
-          minzoom: 15,
-          filter: ['all', ['in', ['id'], '']],
-          layout: {
-            visibility: 'none',
-          },
+          source: 'custom-extrusions',
+          filter: ['==', ['get', 'id'], ''],
           paint: {
             'fill-extrusion-color': '#003876',
             'fill-extrusion-height': fillExtrusionHeightExpression,
             'fill-extrusion-base': fillExtrusionBaseExpression,
-            'fill-extrusion-opacity': [
-              'interpolate',
-              ['linear'],
-              ['zoom'],
-              15,
-              0, // Fully transparent at zoom 15
-              15.05,
-              0.8, // Translucent at zoom 15.05
-            ],
+            'fill-extrusion-opacity': 1,
           },
         },
         labelLayerId,
