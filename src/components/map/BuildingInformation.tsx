@@ -111,7 +111,7 @@ const BuildingInformation = ({
                   totalFloorArea={displayBuilding?.total_floor_area}
                 />
               ) : (
-                <div>Energy use data is unavailable.</div>
+                <div>{t('energy_use_unavailable')}</div>
               )
             ) : (
               <ConstructionInformation

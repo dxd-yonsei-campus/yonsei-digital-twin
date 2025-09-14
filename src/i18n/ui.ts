@@ -39,6 +39,7 @@ export const ui = {
     'energy_use.domestic_hot_water': 'Domestic Hot Water',
     'energy_use.heating': 'Heating',
     'energy_use.cooling': 'Cooling',
+    energy_use_unavailable: 'Energy use data is unavailable.',
   },
   ko: {
     'site.title': '연세 디지털 트윈',
@@ -73,5 +74,6 @@ export const ui = {
     'energy_use.domestic_hot_water': '온수',
     'energy_use.heating': '난방',
     'energy_use.cooling': '냉방',
+    energy_use_unavailable: '에너지 사용량 데이터를 사용할 수 없습니다',
   },
 } as const;

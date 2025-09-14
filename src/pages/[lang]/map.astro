@@ -25,10 +25,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
 ---
 
 <Layout title={t('site.map')}>
-  <h1 class="sr-only">
-    {t('site.title')}&nbsp;
-    {t('site.map')}
-  </h1>
+  <h1 class="sr-only">{t('site.title')} {t('site.map')}</h1>
   <div id="map" class="h-dvh w-screen"></div>
   <BuildingInformation
     client:load
