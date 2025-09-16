@@ -6,19 +6,19 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from '@/components/ui/chart';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 import type { CollectionEntry } from 'astro:content';
-import { useState } from 'react';
 import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
 
 type MonthlyEnergyUse = CollectionEntry<'monthlyEnergyUse'>['data'];
 
 type EnergyChartProps = {
+  energyUseType?: 'eu' | 'eui';
   lang: keyof typeof ui;
-  chartData: MonthlyEnergyUse;
+  chartData?: MonthlyEnergyUse;
   totalFloorArea?: number;
+  hasLegend?: boolean;
 };
 
 const stackOrder: (keyof MonthlyEnergyUse[number])[] = [
@@ -29,9 +29,18 @@ const stackOrder: (keyof MonthlyEnergyUse[number])[] = [
   'cooling',
 ];
 
-const EnergyChart = ({ lang, chartData, totalFloorArea }: EnergyChartProps) => {
+const EnergyChart = ({
+  energyUseType = 'eu',
+  lang,
+  chartData,
+  totalFloorArea,
+  hasLegend,
+}: EnergyChartProps) => {
   const t = useTranslations(lang);
-  const [energyUseType, setEnergyUseType] = useState<'eu' | 'eui'>('eu');
+
+  if (!chartData) {
+    return null;
+  }
 
   const chartConfig = {
     heating: {
@@ -74,30 +83,6 @@ const EnergyChart = ({ lang, chartData, totalFloorArea }: EnergyChartProps) => {
 
   return (
     <>
-      {totalFloorArea && (
-        <ToggleGroup
-          className="w-full"
-          variant="outline"
-          type={'single'}
-          onValueChange={(val) => {
-            if (val) {
-              setEnergyUseType(val);
-            }
-          }}
-          value={energyUseType}
-        >
-          <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
-            <span className="hidden xs:block">{t('energy_use_long')}</span>
-            <span className="block xs:hidden">{t('energy_use')}</span>
-          </ToggleGroupItem>
-          <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
-            <span className="hidden xs:block">
-              {t('energy_use_intensity_long')}
-            </span>
-            <span className="block xs:hidden">{t('energy_use_intensity')}</span>
-          </ToggleGroupItem>
-        </ToggleGroup>
-      )}
       <ChartContainer
         config={chartConfig}
         className="aspect-auto h-[300px] max-w-full"
@@ -114,11 +99,13 @@ const EnergyChart = ({ lang, chartData, totalFloorArea }: EnergyChartProps) => {
               />
             }
           />
-          <ChartLegend
-            content={
-              <ChartLegendContent className="mx-auto w-84 max-w-full flex-wrap pt-6" />
-            }
-          />
+          {hasLegend && (
+            <ChartLegend
+              content={
+                <ChartLegendContent className="mx-auto w-84 max-w-full flex-wrap pt-6" />
+              }
+            />
+          )}
           <XAxis
             dataKey="month"
             tickLine={true}

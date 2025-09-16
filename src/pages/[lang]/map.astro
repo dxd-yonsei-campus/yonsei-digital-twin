@@ -295,6 +295,9 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       }
 
       if (buildingLayer.get() === 'rhino-simple') {
+        if (!currentSelectedId) {
+          return;
+        }
         const uniqueIds = new Set([
           ...selectedIdsForEnergyUse.get(),
           currentSelectedId,

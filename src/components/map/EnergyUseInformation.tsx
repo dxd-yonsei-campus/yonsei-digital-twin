@@ -11,9 +11,12 @@ import { cn } from '@/lib/utils';
 import type { ui } from '@/i18n/ui';
 import type { CollectionEntry } from 'astro:content';
 import EnergyChart from './building-info/EnergyChart';
-import { getAllBuildings } from '@/lib/mapApi';
+import { getAllBuildings, getBuildingWithId } from '@/lib/mapApi';
 import { Badge } from '../ui/badge';
 import { XIcon } from 'lucide-react';
+import { useState } from 'react';
+import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group';
+import { useTranslations } from '@/i18n/utils';
 
 type MonthlyEnergyUseEntry = CollectionEntry<'monthlyEnergyUse'>;
 
@@ -28,6 +31,8 @@ const EnergyUseInformation = ({
   lang,
   monthlyEnergyUseCollection,
 }: EnergyUseInformationProps) => {
+  const t = useTranslations(lang);
+  const [energyUseType, setEnergyUseType] = useState<'eu' | 'eui'>('eu');
   const $buildingLayer = useStore(buildingLayer);
   const $selectedIdsForEnergyUse = useStore(selectedIdsForEnergyUse);
 
@@ -74,7 +79,7 @@ const EnergyUseInformation = ({
           {$selectedIdsForEnergyUse.map((id) => {
             return (
               <Badge variant="outline" key={id}>
-                {id}
+                {getBuildingWithId(id)?.name_en}
                 <button
                   onClick={() => handleRemoveId(id)}
                   className="ml-0.5 text-muted-foreground hover:text-foreground"
@@ -85,22 +90,41 @@ const EnergyUseInformation = ({
             );
           })}
         </div>
+        <ToggleGroup
+          className="w-full"
+          variant="outline"
+          type={'single'}
+          onValueChange={(val) => {
+            if (val) {
+              setEnergyUseType(val);
+            }
+          }}
+          value={energyUseType}
+        >
+          <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
+            <span className="hidden xs:block">{t('energy_use_long')}</span>
+            <span className="block xs:hidden">{t('energy_use')}</span>
+          </ToggleGroupItem>
+          <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
+            <span className="hidden xs:block">Energy Use Intensity</span>
+            <span className="block xs:hidden">{t('energy_use_intensity')}</span>
+          </ToggleGroupItem>
+        </ToggleGroup>
         {$selectedIdsForEnergyUse.length > 0 && (
           <div className="max-h-[52vh] overflow-auto">
             {$selectedIdsForEnergyUse.map((id) => {
               const monthlyEnergyUseId = getMonthlyEnergyUseId(id);
               const monthlyEnergyUse =
                 getEnergyDataForBuilding(monthlyEnergyUseId);
-
-              if (!monthlyEnergyUse) {
-                return null;
-              }
+              const totalFloorArea = getBuildingWithId(id)?.total_floor_area;
 
               return (
                 <EnergyChart
                   key={id}
                   lang={lang}
                   chartData={monthlyEnergyUse}
+                  totalFloorArea={totalFloorArea}
+                  energyUseType={energyUseType}
                 />
               );
             })}
