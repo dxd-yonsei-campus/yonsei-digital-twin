@@ -17,6 +17,7 @@ import ThemePicker from '@/components/ThemePicker';
 import { Toaster } from '@/components/ui/sonner';
 import { getCollection } from 'astro:content';
 import RhinoSimpleLegend from '@/components/map/RhinoSimpleLegend';
+import EnergyUseInformation from '@/components/map/EnergyUseInformation';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -27,10 +28,11 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
 <Layout title={t('site.map')}>
   <h1 class="sr-only">{t('site.title')} {t('site.map')}</h1>
   <div id="map" class="h-dvh w-screen"></div>
-  <BuildingInformation
-    client:load
+  <BuildingInformation client:load lang={lang} />
+  <EnergyUseInformation
     lang={lang}
     monthlyEnergyUseCollection={monthlyEnergyUseCollection}
+    client:load
   />
   <RhinoSimpleLegend client:load lang={lang} />
   <div class="fixed bottom-0 w-full border-t main-bg px-4 py-2">
@@ -77,7 +79,12 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     </div>
   </div>
   <script>
-    import { buildingLayer, selectedCampus, selectedId } from '@/store';
+    import {
+      buildingLayer,
+      selectedCampus,
+      selectedId,
+      selectedIdsForEnergyUse,
+    } from '@/store';
     import mapboxgl, {
       type DataDrivenPropertyValueSpecification,
     } from 'mapbox-gl';
@@ -266,24 +273,35 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     });
 
     map.on('click', (e) => {
+      let currentSelectedId: number | string = '';
+
       if (buildingLayer.get() !== 'osm') {
         const [longitude, latitude] = e.lngLat.toArray();
         const buildingId = getNearestBuildingId(longitude, latitude);
-        selectedId.set(buildingId || '');
-        return;
+        currentSelectedId = buildingId || '';
+      } else {
+        const features = map.queryRenderedFeatures(e.point, {
+          layers: ['osm-buildings'], // make sure this matches your layer name
+        });
+
+        if (features.length) {
+          const building = features[0];
+          const buildingId = building.id;
+          currentSelectedId = buildingId || '';
+        } else {
+          currentSelectedId = '';
+          map.setFilter('selected-building', ['==', ['id'], '']);
+        }
       }
 
-      const features = map.queryRenderedFeatures(e.point, {
-        layers: ['osm-buildings'], // make sure this matches your layer name
-      });
-
-      if (features.length) {
-        const building = features[0];
-        const buildingId = building.id;
-        selectedId.set(buildingId || '');
+      if (buildingLayer.get() === 'rhino-simple') {
+        const uniqueIds = new Set([
+          ...selectedIdsForEnergyUse.get(),
+          currentSelectedId,
+        ]);
+        selectedIdsForEnergyUse.set(Array.from(uniqueIds));
       } else {
-        selectedId.set('');
-        map.setFilter('selected-building', ['==', ['id'], '']);
+        selectedId.set(currentSelectedId);
       }
     });
 

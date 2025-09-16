@@ -21,22 +21,14 @@ import {
 } from '@/components/ui/collapsible';
 import { cn } from '@/lib/utils';
 import ConstructionInformation from '@/components/map/building-info/ConstructionInformation';
-import EnergyChart from '@/components/map/building-info/EnergyChart';
-import type { CollectionEntry } from 'astro:content';
 
 const allBuildings = getAllBuildings();
 
-type MonthlyEnergyUseEntry = CollectionEntry<'monthlyEnergyUse'>;
-
 type BuildingInformationProps = {
   lang: keyof typeof ui;
-  monthlyEnergyUseCollection: MonthlyEnergyUseEntry[];
 };
 
-const BuildingInformation = ({
-  lang,
-  monthlyEnergyUseCollection,
-}: BuildingInformationProps) => {
+const BuildingInformation = ({ lang }: BuildingInformationProps) => {
   const $selectedId = useStore(selectedId);
   const $buildingLayer = useStore(buildingLayer);
   const [displayBuilding, setDisplayBuilding] = useState<BuildingProps | null>(
@@ -59,14 +51,11 @@ const BuildingInformation = ({
     }
   }, [$selectedId]);
 
-  if (!displayBuilding) {
+  if (!displayBuilding || $buildingLayer === 'rhino-simple') {
     return null;
   }
 
   const campusName = getCampusForBuildingId(displayBuilding.id);
-  const monthlyEnergyUse = monthlyEnergyUseCollection.find(
-    (data) => data.id === String(displayBuilding?.monthly_energy_use),
-  )?.data;
 
   return (
     <Dialog modal={false} open={!!$selectedId}>
@@ -102,24 +91,11 @@ const BuildingInformation = ({
             </DialogDescription>
           </DialogHeader>
           <CollapsibleContent className="max-h-[52vh] space-y-4 overflow-auto [&>:first-child]:pt-5">
-            {$buildingLayer === 'rhino-simple' ? (
-              monthlyEnergyUse ? (
-                <EnergyChart
-                  key={displayBuilding.id}
-                  lang={lang}
-                  chartData={monthlyEnergyUse}
-                  totalFloorArea={displayBuilding?.total_floor_area}
-                />
-              ) : (
-                <div>{t('energy_use_unavailable')}</div>
-              )
-            ) : (
-              <ConstructionInformation
-                key={displayBuilding.id}
-                lang={lang}
-                building={displayBuilding}
-              />
-            )}
+            <ConstructionInformation
+              key={displayBuilding.id}
+              lang={lang}
+              building={displayBuilding}
+            />
           </CollapsibleContent>
           <CollapsibleTrigger asChild>
             <button className="absolute top-4 right-11 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4.5">
