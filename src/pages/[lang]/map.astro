@@ -79,12 +79,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     </div>
   </div>
   <script>
-    import {
-      buildingLayer,
-      selectedCampus,
-      selectedId,
-      selectedIdsForEnergyUse,
-    } from '@/store';
+    import { buildingLayer, selectedCampus, selectedId } from '@/store';
     import mapboxgl, {
       type DataDrivenPropertyValueSpecification,
     } from 'mapbox-gl';
@@ -93,7 +88,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       getCameraForCampus,
       updateSelectedCampus,
       getNearestBuildingId,
-      getBuildingWithId,
+      handleSelectBuilding,
     } from '@/lib/mapApi';
     import type { BuildingLayerType } from '@/types/map';
     import { createCustomLayer } from '@/lib/modelUtils';
@@ -295,33 +290,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
         }
       }
 
-      if (buildingLayer.get() === 'rhino-simple') {
-        if (!currentSelectedId) {
-          return;
-        }
-
-        if (selectedIdsForEnergyUse.get().length >= 5) {
-          toast('You can only compare up to 5 buildings.');
-          return;
-        }
-
-        const buildingData = getBuildingWithId(currentSelectedId);
-
-        if (!buildingData?.monthly_energy_use) {
-          toast(
-            `No energy use data available for ${buildingData?.name_en || 'this building'}.`,
-          );
-          return;
-        }
-
-        const uniqueIds = new Set([
-          ...selectedIdsForEnergyUse.get(),
-          currentSelectedId,
-        ]);
-        selectedIdsForEnergyUse.set(Array.from(uniqueIds));
-      } else {
-        selectedId.set(currentSelectedId);
-      }
+      handleSelectBuilding(currentSelectedId);
     });
 
     const COLLEGE_OF_MEDICINE_IDS: Array<string | number> = [

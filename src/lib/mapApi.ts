@@ -2,9 +2,15 @@ import type { BuildingProps } from '@/content.config';
 import sinchonBuildings from '@/data/buildings/sinchon.json';
 import songdoBuildings from '@/data/buildings/songdo.json';
 import miraeBuildings from '@/data/buildings/mirae.json';
-import { selectedCampus } from '@/store';
+import {
+  buildingLayer,
+  selectedCampus,
+  selectedId,
+  selectedIdsForEnergyUse,
+} from '@/store';
 import type { CampusName } from '@/types/map';
 import type { EasingOptions } from 'mapbox-gl';
+import { toast } from 'sonner';
 
 const SINCHON_CENTER: [number, number] = [126.9384, 37.5647];
 const SONGDO_CENTER: [number, number] = [126.6706, 37.38145];
@@ -168,4 +174,34 @@ export const getNearestBuildingId = (
   });
 
   return nearestBuildingId;
+};
+
+export const handleSelectBuilding = (currentSelectedId: string | number) => {
+  if (buildingLayer.get() === 'rhino-simple') {
+    if (!currentSelectedId) {
+      return;
+    }
+
+    if (selectedIdsForEnergyUse.get().length >= 5) {
+      toast('You can only compare up to 5 buildings.');
+      return;
+    }
+
+    const buildingData = getBuildingWithId(currentSelectedId);
+
+    if (!buildingData?.monthly_energy_use) {
+      toast(
+        `No energy use data available for ${buildingData?.name_en || 'this building'}.`,
+      );
+      return;
+    }
+
+    const uniqueIds = new Set([
+      ...selectedIdsForEnergyUse.get(),
+      currentSelectedId,
+    ]);
+    selectedIdsForEnergyUse.set(Array.from(uniqueIds));
+  } else {
+    selectedId.set(currentSelectedId);
+  }
 };

@@ -13,7 +13,11 @@ import { selectedCampus, selectedId } from '@/store';
 import { useStore } from '@nanostores/react';
 import { cn } from '@/lib/utils';
 import type { BuildingProps } from '@/content.config';
-import { flyToLocation, getBuildingWithId } from '@/lib/mapApi';
+import {
+  flyToLocation,
+  getBuildingWithId,
+  handleSelectBuilding,
+} from '@/lib/mapApi';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 import { campuses, type CampusName } from '@/types/map';
@@ -74,7 +78,7 @@ const SearchBar = ({ lang }: SearchBarProps) => {
 
   const handleSelect = (building: BuildingProps) => {
     // TODO: Update selectedIdsForEnergyUse if rhino-simple is active
-    selectedId.set(building.id);
+    handleSelectBuilding(building.id);
     toggleOpen();
     flyToLocation(building.longitude, building.latitude);
   };
