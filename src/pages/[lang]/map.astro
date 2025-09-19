@@ -14,10 +14,10 @@ export function getStaticPaths() {
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import LanguagePicker from '@/components/map/LanguagePicker.astro';
 import ThemePicker from '@/components/ThemePicker';
-import { Toaster } from '@/components/ui/sonner';
 import { getCollection } from 'astro:content';
 import RhinoSimpleLegend from '@/components/map/RhinoSimpleLegend';
 import EnergyUseInformation from '@/components/map/EnergyUseInformation';
+import Toaster from '@/components/map/Toaster';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -365,17 +365,5 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       setBuildingLayer(layer);
     });
   </script>
-  <Toaster
-    gap={4}
-    position="bottom-left"
-    offset={{
-      bottom: 88,
-      left: 12,
-    }}
-    mobileOffset={{
-      bottom: 88,
-      left: 12,
-    }}
-    client:load
-  />
+  <Toaster client:load />
 </Layout>
