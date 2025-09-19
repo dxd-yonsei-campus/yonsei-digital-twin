@@ -2,9 +2,17 @@ import type { BuildingProps } from '@/content.config';
 import sinchonBuildings from '@/data/buildings/sinchon.json';
 import songdoBuildings from '@/data/buildings/songdo.json';
 import miraeBuildings from '@/data/buildings/mirae.json';
-import { selectedCampus } from '@/store';
+import {
+  buildingLayer,
+  selectedCampus,
+  selectedId,
+  selectedIdsForEnergyUse,
+} from '@/store';
 import type { CampusName } from '@/types/map';
 import type { EasingOptions } from 'mapbox-gl';
+import { toast } from 'sonner';
+import type { ui } from '@/i18n/ui';
+import { formatTranslationString, useTranslations } from '@/i18n/utils';
 
 const SINCHON_CENTER: [number, number] = [126.9384, 37.5647];
 const SONGDO_CENTER: [number, number] = [126.6706, 37.38145];
@@ -168,4 +176,47 @@ export const getNearestBuildingId = (
   });
 
   return nearestBuildingId;
+};
+
+export const handleSelectBuilding = (
+  id: string | number,
+  lang: keyof typeof ui,
+) => {
+  const t = useTranslations(lang);
+
+  if (buildingLayer.get() === 'rhino-simple') {
+    if (!id) {
+      return;
+    }
+
+    if (selectedIdsForEnergyUse.get().length >= 5) {
+      toast(
+        formatTranslationString(t('error_message_building_limit'), {
+          maxBuildings: '5',
+        }),
+      );
+      return;
+    }
+
+    const buildingData = getBuildingWithId(id);
+
+    if (!buildingData?.monthly_energy_use) {
+      const buildingName =
+        lang === 'ko'
+          ? buildingData?.name || '이 건물에 대한'
+          : buildingData?.name_en || 'this building';
+
+      toast(
+        formatTranslationString(t('error_message_no_energy_use'), {
+          buildingName: buildingName,
+        }),
+      );
+      return;
+    }
+
+    const uniqueIds = new Set([...selectedIdsForEnergyUse.get(), id]);
+    selectedIdsForEnergyUse.set(Array.from(uniqueIds));
+  } else {
+    selectedId.set(id);
+  }
 };

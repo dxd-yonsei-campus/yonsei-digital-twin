@@ -6,19 +6,21 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from '@/components/ui/chart';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
+import { cn } from '@/lib/utils';
 import type { CollectionEntry } from 'astro:content';
-import { useState } from 'react';
 import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
 
 type MonthlyEnergyUse = CollectionEntry<'monthlyEnergyUse'>['data'];
 
 type EnergyChartProps = {
+  energyUseType?: 'eu' | 'eui';
   lang: keyof typeof ui;
-  chartData: MonthlyEnergyUse;
+  chartData?: MonthlyEnergyUse;
   totalFloorArea?: number;
+  hasLegend?: boolean;
+  className?: string;
 };
 
 const stackOrder: (keyof MonthlyEnergyUse[number])[] = [
@@ -29,9 +31,19 @@ const stackOrder: (keyof MonthlyEnergyUse[number])[] = [
   'cooling',
 ];
 
-const EnergyChart = ({ lang, chartData, totalFloorArea }: EnergyChartProps) => {
+const EnergyChart = ({
+  energyUseType = 'eu',
+  lang,
+  chartData,
+  totalFloorArea,
+  hasLegend,
+  className,
+}: EnergyChartProps) => {
   const t = useTranslations(lang);
-  const [energyUseType, setEnergyUseType] = useState<'eu' | 'eui'>('eu');
+
+  if (!chartData) {
+    return null;
+  }
 
   const chartConfig = {
     heating: {
@@ -56,6 +68,8 @@ const EnergyChart = ({ lang, chartData, totalFloorArea }: EnergyChartProps) => {
     },
   } satisfies ChartConfig;
 
+  const isEU = !totalFloorArea || energyUseType === 'eu';
+
   const transformedChartData = chartData.map((monthData) => {
     if (totalFloorArea && energyUseType === 'eui') {
       return {
@@ -73,88 +87,62 @@ const EnergyChart = ({ lang, chartData, totalFloorArea }: EnergyChartProps) => {
   });
 
   return (
-    <>
-      {totalFloorArea && (
-        <ToggleGroup
-          className="w-full"
-          variant="outline"
-          type={'single'}
-          onValueChange={(val) => {
-            if (val) {
-              setEnergyUseType(val);
-            }
-          }}
-          value={energyUseType}
-        >
-          <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
-            <span className="hidden xs:block">{t('energy_use_long')}</span>
-            <span className="block xs:hidden">{t('energy_use')}</span>
-          </ToggleGroupItem>
-          <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
-            <span className="hidden xs:block">
-              {t('energy_use_intensity_long')}
-            </span>
-            <span className="block xs:hidden">{t('energy_use_intensity')}</span>
-          </ToggleGroupItem>
-        </ToggleGroup>
-      )}
-      <ChartContainer
-        config={chartConfig}
-        className="aspect-auto h-[300px] max-w-full"
-      >
-        <BarChart accessibilityLayer data={transformedChartData}>
-          <CartesianGrid vertical={false} />
-          <ChartTooltip
-            content={
-              <ChartTooltipContent
-                className={
-                  lang === 'ko' && energyUseType === 'eui' ? 'w-32' : 'w-50'
-                }
-                hideLabel
-              />
-            }
-          />
+    <ChartContainer
+      config={chartConfig}
+      className={cn('aspect-auto h-[300px] max-w-full', className)}
+    >
+      <BarChart accessibilityLayer data={transformedChartData}>
+        <CartesianGrid vertical={false} />
+        <ChartTooltip
+          content={
+            <ChartTooltipContent
+              className={lang === 'ko' && !isEU ? 'w-32' : 'w-50'}
+              hideLabel
+            />
+          }
+        />
+        {hasLegend && (
           <ChartLegend
             content={
               <ChartLegendContent className="mx-auto w-84 max-w-full flex-wrap pt-6" />
             }
           />
-          <XAxis
-            dataKey="month"
-            tickLine={true}
-            tickMargin={10}
-            axisLine={false}
-            tickFormatter={(value) => value}
+        )}
+        <XAxis
+          dataKey="month"
+          tickLine={true}
+          tickMargin={10}
+          axisLine={false}
+          tickFormatter={(value) => value}
+        />
+        <YAxis
+          tickLine={false}
+          tickMargin={10}
+          axisLine={false}
+          width={isEU ? 75 : 60}
+          tickFormatter={(value) => {
+            if (isEU) {
+              return (value / 1000).toString() + 'k';
+            }
+            return value;
+          }}
+        >
+          <Label
+            angle={-90}
+            value={
+              isEU
+                ? `${t('monthly_energy_use')} (kWh)`
+                : `${t('monthly_energy_use_intensity')} (kWh/m²)`
+            }
+            position="insideLeft"
+            style={{ textAnchor: 'middle' }}
           />
-          <YAxis
-            tickLine={false}
-            tickMargin={10}
-            axisLine={false}
-            width={energyUseType === 'eu' ? 75 : 60}
-            tickFormatter={(value) => {
-              if (energyUseType === 'eu') {
-                return (value / 1000).toString() + 'k';
-              }
-              return value;
-            }}
-          >
-            <Label
-              angle={-90}
-              value={
-                energyUseType === 'eu'
-                  ? `${t('energy_use')} (kWh)`
-                  : `${t('energy_use_intensity')} (kWh/m²)`
-              }
-              position="insideLeft"
-              style={{ textAnchor: 'middle' }}
-            />
-          </YAxis>
-          {stackOrder.map((type) => (
-            <Bar dataKey={type} stackId="a" fill={`var(--color-${type})`} />
-          ))}
-        </BarChart>
-      </ChartContainer>
-    </>
+        </YAxis>
+        {stackOrder.map((type) => (
+          <Bar dataKey={type} stackId="a" fill={`var(--color-${type})`} />
+        ))}
+      </BarChart>
+    </ChartContainer>
   );
 };
 
