@@ -5,7 +5,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '../ui/dialog';
+} from '@/components/ui/dialog';
 import { useStore } from '@nanostores/react';
 import { cn } from '@/lib/utils';
 import type { ui } from '@/i18n/ui';
@@ -19,7 +19,7 @@ import {
 } from '@/components/ui/collapsible';
 import { ChevronRight, XIcon } from 'lucide-react';
 import { useState } from 'react';
-import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { useTranslations } from '@/i18n/utils';
 
 type MonthlyEnergyUseEntry = CollectionEntry<'monthlyEnergyUse'>;

@@ -178,6 +178,8 @@ export const getNearestBuildingId = (
   return nearestBuildingId;
 };
 
+const MAX_BUILDINGS = 5;
+
 export const handleSelectBuilding = (
   id: string | number,
   lang: keyof typeof ui,
@@ -189,10 +191,10 @@ export const handleSelectBuilding = (
       return;
     }
 
-    if (selectedIdsForEnergyUse.get().length >= 5) {
+    if (selectedIdsForEnergyUse.get().length >= MAX_BUILDINGS) {
       toast(
         formatTranslationString(t('error_message_building_limit'), {
-          maxBuildings: '5',
+          maxBuildings: MAX_BUILDINGS.toString(),
         }),
       );
       return;
