@@ -41,6 +41,8 @@ export const ui = {
     'energy_use.domestic_hot_water': 'Domestic Hot Water',
     'energy_use.heating': 'Heating',
     'energy_use.cooling': 'Cooling',
+    energy_use_description:
+      'Click or search for any buildings to compare energy use information.',
     energy_use_unavailable: 'Energy use data is unavailable.',
     error_message_building_limit:
       'You can only compare up to {{maxBuildings}} buildings.',
@@ -82,6 +84,8 @@ export const ui = {
     'energy_use.domestic_hot_water': '온수',
     'energy_use.heating': '난방',
     'energy_use.cooling': '냉방',
+    energy_use_description:
+      '에너지 사용 정보를 비교하려면 건물을 클릭하거나 검색하세요',
     energy_use_unavailable: '에너지 사용량 데이터를 사용할 수 없습니다',
     error_message_building_limit:
       '최대 {{maxBuildings}} 개의 건물만 비교할 수 있습니다',

@@ -48,15 +48,13 @@ const EnergyUseInformation = ({
         isCloseable={false}
       >
         <DialogHeader className="text-left">
-          <DialogTitle>{t('energy_use')}</DialogTitle>
+          <DialogTitle>{t('energy_use_long')}</DialogTitle>
           <DialogDescription className="sr-only">
             Energy use information.
           </DialogDescription>
         </DialogHeader>
         {$selectedIdsForEnergyUse.length <= 0 && (
-          <div>
-            Click or search for any buildings to compare energy use information.
-          </div>
+          <div>{t('energy_use_description')}</div>
         )}
         {$selectedIdsForEnergyUse.length >= 1 && (
           <div className="flex max-h-120 flex-col gap-4">
