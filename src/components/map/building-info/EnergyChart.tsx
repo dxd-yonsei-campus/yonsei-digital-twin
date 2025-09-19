@@ -68,6 +68,8 @@ const EnergyChart = ({
     },
   } satisfies ChartConfig;
 
+  const isEU = !totalFloorArea || energyUseType === 'eu';
+
   const transformedChartData = chartData.map((monthData) => {
     if (totalFloorArea && energyUseType === 'eui') {
       return {
@@ -94,9 +96,7 @@ const EnergyChart = ({
         <ChartTooltip
           content={
             <ChartTooltipContent
-              className={
-                lang === 'ko' && energyUseType === 'eui' ? 'w-32' : 'w-50'
-              }
+              className={lang === 'ko' && !isEU ? 'w-32' : 'w-50'}
               hideLabel
             />
           }
@@ -119,9 +119,9 @@ const EnergyChart = ({
           tickLine={false}
           tickMargin={10}
           axisLine={false}
-          width={energyUseType === 'eu' ? 75 : 60}
+          width={isEU ? 75 : 60}
           tickFormatter={(value) => {
-            if (energyUseType === 'eu') {
+            if (isEU) {
               return (value / 1000).toString() + 'k';
             }
             return value;
@@ -130,7 +130,7 @@ const EnergyChart = ({
           <Label
             angle={-90}
             value={
-              energyUseType === 'eu'
+              isEU
                 ? `Monthly ${t('energy_use')} (kWh)`
                 : `Monthly ${t('energy_use_intensity')} (kWh/m²)`
             }

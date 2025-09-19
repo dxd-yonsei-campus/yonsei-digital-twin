@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 import type { ui } from '@/i18n/ui';
 import type { CollectionEntry } from 'astro:content';
 import EnergyChart from './building-info/EnergyChart';
-import { getAllBuildings, getBuildingWithId } from '@/lib/mapApi';
+import { getBuildingWithId } from '@/lib/mapApi';
 import {
   Collapsible,
   CollapsibleContent,
@@ -28,8 +28,6 @@ type EnergyUseInformationProps = {
   lang: keyof typeof ui;
   monthlyEnergyUseCollection: MonthlyEnergyUseEntry[];
 };
-
-const allBuildings = getAllBuildings();
 
 const EnergyUseInformation = ({
   lang,
@@ -78,7 +76,9 @@ const EnergyUseInformation = ({
                 <span className="block xs:hidden">{t('energy_use')}</span>
               </ToggleGroupItem>
               <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
-                <span className="hidden xs:block">Energy Use Intensity</span>
+                <span className="hidden xs:block">
+                  {t('energy_use_intensity_long')}
+                </span>
                 <span className="block xs:hidden">
                   {t('energy_use_intensity')}
                 </span>
@@ -122,30 +122,16 @@ const MonthlyEnergyUseInformation = ({
   energyUseType,
 }: MonthlyEnergyUseInformationProps) => {
   const $selectedIdsForEnergyUse = useStore(selectedIdsForEnergyUse);
-
-  const getMonthlyEnergyUseId = (buildingId: string | number) => {
-    return String(
-      allBuildings.find(
-        (building) => String(building.id) === String(buildingId),
-      )?.monthly_energy_use,
-    );
-  };
-
-  const getEnergyDataForBuilding = (id: string | number) => {
-    return monthlyEnergyUseCollection.find(
-      (data) => String(data.id) === String(id),
-    )?.data;
-  };
-
-  const handleRemoveId = (id: string | number) => {
+  const buildingData = getBuildingWithId(id);
+  const totalFloorArea = buildingData?.total_floor_area;
+  const monthlyEnergyUseId = String(buildingData?.monthly_energy_use);
+  const monthlyEnergyUse = monthlyEnergyUseCollection.find(
+    (data) => String(data.id) === String(monthlyEnergyUseId),
+  )?.data;
+  const handleRemoveId = () =>
     selectedIdsForEnergyUse.set(
       $selectedIdsForEnergyUse.filter((selectedId) => selectedId !== id),
     );
-  };
-
-  const monthlyEnergyUseId = getMonthlyEnergyUseId(id);
-  const monthlyEnergyUse = getEnergyDataForBuilding(monthlyEnergyUseId);
-  const totalFloorArea = getBuildingWithId(id)?.total_floor_area;
 
   return (
     <Collapsible key={id} className="group">
@@ -160,7 +146,7 @@ const MonthlyEnergyUseInformation = ({
         </CollapsibleTrigger>
         <button
           className="text-muted-foreground hover:text-foreground"
-          onClick={() => handleRemoveId(id)}
+          onClick={handleRemoveId}
         >
           <XIcon className="size-4" />
         </button>
