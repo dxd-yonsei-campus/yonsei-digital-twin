@@ -17,7 +17,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@/components/ui/collapsible';
-import { ChevronRight, XIcon } from 'lucide-react';
+import { ChevronDown, ChevronRight, XIcon } from 'lucide-react';
 import { useState } from 'react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { useTranslations } from '@/i18n/utils';
@@ -34,6 +34,7 @@ const EnergyUseInformation = ({
   monthlyEnergyUseCollection,
 }: EnergyUseInformationProps) => {
   const t = useTranslations(lang);
+  const [showDetails, setShowDetails] = useState(true);
   const [energyUseType, setEnergyUseType] = useState<'eu' | 'eui'>('eu');
   const $buildingLayer = useStore(buildingLayer);
   const $selectedIdsForEnergyUse = useStore(selectedIdsForEnergyUse);
@@ -47,61 +48,80 @@ const EnergyUseInformation = ({
         onPointerDownOutside={(e) => e.preventDefault()}
         isCloseable={false}
       >
-        <DialogHeader className="text-left">
-          <DialogTitle>{t('energy_use_long')}</DialogTitle>
-          <DialogDescription className="sr-only">
-            Energy use information.
-          </DialogDescription>
-        </DialogHeader>
-        {$selectedIdsForEnergyUse.length <= 0 && (
-          <div>{t('energy_use_description')}</div>
-        )}
-        {$selectedIdsForEnergyUse.length >= 1 && (
-          <div className="flex max-h-120 flex-col gap-4 has-[.eui-error]:[&_.eui-error-message]:block">
-            <ToggleGroup
-              className="w-full shrink-0"
-              variant="outline"
-              type={'single'}
-              onValueChange={(val) => {
-                if (val) {
-                  setEnergyUseType(val);
-                }
-              }}
-              value={energyUseType}
-            >
-              <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
-                <span className="hidden xs:block">{t('energy_use_long')}</span>
-                <span className="block xs:hidden">{t('energy_use')}</span>
-              </ToggleGroupItem>
-              <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
-                <span className="hidden xs:block">
-                  {t('energy_use_intensity_long')}
-                </span>
-                <span className="block xs:hidden">
-                  {t('energy_use_intensity')}
-                </span>
-              </ToggleGroupItem>
-            </ToggleGroup>
-            <div className="flex-grow overflow-y-auto">
-              {$selectedIdsForEnergyUse.length > 0 && (
-                <div className="space-y-4">
-                  {$selectedIdsForEnergyUse.map((id) => (
-                    <MonthlyEnergyUseInformation
-                      key={id}
-                      id={id}
-                      lang={lang}
-                      energyUseType={energyUseType}
-                      monthlyEnergyUseCollection={monthlyEnergyUseCollection}
-                    />
-                  ))}
+        <Collapsible open={showDetails} onOpenChange={setShowDetails}>
+          <DialogHeader className="text-left">
+            <DialogTitle>{t('energy_use_long')}</DialogTitle>
+            <DialogDescription className="sr-only">
+              Energy use information.
+            </DialogDescription>
+          </DialogHeader>
+          <CollapsibleContent className="[&>:first-child]:pt-5">
+            {$selectedIdsForEnergyUse.length <= 0 && (
+              <div>{t('energy_use_description')}</div>
+            )}
+            {$selectedIdsForEnergyUse.length >= 1 && (
+              <div className="flex max-h-120 flex-col gap-4 has-[.eui-error]:[&_.eui-error-message]:block">
+                <ToggleGroup
+                  className="w-full shrink-0"
+                  variant="outline"
+                  type={'single'}
+                  onValueChange={(val) => {
+                    if (val) {
+                      setEnergyUseType(val);
+                    }
+                  }}
+                  value={energyUseType}
+                >
+                  <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
+                    <span className="hidden xs:block">
+                      {t('energy_use_long')}
+                    </span>
+                    <span className="block xs:hidden">{t('energy_use')}</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
+                    <span className="hidden xs:block">
+                      {t('energy_use_intensity_long')}
+                    </span>
+                    <span className="block xs:hidden">
+                      {t('energy_use_intensity')}
+                    </span>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+                <div className="flex-grow overflow-y-auto">
+                  {$selectedIdsForEnergyUse.length > 0 && (
+                    <div className="space-y-4">
+                      {$selectedIdsForEnergyUse.map((id) => (
+                        <MonthlyEnergyUseInformation
+                          key={id}
+                          id={id}
+                          lang={lang}
+                          energyUseType={energyUseType}
+                          monthlyEnergyUseCollection={
+                            monthlyEnergyUseCollection
+                          }
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-            <div className="eui-error-message hidden text-xs text-muted-foreground">
-              *{t('energy_use_intensity')} {t('error_message_unavailable')}
-            </div>
-          </div>
-        )}
+                <div className="eui-error-message hidden text-xs text-muted-foreground">
+                  *{t('energy_use_intensity')} {t('error_message_unavailable')}
+                </div>
+              </div>
+            )}
+          </CollapsibleContent>
+          <CollapsibleTrigger asChild>
+            <button className="absolute top-4 right-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4.5">
+              <ChevronDown
+                className={cn(
+                  'transition-transform duration-300 ease-in-out',
+                  showDetails ? '-rotate-180' : 'rotate-0',
+                )}
+              />
+              <span className="sr-only">Toggle</span>
+            </button>
+          </CollapsibleTrigger>
+        </Collapsible>
       </DialogContent>
     </Dialog>
   );
