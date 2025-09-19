@@ -11,3 +11,19 @@ export function useTranslations(lang: keyof typeof ui) {
     return ui[lang][key] || ui[defaultLang][key];
   };
 }
+
+/**
+ * Replaces a {{variableName}} in a string by the value of the corresponding param key.
+ *
+ * EXAMPLE USAGE
+ * Translation String: "Hello, {{name}}"
+ * Params: { name: "John" }
+ *
+ * Output: "Hello, John"
+ */
+export function formatTranslationString(
+  str: string,
+  params: Record<string, string> = {},
+) {
+  return str.replace(/\{\{(\w+)\}\}/g, (_, key) => params[key] || '');
+}

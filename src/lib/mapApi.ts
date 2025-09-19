@@ -11,6 +11,8 @@ import {
 import type { CampusName } from '@/types/map';
 import type { EasingOptions } from 'mapbox-gl';
 import { toast } from 'sonner';
+import type { ui } from '@/i18n/ui';
+import { formatTranslationString, useTranslations } from '@/i18n/utils';
 
 const SINCHON_CENTER: [number, number] = [126.9384, 37.5647];
 const SONGDO_CENTER: [number, number] = [126.6706, 37.38145];
@@ -176,22 +178,38 @@ export const getNearestBuildingId = (
   return nearestBuildingId;
 };
 
-export const handleSelectBuilding = (currentSelectedId: string | number) => {
+export const handleSelectBuilding = (
+  currentSelectedId: string | number,
+  lang: keyof typeof ui,
+) => {
+  const t = useTranslations(lang);
+
   if (buildingLayer.get() === 'rhino-simple') {
     if (!currentSelectedId) {
       return;
     }
 
     if (selectedIdsForEnergyUse.get().length >= 5) {
-      toast('You can only compare up to 5 buildings.');
+      toast(
+        formatTranslationString(t('error_message_building_limit'), {
+          maxBuildings: '5',
+        }),
+      );
       return;
     }
 
     const buildingData = getBuildingWithId(currentSelectedId);
 
     if (!buildingData?.monthly_energy_use) {
+      const buildingName =
+        lang === 'ko'
+          ? buildingData?.name || '이 건물에 대한'
+          : buildingData?.name_en || 'this building';
+
       toast(
-        `No energy use data available for ${buildingData?.name_en || 'this building'}.`,
+        formatTranslationString(t('error_message_no_energy_use'), {
+          buildingName: buildingName,
+        }),
       );
       return;
     }

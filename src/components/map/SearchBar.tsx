@@ -78,7 +78,7 @@ const SearchBar = ({ lang }: SearchBarProps) => {
 
   const handleSelect = (building: BuildingProps) => {
     // TODO: Update selectedIdsForEnergyUse if rhino-simple is active
-    handleSelectBuilding(building.id);
+    handleSelectBuilding(building.id, lang);
     toggleOpen();
     flyToLocation(building.longitude, building.latitude);
   };
