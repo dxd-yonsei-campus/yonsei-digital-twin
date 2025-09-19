@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/chart';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
+import { cn } from '@/lib/utils';
 import type { CollectionEntry } from 'astro:content';
 import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
 
@@ -19,6 +20,7 @@ type EnergyChartProps = {
   chartData?: MonthlyEnergyUse;
   totalFloorArea?: number;
   hasLegend?: boolean;
+  className?: string;
 };
 
 const stackOrder: (keyof MonthlyEnergyUse[number])[] = [
@@ -35,6 +37,7 @@ const EnergyChart = ({
   chartData,
   totalFloorArea,
   hasLegend,
+  className,
 }: EnergyChartProps) => {
   const t = useTranslations(lang);
 
@@ -82,66 +85,64 @@ const EnergyChart = ({
   });
 
   return (
-    <>
-      <ChartContainer
-        config={chartConfig}
-        className="aspect-auto h-[300px] max-w-full"
-      >
-        <BarChart accessibilityLayer data={transformedChartData}>
-          <CartesianGrid vertical={false} />
-          <ChartTooltip
+    <ChartContainer
+      config={chartConfig}
+      className={cn('aspect-auto h-[300px] max-w-full', className)}
+    >
+      <BarChart accessibilityLayer data={transformedChartData}>
+        <CartesianGrid vertical={false} />
+        <ChartTooltip
+          content={
+            <ChartTooltipContent
+              className={
+                lang === 'ko' && energyUseType === 'eui' ? 'w-32' : 'w-50'
+              }
+              hideLabel
+            />
+          }
+        />
+        {hasLegend && (
+          <ChartLegend
             content={
-              <ChartTooltipContent
-                className={
-                  lang === 'ko' && energyUseType === 'eui' ? 'w-32' : 'w-50'
-                }
-                hideLabel
-              />
+              <ChartLegendContent className="mx-auto w-84 max-w-full flex-wrap pt-6" />
             }
           />
-          {hasLegend && (
-            <ChartLegend
-              content={
-                <ChartLegendContent className="mx-auto w-84 max-w-full flex-wrap pt-6" />
-              }
-            />
-          )}
-          <XAxis
-            dataKey="month"
-            tickLine={true}
-            tickMargin={10}
-            axisLine={false}
-            tickFormatter={(value) => value}
+        )}
+        <XAxis
+          dataKey="month"
+          tickLine={true}
+          tickMargin={10}
+          axisLine={false}
+          tickFormatter={(value) => value}
+        />
+        <YAxis
+          tickLine={false}
+          tickMargin={10}
+          axisLine={false}
+          width={energyUseType === 'eu' ? 75 : 60}
+          tickFormatter={(value) => {
+            if (energyUseType === 'eu') {
+              return (value / 1000).toString() + 'k';
+            }
+            return value;
+          }}
+        >
+          <Label
+            angle={-90}
+            value={
+              energyUseType === 'eu'
+                ? `${t('energy_use')} (kWh)`
+                : `${t('energy_use_intensity')} (kWh/m²)`
+            }
+            position="insideLeft"
+            style={{ textAnchor: 'middle' }}
           />
-          <YAxis
-            tickLine={false}
-            tickMargin={10}
-            axisLine={false}
-            width={energyUseType === 'eu' ? 75 : 60}
-            tickFormatter={(value) => {
-              if (energyUseType === 'eu') {
-                return (value / 1000).toString() + 'k';
-              }
-              return value;
-            }}
-          >
-            <Label
-              angle={-90}
-              value={
-                energyUseType === 'eu'
-                  ? `${t('energy_use')} (kWh)`
-                  : `${t('energy_use_intensity')} (kWh/m²)`
-              }
-              position="insideLeft"
-              style={{ textAnchor: 'middle' }}
-            />
-          </YAxis>
-          {stackOrder.map((type) => (
-            <Bar dataKey={type} stackId="a" fill={`var(--color-${type})`} />
-          ))}
-        </BarChart>
-      </ChartContainer>
-    </>
+        </YAxis>
+        {stackOrder.map((type) => (
+          <Bar dataKey={type} stackId="a" fill={`var(--color-${type})`} />
+        ))}
+      </BarChart>
+    </ChartContainer>
   );
 };
 

@@ -12,8 +12,12 @@ import type { ui } from '@/i18n/ui';
 import type { CollectionEntry } from 'astro:content';
 import EnergyChart from './building-info/EnergyChart';
 import { getAllBuildings, getBuildingWithId } from '@/lib/mapApi';
-import { Badge } from '../ui/badge';
-import { XIcon } from 'lucide-react';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/components/ui/collapsible';
+import { ChevronRight, XIcon } from 'lucide-react';
 import { useState } from 'react';
 import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group';
 import { useTranslations } from '@/i18n/utils';
@@ -63,8 +67,6 @@ const EnergyUseInformation = ({
           'top-12 left-4 w-full translate-x-0 translate-y-0 p-6 sm:w-108',
         )}
         onPointerDownOutside={(e) => e.preventDefault()}
-        // onEscapeKeyDown={() => selectedId.set('')}
-        // onCloseClick={() => selectedId.set('')}
       >
         <DialogHeader className="text-left">
           <DialogTitle>Energy Use</DialogTitle>
@@ -75,61 +77,73 @@ const EnergyUseInformation = ({
         <div>
           Click or search for any buildings to compare energy use information.
         </div>
-        <div className="flex flex-wrap gap-1">
-          {$selectedIdsForEnergyUse.map((id) => {
-            return (
-              <Badge variant="outline" key={id}>
-                {getBuildingWithId(id)?.name_en}
-                <button
-                  onClick={() => handleRemoveId(id)}
-                  className="ml-0.5 text-muted-foreground hover:text-foreground"
-                >
-                  <XIcon className="size-3.5" />
-                </button>
-              </Badge>
-            );
-          })}
-        </div>
-        <ToggleGroup
-          className="w-full"
-          variant="outline"
-          type={'single'}
-          onValueChange={(val) => {
-            if (val) {
-              setEnergyUseType(val);
-            }
-          }}
-          value={energyUseType}
-        >
-          <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
-            <span className="hidden xs:block">{t('energy_use_long')}</span>
-            <span className="block xs:hidden">{t('energy_use')}</span>
-          </ToggleGroupItem>
-          <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
-            <span className="hidden xs:block">Energy Use Intensity</span>
-            <span className="block xs:hidden">{t('energy_use_intensity')}</span>
-          </ToggleGroupItem>
-        </ToggleGroup>
-        {$selectedIdsForEnergyUse.length > 0 && (
-          <div className="max-h-[52vh] overflow-auto">
-            {$selectedIdsForEnergyUse.map((id) => {
-              const monthlyEnergyUseId = getMonthlyEnergyUseId(id);
-              const monthlyEnergyUse =
-                getEnergyDataForBuilding(monthlyEnergyUseId);
-              const totalFloorArea = getBuildingWithId(id)?.total_floor_area;
+        <div className="flex max-h-108 flex-col gap-4">
+          <ToggleGroup
+            className="w-full shrink-0"
+            variant="outline"
+            type={'single'}
+            onValueChange={(val) => {
+              if (val) {
+                setEnergyUseType(val);
+              }
+            }}
+            value={energyUseType}
+          >
+            <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
+              <span className="hidden xs:block">{t('energy_use_long')}</span>
+              <span className="block xs:hidden">{t('energy_use')}</span>
+            </ToggleGroupItem>
+            <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
+              <span className="hidden xs:block">Energy Use Intensity</span>
+              <span className="block xs:hidden">
+                {t('energy_use_intensity')}
+              </span>
+            </ToggleGroupItem>
+          </ToggleGroup>
+          <div className="flex-grow overflow-y-auto">
+            {$selectedIdsForEnergyUse.length > 0 && (
+              <div className="space-y-4">
+                {$selectedIdsForEnergyUse.map((id) => {
+                  const monthlyEnergyUseId = getMonthlyEnergyUseId(id);
+                  const monthlyEnergyUse =
+                    getEnergyDataForBuilding(monthlyEnergyUseId);
+                  const totalFloorArea =
+                    getBuildingWithId(id)?.total_floor_area;
 
-              return (
-                <EnergyChart
-                  key={id}
-                  lang={lang}
-                  chartData={monthlyEnergyUse}
-                  totalFloorArea={totalFloorArea}
-                  energyUseType={energyUseType}
-                />
-              );
-            })}
+                  return (
+                    <Collapsible key={id} className="group">
+                      <div className="mb-2.5 flex w-full items-center justify-between">
+                        <CollapsibleTrigger asChild>
+                          <button className="w-full text-sm font-medium text-foreground/85 hover:text-foreground">
+                            <div className="flex items-center gap-1.5">
+                              <ChevronRight className="size-3.5 transition-transform duration-200 group-data-[state=open]:rotate-90" />
+                              <div>{getBuildingWithId(id)?.name_en}</div>
+                            </div>
+                          </button>
+                        </CollapsibleTrigger>
+                        <button
+                          className="text-muted-foreground hover:text-foreground"
+                          onClick={() => handleRemoveId(id)}
+                        >
+                          <XIcon className="size-4" />
+                        </button>
+                      </div>
+                      <CollapsibleContent>
+                        <EnergyChart
+                          lang={lang}
+                          chartData={monthlyEnergyUse}
+                          totalFloorArea={totalFloorArea}
+                          energyUseType={energyUseType}
+                          className="h-[200px]"
+                        />
+                      </CollapsibleContent>
+                    </Collapsible>
+                  );
+                })}
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </DialogContent>
     </Dialog>
   );
