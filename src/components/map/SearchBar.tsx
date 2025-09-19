@@ -9,7 +9,12 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { SearchIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { selectedCampus, selectedId } from '@/store';
+import {
+  buildingLayer,
+  selectedCampus,
+  selectedId,
+  selectedIdsForEnergyUse,
+} from '@/store';
 import { useStore } from '@nanostores/react';
 import { cn } from '@/lib/utils';
 import type { BuildingProps } from '@/content.config';
@@ -77,14 +82,19 @@ const SearchBar = ({ lang }: SearchBarProps) => {
   };
 
   const handleSelect = (building: BuildingProps) => {
-    // TODO: Update selectedIdsForEnergyUse if rhino-simple is active
     handleSelectBuilding(building.id, lang);
     toggleOpen();
     flyToLocation(building.longitude, building.latitude);
   };
 
   const $selectedId = useStore(selectedId);
-  const building = getBuildingWithId($selectedId);
+  const $selectedIdsForEnergyUse = useStore(selectedIdsForEnergyUse);
+  const $buildingLayer = useStore(buildingLayer);
+  const building = getBuildingWithId(
+    $buildingLayer === 'rhino-simple'
+      ? $selectedIdsForEnergyUse[$selectedIdsForEnergyUse.length - 1]
+      : $selectedId,
+  );
 
   return (
     <>
