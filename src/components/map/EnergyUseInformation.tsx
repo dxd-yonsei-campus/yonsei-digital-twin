@@ -40,6 +40,89 @@ const EnergyUseInformation = ({
   const $buildingLayer = useStore(buildingLayer);
   const $selectedIdsForEnergyUse = useStore(selectedIdsForEnergyUse);
 
+  return (
+    <Dialog modal={false} open={$buildingLayer === 'rhino-simple'}>
+      <DialogContent
+        className={cn(
+          'top-12 left-4 w-full translate-x-0 translate-y-0 p-6 sm:w-108',
+        )}
+        onPointerDownOutside={(e) => e.preventDefault()}
+        isCloseable={false}
+      >
+        <DialogHeader className="text-left">
+          <DialogTitle>Energy Use</DialogTitle>
+          <DialogDescription className="sr-only">
+            Energy use information.
+          </DialogDescription>
+        </DialogHeader>
+        {$selectedIdsForEnergyUse.length <= 0 && (
+          <div>
+            Click or search for any buildings to compare energy use information.
+          </div>
+        )}
+        {$selectedIdsForEnergyUse.length >= 1 && (
+          <div className="flex max-h-120 flex-col gap-4">
+            <ToggleGroup
+              className="w-full shrink-0"
+              variant="outline"
+              type={'single'}
+              onValueChange={(val) => {
+                if (val) {
+                  setEnergyUseType(val);
+                }
+              }}
+              value={energyUseType}
+            >
+              <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
+                <span className="hidden xs:block">{t('energy_use_long')}</span>
+                <span className="block xs:hidden">{t('energy_use')}</span>
+              </ToggleGroupItem>
+              <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
+                <span className="hidden xs:block">Energy Use Intensity</span>
+                <span className="block xs:hidden">
+                  {t('energy_use_intensity')}
+                </span>
+              </ToggleGroupItem>
+            </ToggleGroup>
+            <div className="flex-grow overflow-y-auto">
+              {$selectedIdsForEnergyUse.length > 0 && (
+                <div className="space-y-4">
+                  {$selectedIdsForEnergyUse.map((id) => (
+                    <MonthlyEnergyUseInformation
+                      key={id}
+                      id={id}
+                      lang={lang}
+                      energyUseType={energyUseType}
+                      monthlyEnergyUseCollection={monthlyEnergyUseCollection}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+export default EnergyUseInformation;
+
+type MonthlyEnergyUseInformationProps = {
+  lang: keyof typeof ui;
+  id: string | number;
+  energyUseType: 'eu' | 'eui';
+  monthlyEnergyUseCollection: MonthlyEnergyUseEntry[];
+};
+
+const MonthlyEnergyUseInformation = ({
+  lang,
+  id,
+  monthlyEnergyUseCollection,
+  energyUseType,
+}: MonthlyEnergyUseInformationProps) => {
+  const $selectedIdsForEnergyUse = useStore(selectedIdsForEnergyUse);
+
   const getMonthlyEnergyUseId = (buildingId: string | number) => {
     return String(
       allBuildings.find(
@@ -60,93 +143,37 @@ const EnergyUseInformation = ({
     );
   };
 
-  return (
-    <Dialog modal={false} open={$buildingLayer === 'rhino-simple'}>
-      <DialogContent
-        className={cn(
-          'top-12 left-4 w-full translate-x-0 translate-y-0 p-6 sm:w-108',
-        )}
-        onPointerDownOutside={(e) => e.preventDefault()}
-      >
-        <DialogHeader className="text-left">
-          <DialogTitle>Energy Use</DialogTitle>
-          <DialogDescription className="sr-only">
-            Energy use information.
-          </DialogDescription>
-        </DialogHeader>
-        <div>
-          Click or search for any buildings to compare energy use information.
-        </div>
-        <div className="flex max-h-108 flex-col gap-4">
-          <ToggleGroup
-            className="w-full shrink-0"
-            variant="outline"
-            type={'single'}
-            onValueChange={(val) => {
-              if (val) {
-                setEnergyUseType(val);
-              }
-            }}
-            value={energyUseType}
-          >
-            <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
-              <span className="hidden xs:block">{t('energy_use_long')}</span>
-              <span className="block xs:hidden">{t('energy_use')}</span>
-            </ToggleGroupItem>
-            <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
-              <span className="hidden xs:block">Energy Use Intensity</span>
-              <span className="block xs:hidden">
-                {t('energy_use_intensity')}
-              </span>
-            </ToggleGroupItem>
-          </ToggleGroup>
-          <div className="flex-grow overflow-y-auto">
-            {$selectedIdsForEnergyUse.length > 0 && (
-              <div className="space-y-4">
-                {$selectedIdsForEnergyUse.map((id) => {
-                  const monthlyEnergyUseId = getMonthlyEnergyUseId(id);
-                  const monthlyEnergyUse =
-                    getEnergyDataForBuilding(monthlyEnergyUseId);
-                  const totalFloorArea =
-                    getBuildingWithId(id)?.total_floor_area;
+  const monthlyEnergyUseId = getMonthlyEnergyUseId(id);
+  const monthlyEnergyUse = getEnergyDataForBuilding(monthlyEnergyUseId);
+  const totalFloorArea = getBuildingWithId(id)?.total_floor_area;
 
-                  return (
-                    <Collapsible key={id} className="group">
-                      <div className="mb-2.5 flex w-full items-center justify-between">
-                        <CollapsibleTrigger asChild>
-                          <button className="w-full text-sm font-medium text-foreground/85 hover:text-foreground">
-                            <div className="flex items-center gap-1.5">
-                              <ChevronRight className="size-3.5 transition-transform duration-200 group-data-[state=open]:rotate-90" />
-                              <div>{getBuildingWithId(id)?.name_en}</div>
-                            </div>
-                          </button>
-                        </CollapsibleTrigger>
-                        <button
-                          className="text-muted-foreground hover:text-foreground"
-                          onClick={() => handleRemoveId(id)}
-                        >
-                          <XIcon className="size-4" />
-                        </button>
-                      </div>
-                      <CollapsibleContent>
-                        <EnergyChart
-                          lang={lang}
-                          chartData={monthlyEnergyUse}
-                          totalFloorArea={totalFloorArea}
-                          energyUseType={energyUseType}
-                          className="h-[200px]"
-                        />
-                      </CollapsibleContent>
-                    </Collapsible>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-        </div>
-      </DialogContent>
-    </Dialog>
+  return (
+    <Collapsible key={id} className="group">
+      <div className="mb-2.5 flex w-full items-center justify-between">
+        <CollapsibleTrigger asChild>
+          <button className="w-full text-sm font-medium text-foreground/85 hover:text-foreground">
+            <div className="flex items-center gap-1.5">
+              <ChevronRight className="size-3.5 transition-transform duration-200 group-data-[state=open]:rotate-90" />
+              <div className="text-left">{getBuildingWithId(id)?.name_en}</div>
+            </div>
+          </button>
+        </CollapsibleTrigger>
+        <button
+          className="text-muted-foreground hover:text-foreground"
+          onClick={() => handleRemoveId(id)}
+        >
+          <XIcon className="size-4" />
+        </button>
+      </div>
+      <CollapsibleContent>
+        <EnergyChart
+          lang={lang}
+          chartData={monthlyEnergyUse}
+          totalFloorArea={totalFloorArea}
+          energyUseType={energyUseType}
+          className="h-[200px]"
+        />
+      </CollapsibleContent>
+    </Collapsible>
   );
 };
-
-export default EnergyUseInformation;
