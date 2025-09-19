@@ -48,7 +48,7 @@ const EnergyUseInformation = ({
         isCloseable={false}
       >
         <DialogHeader className="text-left">
-          <DialogTitle>Energy Use</DialogTitle>
+          <DialogTitle>{t('energy_use')}</DialogTitle>
           <DialogDescription className="sr-only">
             Energy use information.
           </DialogDescription>
@@ -128,6 +128,8 @@ const MonthlyEnergyUseInformation = ({
   const monthlyEnergyUse = monthlyEnergyUseCollection.find(
     (data) => String(data.id) === String(monthlyEnergyUseId),
   )?.data;
+  const nameToDisplay =
+    lang === 'ko' ? buildingData?.name : buildingData?.name_en;
   const handleRemoveId = () =>
     selectedIdsForEnergyUse.set(
       $selectedIdsForEnergyUse.filter((selectedId) => selectedId !== id),
@@ -140,7 +142,7 @@ const MonthlyEnergyUseInformation = ({
           <button className="w-full text-sm font-medium text-foreground/85 hover:text-foreground">
             <div className="flex items-center gap-1.5">
               <ChevronRight className="size-3.5 transition-transform duration-200 group-data-[state=open]:rotate-90" />
-              <div className="text-left">{getBuildingWithId(id)?.name_en}</div>
+              <div className="text-left">{nameToDisplay}</div>
             </div>
           </button>
         </CollapsibleTrigger>

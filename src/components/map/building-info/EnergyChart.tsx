@@ -131,8 +131,8 @@ const EnergyChart = ({
             angle={-90}
             value={
               isEU
-                ? `Monthly ${t('energy_use')} (kWh)`
-                : `Monthly ${t('energy_use_intensity')} (kWh/m²)`
+                ? `${t('monthly_energy_use')} (kWh)`
+                : `${t('monthly_energy_use_intensity')} (kWh/m²)`
             }
             position="insideLeft"
             style={{ textAnchor: 'middle' }}
