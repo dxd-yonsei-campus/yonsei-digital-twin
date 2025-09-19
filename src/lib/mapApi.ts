@@ -179,13 +179,13 @@ export const getNearestBuildingId = (
 };
 
 export const handleSelectBuilding = (
-  currentSelectedId: string | number,
+  id: string | number,
   lang: keyof typeof ui,
 ) => {
   const t = useTranslations(lang);
 
   if (buildingLayer.get() === 'rhino-simple') {
-    if (!currentSelectedId) {
+    if (!id) {
       return;
     }
 
@@ -198,7 +198,7 @@ export const handleSelectBuilding = (
       return;
     }
 
-    const buildingData = getBuildingWithId(currentSelectedId);
+    const buildingData = getBuildingWithId(id);
 
     if (!buildingData?.monthly_energy_use) {
       const buildingName =
@@ -214,12 +214,9 @@ export const handleSelectBuilding = (
       return;
     }
 
-    const uniqueIds = new Set([
-      ...selectedIdsForEnergyUse.get(),
-      currentSelectedId,
-    ]);
+    const uniqueIds = new Set([...selectedIdsForEnergyUse.get(), id]);
     selectedIdsForEnergyUse.set(Array.from(uniqueIds));
   } else {
-    selectedId.set(currentSelectedId);
+    selectedId.set(id);
   }
 };
