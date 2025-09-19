@@ -57,7 +57,7 @@ const EnergyUseInformation = ({
           <div>{t('energy_use_description')}</div>
         )}
         {$selectedIdsForEnergyUse.length >= 1 && (
-          <div className="flex max-h-120 flex-col gap-4">
+          <div className="flex max-h-120 flex-col gap-4 has-[.eui-error]:[&_.eui-error-message]:block">
             <ToggleGroup
               className="w-full shrink-0"
               variant="outline"
@@ -97,6 +97,9 @@ const EnergyUseInformation = ({
                 </div>
               )}
             </div>
+            <div className="eui-error-message hidden text-xs text-muted-foreground">
+              *{t('energy_use_intensity')} unavailable
+            </div>
           </div>
         )}
       </DialogContent>
@@ -132,15 +135,22 @@ const MonthlyEnergyUseInformation = ({
     selectedIdsForEnergyUse.set(
       $selectedIdsForEnergyUse.filter((selectedId) => selectedId !== id),
     );
+  const hasErrorMessage = energyUseType === 'eui' && !totalFloorArea;
 
   return (
-    <Collapsible key={id} className="group">
+    <Collapsible
+      key={id}
+      className={cn('group', hasErrorMessage && 'eui-error')}
+    >
       <div className="mb-2.5 flex w-full items-center justify-between">
         <CollapsibleTrigger asChild>
           <button className="w-full text-sm font-medium text-foreground/85 hover:text-foreground">
             <div className="flex items-center gap-1.5">
               <ChevronRight className="size-3.5 transition-transform duration-200 group-data-[state=open]:rotate-90" />
-              <div className="text-left">{nameToDisplay}</div>
+              <div className="text-left">
+                {nameToDisplay}
+                {hasErrorMessage && '*'}
+              </div>
             </div>
           </button>
         </CollapsibleTrigger>
