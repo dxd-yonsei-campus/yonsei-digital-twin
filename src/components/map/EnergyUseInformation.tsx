@@ -98,7 +98,7 @@ const EnergyUseInformation = ({
               )}
             </div>
             <div className="eui-error-message hidden text-xs text-muted-foreground">
-              *{t('energy_use_intensity')} unavailable
+              *{t('energy_use_intensity')} {t('error_message_unavailable')}
             </div>
           </div>
         )}

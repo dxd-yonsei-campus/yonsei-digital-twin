@@ -48,6 +48,7 @@ export const ui = {
       'You can only compare up to {{maxBuildings}} buildings.',
     error_message_no_energy_use:
       'No energy use data available for {{buildingName}}.',
+    error_message_unavailable: 'unavailable',
   },
   ko: {
     'site.title': '연세 디지털 트윈',
@@ -91,5 +92,6 @@ export const ui = {
       '최대 {{maxBuildings}} 개의 건물만 비교할 수 있습니다',
     error_message_no_energy_use:
       '{{buildingName}} 에너지 사용 데이터가 없습니다',
+    error_message_unavailable: '없는',
   },
 } as const;
