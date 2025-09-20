@@ -57,7 +57,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       <div class="flex items-center gap-2">
         <BuildingLayersToggle lang={lang} client:load />
         <Separator orientation="vertical" className="h-6!" />
-        <ResetViewGroup lang={lang} client:only="react" />
+        <ResetViewGroup lang={lang} client:load />
       </div>
     </div>
     <div

@@ -14,23 +14,38 @@ import { campuses, type CampusName } from '@/types/map';
 import { flyToCampus } from '@/lib/mapApi';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
+import { useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 type ResetButtonGroupProps = {
   lang: keyof typeof ui;
 };
 
 const ResetButtonGroup = ({ lang }: ResetButtonGroupProps) => {
+  const [isRendered, setIsRendered] = useState(false);
   const $selectedCampus = useStore(selectedCampus);
   const t = useTranslations(lang);
 
+  useEffect(() => {
+    setIsRendered(true);
+  }, []);
+
   return (
-    <ButtonGroup>
+    <ButtonGroup
+      className={cn(
+        isRendered ? 'opacity-100' : 'opacity-0',
+        'transition-opacity duration-75',
+      )}
+    >
       <Button
+        className={cn(lang === 'en' ? 'w-26' : 'w-20')}
         variant="outline"
         onClick={() => flyToCampus($selectedCampus, true)}
       >
         <HomeIcon />
-        <span className="sr-only xs:not-sr-only">{t($selectedCampus)}</span>
+        <span className={'sr-only xs:not-sr-only'}>
+          {isRendered ? t($selectedCampus) : ''}
+        </span>
       </Button>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
