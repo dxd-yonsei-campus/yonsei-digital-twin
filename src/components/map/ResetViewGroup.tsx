@@ -38,7 +38,7 @@ const ResetButtonGroup = ({ lang }: ResetButtonGroupProps) => {
       )}
     >
       <Button
-        className={cn(lang === 'en' ? 'w-26' : 'w-20')}
+        className={cn('w-9', lang === 'en' ? 'xs:w-26' : 'xs:w-20')}
         variant="outline"
         onClick={() => flyToCampus($selectedCampus, true)}
       >
