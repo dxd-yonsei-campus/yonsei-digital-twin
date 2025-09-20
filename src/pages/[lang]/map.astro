@@ -6,6 +6,10 @@ import BuildingLayersToggle from '@/components/map/BuildingLayersToggle';
 import BuildingInformation from '@/components/map/BuildingInformation';
 import SearchBar from '@/components/map/SearchBar';
 import ResetViewGroup from '@/components/map/ResetViewGroup';
+import yonseiLogoDark from '@/assets/logo/yonsei-logo-dark.png';
+import yonseiLogoDarkKo from '@/assets/logo/yonsei-logo-dark-ko.png';
+import yonseiLogoLight from '@/assets/logo/yonsei-logo-light.png';
+import yonseiLogoLightKo from '@/assets/logo/yonsei-logo-light-ko.png';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }];
@@ -18,6 +22,7 @@ import { getCollection } from 'astro:content';
 import RhinoSimpleLegend from '@/components/map/RhinoSimpleLegend';
 import EnergyUseInformation from '@/components/map/EnergyUseInformation';
 import Toaster from '@/components/map/Toaster';
+import { Image } from 'astro:assets';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -38,18 +43,14 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
   <div class="fixed bottom-0 w-full border-t main-bg px-4 py-2">
     <div class="mb-2 flex items-center justify-between gap-3">
       <div class="shrink-0">
-        <img
-          class="hidden h-8 dark:block"
-          src={lang === 'en'
-            ? '/yonsei-logo-dark.png'
-            : '/yonsei-logo-dark-ko.png'}
+        <Image
+          class="hidden h-8 w-auto dark:block"
+          src={lang === 'en' ? yonseiLogoDark : yonseiLogoDarkKo}
           alt="Yonsei University"
         />
-        <img
-          class="block h-8 dark:hidden"
-          src={lang === 'en'
-            ? '/yonsei-logo-light.png'
-            : '/yonsei-logo-light-ko.png'}
+        <Image
+          class="block h-8 w-auto dark:hidden"
+          src={lang === 'en' ? yonseiLogoLight : yonseiLogoLightKo}
           alt="Yonsei University"
         />
       </div>
