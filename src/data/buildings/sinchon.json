@@ -2317,6 +2317,7 @@
       "/src/assets/607-university-residence-c/university-residence-c.jpg",
       "/src/assets/607-university-residence-c/university-residence-c-thermal.png"
     ],
+    "yearly_energy_use": 154,
     "monthly_energy_use": "607-university-residence-c",
     "approval_date": "1991-05-14",
     "floor_level": 4
@@ -3340,6 +3341,7 @@
       "/src/assets/608-presidential-reception-hall/presidential-reception-hall.jpg",
       "/src/assets/608-presidential-reception-hall/presidential-reception-hall-thermal.png"
     ],
+    "yearly_energy_use": 134,
     "monthly_energy_use": "608-presidential-reception-hall",
     "approval_date": "2012-05-03",
     "floor_level": 1,
@@ -3371,6 +3373,7 @@
       "/src/assets/609-presidents-residence/presidents-residence.jpg",
       "/src/assets/609-presidents-residence/presidents-residence-thermal.png"
     ],
+    "yearly_energy_use": 175,
     "monthly_energy_use": "609-presidents-residence",
     "approval_date": "1991-11-19",
     "floor_level": 2,
@@ -3436,6 +3439,7 @@
       "/src/assets/621-institute-of-language-research-and-education/institute-of-language-research-and-education.jpg",
       "/src/assets/621-institute-of-language-research-and-education/institute-of-language-research-and-education-thermal.png"
     ],
+    "yearly_energy_use": 131,
     "monthly_energy_use": "621-institute-of-language-research-and-education",
     "approval_date": "1991-04-19",
     "floor_level": 6
@@ -3648,6 +3652,7 @@
       "/src/assets/708-yonsei-milk-company/yonsei-milk-company.jpg",
       "/src/assets/708-yonsei-milk-company/yonsei-milk-company-thermal.png"
     ],
+    "yearly_energy_use": 127,
     "monthly_energy_use": "708-yonsei-milk-company",
     "approval_date": "1978-10-24",
     "floor_level": 1
@@ -3706,6 +3711,7 @@
       "/src/assets/711-woojungwon/woojungwon.jpg",
       "/src/assets/711-woojungwon/woojungwon-thermal.png"
     ],
+    "yearly_energy_use": 140,
     "monthly_energy_use": "711-woojungwon",
     "approval_date": "2013-10-25",
     "floor_level": 4
