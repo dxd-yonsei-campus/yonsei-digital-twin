@@ -30,6 +30,7 @@ const buildingsSchema = z.object({
   construction_type_en: z.string().optional(),
   total_floor_area: z.number().optional(),
   monthly_energy_use: reference('monthlyEnergyUse').optional(),
+  yearly_energy_use: z.number().optional(),
   total_building_area: z.number().optional(),
 });
 
