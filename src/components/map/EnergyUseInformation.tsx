@@ -69,7 +69,12 @@ const EnergyUseInformation = ({
 
         {$selectedIdsForEnergyUse.length >= 1 && (
           <>
-            <YearlyEUIChart chartData={energyUseInformation} lang={lang} />
+            <div>
+              <YearlyEUIChart chartData={energyUseInformation} lang={lang} />
+              <div className="mt-0.5 text-center text-xs text-muted-foreground">
+                {t('yearly_energy_use_intensity')} (kWh/m<sup>2</sup>)
+              </div>
+            </div>
             <div className="flex max-h-120 flex-col gap-4 has-[.eui-error]:[&_.eui-error-message]:block">
               <ToggleGroup
                 className="w-full shrink-0"
