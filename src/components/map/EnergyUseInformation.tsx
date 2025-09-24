@@ -72,7 +72,7 @@ const EnergyUseInformation = ({
         )}
 
         {$selectedIdsForEnergyUse.length >= 1 && (
-          <>
+          <div className="flex max-h-128 flex-col gap-4 overflow-auto has-[.eui-error]:[&_.eui-error-message]:block">
             <div>
               <h2 className="text-sm font-semibold">Yearly Data</h2>
               <YearlyEUIChart chartData={energyUseInformation} lang={lang} />
@@ -80,56 +80,54 @@ const EnergyUseInformation = ({
                 {t('yearly_energy_use_intensity')} (kWh/m<sup>2</sup>)
               </div>
             </div>
-            <div className="flex max-h-120 flex-col gap-4 has-[.eui-error]:[&_.eui-error-message]:block">
-              <div>
-                <h2 className="mb-2 text-sm font-semibold">Monthly Data</h2>
-                <ToggleGroup
-                  className="w-full shrink-0"
-                  variant="outline"
-                  type={'single'}
-                  onValueChange={(val) => {
-                    if (val) {
-                      setEnergyUseType(val);
-                    }
-                  }}
-                  value={energyUseType}
-                >
-                  <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
-                    <span className="hidden xs:block">
-                      {t('energy_use_long')}
-                    </span>
-                    <span className="block xs:hidden">{t('energy_use')}</span>
-                  </ToggleGroupItem>
-                  <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
-                    <span className="hidden xs:block">
-                      {t('energy_use_intensity_long')}
-                    </span>
-                    <span className="block xs:hidden">
-                      {t('energy_use_intensity')}
-                    </span>
-                  </ToggleGroupItem>
-                </ToggleGroup>
-              </div>
-              <div className="flex-grow overflow-y-auto">
-                {$selectedIdsForEnergyUse.length > 0 && (
-                  <div className="space-y-4">
-                    {$selectedIdsForEnergyUse.map((id) => (
-                      <MonthlyEnergyUseInformation
-                        key={id}
-                        id={id}
-                        lang={lang}
-                        energyUseType={energyUseType}
-                        monthlyEnergyUseCollection={monthlyEnergyUseCollection}
-                      />
-                    ))}
-                  </div>
-                )}
-              </div>
-              <div className="eui-error-message hidden text-xs text-muted-foreground">
-                *{t('energy_use_intensity')} {t('error_message_unavailable')}
-              </div>
+            <div>
+              <h2 className="mb-2 text-sm font-semibold">Monthly Data</h2>
+              <ToggleGroup
+                className="w-full shrink-0"
+                variant="outline"
+                type={'single'}
+                onValueChange={(val) => {
+                  if (val) {
+                    setEnergyUseType(val);
+                  }
+                }}
+                value={energyUseType}
+              >
+                <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
+                  <span className="hidden xs:block">
+                    {t('energy_use_long')}
+                  </span>
+                  <span className="block xs:hidden">{t('energy_use')}</span>
+                </ToggleGroupItem>
+                <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
+                  <span className="hidden xs:block">
+                    {t('energy_use_intensity_long')}
+                  </span>
+                  <span className="block xs:hidden">
+                    {t('energy_use_intensity')}
+                  </span>
+                </ToggleGroupItem>
+              </ToggleGroup>
             </div>
-          </>
+            <div>
+              {$selectedIdsForEnergyUse.length > 0 && (
+                <div className="space-y-4">
+                  {$selectedIdsForEnergyUse.map((id) => (
+                    <MonthlyEnergyUseInformation
+                      key={id}
+                      id={id}
+                      lang={lang}
+                      energyUseType={energyUseType}
+                      monthlyEnergyUseCollection={monthlyEnergyUseCollection}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className="eui-error-message hidden text-xs text-muted-foreground">
+              *{t('energy_use_intensity')} {t('error_message_unavailable')}
+            </div>
+          </div>
         )}
       </DialogContent>
     </Dialog>
