@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 import type { ui } from '@/i18n/ui';
 import type { CollectionEntry } from 'astro:content';
 import EnergyChart from './building-info/EnergyChart';
-import { getBuildingWithId } from '@/lib/mapApi';
+import { getAllBuildings, getBuildingWithId } from '@/lib/mapApi';
 import {
   Collapsible,
   CollapsibleContent,
@@ -21,6 +21,7 @@ import { ChevronRight, XIcon } from 'lucide-react';
 import { useState } from 'react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { useTranslations } from '@/i18n/utils';
+import YearlyEUIChart from './building-info/YearlyEUIChart';
 
 type MonthlyEnergyUseEntry = CollectionEntry<'monthlyEnergyUse'>;
 
@@ -37,6 +38,16 @@ const EnergyUseInformation = ({
   const [energyUseType, setEnergyUseType] = useState<'eu' | 'eui'>('eu');
   const $buildingLayer = useStore(buildingLayer);
   const $selectedIdsForEnergyUse = useStore(selectedIdsForEnergyUse);
+  const energyUseInformation = getAllBuildings()
+    .filter((building) => $selectedIdsForEnergyUse.includes(building.id))
+    .map((building) => {
+      return {
+        name: lang === 'ko' ? building.name : building.name_en,
+        yearlyEnergyUse: building.yearly_energy_use || 0,
+      };
+    });
+
+  console.log(energyUseInformation);
 
   return (
     <Dialog modal={false} open={$buildingLayer === 'rhino-simple'}>
@@ -56,51 +67,57 @@ const EnergyUseInformation = ({
         {$selectedIdsForEnergyUse.length <= 0 && (
           <div>{t('energy_use_description')}</div>
         )}
+
         {$selectedIdsForEnergyUse.length >= 1 && (
-          <div className="flex max-h-120 flex-col gap-4 has-[.eui-error]:[&_.eui-error-message]:block">
-            <ToggleGroup
-              className="w-full shrink-0"
-              variant="outline"
-              type={'single'}
-              onValueChange={(val) => {
-                if (val) {
-                  setEnergyUseType(val);
-                }
-              }}
-              value={energyUseType}
-            >
-              <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
-                <span className="hidden xs:block">{t('energy_use_long')}</span>
-                <span className="block xs:hidden">{t('energy_use')}</span>
-              </ToggleGroupItem>
-              <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
-                <span className="hidden xs:block">
-                  {t('energy_use_intensity_long')}
-                </span>
-                <span className="block xs:hidden">
-                  {t('energy_use_intensity')}
-                </span>
-              </ToggleGroupItem>
-            </ToggleGroup>
-            <div className="flex-grow overflow-y-auto">
-              {$selectedIdsForEnergyUse.length > 0 && (
-                <div className="space-y-4">
-                  {$selectedIdsForEnergyUse.map((id) => (
-                    <MonthlyEnergyUseInformation
-                      key={id}
-                      id={id}
-                      lang={lang}
-                      energyUseType={energyUseType}
-                      monthlyEnergyUseCollection={monthlyEnergyUseCollection}
-                    />
-                  ))}
-                </div>
-              )}
+          <>
+            <YearlyEUIChart chartData={energyUseInformation} lang={lang} />
+            <div className="flex max-h-120 flex-col gap-4 has-[.eui-error]:[&_.eui-error-message]:block">
+              <ToggleGroup
+                className="w-full shrink-0"
+                variant="outline"
+                type={'single'}
+                onValueChange={(val) => {
+                  if (val) {
+                    setEnergyUseType(val);
+                  }
+                }}
+                value={energyUseType}
+              >
+                <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
+                  <span className="hidden xs:block">
+                    {t('energy_use_long')}
+                  </span>
+                  <span className="block xs:hidden">{t('energy_use')}</span>
+                </ToggleGroupItem>
+                <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
+                  <span className="hidden xs:block">
+                    {t('energy_use_intensity_long')}
+                  </span>
+                  <span className="block xs:hidden">
+                    {t('energy_use_intensity')}
+                  </span>
+                </ToggleGroupItem>
+              </ToggleGroup>
+              <div className="flex-grow overflow-y-auto">
+                {$selectedIdsForEnergyUse.length > 0 && (
+                  <div className="space-y-4">
+                    {$selectedIdsForEnergyUse.map((id) => (
+                      <MonthlyEnergyUseInformation
+                        key={id}
+                        id={id}
+                        lang={lang}
+                        energyUseType={energyUseType}
+                        monthlyEnergyUseCollection={monthlyEnergyUseCollection}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div className="eui-error-message hidden text-xs text-muted-foreground">
+                *{t('energy_use_intensity')} {t('error_message_unavailable')}
+              </div>
             </div>
-            <div className="eui-error-message hidden text-xs text-muted-foreground">
-              *{t('energy_use_intensity')} {t('error_message_unavailable')}
-            </div>
-          </div>
+          </>
         )}
       </DialogContent>
     </Dialog>
