@@ -7,7 +7,7 @@ import {
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 import { cn } from '@/lib/utils';
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Text } from 'recharts';
 
 type YearlyEnergyUse = {
   name: string;
@@ -34,10 +34,13 @@ const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
     },
   } satisfies ChartConfig;
 
+  const chartHeight = Math.max(85, chartData.length * 55);
+
   return (
     <ChartContainer
       config={chartConfig}
-      className={cn('aspect-auto h-[260px] max-w-full', className)}
+      className={cn('aspect-auto max-w-full transition-all', className)}
+      style={{ height: `${chartHeight}px` }}
     >
       <BarChart accessibilityLayer data={chartData} layout="vertical">
         <CartesianGrid vertical={false} />
@@ -58,10 +61,21 @@ const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
           type="number"
         />
         <YAxis
+          tick={({ x, y, payload }) => (
+            <Text
+              x={x}
+              y={y}
+              width={140}
+              textAnchor="end"
+              verticalAnchor="middle"
+            >
+              {payload.value}
+            </Text>
+          )}
           tickLine={false}
           tickMargin={10}
           axisLine={false}
-          width={128}
+          width={150}
           tickFormatter={(value) => value}
           dataKey="name"
           type="category"
