@@ -40,13 +40,17 @@ const EnergyUseInformation = ({
   const $selectedIdsForEnergyUse = useStore(selectedIdsForEnergyUse);
   const energyUseInformation = getAllBuildings()
     .filter((building) => $selectedIdsForEnergyUse.includes(building.id))
+    .sort((first, second) => {
+      const firstId = $selectedIdsForEnergyUse.indexOf(first.id);
+      const secondId = $selectedIdsForEnergyUse.indexOf(second.id);
+      return firstId - secondId;
+    })
     .map((building) => {
       return {
         name: lang === 'ko' ? building.name : building.name_en,
         yearlyEnergyUse: building.yearly_energy_use || 0,
       };
-    })
-    .reverse();
+    });
 
   return (
     <Dialog modal={false} open={$buildingLayer === 'rhino-simple'}>
