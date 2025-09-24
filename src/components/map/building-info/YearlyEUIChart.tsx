@@ -22,6 +22,10 @@ type EnergyChartProps = {
 
 const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
   const t = useTranslations(lang);
+  const BAR_SIZE_PER_BUILDING = 55;
+  const MIN_BAR_SIZE = 85;
+  const SIZE_PER_CHAR = lang === 'ko' ? 8 : 3.2;
+  const PADDING = 14;
 
   if (!chartData) {
     return null;
@@ -34,7 +38,13 @@ const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
     },
   } satisfies ChartConfig;
 
-  const chartHeight = Math.max(85, chartData.length * 55);
+  const chartHeight = Math.max(
+    MIN_BAR_SIZE,
+    chartData.length * BAR_SIZE_PER_BUILDING,
+  );
+  const characterLengths = chartData.map((data) => data.name.length);
+  const yAxisWidth = Math.floor(Math.max(...characterLengths) * SIZE_PER_CHAR);
+  const actualWidth = yAxisWidth - PADDING;
 
   return (
     <ChartContainer
@@ -65,17 +75,19 @@ const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
             <Text
               x={x}
               y={y}
-              width={140}
+              width={actualWidth}
               textAnchor="end"
               verticalAnchor="middle"
+              style={{ wordBreak: 'break-word' }}
+              breakAll={lang === 'ko'}
             >
               {payload.value}
             </Text>
           )}
           tickLine={false}
-          tickMargin={10}
+          tickMargin={6}
           axisLine={false}
-          width={150}
+          width={yAxisWidth}
           tickFormatter={(value) => value}
           dataKey="name"
           type="category"
