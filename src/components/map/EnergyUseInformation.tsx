@@ -45,9 +45,8 @@ const EnergyUseInformation = ({
         name: lang === 'ko' ? building.name : building.name_en,
         yearlyEnergyUse: building.yearly_energy_use || 0,
       };
-    });
-
-  console.log(energyUseInformation);
+    })
+    .reverse();
 
   return (
     <Dialog modal={false} open={$buildingLayer === 'rhino-simple'}>

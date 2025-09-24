@@ -30,7 +30,7 @@ const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
   const chartConfig = {
     yearlyEnergyUse: {
       label: t('yearly_energy_use_intensity'),
-      color: '#e76f51',
+      color: '#7EA3CC',
     },
   } satisfies ChartConfig;
 
