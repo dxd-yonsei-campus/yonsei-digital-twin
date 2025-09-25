@@ -46,9 +46,36 @@ const EnergyUseInformation = ({
       return firstId - secondId;
     })
     .map((building) => {
+      const totalFloorArea = building?.total_floor_area;
+      const monthlyEnergyUseId = String(building?.monthly_energy_use);
+      const monthlyEnergyUse = monthlyEnergyUseCollection.find(
+        (data) => String(data.id) === String(monthlyEnergyUseId),
+      )?.data;
+
+      const annualEnergyUse = {
+        cooling: 0,
+        dhw: 0,
+        equipment: 0,
+        lighting: 0,
+        heating: 0,
+        windowRadiation: 0,
+      };
+
+      if (totalFloorArea) {
+        monthlyEnergyUse?.forEach((data) => {
+          for (const key in data) {
+            if (key in annualEnergyUse) {
+              const dictKey = key as keyof typeof annualEnergyUse;
+              annualEnergyUse[dictKey] += data[dictKey] / totalFloorArea;
+            }
+          }
+        });
+      }
+
       return {
         name: lang === 'ko' ? building.name : building.name_en,
         yearlyEnergyUse: building.yearly_energy_use || 0,
+        ...annualEnergyUse,
       };
     });
 
