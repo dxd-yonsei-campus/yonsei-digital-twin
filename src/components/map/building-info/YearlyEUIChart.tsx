@@ -24,7 +24,7 @@ const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
   const t = useTranslations(lang);
   const BAR_SIZE_PER_BUILDING = 55;
   const MIN_BAR_SIZE = 85;
-  const SIZE_PER_CHAR = lang === 'ko' ? 8 : 3.2;
+  const SIZE_PER_CHAR = lang === 'ko' ? 12 : 3.2;
   const PADDING = 14;
 
   if (!chartData) {
@@ -92,10 +92,31 @@ const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
           dataKey="name"
           type="category"
         />
-        <Bar dataKey="yearlyEnergyUse" fill="var(--color-yearlyEnergyUse)" />
+        <Bar
+          dataKey="yearlyEnergyUse"
+          fill="var(--color-yearlyEnergyUse)"
+          shape={BarWithLabel}
+        />
       </BarChart>
     </ChartContainer>
   );
 };
 
 export default YearlyEUIChart;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const BarWithLabel = ({ fill, payload, x, y, width, height }: any) => (
+  <g>
+    <rect x={x} y={y} width={width} height={height} fill={fill} />
+    <text
+      x={x + width - 8}
+      y={y + height / 2}
+      fill="rgb(7 89 133)"
+      fontSize="12"
+      textAnchor="end"
+      dominantBaseline="middle"
+    >
+      {payload.yearlyEnergyUse}
+    </text>
+  </g>
+);
