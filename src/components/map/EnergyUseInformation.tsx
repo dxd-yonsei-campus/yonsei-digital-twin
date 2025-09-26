@@ -106,7 +106,8 @@ const EnergyUseInformation = ({
                   lang={lang}
                 />
                 <div className="text-center text-xs text-muted-foreground">
-                  {t('yearly_energy_use_intensity')} (kWh/m<sup>2</sup>)
+                  {t('yearly_energy_use_intensity')} (kWh/m
+                  <sup className="-z-10">2</sup>)
                 </div>
               </div>
               <h2 className="mt-4 mb-2 text-sm font-semibold">Monthly Data</h2>
