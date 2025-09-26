@@ -21,7 +21,7 @@ import { ChevronRight, XIcon } from 'lucide-react';
 import { useState } from 'react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { useTranslations } from '@/i18n/utils';
-import YearlyEUIChart from './building-info/YearlyEUIChart';
+import YearlyEnergyChart from './building-info/YearlyEnergyChart';
 
 type MonthlyEnergyUseEntry = CollectionEntry<'monthlyEnergyUse'>;
 
@@ -102,7 +102,7 @@ const EnergyUseInformation = ({
           <div className="flex max-h-128 flex-col gap-4 overflow-auto has-[.eui-error]:[&_.eui-error-message]:block">
             <div>
               <h2 className="text-sm font-semibold">Yearly Data</h2>
-              <YearlyEUIChart chartData={energyUseInformation} lang={lang} />
+              <YearlyEnergyChart chartData={energyUseInformation} lang={lang} />
               <div className="text-center text-xs text-muted-foreground">
                 {t('yearly_energy_use_intensity')} (kWh/m<sup>2</sup>)
               </div>

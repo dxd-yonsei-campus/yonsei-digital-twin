@@ -7,35 +7,38 @@ import {
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 import { cn, getLongestLineLengthForMaxLines } from '@/lib/utils';
+import type { CollectionEntry } from 'astro:content';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Text } from 'recharts';
 
-type YearlyEnergyUse = {
-  name: string;
-  yearlyEnergyUse: number;
-};
+type MonthlyEnergyUse = Omit<
+  CollectionEntry<'monthlyEnergyUse'>['data'][number],
+  'month'
+> & { name: string };
 
 type EnergyChartProps = {
   lang: keyof typeof ui;
-  chartData?: YearlyEnergyUse[];
+  chartData: MonthlyEnergyUse[];
+  hasLegend?: boolean;
   className?: string;
 };
 
-const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
+const stackOrder: (keyof MonthlyEnergyUse)[] = [
+  'equipment',
+  'lighting',
+  'dhw',
+  'heating',
+  'cooling',
+];
+
+const YearlyEnergyChart = ({
+  lang,
+  chartData,
+  className,
+}: EnergyChartProps) => {
   const t = useTranslations(lang);
   const BAR_SIZE_PER_BUILDING = 55;
   const MIN_BAR_SIZE = 85;
   const SIZE_PER_CHAR = lang === 'ko' ? 10 : 7.5;
-
-  if (!chartData) {
-    return null;
-  }
-
-  const chartConfig = {
-    yearlyEnergyUse: {
-      label: t('yearly_energy_use_intensity'),
-      color: '#7EA3CC',
-    },
-  } satisfies ChartConfig;
 
   const chartHeight = Math.max(
     MIN_BAR_SIZE,
@@ -50,6 +53,29 @@ const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
       : getLongestLineLengthForMaxLines(name, numLines);
   });
   const yAxisWidth = Math.max(...lineLengths) * SIZE_PER_CHAR;
+
+  const chartConfig = {
+    heating: {
+      label: t('energy_use.heating'),
+      color: '#e76f51',
+    },
+    cooling: {
+      label: t('energy_use.cooling'),
+      color: '#8ecae6',
+    },
+    lighting: {
+      label: t('energy_use.lighting'),
+      color: '#ffdd57',
+    },
+    equipment: {
+      label: t('energy_use.equipment'),
+      color: '#adb5bd',
+    },
+    dhw: {
+      label: t('energy_use.domestic_hot_water'),
+      color: '#ff9b29',
+    },
+  } satisfies ChartConfig;
 
   return (
     <ChartContainer
@@ -70,7 +96,7 @@ const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
           content={
             <ChartTooltipContent
               hideLabel
-              className={cn(lang === 'ko' ? 'w-48' : 'w-42')}
+              className={cn(lang === 'ko' ? 'w-32' : 'w-42')}
             />
           }
         />
@@ -104,31 +130,12 @@ const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
           dataKey="name"
           type="category"
         />
-        <Bar
-          dataKey="yearlyEnergyUse"
-          fill="var(--color-yearlyEnergyUse)"
-          shape={BarWithLabel}
-        />
+        {stackOrder.map((type) => (
+          <Bar dataKey={type} stackId="a" fill={`var(--color-${type})`} />
+        ))}
       </BarChart>
     </ChartContainer>
   );
 };
 
-export default YearlyEUIChart;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const BarWithLabel = ({ fill, payload, x, y, width, height }: any) => (
-  <g>
-    <rect x={x} y={y} width={width} height={height} fill={fill} />
-    <text
-      x={x + width - 8}
-      y={y + height / 2}
-      fill="rgb(7 89 133)"
-      fontSize="12"
-      textAnchor="end"
-      dominantBaseline="middle"
-    >
-      {payload.yearlyEnergyUse}
-    </text>
-  </g>
-);
+export default YearlyEnergyChart;
