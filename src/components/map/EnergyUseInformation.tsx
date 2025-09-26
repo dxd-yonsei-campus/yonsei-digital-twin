@@ -137,7 +137,7 @@ const EnergyUseInformation = ({
                   </ToggleGroupItem>
                 </ToggleGroup>
               </div>
-              <div className="mt-2">
+              <div className="mt-4">
                 <div className="space-y-4">
                   {$selectedIdsForEnergyUse.map((id) => (
                     <MonthlyEnergyCharts
