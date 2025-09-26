@@ -11,8 +11,8 @@ import { useTranslations } from '@/i18n/utils';
 import { cn } from '@/lib/utils';
 import type { EnergyUseType } from '@/types/map';
 import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
-import { getChartConfig } from './energyUtils';
-import type { EnergyUseProps, MonthlyEnergyUseProps } from '@/content.config';
+import { getChartConfig, stackOrder } from './energyUtils';
+import type { MonthlyEnergyUseProps } from '@/content.config';
 
 type MonthlyEnergyChartProps = {
   energyUseType: EnergyUseType;
@@ -22,14 +22,6 @@ type MonthlyEnergyChartProps = {
   hasLegend?: boolean;
   className?: string;
 };
-
-const stackOrder: (keyof EnergyUseProps)[] = [
-  'equipment',
-  'lighting',
-  'dhw',
-  'heating',
-  'cooling',
-];
 
 const MonthlyEnergyChart = ({
   energyUseType,

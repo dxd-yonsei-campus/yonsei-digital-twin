@@ -7,7 +7,7 @@ import {
 import type { ui } from '@/i18n/ui';
 import { cn, getLongestLineLengthForMaxLines } from '@/lib/utils';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Text } from 'recharts';
-import { getChartConfig } from './energyUtils';
+import { getChartConfig, stackOrder } from './energyUtils';
 import type { EnergyUseProps } from '@/content.config';
 
 type YearlyEnergyUseProps = EnergyUseProps & { name: string };
@@ -17,14 +17,6 @@ type YearlyEnergyChartProps = {
   chartData: YearlyEnergyUseProps[];
   className?: string;
 };
-
-const stackOrder: (keyof EnergyUseProps)[] = [
-  'equipment',
-  'lighting',
-  'dhw',
-  'heating',
-  'cooling',
-];
 
 const YearlyEnergyChart = ({
   lang,

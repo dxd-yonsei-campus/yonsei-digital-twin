@@ -1,3 +1,4 @@
+import type { EnergyUseProps } from '@/content.config';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 
@@ -29,3 +30,11 @@ export const getChartConfig = (lang: keyof typeof ui) => {
 
   return chartConfig;
 };
+
+export const stackOrder: (keyof EnergyUseProps)[] = [
+  'equipment',
+  'lighting',
+  'dhw',
+  'heating',
+  'cooling',
+];
