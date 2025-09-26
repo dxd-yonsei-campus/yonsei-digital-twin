@@ -68,7 +68,7 @@ const YearlyEnergyChart = ({
           left: 8,
         }}
       >
-        <CartesianGrid vertical={false} />
+        <CartesianGrid horizontal={false} />
         <ChartTooltip
           content={
             <ChartTooltipContent
