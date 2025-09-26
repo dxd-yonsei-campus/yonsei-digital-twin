@@ -14,8 +14,8 @@ import { getAllBuildings } from '@/lib/mapApi';
 import { useState } from 'react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { useTranslations } from '@/i18n/utils';
-import YearlyEnergyChart from './building-info/YearlyEnergyChart';
-import MonthlyEnergyCharts from './building-info/MonthlyEnergyCharts';
+import YearlyEnergyChart from './energy-info/YearlyEnergyChart';
+import MonthlyEnergyCharts from './energy-info/MonthlyEnergyCharts';
 
 type MonthlyEnergyUseEntry = CollectionEntry<'monthlyEnergyUse'>;
 
@@ -157,7 +157,7 @@ const EnergyUseTypeToggle = ({
     <ToggleGroup
       className="w-full shrink-0"
       variant="outline"
-      type={'single'}
+      type="single"
       onValueChange={(val) => {
         if (val) {
           setEnergyUseType(val);

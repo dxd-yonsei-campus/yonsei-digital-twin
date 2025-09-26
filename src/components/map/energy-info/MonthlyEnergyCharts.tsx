@@ -8,7 +8,7 @@ import { getBuildingWithId } from '@/lib/mapApi';
 import { selectedIdsForEnergyUse } from '@/store';
 import { useStore } from '@nanostores/react';
 import { ChevronRight, XIcon } from 'lucide-react';
-import MonthlyEnergyChart from '@/components/map/building-info/MonthlyEnergyChart';
+import MonthlyEnergyChart from '@/components/map/energy-info/MonthlyEnergyChart';
 import type { CollectionEntry } from 'astro:content';
 
 type MonthlyEnergyUseEntry = CollectionEntry<'monthlyEnergyUse'>;
