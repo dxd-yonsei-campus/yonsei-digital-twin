@@ -6,7 +6,7 @@ import {
 } from '@/components/ui/chart';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
-import { cn } from '@/lib/utils';
+import { cn, getLongestLineLengthForMaxLines } from '@/lib/utils';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Text } from 'recharts';
 
 type YearlyEnergyUse = {
@@ -24,8 +24,7 @@ const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
   const t = useTranslations(lang);
   const BAR_SIZE_PER_BUILDING = 55;
   const MIN_BAR_SIZE = 85;
-  const SIZE_PER_CHAR = lang === 'ko' ? 12 : 3.2;
-  const PADDING = 14;
+  const SIZE_PER_CHAR = lang === 'ko' ? 10 : 7.5;
 
   if (!chartData) {
     return null;
@@ -42,9 +41,15 @@ const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
     MIN_BAR_SIZE,
     chartData.length * BAR_SIZE_PER_BUILDING,
   );
-  const characterLengths = chartData.map((data) => data.name.length);
-  const yAxisWidth = Math.floor(Math.max(...characterLengths) * SIZE_PER_CHAR);
-  const actualWidth = yAxisWidth - PADDING;
+  const buildingNames = chartData.map((data) => data.name);
+  const maxNameLength = Math.max(...buildingNames.map((name) => name.length));
+  const numLines = maxNameLength > 35 ? 3 : maxNameLength > 20 ? 2 : 1;
+  const lineLengths = buildingNames.map((name) => {
+    return lang === 'ko'
+      ? name.length
+      : getLongestLineLengthForMaxLines(name, numLines);
+  });
+  const yAxisWidth = Math.max(...lineLengths) * SIZE_PER_CHAR;
 
   return (
     <ChartContainer
@@ -52,7 +57,14 @@ const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
       className={cn('aspect-auto max-w-full transition-all', className)}
       style={{ height: `${chartHeight}px` }}
     >
-      <BarChart accessibilityLayer data={chartData} layout="vertical">
+      <BarChart
+        accessibilityLayer
+        data={chartData}
+        layout="vertical"
+        margin={{
+          left: 8,
+        }}
+      >
         <CartesianGrid vertical={false} />
         <ChartTooltip
           content={
@@ -75,7 +87,7 @@ const YearlyEUIChart = ({ lang, chartData, className }: EnergyChartProps) => {
             <Text
               x={x}
               y={y}
-              width={actualWidth}
+              width={yAxisWidth}
               textAnchor="end"
               verticalAnchor="middle"
               style={{ wordBreak: 'break-word' }}
