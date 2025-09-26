@@ -110,32 +110,11 @@ const EnergyUseInformation = ({
               </div>
               <div>
                 <h2 className="mb-2 text-sm font-semibold">Monthly Data</h2>
-                <ToggleGroup
-                  className="w-full shrink-0"
-                  variant="outline"
-                  type={'single'}
-                  onValueChange={(val) => {
-                    if (val) {
-                      setEnergyUseType(val);
-                    }
-                  }}
-                  value={energyUseType}
-                >
-                  <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
-                    <span className="hidden xs:block">
-                      {t('energy_use_long')}
-                    </span>
-                    <span className="block xs:hidden">{t('energy_use')}</span>
-                  </ToggleGroupItem>
-                  <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
-                    <span className="hidden xs:block">
-                      {t('energy_use_intensity_long')}
-                    </span>
-                    <span className="block xs:hidden">
-                      {t('energy_use_intensity')}
-                    </span>
-                  </ToggleGroupItem>
-                </ToggleGroup>
+                <EnergyUseTypeToggle
+                  lang={lang}
+                  energyUseType={energyUseType}
+                  setEnergyUseType={setEnergyUseType}
+                />
               </div>
               <div className="mt-4 space-y-4">
                 {$selectedIdsForEnergyUse.map((id) => (
@@ -160,3 +139,42 @@ const EnergyUseInformation = ({
 };
 
 export default EnergyUseInformation;
+
+type EnergyUseTypeToggleProps = {
+  lang: keyof typeof ui;
+  energyUseType: 'eu' | 'eui';
+  setEnergyUseType: (type: 'eu' | 'eui') => void;
+};
+
+const EnergyUseTypeToggle = ({
+  lang,
+  energyUseType,
+  setEnergyUseType,
+}: EnergyUseTypeToggleProps) => {
+  const t = useTranslations(lang);
+
+  return (
+    <ToggleGroup
+      className="w-full shrink-0"
+      variant="outline"
+      type={'single'}
+      onValueChange={(val) => {
+        if (val) {
+          setEnergyUseType(val);
+        }
+      }}
+      value={energyUseType}
+    >
+      <ToggleGroupItem className="h-7.5 text-xs!" value="eu">
+        <span className="hidden xs:block">{t('energy_use_long')}</span>
+        <span className="block xs:hidden">{t('energy_use')}</span>
+      </ToggleGroupItem>
+      <ToggleGroupItem className="h-7.5 text-xs!" value="eui">
+        <span className="hidden xs:block">
+          {t('energy_use_intensity_long')}
+        </span>
+        <span className="block xs:hidden">{t('energy_use_intensity')}</span>
+      </ToggleGroupItem>
+    </ToggleGroup>
+  );
+};
