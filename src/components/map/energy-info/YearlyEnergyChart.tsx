@@ -5,10 +5,10 @@ import {
   type ChartConfig,
 } from '@/components/ui/chart';
 import type { ui } from '@/i18n/ui';
-import { useTranslations } from '@/i18n/utils';
 import { cn, getLongestLineLengthForMaxLines } from '@/lib/utils';
 import type { CollectionEntry } from 'astro:content';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Text } from 'recharts';
+import { getChartConfig } from './energyUtils';
 
 type MonthlyEnergyUse = Omit<
   CollectionEntry<'monthlyEnergyUse'>['data'][number],
@@ -18,7 +18,6 @@ type MonthlyEnergyUse = Omit<
 type EnergyChartProps = {
   lang: keyof typeof ui;
   chartData: MonthlyEnergyUse[];
-  hasLegend?: boolean;
   className?: string;
 };
 
@@ -35,7 +34,6 @@ const YearlyEnergyChart = ({
   chartData,
   className,
 }: EnergyChartProps) => {
-  const t = useTranslations(lang);
   const BAR_SIZE_PER_BUILDING = 55;
   const MIN_BAR_SIZE = 85;
   const SIZE_PER_CHAR = lang === 'ko' ? 10 : 7.5;
@@ -54,29 +52,7 @@ const YearlyEnergyChart = ({
       : getLongestLineLengthForMaxLines(name, numLines);
   });
   const yAxisWidth = Math.max(...lineLengths) * SIZE_PER_CHAR;
-
-  const chartConfig = {
-    heating: {
-      label: t('energy_use.heating'),
-      color: '#e76f51',
-    },
-    cooling: {
-      label: t('energy_use.cooling'),
-      color: '#8ecae6',
-    },
-    lighting: {
-      label: t('energy_use.lighting'),
-      color: '#ffdd57',
-    },
-    equipment: {
-      label: t('energy_use.equipment'),
-      color: '#adb5bd',
-    },
-    dhw: {
-      label: t('energy_use.domestic_hot_water'),
-      color: '#ff9b29',
-    },
-  } satisfies ChartConfig;
+  const chartConfig = getChartConfig(lang) satisfies ChartConfig;
 
   return (
     <ChartContainer

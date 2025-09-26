@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils';
 import type { EnergyUseType } from '@/types/map';
 import type { CollectionEntry } from 'astro:content';
 import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
+import { getChartConfig } from './energyUtils';
 
 type MonthlyEnergyUse = CollectionEntry<'monthlyEnergyUse'>['data'];
 
@@ -46,29 +47,7 @@ const MonthlyEnergyChart = ({
     return null;
   }
 
-  const chartConfig = {
-    heating: {
-      label: t('energy_use.heating'),
-      color: '#e76f51',
-    },
-    cooling: {
-      label: t('energy_use.cooling'),
-      color: '#8ecae6',
-    },
-    lighting: {
-      label: t('energy_use.lighting'),
-      color: '#ffdd57',
-    },
-    equipment: {
-      label: t('energy_use.equipment'),
-      color: '#adb5bd',
-    },
-    dhw: {
-      label: t('energy_use.domestic_hot_water'),
-      color: '#ff9b29',
-    },
-  } satisfies ChartConfig;
-
+  const chartConfig = getChartConfig(lang) satisfies ChartConfig;
   const isEU = !totalFloorArea || energyUseType === 'eu';
 
   const transformedChartData = chartData.map((monthData) => {
