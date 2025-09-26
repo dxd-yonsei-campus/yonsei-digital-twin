@@ -39,6 +39,7 @@ const YearlyEnergyChart = ({
   const BAR_SIZE_PER_BUILDING = 55;
   const MIN_BAR_SIZE = 85;
   const SIZE_PER_CHAR = lang === 'ko' ? 10 : 7.5;
+  const ROUND_OFF_VALUE = 50;
 
   const chartHeight = Math.max(
     MIN_BAR_SIZE,
@@ -101,12 +102,16 @@ const YearlyEnergyChart = ({
           }
         />
         <XAxis
-          dataKey="yearlyEnergyUse"
           tickLine={true}
           tickMargin={10}
           axisLine={false}
           tickFormatter={(value) => value}
           type="number"
+          domain={[
+            0,
+            (dataMax: number) =>
+              Math.ceil(dataMax / ROUND_OFF_VALUE) * ROUND_OFF_VALUE,
+          ]}
         />
         <YAxis
           tick={({ x, y, payload }) => (
