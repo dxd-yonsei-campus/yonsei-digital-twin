@@ -6,22 +6,19 @@ import {
 } from '@/components/ui/chart';
 import type { ui } from '@/i18n/ui';
 import { cn, getLongestLineLengthForMaxLines } from '@/lib/utils';
-import type { CollectionEntry } from 'astro:content';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Text } from 'recharts';
 import { getChartConfig } from './energyUtils';
+import type { EnergyUseProps } from '@/content.config';
 
-type MonthlyEnergyUse = Omit<
-  CollectionEntry<'monthlyEnergyUse'>['data'][number],
-  'month'
-> & { name: string };
+type YearlyEnergyUseProps = EnergyUseProps & { name: string };
 
-type EnergyChartProps = {
+type YearlyEnergyChartProps = {
   lang: keyof typeof ui;
-  chartData: MonthlyEnergyUse[];
+  chartData: YearlyEnergyUseProps[];
   className?: string;
 };
 
-const stackOrder: (keyof MonthlyEnergyUse)[] = [
+const stackOrder: (keyof EnergyUseProps)[] = [
   'equipment',
   'lighting',
   'dhw',
@@ -33,7 +30,7 @@ const YearlyEnergyChart = ({
   lang,
   chartData,
   className,
-}: EnergyChartProps) => {
+}: YearlyEnergyChartProps) => {
   const BAR_SIZE_PER_BUILDING = 55;
   const MIN_BAR_SIZE = 85;
   const SIZE_PER_CHAR = lang === 'ko' ? 10 : 7.5;

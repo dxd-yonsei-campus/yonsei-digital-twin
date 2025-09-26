@@ -10,22 +10,20 @@ import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 import { cn } from '@/lib/utils';
 import type { EnergyUseType } from '@/types/map';
-import type { CollectionEntry } from 'astro:content';
 import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
 import { getChartConfig } from './energyUtils';
-
-type MonthlyEnergyUse = CollectionEntry<'monthlyEnergyUse'>['data'];
+import type { EnergyUseProps, MonthlyEnergyUseProps } from '@/content.config';
 
 type MonthlyEnergyChartProps = {
   energyUseType: EnergyUseType;
   lang: keyof typeof ui;
-  chartData?: MonthlyEnergyUse;
+  chartData?: MonthlyEnergyUseProps[];
   totalFloorArea?: number;
   hasLegend?: boolean;
   className?: string;
 };
 
-const stackOrder: (keyof MonthlyEnergyUse[number])[] = [
+const stackOrder: (keyof EnergyUseProps)[] = [
   'equipment',
   'lighting',
   'dhw',
