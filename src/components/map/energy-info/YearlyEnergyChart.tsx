@@ -36,7 +36,7 @@ const YearlyEnergyChart = ({
     LEGEND_SIZE;
   const buildingNames = chartData.map((data) => data.name);
   const maxNameLength = Math.max(...buildingNames.map((name) => name.length));
-  const numLines = maxNameLength > 35 ? 3 : maxNameLength > 20 ? 2 : 1;
+  const numLines = maxNameLength > 35 ? 3 : 2;
   const lineLengths = buildingNames.map((name) => {
     return lang === 'ko'
       ? name.length
@@ -56,7 +56,7 @@ const YearlyEnergyChart = ({
         data={chartData}
         layout="vertical"
         margin={{
-          left: 8,
+          left: 12,
         }}
       >
         <CartesianGrid horizontal={false} />
