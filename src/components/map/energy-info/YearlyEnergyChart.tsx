@@ -1,5 +1,7 @@
 import {
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
@@ -25,13 +27,13 @@ const YearlyEnergyChart = ({
 }: YearlyEnergyChartProps) => {
   const BAR_SIZE_PER_BUILDING = 55;
   const MIN_BAR_SIZE = 85;
+  const LEGEND_SIZE = 60;
   const SIZE_PER_CHAR = lang === 'ko' ? 10 : 8;
   const ROUND_OFF_VALUE = 50;
 
-  const chartHeight = Math.max(
-    MIN_BAR_SIZE,
-    chartData.length * BAR_SIZE_PER_BUILDING,
-  );
+  const chartHeight =
+    Math.max(MIN_BAR_SIZE, chartData.length * BAR_SIZE_PER_BUILDING) +
+    LEGEND_SIZE;
   const buildingNames = chartData.map((data) => data.name);
   const maxNameLength = Math.max(...buildingNames.map((name) => name.length));
   const numLines = maxNameLength > 35 ? 3 : maxNameLength > 20 ? 2 : 1;
@@ -64,6 +66,12 @@ const YearlyEnergyChart = ({
               hideLabel
               className={cn(lang === 'ko' ? 'w-32' : 'w-42')}
             />
+          }
+        />
+        <ChartLegend
+          verticalAlign="top"
+          content={
+            <ChartLegendContent className="mx-auto mb-2 w-84 max-w-full flex-wrap gap-y-1.5 pt-1" />
           }
         />
         <XAxis
