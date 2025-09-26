@@ -9,7 +9,6 @@ import {
 import { useStore } from '@nanostores/react';
 import { cn } from '@/lib/utils';
 import type { ui } from '@/i18n/ui';
-import type { CollectionEntry } from 'astro:content';
 import { getAllBuildings } from '@/lib/mapApi';
 import { useState } from 'react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
@@ -17,12 +16,11 @@ import { useTranslations } from '@/i18n/utils';
 import YearlyEnergyChart from '@/components/map/energy-info/YearlyEnergyChart';
 import MonthlyEnergyCharts from '@/components/map/energy-info/MonthlyEnergyCharts';
 import type { EnergyUseType } from '@/types/map';
-
-type MonthlyEnergyUseEntry = CollectionEntry<'monthlyEnergyUse'>;
+import type { MonthlyEnergyUseCollectionProps } from '@/content.config';
 
 type EnergyUseInformationProps = {
   lang: keyof typeof ui;
-  monthlyEnergyUseCollection: MonthlyEnergyUseEntry[];
+  monthlyEnergyUseCollection: MonthlyEnergyUseCollectionProps;
 };
 
 const EnergyUseInformation = ({

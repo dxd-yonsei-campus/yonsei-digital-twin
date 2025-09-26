@@ -9,16 +9,14 @@ import { selectedIdsForEnergyUse } from '@/store';
 import { useStore } from '@nanostores/react';
 import { ChevronRight, XIcon } from 'lucide-react';
 import MonthlyEnergyChart from '@/components/map/energy-info/MonthlyEnergyChart';
-import type { CollectionEntry } from 'astro:content';
 import type { EnergyUseType } from '@/types/map';
-
-type MonthlyEnergyUseEntry = CollectionEntry<'monthlyEnergyUse'>;
+import type { MonthlyEnergyUseCollectionProps } from '@/content.config';
 
 type MonthlyEnergyUseInformationProps = {
   lang: keyof typeof ui;
   id: string | number;
   energyUseType: EnergyUseType;
-  monthlyEnergyUseCollection: MonthlyEnergyUseEntry[];
+  monthlyEnergyUseCollection: MonthlyEnergyUseCollectionProps;
 };
 
 const MonthlyEnergyCharts = ({
