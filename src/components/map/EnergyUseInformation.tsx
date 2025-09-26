@@ -14,8 +14,9 @@ import { getAllBuildings } from '@/lib/mapApi';
 import { useState } from 'react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { useTranslations } from '@/i18n/utils';
-import YearlyEnergyChart from './energy-info/YearlyEnergyChart';
-import MonthlyEnergyCharts from './energy-info/MonthlyEnergyCharts';
+import YearlyEnergyChart from '@/components/map/energy-info/YearlyEnergyChart';
+import MonthlyEnergyCharts from '@/components/map/energy-info/MonthlyEnergyCharts';
+import type { EnergyUseType } from '@/types/map';
 
 type MonthlyEnergyUseEntry = CollectionEntry<'monthlyEnergyUse'>;
 
@@ -29,7 +30,7 @@ const EnergyUseInformation = ({
   monthlyEnergyUseCollection,
 }: EnergyUseInformationProps) => {
   const t = useTranslations(lang);
-  const [energyUseType, setEnergyUseType] = useState<'eu' | 'eui'>('eu');
+  const [energyUseType, setEnergyUseType] = useState<EnergyUseType>('eu');
   const $buildingLayer = useStore(buildingLayer);
   const $selectedIdsForEnergyUse = useStore(selectedIdsForEnergyUse);
   const energyUseInformation = getAllBuildings()
@@ -140,8 +141,8 @@ export default EnergyUseInformation;
 
 type EnergyUseTypeToggleProps = {
   lang: keyof typeof ui;
-  energyUseType: 'eu' | 'eui';
-  setEnergyUseType: (type: 'eu' | 'eui') => void;
+  energyUseType: EnergyUseType;
+  setEnergyUseType: (type: EnergyUseType) => void;
 };
 
 const EnergyUseTypeToggle = ({

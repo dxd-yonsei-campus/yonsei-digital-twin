@@ -8,3 +8,5 @@ export const campuses = <const>[
   // 'mirae', // Enable this when Mirae campus is ready
 ];
 export type CampusName = (typeof campuses)[number];
+
+export type EnergyUseType = 'eu' | 'eui';

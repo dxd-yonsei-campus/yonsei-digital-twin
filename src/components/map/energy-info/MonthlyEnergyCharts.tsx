@@ -10,13 +10,14 @@ import { useStore } from '@nanostores/react';
 import { ChevronRight, XIcon } from 'lucide-react';
 import MonthlyEnergyChart from '@/components/map/energy-info/MonthlyEnergyChart';
 import type { CollectionEntry } from 'astro:content';
+import type { EnergyUseType } from '@/types/map';
 
 type MonthlyEnergyUseEntry = CollectionEntry<'monthlyEnergyUse'>;
 
 type MonthlyEnergyUseInformationProps = {
   lang: keyof typeof ui;
   id: string | number;
-  energyUseType: 'eu' | 'eui';
+  energyUseType: EnergyUseType;
   monthlyEnergyUseCollection: MonthlyEnergyUseEntry[];
 };
 

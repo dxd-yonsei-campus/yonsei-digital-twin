@@ -9,13 +9,14 @@ import {
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 import { cn } from '@/lib/utils';
+import type { EnergyUseType } from '@/types/map';
 import type { CollectionEntry } from 'astro:content';
 import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
 
 type MonthlyEnergyUse = CollectionEntry<'monthlyEnergyUse'>['data'];
 
 type MonthlyEnergyChartProps = {
-  energyUseType: 'eu' | 'eui';
+  energyUseType: EnergyUseType;
   lang: keyof typeof ui;
   chartData?: MonthlyEnergyUse;
   totalFloorArea?: number;
