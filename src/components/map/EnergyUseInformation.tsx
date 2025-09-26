@@ -137,18 +137,16 @@ const EnergyUseInformation = ({
                   </ToggleGroupItem>
                 </ToggleGroup>
               </div>
-              <div className="mt-4">
-                <div className="space-y-4">
-                  {$selectedIdsForEnergyUse.map((id) => (
-                    <MonthlyEnergyCharts
-                      key={id}
-                      id={id}
-                      lang={lang}
-                      energyUseType={energyUseType}
-                      monthlyEnergyUseCollection={monthlyEnergyUseCollection}
-                    />
-                  ))}
-                </div>
+              <div className="mt-4 space-y-4">
+                {$selectedIdsForEnergyUse.map((id) => (
+                  <MonthlyEnergyCharts
+                    key={id}
+                    id={id}
+                    lang={lang}
+                    energyUseType={energyUseType}
+                    monthlyEnergyUseCollection={monthlyEnergyUseCollection}
+                  />
+                ))}
               </div>
             </div>
             <div className="text-xs text-muted-foreground">
