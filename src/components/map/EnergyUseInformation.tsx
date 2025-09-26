@@ -33,6 +33,7 @@ const EnergyUseInformation = ({
   const [energyUseType, setEnergyUseType] = useState<EnergyUseType>('eu');
   const $buildingLayer = useStore(buildingLayer);
   const $selectedIdsForEnergyUse = useStore(selectedIdsForEnergyUse);
+  let hasErrorMessage = false;
   const energyUseInformation = getAllBuildings()
     .filter((building) => $selectedIdsForEnergyUse.includes(building.id))
     .sort((first, second) => {
@@ -65,6 +66,8 @@ const EnergyUseInformation = ({
             }
           }
         });
+      } else {
+        hasErrorMessage = true;
       }
 
       const buildingName = lang === 'ko' ? building.name : building.name_en;
@@ -72,7 +75,6 @@ const EnergyUseInformation = ({
 
       return {
         name: buildingName + suffix,
-        yearlyEnergyUse: building.yearly_energy_use || 0,
         ...annualEnergyUse,
       };
     });
@@ -128,7 +130,12 @@ const EnergyUseInformation = ({
                 ))}
               </div>
             </div>
-            <div className="text-xs text-muted-foreground">
+            <div
+              className={cn(
+                'text-xs text-muted-foreground',
+                hasErrorMessage ? 'block' : 'hidden',
+              )}
+            >
               *{t('energy_use_intensity')} {t('error_message_unavailable')}
             </div>
           </div>
