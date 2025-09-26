@@ -8,7 +8,7 @@ import { getBuildingWithId } from '@/lib/mapApi';
 import { selectedIdsForEnergyUse } from '@/store';
 import { useStore } from '@nanostores/react';
 import { ChevronRight, XIcon } from 'lucide-react';
-import EnergyChart from '@/components/map/building-info/EnergyChart';
+import MonthlyEnergyChart from '@/components/map/building-info/MonthlyEnergyChart';
 import type { CollectionEntry } from 'astro:content';
 
 type MonthlyEnergyUseEntry = CollectionEntry<'monthlyEnergyUse'>;
@@ -63,7 +63,7 @@ const MonthlyEnergyCharts = ({
         </button>
       </div>
       <CollapsibleContent>
-        <EnergyChart
+        <MonthlyEnergyChart
           lang={lang}
           chartData={monthlyEnergyUse}
           totalFloorArea={totalFloorArea}

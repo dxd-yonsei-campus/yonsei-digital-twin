@@ -14,8 +14,8 @@ import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
 
 type MonthlyEnergyUse = CollectionEntry<'monthlyEnergyUse'>['data'];
 
-type EnergyChartProps = {
-  energyUseType?: 'eu' | 'eui';
+type MonthlyEnergyChartProps = {
+  energyUseType: 'eu' | 'eui';
   lang: keyof typeof ui;
   chartData?: MonthlyEnergyUse;
   totalFloorArea?: number;
@@ -31,14 +31,14 @@ const stackOrder: (keyof MonthlyEnergyUse[number])[] = [
   'cooling',
 ];
 
-const EnergyChart = ({
-  energyUseType = 'eu',
+const MonthlyEnergyChart = ({
+  energyUseType,
   lang,
   chartData,
   totalFloorArea,
   hasLegend,
   className,
-}: EnergyChartProps) => {
+}: MonthlyEnergyChartProps) => {
   const t = useTranslations(lang);
 
   if (!chartData) {
@@ -146,4 +146,4 @@ const EnergyChart = ({
   );
 };
 
-export default EnergyChart;
+export default MonthlyEnergyChart;
