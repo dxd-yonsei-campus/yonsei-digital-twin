@@ -100,7 +100,9 @@ const EnergyUseInformation = ({
           <div className="flex max-h-128 flex-col gap-4">
             <div className="flex-grow overflow-auto">
               <div>
-                <h2 className="mb-1 text-sm font-semibold">Yearly Data</h2>
+                <h2 className="mb-1 text-sm font-semibold">
+                  {t('yearly_data')}
+                </h2>
                 <YearlyEnergyChart
                   chartData={energyUseInformation}
                   lang={lang}
@@ -110,7 +112,9 @@ const EnergyUseInformation = ({
                   <sup className="-z-10">2</sup>)
                 </div>
               </div>
-              <h2 className="mt-4 mb-2 text-sm font-semibold">Monthly Data</h2>
+              <h2 className="mt-4 mb-2 text-sm font-semibold">
+                {t('monthly_data')}
+              </h2>
               <EnergyUseTypeToggle
                 lang={lang}
                 energyUseType={energyUseType}

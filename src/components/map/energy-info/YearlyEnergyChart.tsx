@@ -32,7 +32,7 @@ const YearlyEnergyChart = ({
   const BAR_SIZE_PER_BUILDING = 55;
   const MIN_BAR_SIZE = 85;
   const LEGEND_SIZE = 60;
-  const SIZE_PER_CHAR = lang === 'ko' ? 10 : 8;
+  const SIZE_PER_CHAR = lang === 'ko' ? 10.2 : 8;
   const ROUND_OFF_VALUE = 50;
 
   const removeSelectedIdAtIndex = (index: number) => {
