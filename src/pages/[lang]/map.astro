@@ -272,8 +272,13 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
 
     map.on('click', (e) => {
       let currentSelectedId: number | string = '';
+      const $buildingLayer = buildingLayer.get();
 
-      if (buildingLayer.get() !== 'osm') {
+      if ($buildingLayer === '') {
+        return;
+      }
+
+      if ($buildingLayer !== 'osm') {
         const [longitude, latitude] = e.lngLat.toArray();
         const buildingId = getNearestBuildingId(longitude, latitude);
         currentSelectedId = buildingId || '';
