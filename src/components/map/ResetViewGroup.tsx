@@ -58,8 +58,9 @@ const ResetButtonGroup = ({ lang }: ResetButtonGroupProps) => {
           <DropdownMenuRadioGroup
             value={$selectedCampus}
             onValueChange={(campus) => {
+              const isAnimated = $selectedCampus === campus;
               selectedCampus.set(campus as CampusName);
-              flyToCampus(campus as CampusName);
+              flyToCampus(campus as CampusName, isAnimated);
             }}
           >
             {campuses.map((campus) => {
