@@ -33,7 +33,6 @@
     "husky": "^9.1.7",
     "lucide-react": "^0.511.0",
     "mapbox-gl": "^3.14.0",
-    "motion": "^12.23.12",
     "nanostores": "^1.0.1",
     "radix-ui": "latest",
     "react": "^19.1.1",
