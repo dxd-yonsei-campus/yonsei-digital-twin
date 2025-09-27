@@ -11,7 +11,6 @@ export function getLongestLineLengthForMaxLines(
 ) {
   const words = phrase.split(' ');
 
-  // Helper: Try to fit words into `maxLines` lines with lineLength limit
   function canFit(lineLength: number) {
     let linesUsed = 1;
     let currentLineLength = 0;
@@ -24,7 +23,7 @@ export function getLongestLineLengthForMaxLines(
       if (currentLineLength === 0) {
         currentLineLength = word.length;
       } else if (currentLineLength + 1 + word.length <= lineLength) {
-        currentLineLength += 1 + word.length; // +1 for space
+        currentLineLength += 1 + word.length;
       } else {
         linesUsed++;
         currentLineLength = word.length;
