@@ -11,7 +11,7 @@ import { useTranslations } from '@/i18n/utils';
 import { useEffect, useState } from 'react';
 
 const imageAssets = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/**/*.{jpeg,jpg,png,gif}',
+  '/src/assets/!(public)/*.{jpeg,jpg,png,gif}',
 );
 
 const ConstructionInformation = ({
