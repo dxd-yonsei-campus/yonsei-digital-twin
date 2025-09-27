@@ -2,6 +2,7 @@ import {
   defineCollection,
   reference,
   z,
+  type CollectionEntry,
   type SchemaContext,
 } from 'astro:content';
 import { glob } from 'astro/loaders';
@@ -72,3 +73,8 @@ export const collections = { buildings, monthlyEnergyUse };
 export type BuildingProps = z.infer<typeof buildingsSchema> & {
   images?: string[];
 };
+
+export type MonthlyEnergyUseProps = z.infer<typeof monthlyEnergyUseSchema>;
+export type EnergyUseProps = Omit<MonthlyEnergyUseProps, 'month'>;
+type MonthlyEnergyUseEntry = CollectionEntry<'monthlyEnergyUse'>;
+export type MonthlyEnergyUseCollectionProps = MonthlyEnergyUseEntry[];

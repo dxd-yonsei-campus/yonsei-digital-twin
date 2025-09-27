@@ -9,65 +9,35 @@ import {
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 import { cn } from '@/lib/utils';
-import type { CollectionEntry } from 'astro:content';
+import type { EnergyUseType } from '@/types/map';
 import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from 'recharts';
+import { getChartConfig, stackOrder } from './energyUtils';
+import type { MonthlyEnergyUseProps } from '@/content.config';
 
-type MonthlyEnergyUse = CollectionEntry<'monthlyEnergyUse'>['data'];
-
-type EnergyChartProps = {
-  energyUseType?: 'eu' | 'eui';
+type MonthlyEnergyChartProps = {
+  energyUseType: EnergyUseType;
   lang: keyof typeof ui;
-  chartData?: MonthlyEnergyUse;
+  chartData?: MonthlyEnergyUseProps[];
   totalFloorArea?: number;
   hasLegend?: boolean;
   className?: string;
 };
 
-const stackOrder: (keyof MonthlyEnergyUse[number])[] = [
-  'equipment',
-  'lighting',
-  'dhw',
-  'heating',
-  'cooling',
-];
-
-const EnergyChart = ({
-  energyUseType = 'eu',
+const MonthlyEnergyChart = ({
+  energyUseType,
   lang,
   chartData,
   totalFloorArea,
   hasLegend,
   className,
-}: EnergyChartProps) => {
+}: MonthlyEnergyChartProps) => {
   const t = useTranslations(lang);
 
   if (!chartData) {
     return null;
   }
 
-  const chartConfig = {
-    heating: {
-      label: t('energy_use.heating'),
-      color: '#e76f51',
-    },
-    cooling: {
-      label: t('energy_use.cooling'),
-      color: '#8ecae6',
-    },
-    lighting: {
-      label: t('energy_use.lighting'),
-      color: '#ffdd57',
-    },
-    equipment: {
-      label: t('energy_use.equipment'),
-      color: '#adb5bd',
-    },
-    dhw: {
-      label: t('energy_use.domestic_hot_water'),
-      color: '#ff9b29',
-    },
-  } satisfies ChartConfig;
-
+  const chartConfig = getChartConfig(lang) satisfies ChartConfig;
   const isEU = !totalFloorArea || energyUseType === 'eu';
 
   const transformedChartData = chartData.map((monthData) => {
@@ -146,4 +116,4 @@ const EnergyChart = ({
   );
 };
 
-export default EnergyChart;
+export default MonthlyEnergyChart;
