@@ -131,7 +131,6 @@ const YearlyEnergyChart = ({
             return (
               <g
                 transform={`translate(${x}, ${y + Y_ADJUSTMENT})`}
-                cursor="pointer"
                 height={ICON_SIZE}
                 onClick={() => removeSelectedIdAtIndex(index)}
                 className="text-muted-foreground hover:text-foreground"
@@ -154,6 +153,7 @@ const YearlyEnergyChart = ({
           type="category"
           axisLine={false}
           tickMargin={2}
+          width={30}
         />
         {stackOrder.map((type) => (
           <Bar dataKey={type} stackId="a" fill={`var(--color-${type})`} />
