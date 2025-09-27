@@ -13,6 +13,7 @@ import type { EasingOptions } from 'mapbox-gl';
 import { toast } from 'sonner';
 import type { ui } from '@/i18n/ui';
 import { formatTranslationString, useTranslations } from '@/i18n/utils';
+import { containsIdOrGroup } from './mapUtils';
 
 const SINCHON_CENTER: [number, number] = [126.9384, 37.5647];
 const SONGDO_CENTER: [number, number] = [126.6706, 37.38145];
@@ -187,7 +188,8 @@ export const handleSelectBuilding = (
       return;
     }
 
-    if (selectedIdsForEnergyUse.get().length >= MAX_BUILDINGS) {
+    const selectedIds = selectedIdsForEnergyUse.get();
+    if (selectedIds.length >= MAX_BUILDINGS) {
       toast(
         formatTranslationString(t('error_message_building_limit'), {
           maxBuildings: MAX_BUILDINGS.toString(),
@@ -212,7 +214,11 @@ export const handleSelectBuilding = (
       return;
     }
 
-    const uniqueIds = new Set([...selectedIdsForEnergyUse.get(), id]);
+    if (containsIdOrGroup(selectedIds, id)) {
+      return;
+    }
+
+    const uniqueIds = new Set([...selectedIds, id]);
     selectedIdsForEnergyUse.set(Array.from(uniqueIds));
   } else {
     selectedId.set(id);

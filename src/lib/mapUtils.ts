@@ -26,3 +26,12 @@ export const findGroupForId = (buildingId: BuildingIdType) => {
 export const DUPLICATES_TO_REMOVE = BUILDING_GROUPS.map((ids) =>
   ids.slice(1),
 ).flat();
+
+export function containsIdOrGroup(
+  idList: Array<string | number>,
+  newId: string | number,
+): boolean {
+  const targetGroup = BUILDING_LOOKUP.get(newId) || [newId];
+  const idSet = new Set(idList);
+  return targetGroup.some((id) => idSet.has(id));
+}
