@@ -11,6 +11,9 @@ import { cn, getLongestLineLengthForMaxLines } from '@/lib/utils';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Text } from 'recharts';
 import { getChartConfig, stackOrder } from './energyUtils';
 import type { EnergyUseProps } from '@/content.config';
+import { XIcon } from 'lucide-react';
+import { selectedIdsForEnergyUse } from '@/store';
+import { useStore } from '@nanostores/react';
 
 type YearlyEnergyUseProps = EnergyUseProps & { name: string };
 
@@ -25,11 +28,21 @@ const YearlyEnergyChart = ({
   chartData,
   className,
 }: YearlyEnergyChartProps) => {
+  const $selectedIds = useStore(selectedIdsForEnergyUse);
   const BAR_SIZE_PER_BUILDING = 55;
   const MIN_BAR_SIZE = 85;
   const LEGEND_SIZE = 60;
   const SIZE_PER_CHAR = lang === 'ko' ? 10 : 8;
   const ROUND_OFF_VALUE = 50;
+
+  const removeSelectedIdAtIndex = (index: number) => {
+    if (index < 0 && index >= $selectedIds.length) {
+      return;
+    }
+
+    const newIds = $selectedIds.filter((_, currIndex) => index !== currIndex);
+    selectedIdsForEnergyUse.set(newIds);
+  };
 
   const chartHeight =
     Math.max(MIN_BAR_SIZE, chartData.length * BAR_SIZE_PER_BUILDING) +
@@ -107,6 +120,40 @@ const YearlyEnergyChart = ({
           tickFormatter={(value) => value}
           dataKey="name"
           type="category"
+        />
+        <YAxis
+          tick={({ x, y, payload }) => {
+            const ICON_SIZE = 16;
+            const CLICKABLE_SIZE = ICON_SIZE + 8;
+            const Y_ADJUSTMENT = -ICON_SIZE / 2;
+            const CLICKABLE_ADJUSTMENT = Y_ADJUSTMENT / 2;
+            const index = payload.index;
+            return (
+              <g
+                transform={`translate(${x}, ${y + Y_ADJUSTMENT})`}
+                cursor="pointer"
+                height={ICON_SIZE}
+                onClick={() => removeSelectedIdAtIndex(index)}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <rect
+                  x={CLICKABLE_ADJUSTMENT}
+                  y={CLICKABLE_ADJUSTMENT}
+                  width={CLICKABLE_SIZE}
+                  height={CLICKABLE_SIZE}
+                  fill="transparent"
+                />
+                <XIcon height={ICON_SIZE} width={ICON_SIZE} />
+              </g>
+            );
+          }}
+          tickFormatter={() => ''}
+          tickLine={false}
+          yAxisId="right"
+          orientation="right"
+          type="category"
+          axisLine={false}
+          tickMargin={2}
         />
         {stackOrder.map((type) => (
           <Bar dataKey={type} stackId="a" fill={`var(--color-${type})`} />
