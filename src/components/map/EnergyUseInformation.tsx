@@ -81,24 +81,24 @@ const EnergyUseInformation = ({
     <Dialog modal={false} open={$buildingLayer === 'rhino-simple'}>
       <DialogContent
         className={cn(
-          'top-12 left-4 w-full translate-x-0 translate-y-0 p-6 sm:w-108',
+          'top-12 left-4 w-full translate-x-0 translate-y-0 px-0 py-6 sm:w-108',
         )}
         onPointerDownOutside={(e) => e.preventDefault()}
         isCloseable={false}
       >
-        <DialogHeader className="text-left">
+        <DialogHeader className="px-6 text-left">
           <DialogTitle>{t('energy_use_long')}</DialogTitle>
           <DialogDescription className="sr-only">
             Energy use information.
           </DialogDescription>
         </DialogHeader>
         {$selectedIdsForEnergyUse.length <= 0 && (
-          <div>{t('energy_use_description')}</div>
+          <div className="px-6">{t('energy_use_description')}</div>
         )}
 
         {$selectedIdsForEnergyUse.length >= 1 && (
           <div className="flex max-h-[44vh] flex-col gap-4 [@media(min-height:728px)]:max-h-[58vh]">
-            <div className="flex-grow overflow-auto">
+            <div className="flex-grow overflow-auto px-6">
               <div>
                 <h2 className="mb-1 text-sm font-semibold">
                   {t('yearly_data')}
@@ -134,7 +134,7 @@ const EnergyUseInformation = ({
             </div>
             <div
               className={cn(
-                'text-xs text-muted-foreground',
+                'px-6 text-xs text-muted-foreground',
                 hasErrorMessage ? 'block' : 'hidden',
               )}
             >
