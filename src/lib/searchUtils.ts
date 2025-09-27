@@ -2,6 +2,7 @@ import type { BuildingProps } from '@/content.config';
 import type { CampusName } from '@/types/map';
 import { getBuildingsForCampus } from './mapApi';
 import uFuzzySearch from '@leeoniya/ufuzzy';
+import { DUPLICATES_TO_REMOVE } from './mapUtils';
 
 const romanToNumber = (roman: string): number => {
   const romanMap: Record<string, number> = {
@@ -99,8 +100,7 @@ export const filterBuildingsForCampus = (campus: CampusName, query: string) => {
   return removeFromSearchResults(buildingsToReturn);
 };
 
-// Explicitly remove the second college of medicine from search results.
+// Explicitly remove duplicates from search results
 export const removeFromSearchResults = (buildings: BuildingProps[]) => {
-  const buildingIdsToRemove: Array<number | string> = [1178739302]; // College of Medicine, Sinchon Campus
-  return buildings.filter((b) => !buildingIdsToRemove.includes(b.id));
+  return buildings.filter((b) => !DUPLICATES_TO_REMOVE.includes(b.id));
 };

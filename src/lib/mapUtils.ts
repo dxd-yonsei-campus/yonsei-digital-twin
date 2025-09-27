@@ -22,3 +22,7 @@ export const findGroupForId = (buildingId: BuildingIdType) => {
 
   return ids;
 };
+
+export const DUPLICATES_TO_REMOVE = BUILDING_GROUPS.map((ids) =>
+  ids.slice(1),
+).flat();
