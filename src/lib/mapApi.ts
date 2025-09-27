@@ -8,7 +8,7 @@ import {
   selectedId,
   selectedIdsForEnergyUse,
 } from '@/store';
-import type { CampusName } from '@/types/map';
+import type { BuildingIdType, CampusName } from '@/types/map';
 import type { EasingOptions } from 'mapbox-gl';
 import { toast } from 'sonner';
 import type { ui } from '@/i18n/ui';
@@ -25,14 +25,12 @@ export const getAllBuildings = (): BuildingProps[] => {
   return allBuildings as BuildingProps[];
 };
 
-export const getAllBuildingIds = (): Array<string | number> => {
+export const getAllBuildingIds = () => {
   const allBuildings = getAllBuildings();
   return allBuildings.map((building) => building.id);
 };
 
-export const getBuildingIdsForCampus = (
-  campus: CampusName,
-): Array<string | number> => {
+export const getBuildingIdsForCampus = (campus: CampusName) => {
   return getBuildingsForCampus(campus).map((building) => building.id);
 };
 
@@ -50,7 +48,7 @@ export const getBuildingsForCampus = (campus: CampusName): BuildingProps[] => {
 };
 
 export const getCampusForBuildingId = (
-  buildingId: string | number,
+  buildingId: BuildingIdType,
 ): CampusName | null => {
   const sinchonIds = getBuildingIdsForCampus('sinchon');
 
@@ -73,9 +71,7 @@ export const getCampusForBuildingId = (
   return null;
 };
 
-export const getBuildingWithId = (
-  id: string | number,
-): BuildingProps | null => {
+export const getBuildingWithId = (id: BuildingIdType) => {
   const allBuildings = getAllBuildings();
   const buildingData = allBuildings.filter((building) => building.id === id);
   return buildingData.length >= 1 ? buildingData[0] : null;
@@ -181,7 +177,7 @@ export const getNearestBuildingId = (
 const MAX_BUILDINGS = 5;
 
 export const handleSelectBuilding = (
-  id: string | number,
+  id: BuildingIdType,
   lang: keyof typeof ui,
 ) => {
   const t = useTranslations(lang);

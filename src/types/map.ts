@@ -1,3 +1,5 @@
+import type { BuildingProps } from '@/content.config';
+
 export const buildingLayers = <const>['osm', 'rhino-simple', 'rhino-detailed'];
 
 export type BuildingLayerType = '' | (typeof buildingLayers)[number];
@@ -10,3 +12,5 @@ export const campuses = <const>[
 export type CampusName = (typeof campuses)[number];
 
 export type EnergyUseType = 'eu' | 'eui';
+
+export type BuildingIdType = BuildingProps['id'];

@@ -96,6 +96,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     import { toast } from 'sonner';
     import { useTranslations } from '@/i18n/utils';
     import type { Feature, Polygon, GeoJsonProperties } from 'geojson';
+    import { findGroupForId } from '@/lib/mapUtils';
 
     const lang =
       document.querySelector('html')?.getAttribute('lang') === 'ko'
@@ -294,29 +295,19 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       handleSelectBuilding(currentSelectedId, lang);
     });
 
-    const COLLEGE_OF_MEDICINE_IDS: Array<string | number> = [
-      1178739301, 1178739302,
-    ];
-
-    const LIBERTAS_HALL_A_IDS: Array<string | number> = [1096854782, 478878023];
-
     selectedId.listen((selectedId) => {
       if (selectedId) {
-        // If the selected ID is part of the College of Medicine buildings,
-        // set the filter to include both buildings.
-        if (COLLEGE_OF_MEDICINE_IDS.includes(selectedId)) {
+        const groupIds = findGroupForId(selectedId);
+
+        if (groupIds) {
           map.setFilter('selected-building', [
             'all',
-            ['in', ['id'], ['literal', COLLEGE_OF_MEDICINE_IDS]],
-          ]);
-        } else if (LIBERTAS_HALL_A_IDS.includes(selectedId)) {
-          map.setFilter('selected-building', [
-            'all',
-            ['in', ['id'], ['literal', LIBERTAS_HALL_A_IDS]],
+            ['in', ['id'], ['literal', groupIds]],
           ]);
         } else {
           map.setFilter('selected-building', ['==', ['id'], selectedId]);
         }
+
         if (buildingLayer.get() == 'osm') {
           map.setLayoutProperty('selected-building', 'visibility', 'visible');
         }

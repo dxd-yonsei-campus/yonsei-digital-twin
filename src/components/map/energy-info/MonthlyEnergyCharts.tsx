@@ -9,12 +9,12 @@ import { selectedIdsForEnergyUse } from '@/store';
 import { useStore } from '@nanostores/react';
 import { ChevronRight, XIcon } from 'lucide-react';
 import MonthlyEnergyChart from '@/components/map/energy-info/MonthlyEnergyChart';
-import type { EnergyUseType } from '@/types/map';
+import type { BuildingIdType, EnergyUseType } from '@/types/map';
 import type { MonthlyEnergyUseCollectionProps } from '@/content.config';
 
 type MonthlyEnergyUseInformationProps = {
   lang: keyof typeof ui;
-  id: string | number;
+  id: BuildingIdType;
   energyUseType: EnergyUseType;
   monthlyEnergyUseCollection: MonthlyEnergyUseCollectionProps;
 };
