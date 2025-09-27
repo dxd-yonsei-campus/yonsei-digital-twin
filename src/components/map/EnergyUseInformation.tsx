@@ -97,7 +97,7 @@ const EnergyUseInformation = ({
         )}
 
         {$selectedIdsForEnergyUse.length >= 1 && (
-          <div className="flex max-h-128 flex-col gap-4">
+          <div className="flex max-h-[44vh] flex-col gap-4 [@media(min-height:728px)]:max-h-[58vh]">
             <div className="flex-grow overflow-auto">
               <div>
                 <h2 className="mb-1 text-sm font-semibold">
