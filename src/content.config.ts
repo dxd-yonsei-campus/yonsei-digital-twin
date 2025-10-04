@@ -17,6 +17,7 @@ const buildingsSchema = z.object({
   latitude: z.number(),
   longitude: z.number(),
   extrusionOffset: z.number().optional(),
+  terrain_offset: z.number().optional(),
   height: z.number().optional(),
   geometry: z
     .object({
