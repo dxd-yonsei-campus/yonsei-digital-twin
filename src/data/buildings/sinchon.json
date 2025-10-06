@@ -616,6 +616,7 @@
     "latitude": 37.563461,
     "longitude": 126.942361,
     "height": 26.77,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -665,6 +666,7 @@
     "yearly_energy_use": 165,
     "monthly_energy_use": "013-avison-biomedical-research-center",
     "height": 27.3,
+    "terrain_offset": 5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
