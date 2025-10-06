@@ -7,7 +7,7 @@
     "latitude": 37.560918,
     "longitude": 126.938647,
     "height": 85.9,
-    "terrain_offset": -40,
+    "terrain_offset": -30,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -52,7 +52,7 @@
     "latitude": 37.560795,
     "longitude": 126.939862,
     "height": 28.8,
-    "terrain_offset": -12,
+    "terrain_offset": -5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -84,6 +84,7 @@
     "latitude": 37.561027,
     "longitude": 126.940101,
     "height": 15,
+    "terrain_offset": 4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -122,6 +123,7 @@
     "latitude": 37.560802,
     "longitude": 126.939779,
     "height": 15,
+    "terrain_offset": 4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -157,7 +159,7 @@
     "longitude": 126.93945,
     "address": "South Korea, Seoul, Seodaemun-gu, Sinchon-dong",
     "height": 17,
-    "terrain_offset": -4,
+    "terrain_offset": 8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -210,7 +212,7 @@
     "latitude": 37.560762,
     "longitude": 126.940165,
     "height": 18,
-    "terrain_offset": -4,
+    "terrain_offset": 2,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
