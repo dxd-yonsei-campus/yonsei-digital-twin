@@ -30,7 +30,7 @@ export const ui = {
     'rhino-detailed': 'Rhino (Detailed)',
     models: 'Models',
     'notify.no_model': 'No building model selected.',
-    monthly_data: '월간 데이터',
+    monthly_data: 'Monthly Data',
     yearly_data: 'Yearly Data',
     monthly_energy_use: 'Monthly EU',
     monthly_energy_use_intensity: 'Monthly EUI',
