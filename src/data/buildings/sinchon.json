@@ -705,7 +705,7 @@
     "latitude": 37.563585,
     "longitude": 126.941844,
     "height": 27.57,
-    "terrain_offset": 5,
+    "terrain_offset": 14,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
