@@ -52,6 +52,7 @@
     "latitude": 37.560795,
     "longitude": 126.939862,
     "height": 28.8,
+    "terrain_offset": -12,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -156,6 +157,7 @@
     "longitude": 126.93945,
     "address": "South Korea, Seoul, Seodaemun-gu, Sinchon-dong",
     "height": 17,
+    "terrain_offset": -4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
