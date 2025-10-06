@@ -869,6 +869,7 @@
     "latitude": 37.560822,
     "longitude": 126.935498,
     "height": 20.1,
+    "terrain_offset": -4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -905,6 +906,7 @@
     "longitude": 126.935694,
     "height": 3,
     "extrusionOffset": 9,
+    "terrain_offset": 2.5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -934,6 +936,7 @@
     "latitude": 37.562309,
     "longitude": 126.932208,
     "height": 9,
+    "terrain_offset": 8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
