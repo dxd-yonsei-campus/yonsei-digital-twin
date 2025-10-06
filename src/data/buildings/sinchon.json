@@ -788,7 +788,6 @@
     "latitude": 37.562884,
     "longitude": 126.942303,
     "height": 26.4,
-    "terrain_offset": -10,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -837,7 +836,7 @@
     "latitude": 37.563687,
     "longitude": 126.941348,
     "height": 12,
-    "terrain_offset": 13,
+    "terrain_offset": 26,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
