@@ -971,6 +971,7 @@
     "latitude": 37.562737,
     "longitude": 126.932347,
     "height": 14.9,
+    "terrain_offset": 8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1004,6 +1005,7 @@
     "latitude": 37.562783,
     "longitude": 126.933096,
     "height": 20,
+    "terrain_offset": 2,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1081,6 +1083,7 @@
     "latitude": 37.56318,
     "longitude": 126.933803,
     "height": 23.9,
+    "terrain_offset": 8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1198,6 +1201,7 @@
     "latitude": 37.562356,
     "longitude": 126.935265,
     "height": 28,
+    "terrain_offset": 1,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1243,6 +1247,7 @@
     "latitude": 37.562356,
     "longitude": 126.935265,
     "height": 6.6,
+    "terrain_offset": 8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
