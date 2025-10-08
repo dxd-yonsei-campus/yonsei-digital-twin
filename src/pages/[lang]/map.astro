@@ -10,11 +10,6 @@ import yonseiLogoDark from '@/assets/public/yonsei-logo-dark.png';
 import yonseiLogoDarkKo from '@/assets/public/yonsei-logo-dark-ko.png';
 import yonseiLogoLight from '@/assets/public/yonsei-logo-light.png';
 import yonseiLogoLightKo from '@/assets/public/yonsei-logo-light-ko.png';
-
-export function getStaticPaths() {
-  return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }];
-}
-
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import LanguagePicker from '@/components/map/LanguagePicker.astro';
 import ThemePicker from '@/components/ThemePicker';
@@ -23,6 +18,10 @@ import RhinoSimpleLegend from '@/components/map/RhinoSimpleLegend';
 import EnergyUseInformation from '@/components/map/EnergyUseInformation';
 import Toaster from '@/components/map/Toaster';
 import { Image } from 'astro:assets';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }];
+}
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -88,7 +87,6 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       getAllBuildings,
       getCameraForCampus,
       updateSelectedCampus,
-      getNearestBuildingId,
       handleSelectBuilding,
     } from '@/lib/mapApi';
     import type { BuildingLayerType } from '@/types/map';
@@ -236,13 +234,77 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
         labelLayerId,
       );
 
+      const buildingHeightsWithOffset = Object.fromEntries(
+        allBuildingData
+          .filter((building) => Boolean(building.height))
+          .map((building) => {
+            const height = building.height || 0;
+            const extrusionOffset = building.extrusionOffset || 0;
+            const terrainOffset = building.terrain_offset || 0;
+            const totalHeight = height + extrusionOffset + terrainOffset;
+            return [String(building.id), totalHeight];
+          }),
+      );
+
+      const totalOffsets = Object.fromEntries(
+        allBuildingData
+          .filter(
+            (building) =>
+              Boolean(building.terrain_offset) ||
+              Boolean(building.extrusionOffset),
+          )
+          .map((building) => {
+            const extrusionOffset = building?.extrusionOffset || 0;
+            const terrainOffset = building?.terrain_offset || 0;
+            return [String(building.id), terrainOffset + extrusionOffset];
+          }),
+      );
+
+      const fillExtrusionWithTerrainHeightExpression: DataDrivenPropertyValueSpecification<number> =
+        [
+          'case',
+          [
+            'has',
+            ['to-string', ['id']],
+            ['literal', buildingHeightsWithOffset],
+          ],
+          [
+            'get',
+            ['to-string', ['id']],
+            ['literal', buildingHeightsWithOffset],
+          ],
+          ['get', 'height'],
+        ];
+
+      const fillExtrusionBaseWithTerrainExpression: DataDrivenPropertyValueSpecification<number> =
+        [
+          'case',
+          ['has', ['to-string', ['id']], ['literal', totalOffsets]],
+          ['get', ['to-string', ['id']], ['literal', totalOffsets]],
+          ['get', 'min_height'],
+        ];
+
+      map.addLayer(
+        {
+          id: 'selectable-buildings',
+          type: 'fill-extrusion',
+          source: 'custom-extrusions',
+          paint: {
+            'fill-extrusion-height': fillExtrusionWithTerrainHeightExpression,
+            'fill-extrusion-base': fillExtrusionBaseWithTerrainExpression,
+            'fill-extrusion-opacity': 0,
+          },
+        },
+        labelLayerId,
+      );
+
       const rhinoSimpleSinchonLayer = createCustomLayer({
         map: map,
         longitude: 126.939304,
         latitude: 37.566086,
         modelUrl: '/models/rhino-simple/sinchon.gltf',
         id: 'rhino-simple-sinchon',
-        altitude: 96,
+        altitude: 108,
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoSimpleSinchonLayer, labelLayerId);
@@ -264,7 +326,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
         latitude: 37.566086,
         modelUrl: '/models/rhino-detailed/sinchon.gltf',
         id: 'rhino-detailed-sinchon',
-        altitude: 96,
+        altitude: 108,
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoDetailedSinchon, labelLayerId);
@@ -278,23 +340,19 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
         return;
       }
 
-      if ($buildingLayer !== 'osm') {
-        const [longitude, latitude] = e.lngLat.toArray();
-        const buildingId = getNearestBuildingId(longitude, latitude);
+      const layerName =
+        $buildingLayer === 'osm' ? 'osm-buildings' : 'selectable-buildings';
+      const features = map.queryRenderedFeatures(e.point, {
+        layers: [layerName],
+      });
+
+      if (features.length) {
+        const building = features[0];
+        const buildingId = building.id;
         currentSelectedId = buildingId || '';
       } else {
-        const features = map.queryRenderedFeatures(e.point, {
-          layers: ['osm-buildings'], // make sure this matches your layer name
-        });
-
-        if (features.length) {
-          const building = features[0];
-          const buildingId = building.id;
-          currentSelectedId = buildingId || '';
-        } else {
-          currentSelectedId = '';
-          map.setFilter('selected-building', ['==', ['id'], '']);
-        }
+        currentSelectedId = '';
+        map.setFilter('selected-building', ['==', ['id'], '']);
       }
 
       handleSelectBuilding(currentSelectedId, lang);
