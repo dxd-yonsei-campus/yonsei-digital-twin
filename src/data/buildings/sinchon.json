@@ -1520,6 +1520,7 @@
     "latitude": 37.563293,
     "longitude": 126.939018,
     "height": 12.95,
+    "terrain_offset": 11,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1566,6 +1567,7 @@
     "latitude": 37.564268,
     "longitude": 126.938917,
     "height": 21.304,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1636,6 +1638,7 @@
     "yearly_energy_use": 125,
     "monthly_energy_use": "212-school-of-business",
     "height": 31.4,
+    "terrain_offset": 5,
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
     "construction_type_en": "Reinforced concrete",
@@ -1650,6 +1653,7 @@
     "latitude": 37.563996,
     "longitude": 126.940826,
     "height": 17.7,
+    "terrain_offset": 25,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1687,6 +1691,7 @@
     "latitude": 37.563971,
     "longitude": 126.940781,
     "height": 17.7,
+    "terrain_offset": 25,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1723,6 +1728,7 @@
     "latitude": 37.5637,
     "longitude": 126.936923,
     "height": 26.5,
+    "terrain_offset": 2,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1834,6 +1840,7 @@
     "latitude": 37.562707,
     "longitude": 126.935494,
     "height": 16.61,
+    "terrain_offset": 2,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1872,6 +1879,7 @@
     "latitude": 37.563204,
     "longitude": 126.935185,
     "height": 9,
+    "terrain_offset": 18,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1901,6 +1909,7 @@
     "latitude": 37.564449,
     "longitude": 126.936254,
     "height": 6,
+    "terrain_offset": 16,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1930,6 +1939,7 @@
     "latitude": 37.564628,
     "longitude": 126.936716,
     "height": 27.4,
+    "terrain_offset": 6,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1968,6 +1978,7 @@
     "latitude": 37.564686,
     "longitude": 126.937572,
     "height": 20.25,
+    "terrain_offset": 11,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2010,6 +2021,7 @@
     "latitude": 37.563902,
     "longitude": 126.934637,
     "height": 30.42,
+    "terrain_offset": 12,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
