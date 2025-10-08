@@ -218,6 +218,22 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
         labelLayerId,
       );
 
+      map.addLayer(
+        {
+          id: 'selected-building',
+          type: 'fill-extrusion',
+          source: 'custom-extrusions',
+          filter: ['==', ['get', 'id'], ''],
+          paint: {
+            'fill-extrusion-color': '#003876',
+            'fill-extrusion-height': fillExtrusionHeightExpression,
+            'fill-extrusion-base': fillExtrusionBaseExpression,
+            'fill-extrusion-opacity': 1,
+          },
+        },
+        labelLayerId,
+      );
+
       const buildingHeightsWithOffset = Object.fromEntries(
         allBuildingData
           .filter((building) => Boolean(building.height))
@@ -277,22 +293,6 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
             'fill-extrusion-height': fillExtrusionWithTerrainHeightExpression,
             'fill-extrusion-base': fillExtrusionBaseWithTerrainExpression,
             'fill-extrusion-opacity': 0,
-          },
-        },
-        labelLayerId,
-      );
-
-      map.addLayer(
-        {
-          id: 'selected-building',
-          type: 'fill-extrusion',
-          source: 'custom-extrusions',
-          filter: ['==', ['get', 'id'], ''],
-          paint: {
-            'fill-extrusion-color': '#003876',
-            'fill-extrusion-height': fillExtrusionHeightExpression,
-            'fill-extrusion-base': fillExtrusionBaseExpression,
-            'fill-extrusion-opacity': 1,
           },
         },
         labelLayerId,
