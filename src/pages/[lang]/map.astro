@@ -10,11 +10,6 @@ import yonseiLogoDark from '@/assets/public/yonsei-logo-dark.png';
 import yonseiLogoDarkKo from '@/assets/public/yonsei-logo-dark-ko.png';
 import yonseiLogoLight from '@/assets/public/yonsei-logo-light.png';
 import yonseiLogoLightKo from '@/assets/public/yonsei-logo-light-ko.png';
-
-export function getStaticPaths() {
-  return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }];
-}
-
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import LanguagePicker from '@/components/map/LanguagePicker.astro';
 import ThemePicker from '@/components/ThemePicker';
@@ -23,6 +18,10 @@ import RhinoSimpleLegend from '@/components/map/RhinoSimpleLegend';
 import EnergyUseInformation from '@/components/map/EnergyUseInformation';
 import Toaster from '@/components/map/Toaster';
 import { Image } from 'astro:assets';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }];
+}
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -88,7 +87,6 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       getAllBuildings,
       getCameraForCampus,
       updateSelectedCampus,
-      getNearestBuildingId,
       handleSelectBuilding,
     } from '@/lib/mapApi';
     import type { BuildingLayerType } from '@/types/map';
@@ -276,10 +274,9 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
           type: 'fill-extrusion',
           source: 'custom-extrusions',
           paint: {
-            'fill-extrusion-color': '#ccc',
             'fill-extrusion-height': fillExtrusionWithTerrainHeightExpression,
             'fill-extrusion-base': fillExtrusionBaseWithTerrainExpression,
-            'fill-extrusion-opacity': 1,
+            'fill-extrusion-opacity': 0,
           },
         },
         labelLayerId,
@@ -343,23 +340,19 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
         return;
       }
 
-      if ($buildingLayer !== 'osm') {
-        const [longitude, latitude] = e.lngLat.toArray();
-        const buildingId = getNearestBuildingId(longitude, latitude);
+      const layerName =
+        $buildingLayer === 'osm' ? 'osm-buildings' : 'selectable-buildings';
+      const features = map.queryRenderedFeatures(e.point, {
+        layers: [layerName],
+      });
+
+      if (features.length) {
+        const building = features[0];
+        const buildingId = building.id;
         currentSelectedId = buildingId || '';
       } else {
-        const features = map.queryRenderedFeatures(e.point, {
-          layers: ['osm-buildings'], // make sure this matches your layer name
-        });
-
-        if (features.length) {
-          const building = features[0];
-          const buildingId = building.id;
-          currentSelectedId = buildingId || '';
-        } else {
-          currentSelectedId = '';
-          map.setFilter('selected-building', ['==', ['id'], '']);
-        }
+        currentSelectedId = '';
+        map.setFilter('selected-building', ['==', ['id'], '']);
       }
 
       handleSelectBuilding(currentSelectedId, lang);
