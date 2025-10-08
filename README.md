@@ -43,6 +43,7 @@ The data for each building can be found in `src/data/buildings/`. Each campus is
 | **_latitude_**       | `number`           | Latitude of the building, used to position the camera upon search.                                                                       |
 | **_longitude_**      | `number`           | Longitude of the building, used to position the camera upon search.                                                                      |
 | extrusionOffset      | `number`           | Height above ground level (in meters) where the building begins.                                                                         |
+| terrain_offset       | `number`           | Height above ground level (in meters) where the terrain for this building begins, used for the invisible picking layer.                  |
 | height               | `number`           | Height of the building. Used to draw extrusions for the OSM model.                                                                       |
 | geometry             | `object`           | Specifies the `type` (e.g. polygon) and `coordinates` i.e. bounding box for the building. Used to draw extrusions for the OSM model.     |
 | monthly_energy_use   | `string`           | The filename for the monthly energy use `.json` file found in `src/data/monthly-energy-use/`                                             |
