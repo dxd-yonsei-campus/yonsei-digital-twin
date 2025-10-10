@@ -419,6 +419,15 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       setBuildingLayer(initialBuildingLayer);
     });
 
+    let currentMousePoint = { x: 0, y: 0 };
+
+    map.on('mousemove', (e) => {
+      currentMousePoint = {
+        x: e.point.x,
+        y: e.point.y,
+      };
+    });
+
     map.on('mouseenter', 'selectable-buildings', (e) => {
       const features = map.queryRenderedFeatures(e.point, {
         layers: ['selectable-buildings'],
@@ -432,12 +441,15 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
         if (!pollingInterval) {
           pollingInterval = setInterval(() => {
             hoveredId.set(building.id || '');
+            const tooltip = document.getElementById('eui-tooltip');
+            tooltip?.style.setProperty('top', `${currentMousePoint.y + 10}px`);
+            tooltip?.style.setProperty('left', `${currentMousePoint.x + 10}px`);
             const buildingData = getBuildingWithId(buildingId);
             console.log(
               'Polling building data:',
               buildingData?.yearly_energy_use,
             );
-          }, 100); // Poll every 1 second (adjust as needed)
+          }, 25);
         }
       }
     });

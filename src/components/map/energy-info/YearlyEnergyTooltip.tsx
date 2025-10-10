@@ -38,7 +38,7 @@ const YearlyEnergyTooltip = ({
   yearlyEnergyUse = yearlyEnergyUse / totalFloorArea;
 
   return (
-    <div className="absolute top-4 left-4 h-40 w-40 bg-black">
+    <div id="eui-tooltip" className="absolute h-40 w-40 bg-black">
       {yearlyEnergyUse.toFixed(2)} kWh/m<sup>2</sup>
     </div>
   );
