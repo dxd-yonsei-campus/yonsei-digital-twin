@@ -18,6 +18,7 @@ import RhinoSimpleLegend from '@/components/map/RhinoSimpleLegend';
 import EnergyUseInformation from '@/components/map/EnergyUseInformation';
 import Toaster from '@/components/map/Toaster';
 import { Image } from 'astro:assets';
+import YearlyEnergyTooltip from '@/components/map/energy-info/YearlyEnergyTooltip';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }];
@@ -39,6 +40,10 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     client:load
   />
   <RhinoSimpleLegend client:load lang={lang} />
+  <YearlyEnergyTooltip
+    monthlyEnergyUseCollection={monthlyEnergyUseCollection}
+    client:load
+  />
   <div class="fixed bottom-0 w-full border-t main-bg px-4 py-2">
     <div class="mb-2 flex items-center justify-between gap-3">
       <div class="shrink-0">
@@ -79,7 +84,12 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     </div>
   </div>
   <script>
-    import { buildingLayer, selectedCampus, selectedId } from '@/store';
+    import {
+      buildingLayer,
+      hoveredId,
+      selectedCampus,
+      selectedId,
+    } from '@/store';
     import mapboxgl, {
       type DataDrivenPropertyValueSpecification,
     } from 'mapbox-gl';
@@ -88,6 +98,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       getCameraForCampus,
       updateSelectedCampus,
       handleSelectBuilding,
+      getBuildingWithId,
     } from '@/lib/mapApi';
     import type { BuildingLayerType } from '@/types/map';
     import { createCustomLayer } from '@/lib/modelUtils';
@@ -401,9 +412,43 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       }
     };
 
+    let pollingInterval: ReturnType<typeof setInterval> | null = null;
+
     map.on('style.load', () => {
       const initialBuildingLayer = buildingLayer.get();
       setBuildingLayer(initialBuildingLayer);
+    });
+
+    map.on('mouseenter', 'selectable-buildings', (e) => {
+      const features = map.queryRenderedFeatures(e.point, {
+        layers: ['selectable-buildings'],
+      });
+
+      if (features.length) {
+        const building = features[0];
+        const buildingId = building.id || '';
+
+        // Start polling only if not already started
+        if (!pollingInterval) {
+          pollingInterval = setInterval(() => {
+            hoveredId.set(building.id || '');
+            const buildingData = getBuildingWithId(buildingId);
+            console.log(
+              'Polling building data:',
+              buildingData?.yearly_energy_use,
+            );
+          }, 100); // Poll every 1 second (adjust as needed)
+        }
+      }
+    });
+
+    map.on('mouseleave', 'selectable-buildings', () => {
+      if (pollingInterval) {
+        clearInterval(pollingInterval);
+        pollingInterval = null;
+        hoveredId.set('');
+        console.log('Stopped polling');
+      }
     });
 
     buildingLayer.listen((layer) => {
