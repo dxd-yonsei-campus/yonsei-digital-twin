@@ -18,15 +18,14 @@ const YearlyEnergyTooltip = ({
 
   const building = getBuildingWithId($hoveredId);
   const totalFloorArea = building?.total_floor_area;
-
-  if (!totalFloorArea) {
-    return null;
-  }
-
   const monthlyEnergyUseId = String(building?.monthly_energy_use);
   const monthlyEnergyUse = monthlyEnergyUseCollection.find(
     (data) => String(data.id) === String(monthlyEnergyUseId),
   )?.data;
+
+  if (!totalFloorArea || !monthlyEnergyUse) {
+    return null;
+  }
 
   let yearlyEnergyUse = 0;
 
