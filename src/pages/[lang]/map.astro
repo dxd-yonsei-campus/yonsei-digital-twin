@@ -431,7 +431,6 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     });
 
     let currentMousePoint = { x: 0, y: 0 };
-
     let hoveredPoint: Point;
     map.on('mousemove', 'selectable-buildings', (e) => {
       hoveredPoint = e.point;
