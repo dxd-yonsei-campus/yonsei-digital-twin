@@ -38,8 +38,17 @@ const YearlyEnergyTooltip = ({
   yearlyEnergyUse = yearlyEnergyUse / totalFloorArea;
 
   return (
-    <div id="eui-tooltip" className="absolute h-40 w-40 bg-black">
-      {yearlyEnergyUse.toFixed(2)} kWh/m<sup>2</sup>
+    <div
+      id="eui-tooltip"
+      className="absolute rounded-md main-bg py-2 pr-4 pl-3.5"
+    >
+      <div className="text-sm text-muted-foreground">{building.name_en}</div>
+      <div>
+        <span>{yearlyEnergyUse.toFixed(2)} </span>
+        <span className="font-mono text-sm">
+          kWh/m<sup>2</sup>
+        </span>
+      </div>
     </div>
   );
 };
