@@ -44,7 +44,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     monthlyEnergyUseCollection={monthlyEnergyUseCollection}
     client:load
   />
-  <div class="fixed bottom-0 w-full border-t main-bg px-4 py-2">
+  <div id="navbar" class="fixed bottom-0 w-full border-t main-bg px-4 py-2">
     <div class="mb-2 flex items-center justify-between gap-3">
       <div class="shrink-0">
         <Image
@@ -412,6 +412,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       }
     };
 
+    const NAVBAR_HEIGHT = document.getElementById('navbar')?.offsetHeight || 0;
     let pollingInterval: ReturnType<typeof setInterval> | null = null;
 
     map.on('style.load', () => {
@@ -456,8 +457,26 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
           }
 
           const tooltip = document.getElementById('eui-tooltip');
-          tooltip?.style.setProperty('top', `${currentMousePoint.y + 8}px`);
-          tooltip?.style.setProperty('left', `${currentMousePoint.x + 8}px`);
+          if (tooltip) {
+            const tooltipRect = tooltip.getBoundingClientRect();
+            const mapWidth = window.innerWidth;
+            const mapHeight = window.innerHeight;
+
+            let top = currentMousePoint.y + 8;
+            let left = currentMousePoint.x + 8;
+
+            if (currentMousePoint.x + tooltipRect.width + 8 > mapWidth) {
+              left = currentMousePoint.x - tooltipRect.width - 8;
+            }
+
+            const maxVisibleY = mapHeight - NAVBAR_HEIGHT;
+            if (top + tooltipRect.height + 8 > maxVisibleY) {
+              top = maxVisibleY - tooltipRect.height - 8;
+            }
+
+            tooltip.style.setProperty('top', `${top}px`);
+            tooltip.style.setProperty('left', `${left}px`);
+          }
         }, 25);
       }
     });
