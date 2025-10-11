@@ -41,10 +41,10 @@ const YearlyEnergyTooltip = ({
   return (
     <div
       id={ELEMENT_IDS['yearlyEuiTooptip']}
-      className="absolute max-w-64 rounded-md main-bg py-2 pr-4 pl-3.5"
+      className="absolute max-w-64 rounded-md main-bg py-2 pr-6 pl-4"
     >
       <div className="text-sm leading-4 text-muted-foreground">
-        {building.name_en}
+        {building.name_en} EUI
       </div>
       <div>
         <span>{yearlyEnergyUse.toFixed(2)} </span>
