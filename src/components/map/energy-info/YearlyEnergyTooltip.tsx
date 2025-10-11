@@ -1,4 +1,5 @@
 import type { MonthlyEnergyUseCollectionProps } from '@/content.config';
+import { ELEMENT_IDS } from '@/lib/consts';
 import { getBuildingWithId } from '@/lib/mapApi';
 import { hoveredId } from '@/store';
 import { useStore } from '@nanostores/react';
@@ -39,7 +40,7 @@ const YearlyEnergyTooltip = ({
 
   return (
     <div
-      id="eui-tooltip"
+      id={ELEMENT_IDS['yearlyEuiTooptip']}
       className="absolute max-w-64 rounded-md main-bg py-2 pr-4 pl-3.5"
     >
       <div className="text-sm leading-4 text-muted-foreground">

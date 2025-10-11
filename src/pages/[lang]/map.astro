@@ -19,6 +19,7 @@ import EnergyUseInformation from '@/components/map/EnergyUseInformation';
 import Toaster from '@/components/map/Toaster';
 import { Image } from 'astro:assets';
 import YearlyEnergyTooltip from '@/components/map/energy-info/YearlyEnergyTooltip';
+import { ELEMENT_IDS } from '@/lib/consts';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }];
@@ -44,7 +45,10 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     monthlyEnergyUseCollection={monthlyEnergyUseCollection}
     client:load
   />
-  <div id="navbar" class="fixed bottom-0 w-full border-t main-bg px-4 py-2">
+  <div
+    id={ELEMENT_IDS['navbar']}
+    class="fixed bottom-0 w-full border-t main-bg px-4 py-2"
+  >
     <div class="mb-2 flex items-center justify-between gap-3">
       <div class="shrink-0">
         <Image
@@ -106,6 +110,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     import { useTranslations } from '@/i18n/utils';
     import type { Feature, Polygon, GeoJsonProperties } from 'geojson';
     import { findGroupForId } from '@/lib/mapUtils';
+    import { ELEMENT_IDS } from '@/lib/consts';
 
     const lang =
       document.querySelector('html')?.getAttribute('lang') === 'ko'
@@ -412,7 +417,11 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       }
     };
 
-    const NAVBAR_HEIGHT = document.getElementById('navbar')?.offsetHeight || 0;
+    const NAVBAR_HEIGHT =
+      document.getElementById(ELEMENT_IDS['navbar'])?.offsetHeight || 0;
+    const RHINO_SIMPLE_LEGEND_HEIGHT =
+      document.getElementById(ELEMENT_IDS['rhinoSimpleLegend'])?.offsetHeight ||
+      0;
     let pollingInterval: ReturnType<typeof setInterval> | null = null;
 
     map.on('style.load', () => {
@@ -456,7 +465,9 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
             hoveredId.set(building.id || '');
           }
 
-          const tooltip = document.getElementById('eui-tooltip');
+          const tooltip = document.getElementById(
+            ELEMENT_IDS['yearlyEuiTooptip'],
+          );
           if (tooltip) {
             const tooltipRect = tooltip.getBoundingClientRect();
             const mapWidth = window.innerWidth;
@@ -469,7 +480,8 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
               left = currentMousePoint.x - tooltipRect.width - 8;
             }
 
-            const maxVisibleY = mapHeight - NAVBAR_HEIGHT;
+            const maxVisibleY =
+              mapHeight - NAVBAR_HEIGHT - RHINO_SIMPLE_LEGEND_HEIGHT;
             if (top + tooltipRect.height + 8 > maxVisibleY) {
               top = maxVisibleY - tooltipRect.height - 8;
             }
