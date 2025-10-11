@@ -438,13 +438,6 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       currentMousePoint = { x: e.point.x, y: e.point.y };
     });
 
-    map.on('resize', () => {
-      hoveredId.set('');
-      if (pollingInterval) {
-        clearInterval(pollingInterval);
-      }
-    });
-
     map.on('drag', ({ originalEvent }) => {
       const mouseEvent = originalEvent as MouseEvent;
       currentMousePoint = {
@@ -498,12 +491,20 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       }
     });
 
-    map.on('mouseleave', 'selectable-buildings', () => {
+    const hideHoverTooltip = () => {
       if (pollingInterval) {
         clearInterval(pollingInterval);
         pollingInterval = null;
         hoveredId.set('');
       }
+    };
+
+    map.on('mouseleave', 'selectable-buildings', () => {
+      hideHoverTooltip();
+    });
+
+    map.on('resize', 'selectable-buildings', () => {
+      hideHoverTooltip();
     });
 
     buildingLayer.listen((layer) => {
