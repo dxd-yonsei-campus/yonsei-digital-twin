@@ -91,6 +91,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       selectedId,
     } from '@/store';
     import mapboxgl, {
+      Point,
       type DataDrivenPropertyValueSpecification,
     } from 'mapbox-gl';
     import {
@@ -98,7 +99,6 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       getCameraForCampus,
       updateSelectedCampus,
       handleSelectBuilding,
-      getBuildingWithId,
     } from '@/lib/mapApi';
     import type { BuildingLayerType } from '@/types/map';
     import { createCustomLayer } from '@/lib/modelUtils';
@@ -421,37 +421,36 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
 
     let currentMousePoint = { x: 0, y: 0 };
 
-    const updateMousePosition = (e: MouseEvent) => {
-      const rect = map.getCanvas().getBoundingClientRect();
-      currentMousePoint = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      };
-    };
+    let hoveredPoint: Point;
+    map.on('mousemove', 'selectable-buildings', (e) => {
+      hoveredPoint = e.point;
+      currentMousePoint = { x: e.point.x, y: e.point.y };
+    });
 
-    map.getCanvas().addEventListener('mousemove', updateMousePosition);
+    map.on('drag', ({ originalEvent }) => {
+      const mouseEvent = originalEvent as MouseEvent;
+      currentMousePoint = {
+        x: mouseEvent.offsetX,
+        y: mouseEvent.offsetY,
+      };
+    });
 
     map.on('mouseenter', 'selectable-buildings', (e) => {
       const features = map.queryRenderedFeatures(e.point, {
         layers: ['selectable-buildings'],
       });
 
+      currentMousePoint = { x: e.point.x, y: e.point.y };
+
       if (features.length) {
         const building = features[0];
-        const buildingId = building.id || '';
-
-        // Start polling only if not already started
         if (!pollingInterval) {
           pollingInterval = setInterval(() => {
+            console.log(hoveredPoint);
             hoveredId.set(building.id || '');
             const tooltip = document.getElementById('eui-tooltip');
-            tooltip?.style.setProperty('top', `${currentMousePoint.y + 10}px`);
-            tooltip?.style.setProperty('left', `${currentMousePoint.x + 10}px`);
-            const buildingData = getBuildingWithId(buildingId);
-            console.log(
-              'Polling building data:',
-              buildingData?.yearly_energy_use,
-            );
+            tooltip?.style.setProperty('top', `${currentMousePoint.y + 8}px`);
+            tooltip?.style.setProperty('left', `${currentMousePoint.x + 8}px`);
           }, 25);
         }
       }
@@ -462,7 +461,6 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
         clearInterval(pollingInterval);
         pollingInterval = null;
         hoveredId.set('');
-        console.log('Stopped polling');
       }
     });
 
