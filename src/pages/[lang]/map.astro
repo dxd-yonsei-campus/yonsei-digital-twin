@@ -18,6 +18,8 @@ import RhinoSimpleLegend from '@/components/map/RhinoSimpleLegend';
 import EnergyUseInformation from '@/components/map/EnergyUseInformation';
 import Toaster from '@/components/map/Toaster';
 import { Image } from 'astro:assets';
+import YearlyEnergyTooltip from '@/components/map/energy-info/YearlyEnergyTooltip';
+import { ELEMENT_IDS } from '@/lib/consts';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }];
@@ -39,7 +41,15 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     client:load
   />
   <RhinoSimpleLegend client:load lang={lang} />
-  <div class="fixed bottom-0 w-full border-t main-bg px-4 py-2">
+  <YearlyEnergyTooltip
+    lang={lang}
+    monthlyEnergyUseCollection={monthlyEnergyUseCollection}
+    client:load
+  />
+  <div
+    id={ELEMENT_IDS['navbar']}
+    class="fixed bottom-0 w-full border-t main-bg px-4 py-2"
+  >
     <div class="mb-2 flex items-center justify-between gap-3">
       <div class="shrink-0">
         <Image
@@ -79,8 +89,14 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     </div>
   </div>
   <script>
-    import { buildingLayer, selectedCampus, selectedId } from '@/store';
+    import {
+      buildingLayer,
+      hoveredId,
+      selectedCampus,
+      selectedId,
+    } from '@/store';
     import mapboxgl, {
+      Point,
       type DataDrivenPropertyValueSpecification,
     } from 'mapbox-gl';
     import {
@@ -95,6 +111,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     import { useTranslations } from '@/i18n/utils';
     import type { Feature, Polygon, GeoJsonProperties } from 'geojson';
     import { findGroupForId } from '@/lib/mapUtils';
+    import { ELEMENT_IDS } from '@/lib/consts';
 
     const lang =
       document.querySelector('html')?.getAttribute('lang') === 'ko'
@@ -401,9 +418,92 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       }
     };
 
+    const NAVBAR_HEIGHT =
+      document.getElementById(ELEMENT_IDS['navbar'])?.offsetHeight || 0;
+    const RHINO_SIMPLE_LEGEND_HEIGHT =
+      document.getElementById(ELEMENT_IDS['rhinoSimpleLegend'])?.offsetHeight ||
+      0;
+    let pollingInterval: ReturnType<typeof setInterval> | null = null;
+
     map.on('style.load', () => {
       const initialBuildingLayer = buildingLayer.get();
       setBuildingLayer(initialBuildingLayer);
+    });
+
+    let currentMousePoint = { x: 0, y: 0 };
+    let hoveredPoint: Point;
+    map.on('mousemove', 'selectable-buildings', (e) => {
+      hoveredPoint = e.point;
+      currentMousePoint = { x: e.point.x, y: e.point.y };
+    });
+
+    map.on('drag', ({ originalEvent }) => {
+      const mouseEvent = originalEvent as MouseEvent;
+      currentMousePoint = {
+        x: mouseEvent.offsetX,
+        y: mouseEvent.offsetY,
+      };
+    });
+
+    map.on('mouseenter', 'selectable-buildings', (e) => {
+      currentMousePoint = { x: e.point.x, y: e.point.y };
+      if (!pollingInterval) {
+        if (buildingLayer.get() !== 'rhino-simple') {
+          return;
+        }
+
+        pollingInterval = setInterval(() => {
+          const features = map.queryRenderedFeatures(hoveredPoint, {
+            layers: ['selectable-buildings'],
+          });
+
+          if (features.length) {
+            const building = features[0];
+            hoveredId.set(building.id || '');
+          }
+
+          const tooltip = document.getElementById(
+            ELEMENT_IDS['yearlyEuiTooptip'],
+          );
+          if (tooltip) {
+            const tooltipRect = tooltip.getBoundingClientRect();
+            const mapWidth = window.innerWidth;
+            const mapHeight = window.innerHeight;
+
+            let top = currentMousePoint.y + 8;
+            let left = currentMousePoint.x + 8;
+
+            if (currentMousePoint.x + tooltipRect.width + 8 > mapWidth) {
+              left = currentMousePoint.x - tooltipRect.width - 8;
+            }
+
+            const maxVisibleY =
+              mapHeight - NAVBAR_HEIGHT - RHINO_SIMPLE_LEGEND_HEIGHT;
+            if (top + tooltipRect.height + 8 > maxVisibleY) {
+              top = maxVisibleY - tooltipRect.height - 8;
+            }
+
+            tooltip.style.setProperty('top', `${top}px`);
+            tooltip.style.setProperty('left', `${left}px`);
+          }
+        }, 25);
+      }
+    });
+
+    const hideHoverTooltip = () => {
+      if (pollingInterval) {
+        clearInterval(pollingInterval);
+        pollingInterval = null;
+        hoveredId.set('');
+      }
+    };
+
+    map.on('mouseleave', 'selectable-buildings', () => {
+      hideHoverTooltip();
+    });
+
+    map.on('resize', 'selectable-buildings', () => {
+      hideHoverTooltip();
     });
 
     buildingLayer.listen((layer) => {

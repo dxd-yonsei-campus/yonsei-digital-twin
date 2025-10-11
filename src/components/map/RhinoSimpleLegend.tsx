@@ -1,5 +1,6 @@
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
+import { ELEMENT_IDS } from '@/lib/consts';
 import { cn } from '@/lib/utils';
 import { buildingLayer } from '@/store';
 import { useStore } from '@nanostores/react';
@@ -15,6 +16,7 @@ const RhinoSimpleLegend = ({ lang }: RhinoSimpleLegendProps) => {
 
   return (
     <div
+      id={ELEMENT_IDS['rhinoSimpleLegend']}
       className={cn(
         'fixed right-0 bottom-21 z-20 w-full transform transition-all duration-150 ease-out xs:w-80',
         isRhinoSimple
