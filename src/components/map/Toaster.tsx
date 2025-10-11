@@ -11,11 +11,11 @@ const Toaster = () => {
       position="bottom-left"
       offset={{
         bottom: 88,
-        left: 12,
+        left: 16,
       }}
       mobileOffset={{
         bottom: $buildingLayer === 'rhino-simple' ? 164 : 88,
-        left: 12,
+        left: 16,
       }}
     />
   );
