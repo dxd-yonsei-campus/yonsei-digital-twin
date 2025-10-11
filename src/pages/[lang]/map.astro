@@ -436,23 +436,22 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     });
 
     map.on('mouseenter', 'selectable-buildings', (e) => {
-      const features = map.queryRenderedFeatures(e.point, {
-        layers: ['selectable-buildings'],
-      });
-
       currentMousePoint = { x: e.point.x, y: e.point.y };
+      if (!pollingInterval) {
+        pollingInterval = setInterval(() => {
+          const features = map.queryRenderedFeatures(hoveredPoint, {
+            layers: ['selectable-buildings'],
+          });
 
-      if (features.length) {
-        const building = features[0];
-        if (!pollingInterval) {
-          pollingInterval = setInterval(() => {
-            console.log(hoveredPoint);
+          if (features.length) {
+            const building = features[0];
             hoveredId.set(building.id || '');
-            const tooltip = document.getElementById('eui-tooltip');
-            tooltip?.style.setProperty('top', `${currentMousePoint.y + 8}px`);
-            tooltip?.style.setProperty('left', `${currentMousePoint.x + 8}px`);
-          }, 25);
-        }
+          }
+
+          const tooltip = document.getElementById('eui-tooltip');
+          tooltip?.style.setProperty('top', `${currentMousePoint.y + 8}px`);
+          tooltip?.style.setProperty('left', `${currentMousePoint.x + 8}px`);
+        }, 25);
       }
     });
 
