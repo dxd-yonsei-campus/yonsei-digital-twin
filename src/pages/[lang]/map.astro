@@ -42,6 +42,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
   />
   <RhinoSimpleLegend client:load lang={lang} />
   <YearlyEnergyTooltip
+    lang={lang}
     monthlyEnergyUseCollection={monthlyEnergyUseCollection}
     client:load
   />
