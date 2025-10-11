@@ -455,6 +455,10 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
     map.on('mouseenter', 'selectable-buildings', (e) => {
       currentMousePoint = { x: e.point.x, y: e.point.y };
       if (!pollingInterval) {
+        if (buildingLayer.get() !== 'rhino-simple') {
+          return;
+        }
+
         pollingInterval = setInterval(() => {
           const features = map.queryRenderedFeatures(hoveredPoint, {
             layers: ['selectable-buildings'],
