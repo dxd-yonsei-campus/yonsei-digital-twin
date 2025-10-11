@@ -506,6 +506,10 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
       hideHoverTooltip();
     });
 
+    map.on('rotate', () => {
+      hideHoverTooltip();
+    });
+
     buildingLayer.listen((layer) => {
       if (!layer) {
         toast.warning(t('notify.no_model'), {
