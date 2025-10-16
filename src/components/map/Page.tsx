@@ -19,6 +19,9 @@ import yonseiLogoDarkKo from '@/assets/public/yonsei-logo-dark-ko.png';
 import yonseiLogoLight from '@/assets/public/yonsei-logo-light.png';
 import yonseiLogoLightKo from '@/assets/public/yonsei-logo-light-ko.png';
 import SidebarTrigger from './SidebarTrigger';
+import { cn } from '@/lib/utils';
+import { buildingLayer } from '@/store';
+import { useStore } from '@nanostores/react';
 
 type PageProps = {
   lang: keyof typeof ui;
@@ -27,11 +30,17 @@ type PageProps = {
 
 const Page = ({ lang, monthlyEnergyUseCollection }: PageProps) => {
   const t = useTranslations(lang);
+  const $buildingLayer = useStore(buildingLayer);
 
   return (
     <SidebarProvider>
       <SidebarInset className="relative">
-        <SidebarTrigger className="absolute right-4 bottom-22 z-50" />
+        <SidebarTrigger
+          className={cn(
+            'absolute right-4 bottom-22 z-50 transition-transform duration-300 ease-out',
+            $buildingLayer === 'rhino-simple' && '-translate-y-19',
+          )}
+        />
         <BuildingInformation lang={lang} />
         <RhinoSimpleLegend lang={lang} />
         <EnergyUseInformation
