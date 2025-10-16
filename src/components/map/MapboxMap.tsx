@@ -369,7 +369,6 @@ const MapboxMap = () => {
           const features = map.queryRenderedFeatures(hoveredPoint, {
             layers: ['selectable-buildings'],
           });
-          console.log(currentMousePoint);
 
           if (features.length) {
             const building = features[0];
@@ -399,6 +398,7 @@ const MapboxMap = () => {
 
             tooltip.style.setProperty('top', `${top}px`);
             tooltip.style.setProperty('left', `${left}px`);
+            tooltip.style.setProperty('opacity', '1');
           }
         }, 25);
       }
