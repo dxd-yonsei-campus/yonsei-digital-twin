@@ -17,16 +17,17 @@ import type { Feature, Polygon, GeoJsonProperties } from 'geojson';
 import { findGroupForId } from '@/lib/mapUtils';
 import { ELEMENT_IDS } from '@/lib/consts';
 import { useEffect, useRef, type Ref } from 'react';
+import type { ui } from '@/i18n/ui';
 
-const MapboxMap = () => {
+type MapboxMapProps = {
+  lang: keyof typeof ui;
+};
+
+const MapboxMap = ({ lang }: MapboxMapProps) => {
   const mapContainerRef = useRef<HTMLElement>(null);
   const mapRef = useRef<mapboxgl.Map>(null);
 
   useEffect(() => {
-    const lang =
-      document.querySelector('html')?.getAttribute('lang') === 'ko'
-        ? 'ko'
-        : 'en';
     const t = useTranslations(lang);
 
     mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;

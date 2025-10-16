@@ -45,7 +45,7 @@ const Page = ({ lang, monthlyEnergyUseCollection }: PageProps) => {
           lang={lang}
           monthlyEnergyUseCollection={monthlyEnergyUseCollection}
         />
-        <MapboxMap />
+        <MapboxMap lang={lang} />
         <div
           id={ELEMENT_IDS['navbar']}
           className="absolute bottom-0 w-full border-t main-bg px-4 py-2"
