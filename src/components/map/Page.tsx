@@ -34,7 +34,7 @@ const Page = ({ lang, monthlyEnergyUseCollection }: PageProps) => {
   return (
     <SidebarProvider>
       <SidebarInset className="relative">
-        <SidebarTrigger className="absolute right-4 bottom-24 z-50 -ml-1 bg-black" />
+        <SidebarTrigger className="absolute right-4 bottom-24 z-50 -ml-1 bg-background" />
         <BuildingInformation lang={lang} />
         <RhinoSimpleLegend lang={lang} />
         <EnergyUseInformation
@@ -87,7 +87,7 @@ const Page = ({ lang, monthlyEnergyUseCollection }: PageProps) => {
         </div>
         <slot />
       </SidebarInset>
-      <AppSidebar side="right" />
+      <AppSidebar id="sidebar" side="right" />
     </SidebarProvider>
   );
 };

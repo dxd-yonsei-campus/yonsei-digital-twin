@@ -45,6 +45,9 @@ const MapboxMap = () => {
       ...initialCamera,
     });
 
+    // Store map instance in ref
+    mapRef.current = map;
+
     // Expose map instance to window
     window.map = map;
 
@@ -432,12 +435,34 @@ const MapboxMap = () => {
       }
 
       setBuildingLayer(layer);
-
-      mapRef.current = map;
-
-      return () => map.remove();
     });
+
+    mapRef.current = map;
+
+    return () => map.remove();
   }, []);
+
+  useEffect(() => {
+    const sidebar = document.getElementById('sidebar');
+    if (!sidebar) return;
+
+    const eventHandler = (event: Event) => {
+      if (
+        event instanceof TransitionEvent &&
+        event.propertyName === 'right' &&
+        mapRef.current
+      ) {
+        mapRef.current.resize();
+      }
+    };
+
+    sidebar.addEventListener('transitionend', eventHandler);
+
+    return () => {
+      sidebar.removeEventListener('transitionend', eventHandler);
+    };
+  }, []);
+
   return (
     <div
       ref={mapContainerRef as Ref<HTMLDivElement>}
