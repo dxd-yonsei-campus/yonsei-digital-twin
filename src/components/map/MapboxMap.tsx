@@ -443,6 +443,12 @@ const MapboxMap = () => {
     return () => map.remove();
   }, []);
 
+  // Forces the map to resize when the sidebar is toggled
+  // A transitionend event is triggered on every transition
+  // for the sidebar. By default, there are 3 transitions,
+  // and we are only concerned with the last one, which is
+  // the right property transition. Print out the events
+  // to examine.
   useEffect(() => {
     const sidebar = document.getElementById('sidebar');
     if (!sidebar) return;
