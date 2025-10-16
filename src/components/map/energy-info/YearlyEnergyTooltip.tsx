@@ -17,6 +17,7 @@ const YearlyEnergyTooltip = ({
 }: YearlyEnergyTooltipProps) => {
   const $hoveredId = useStore(hoveredId);
   const t = useTranslations(lang);
+  console.log($hoveredId);
 
   if (!$hoveredId) {
     return null;
@@ -46,7 +47,7 @@ const YearlyEnergyTooltip = ({
   return (
     <div
       id={ELEMENT_IDS['yearlyEuiTooptip']}
-      className="absolute max-w-46 rounded-md main-bg py-2 pr-6 pl-4 sm:max-w-64"
+      className="absolute z-50 max-w-46 rounded-md main-bg py-2 pr-6 pl-4 sm:max-w-64"
     >
       <div className="text-sm leading-4 text-muted-foreground">
         {lang === 'ko' ? building.name : building.name_en}{' '}

@@ -369,6 +369,7 @@ const MapboxMap = () => {
           const features = map.queryRenderedFeatures(hoveredPoint, {
             layers: ['selectable-buildings'],
           });
+          console.log(currentMousePoint);
 
           if (features.length) {
             const building = features[0];
