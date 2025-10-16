@@ -1,9 +1,5 @@
 import { AppSidebar } from '@/components/app-sidebar';
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from '@/components/ui/sidebar';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import MapboxMap from './MapboxMap';
 import BuildingInformation from './BuildingInformation';
 import RhinoSimpleLegend from './RhinoSimpleLegend';
@@ -22,6 +18,7 @@ import yonseiLogoDark from '@/assets/public/yonsei-logo-dark.png';
 import yonseiLogoDarkKo from '@/assets/public/yonsei-logo-dark-ko.png';
 import yonseiLogoLight from '@/assets/public/yonsei-logo-light.png';
 import yonseiLogoLightKo from '@/assets/public/yonsei-logo-light-ko.png';
+import SidebarTrigger from './SidebarTrigger';
 
 type PageProps = {
   lang: keyof typeof ui;
@@ -34,7 +31,7 @@ const Page = ({ lang, monthlyEnergyUseCollection }: PageProps) => {
   return (
     <SidebarProvider>
       <SidebarInset className="relative">
-        <SidebarTrigger className="absolute right-4 bottom-24 z-50 -ml-1 bg-background" />
+        <SidebarTrigger className="absolute right-4 bottom-22 z-50" />
         <BuildingInformation lang={lang} />
         <RhinoSimpleLegend lang={lang} />
         <EnergyUseInformation
