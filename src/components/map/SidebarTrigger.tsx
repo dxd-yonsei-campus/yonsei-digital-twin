@@ -12,7 +12,7 @@ const SidebarTrigger = ({ className }: SidebarTriggerProps) => {
   return (
     <button
       className={cn(
-        'flex items-center justify-center gap-1.5 rounded-full main-bg py-2 pr-4.5 pl-3.5 text-sm font-medium transition-colors hover:bg-background',
+        'flex items-center justify-center gap-1.5 rounded-full main-bg py-2 pr-4.5 pl-3.5 text-sm font-medium shadow-lg transition-all hover:bg-background',
         className,
       )}
       onClick={toggleSidebar}

@@ -37,7 +37,7 @@ const Page = ({ lang, monthlyEnergyUseCollection }: PageProps) => {
       <SidebarInset className="relative">
         <SidebarTrigger
           className={cn(
-            'absolute right-4 bottom-22 z-50 transition-transform duration-300 ease-out',
+            'absolute right-4 bottom-22 z-50 duration-300 ease-out',
             $buildingLayer === 'rhino-simple' && '-translate-y-19',
           )}
         />
