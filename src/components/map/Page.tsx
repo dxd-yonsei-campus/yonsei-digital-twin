@@ -22,6 +22,7 @@ import SidebarTrigger from './SidebarTrigger';
 import { cn } from '@/lib/utils';
 import { buildingLayer } from '@/store';
 import { useStore } from '@nanostores/react';
+import LanguagePicker from './LanguagePicker';
 
 type PageProps = {
   lang: keyof typeof ui;
@@ -87,6 +88,7 @@ const Page = ({ lang, monthlyEnergyUseCollection }: PageProps) => {
               {t('site.title')}
             </a>
             <Separator orientation="vertical" className="h-3!" />
+            <LanguagePicker lang={lang} redirectPath="map" />
             <Separator orientation="vertical" className="h-3!" />
             <ThemePicker className="size-4 bg-transparent hover:bg-transparent! [&>svg]:size-4" />
           </div>
