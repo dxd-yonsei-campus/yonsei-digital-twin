@@ -6,5 +6,5 @@ export const ELEMENT_IDS = {
 };
 
 export const FEATURES = {
-  ENABLE_CHATBOT: false,
+  ENABLE_CHATBOT: import.meta.env.PUBLIC_ENABLE_CHATBOT === 'true',
 };
