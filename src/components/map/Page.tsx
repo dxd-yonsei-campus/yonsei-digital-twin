@@ -55,11 +55,10 @@ const Page = ({ lang, monthlyEnergyUseCollection }: PageProps) => {
         <MapboxMap lang={lang} />
         <div
           id={ELEMENT_IDS['navbar']}
-          className="absolute bottom-0 w-full border-t main-bg px-4 py-2"
+          className="@container/navbar absolute bottom-0 w-full border-t main-bg px-4 py-2"
         >
           <div className="mb-2 flex items-center justify-between gap-3">
             <div className="shrink-0">
-              <slot />
               <img
                 className="hidden h-8 w-auto dark:block"
                 src={lang === 'en' ? yonseiLogoDark.src : yonseiLogoDarkKo.src}
