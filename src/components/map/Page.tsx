@@ -12,7 +12,7 @@ import ThemePicker from '../ThemePicker';
 import BuildingLayersToggle from './BuildingLayersToggle';
 import ResetViewGroup from './ResetViewGroup';
 import SearchBar from './SearchBar';
-import { ELEMENT_IDS } from '@/lib/consts';
+import { ELEMENT_IDS, FEATURES } from '@/lib/consts';
 import { useTranslations } from '@/i18n/utils';
 import yonseiLogoDark from '@/assets/public/yonsei-logo-dark.png';
 import yonseiLogoDarkKo from '@/assets/public/yonsei-logo-dark-ko.png';
@@ -34,14 +34,16 @@ const Page = ({ lang, monthlyEnergyUseCollection }: PageProps) => {
   const $buildingLayer = useStore(buildingLayer);
 
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={false}>
       <SidebarInset className="relative">
-        <SidebarTrigger
-          className={cn(
-            'absolute right-4 bottom-22 z-50 duration-300 ease-out',
-            $buildingLayer === 'rhino-simple' && '-translate-y-19',
-          )}
-        />
+        {FEATURES.ENABLE_CHATBOT && (
+          <SidebarTrigger
+            className={cn(
+              'absolute right-4 bottom-22 z-50 duration-300 ease-out',
+              $buildingLayer === 'rhino-simple' && '-translate-y-19',
+            )}
+          />
+        )}
         <BuildingInformation lang={lang} />
         <RhinoSimpleLegend lang={lang} />
         <EnergyUseInformation
@@ -94,7 +96,7 @@ const Page = ({ lang, monthlyEnergyUseCollection }: PageProps) => {
         </div>
         <slot />
       </SidebarInset>
-      <AppSidebar id="sidebar" side="right" />
+      {FEATURES.ENABLE_CHATBOT && <AppSidebar id="sidebar" side="right" />}
     </SidebarProvider>
   );
 };
