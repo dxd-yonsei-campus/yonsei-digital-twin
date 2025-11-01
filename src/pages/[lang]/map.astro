@@ -4,7 +4,7 @@ import Layout from '@/layouts/Layout.astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { getCollection } from 'astro:content';
 import Toaster from '@/components/map/Toaster';
-import Page from '@/components/map/Page';
+import MapPage from '@/components/map/MapPage';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }];
@@ -18,7 +18,7 @@ const monthlyEnergyUseCollection = await getCollection('monthlyEnergyUse');
 
 <Layout title={t('site.map')}>
   <h1 class="sr-only">{t('site.title')} {t('site.map')}</h1>
-  <Page
+  <MapPage
     monthlyEnergyUseCollection={monthlyEnergyUseCollection}
     lang={lang}
     client:load

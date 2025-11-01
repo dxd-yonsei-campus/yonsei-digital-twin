@@ -24,12 +24,12 @@ import { buildingLayer } from '@/store';
 import { useStore } from '@nanostores/react';
 import LanguagePicker from '@/components/map/LanguagePicker';
 
-type PageProps = {
+type MapPageProps = {
   lang: keyof typeof ui;
   monthlyEnergyUseCollection: MonthlyEnergyUseCollectionProps;
 };
 
-const Page = ({ lang, monthlyEnergyUseCollection }: PageProps) => {
+const MapPage = ({ lang, monthlyEnergyUseCollection }: MapPageProps) => {
   const t = useTranslations(lang);
   const $buildingLayer = useStore(buildingLayer);
 
@@ -101,4 +101,4 @@ const Page = ({ lang, monthlyEnergyUseCollection }: PageProps) => {
   );
 };
 
-export default Page;
+export default MapPage;
