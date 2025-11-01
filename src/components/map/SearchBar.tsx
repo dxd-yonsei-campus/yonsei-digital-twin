@@ -101,15 +101,18 @@ const SearchBar = ({ lang }: SearchBarProps) => {
       <Button
         onClick={toggleOpen}
         variant="outline"
-        className="flex w-auto justify-between font-normal text-muted-foreground sm:w-52 md:w-60"
+        className="flex w-auto justify-between font-normal text-muted-foreground @2xl/navbar:w-52 @6xl/navbar:w-60"
       >
         <div className="flex items-center gap-2 overflow-hidden">
           <SearchIcon />
-          <span className="sr-only sm:hidden">Search</span>
+          <span className="sr-only @2xl/navbar:hidden">Search</span>
           <span
-            className={cn('hidden overflow-hidden text-ellipsis sm:block', {
-              'text-foreground': building,
-            })}
+            className={cn(
+              'hidden overflow-hidden text-ellipsis @2xl/navbar:block',
+              {
+                'text-foreground': building,
+              },
+            )}
           >
             {building
               ? lang === 'en'
@@ -118,7 +121,7 @@ const SearchBar = ({ lang }: SearchBarProps) => {
               : t('search.placeholder')}
           </span>
         </div>
-        <kbd className="hidden shrink-0 md:inline-flex">
+        <kbd className="hidden shrink-0 @6xl/navbar:inline-flex">
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>

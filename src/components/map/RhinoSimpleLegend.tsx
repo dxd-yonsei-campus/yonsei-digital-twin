@@ -7,9 +7,10 @@ import { useStore } from '@nanostores/react';
 
 type RhinoSimpleLegendProps = {
   lang: keyof typeof ui;
+  className?: string;
 };
 
-const RhinoSimpleLegend = ({ lang }: RhinoSimpleLegendProps) => {
+const RhinoSimpleLegend = ({ lang, className }: RhinoSimpleLegendProps) => {
   const $buildingLayer = useStore(buildingLayer);
   const isRhinoSimple = $buildingLayer === 'rhino-simple';
   const t = useTranslations(lang);
@@ -18,10 +19,11 @@ const RhinoSimpleLegend = ({ lang }: RhinoSimpleLegendProps) => {
     <div
       id={ELEMENT_IDS['rhinoSimpleLegend']}
       className={cn(
-        'fixed right-0 bottom-21 z-20 w-full transform transition-all duration-150 ease-out xs:w-80',
+        'absolute right-0 bottom-21 z-20 w-full transform transition-all duration-150 ease-out xs:w-80',
         isRhinoSimple
           ? 'translate-y-0 scale-100 opacity-100'
           : 'pointer-events-none translate-y-0.5 scale-95 opacity-0',
+        className,
       )}
     >
       <div className="mx-4 rounded-md main-bg px-3.5 py-2.5 shadow-sm transition-colors duration-200">

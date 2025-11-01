@@ -38,12 +38,15 @@ const ResetButtonGroup = ({ lang }: ResetButtonGroupProps) => {
       )}
     >
       <Button
-        className={cn('w-9', lang === 'en' ? 'xs:w-26' : 'xs:w-20')}
+        className={cn(
+          'w-9',
+          lang === 'en' ? '@md/navbar:w-26' : '@md/navbar:w-20',
+        )}
         variant="outline"
         onClick={() => flyToCampus($selectedCampus, true)}
       >
         <HomeIcon />
-        <span className={'sr-only xs:not-sr-only'}>
+        <span className={'sr-only @md/navbar:not-sr-only'}>
           {isRendered ? t($selectedCampus) : ''}
         </span>
       </Button>

@@ -4,3 +4,7 @@ export const ELEMENT_IDS = {
   rhinoSimpleLegend: 'rhino-simple-legend',
   yearlyEuiTooptip: 'eui-tooltip',
 };
+
+export const FEATURES = {
+  ENABLE_CHATBOT: import.meta.env.PUBLIC_ENABLE_CHATBOT === 'true',
+};
