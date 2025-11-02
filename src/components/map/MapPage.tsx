@@ -9,9 +9,9 @@ import EnergyUseInformation from '@/components/map/EnergyUseInformation';
 import YearlyEnergyTooltip from '@/components/map/energy-info/YearlyEnergyTooltip';
 import { Separator } from '@/components/ui/separator';
 import ThemePicker from '@/components/ThemePicker';
-import BuildingLayersToggle from '@/components/map/BuildingLayersToggle';
-import ResetViewGroup from '@/components/map/ResetViewGroup';
-import SearchBar from '@/components/map/SearchBar';
+import BuildingLayersToggle from '@/components/map/navbar/BuildingLayersToggle';
+import ResetViewGroup from '@/components/map/navbar/ResetViewGroup';
+import SearchBar from '@/components/map/navbar/SearchBar';
 import { ELEMENT_IDS, FEATURES } from '@/lib/consts';
 import { useTranslations } from '@/i18n/utils';
 import yonseiLogoDark from '@/assets/public/yonsei-logo-dark.png';
@@ -24,7 +24,7 @@ import SidebarTrigger from '@/components/map/SidebarTrigger';
 import { cn } from '@/lib/utils';
 import { buildingLayer } from '@/store';
 import { useStore } from '@nanostores/react';
-import LanguagePicker from '@/components/map/LanguagePicker';
+import LanguagePicker from '@/components/map/navbar/LanguagePicker';
 
 type MapPageProps = {
   lang: keyof typeof ui;
