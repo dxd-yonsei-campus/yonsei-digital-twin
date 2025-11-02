@@ -18,6 +18,8 @@ import yonseiLogoDark from '@/assets/public/yonsei-logo-dark.png';
 import yonseiLogoDarkKo from '@/assets/public/yonsei-logo-dark-ko.png';
 import yonseiLogoLight from '@/assets/public/yonsei-logo-light.png';
 import yonseiLogoLightKo from '@/assets/public/yonsei-logo-light-ko.png';
+import fundingSourceLogoLight from '@/assets/public/funding-source-logo-light.png';
+import fundingSourceLogoDark from '@/assets/public/funding-source-logo-dark.png';
 import SidebarTrigger from '@/components/map/SidebarTrigger';
 import { cn } from '@/lib/utils';
 import { buildingLayer } from '@/store';
@@ -60,7 +62,7 @@ const MapPage = ({ lang, monthlyEnergyUseCollection }: MapPageProps) => {
           className="@container/navbar absolute bottom-0 w-full border-t main-bg px-4 py-2"
         >
           <div className="mb-2 flex items-center justify-between gap-3">
-            <div className="shrink-0">
+            <div className="flex shrink-0 gap-3">
               <img
                 className="hidden h-8 w-auto dark:block"
                 src={lang === 'en' ? yonseiLogoDark.src : yonseiLogoDarkKo.src}
@@ -71,6 +73,16 @@ const MapPage = ({ lang, monthlyEnergyUseCollection }: MapPageProps) => {
                 src={
                   lang === 'en' ? yonseiLogoLight.src : yonseiLogoLightKo.src
                 }
+                alt="Yonsei University"
+              />
+              <img
+                className="hidden h-8 w-auto dark:block"
+                src={fundingSourceLogoDark.src}
+                alt="Yonsei University"
+              />
+              <img
+                className="block h-8 w-auto dark:hidden"
+                src={fundingSourceLogoLight.src}
                 alt="Yonsei University"
               />
             </div>
