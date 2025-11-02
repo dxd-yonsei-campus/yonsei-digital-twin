@@ -18,12 +18,14 @@ import { findGroupForId } from '@/lib/mapUtils';
 import { ELEMENT_IDS } from '@/lib/consts';
 import { useEffect, useRef, type Ref } from 'react';
 import type { ui } from '@/i18n/ui';
+import { useSidebar } from '@/components/ui/sidebar';
 
 type MapboxMapProps = {
   lang: keyof typeof ui;
 };
 
 const MapboxMap = ({ lang }: MapboxMapProps) => {
+  const { state } = useSidebar();
   const mapContainerRef = useRef<HTMLElement>(null);
   const mapRef = useRef<mapboxgl.Map>(null);
 
@@ -469,7 +471,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
     return () => {
       sidebar.removeEventListener('transitionend', eventHandler);
     };
-  }, []);
+  }, [state]);
 
   return (
     <div
