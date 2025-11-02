@@ -14,17 +14,12 @@ import ResetViewGroup from '@/components/map/navbar/ResetViewGroup';
 import SearchBar from '@/components/map/navbar/SearchBar';
 import { ELEMENT_IDS, FEATURES } from '@/lib/consts';
 import { useTranslations } from '@/i18n/utils';
-import yonseiLogoDark from '@/assets/public/yonsei-logo-dark.png';
-import yonseiLogoDarkKo from '@/assets/public/yonsei-logo-dark-ko.png';
-import yonseiLogoLight from '@/assets/public/yonsei-logo-light.png';
-import yonseiLogoLightKo from '@/assets/public/yonsei-logo-light-ko.png';
-import fundingSourceLogoLight from '@/assets/public/funding-source-logo-light.png';
-import fundingSourceLogoDark from '@/assets/public/funding-source-logo-dark.png';
 import SidebarTrigger from '@/components/map/SidebarTrigger';
 import { cn } from '@/lib/utils';
 import { buildingLayer } from '@/store';
 import { useStore } from '@nanostores/react';
 import LanguagePicker from '@/components/map/navbar/LanguagePicker';
+import NavbarCredits from '@/components/map/navbar/NavbarCredits';
 
 type MapPageProps = {
   lang: keyof typeof ui;
@@ -62,30 +57,7 @@ const MapPage = ({ lang, monthlyEnergyUseCollection }: MapPageProps) => {
           className="@container/navbar absolute bottom-0 w-full border-t main-bg px-4 py-2"
         >
           <div className="mb-2 flex items-center justify-between gap-3">
-            <div className="flex shrink-0 gap-3">
-              <img
-                className="hidden h-8 w-auto dark:block"
-                src={lang === 'en' ? yonseiLogoDark.src : yonseiLogoDarkKo.src}
-                alt="Yonsei University"
-              />
-              <img
-                className="block h-8 w-auto dark:hidden"
-                src={
-                  lang === 'en' ? yonseiLogoLight.src : yonseiLogoLightKo.src
-                }
-                alt="Yonsei University"
-              />
-              <img
-                className="hidden h-8 w-auto dark:block"
-                src={fundingSourceLogoDark.src}
-                alt="Yonsei University"
-              />
-              <img
-                className="block h-8 w-auto dark:hidden"
-                src={fundingSourceLogoLight.src}
-                alt="Yonsei University"
-              />
-            </div>
+            <NavbarCredits className="shrink-0" lang={lang} />
             <SearchBar lang={lang} />
             <div className="flex items-center gap-2">
               <BuildingLayersToggle lang={lang} />
