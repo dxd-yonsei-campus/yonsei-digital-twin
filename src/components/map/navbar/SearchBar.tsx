@@ -101,14 +101,14 @@ const SearchBar = ({ lang }: SearchBarProps) => {
       <Button
         onClick={toggleOpen}
         variant="outline"
-        className="flex w-auto justify-between font-normal text-muted-foreground @2xl/navbar:w-52 @6xl/navbar:w-60"
+        className="flex w-auto justify-between font-normal text-muted-foreground @3xl/navbar:w-52 @6xl/navbar:w-60"
       >
         <div className="flex items-center gap-2 overflow-hidden">
           <SearchIcon />
-          <span className="sr-only @2xl/navbar:hidden">Search</span>
+          <span className="sr-only @3xl/navbar:hidden">Search</span>
           <span
             className={cn(
-              'hidden overflow-hidden text-ellipsis @2xl/navbar:block',
+              'hidden overflow-hidden text-ellipsis @3xl/navbar:block',
               {
                 'text-foreground': building,
               },

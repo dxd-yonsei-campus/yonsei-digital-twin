@@ -28,7 +28,7 @@ const BuildingLayerToggle = ({ lang }: BuildingLayerToggleProps) => {
         value={$buildingLayer}
         onValueChange={(val) => buildingLayer.set(val)}
         type="single"
-        className="hidden @5xl/navbar:flex"
+        className="hidden @6xl/navbar:flex"
       >
         {buildingLayers.map((layer) => {
           return (
@@ -43,7 +43,7 @@ const BuildingLayerToggle = ({ lang }: BuildingLayerToggleProps) => {
         })}
       </ToggleGroup>
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex @5xl/navbar:hidden" asChild>
+        <DropdownMenuTrigger className="flex @6xl/navbar:hidden" asChild>
           <Button variant="outline">
             {t('models')}
             <ChevronUp className="hidden @lg/navbar:block" />
@@ -51,7 +51,7 @@ const BuildingLayerToggle = ({ lang }: BuildingLayerToggleProps) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="end"
-          className="block w-42 @5xl/navbar:hidden"
+          className="block w-42 @6xl/navbar:hidden"
         >
           <DropdownMenuRadioGroup
             value={$buildingLayer}
