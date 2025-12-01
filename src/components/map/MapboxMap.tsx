@@ -263,6 +263,32 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoDetailedSinchon, labelLayerId);
+
+      map.addSource('cfd', {
+        type: 'vector',
+        url: 'mapbox://lesterong.1s6rzo64',
+      });
+
+      map.addLayer({
+        id: 'pressure-points',
+        type: 'circle',
+        source: 'cfd',
+        'source-layer': 'output',
+        paint: {
+          'circle-radius': 3,
+          'circle-color': [
+            'interpolate',
+            ['linear'],
+            ['get', 'P'],
+            0,
+            '#440154',
+            0.1,
+            '#21918c',
+            0.2,
+            '#fde725',
+          ],
+        },
+      });
     });
 
     map.on('click', (e) => {
