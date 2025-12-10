@@ -96,41 +96,41 @@ Yonsei Digital Twin displays CFD data exported from Tecplot 360 through the foll
 
    - Adding the source
 
-   ```js
-   // Using Mapbox as server
-   map.addSource('cfd', {
-     type: 'vector',
-     url: 'mapbox://<tileset-id>', // click the share button to see the tileset id
-   });
+     ```js
+     // Using Mapbox Studio
+     map.addSource('cfd', {
+       type: 'vector',
+       url: 'mapbox://<tileset-id>', // click the share button to see the tileset id
+     });
 
-   // Using own server
-   map.addSource('cfd', {
-     type: 'vector',
-     tiles: ['http://localhost:8000/tiles/{z}/{x}/{y}'],
-   });
-   ```
+     // Using a self-hosted server
+     map.addSource('cfd', {
+       type: 'vector',
+       tiles: ['http://localhost:8000/tiles/{z}/{x}/{y}'],
+     });
+     ```
 
    - Displaying the data
 
-   ```js
-   map.addLayer({
-     id: 'points',
-     type: 'circle',
-     source: 'cfd', // corresponds to the source name in addSource
-     'source-layer': 'output', // corresponds to the output file name in tippecanoe, unless using the --layer flag
-     paint: {
-       'circle-radius': 3,
-       'circle-color': [
-         'interpolate',
-         ['linear'],
-         ['get', 'P'],
-         0,
-         '#440154',
-         0.1,
-         '#21918c',
-         0.2,
-         '#fde725',
-       ],
-     },
-   });
-   ```
+     ```js
+     map.addLayer({
+       id: 'points',
+       type: 'circle',
+       source: 'cfd', // corresponds to the source name in addSource
+       'source-layer': 'output', // corresponds to the output file name in tippecanoe, unless using the --layer flag
+       paint: {
+         'circle-radius': 3,
+         'circle-color': [
+           'interpolate',
+           ['linear'],
+           ['get', 'P'],
+           0,
+           '#440154',
+           0.1,
+           '#21918c',
+           0.2,
+           '#fde725',
+         ],
+       },
+     });
+     ```
