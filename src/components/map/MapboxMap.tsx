@@ -266,7 +266,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
 
       map.addSource('cfd', {
         type: 'vector',
-        url: 'mapbox://lesterong.1s6rzo64',
+        tiles: ['http://localhost:8000/tiles/{z}/{x}/{y}'],
       });
 
       map.addLayer({
