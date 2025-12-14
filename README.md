@@ -106,7 +106,7 @@ Yonsei Digital Twin displays CFD data exported from Tecplot 360 through the foll
      // Using a self-hosted server
      map.addSource('cfd', {
        type: 'vector',
-       tiles: ['http://localhost:8000/tiles/{z}/{x}/{y}'],
+       tiles: ['http://<url>/tiles/{z}/{x}/{y}'],
      });
      ```
 
@@ -117,7 +117,7 @@ Yonsei Digital Twin displays CFD data exported from Tecplot 360 through the foll
        id: 'points',
        type: 'circle',
        source: 'cfd', // corresponds to the source name in addSource
-       'source-layer': 'output', // corresponds to the output file name in tippecanoe, unless using the --layer flag
+       'source-layer': 'output', // corresponds to the input file name in tippecanoe, unless using the --layer flag
        paint: {
          'circle-radius': 3,
          'circle-color': [
