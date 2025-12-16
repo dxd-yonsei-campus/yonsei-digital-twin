@@ -267,88 +267,61 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
       map.addSource('cfd', {
         type: 'vector',
         tiles: ['http://localhost:8000/tiles/{z}/{x}/{y}'],
+        // url: 'mapbox://lesterong.0u0iaqw5'
       });
 
       map.addLayer({
-        id: 'pressure-points',
+        id: 'wind-magnitude',
         type: 'circle',
         source: 'cfd',
-        'source-layer': 'sinchon',
+        'source-layer': 'sinchonsamplendjson',
         paint: {
-          // 'circle-radius': 3,
           'circle-radius': [
             'interpolate',
             ['linear'],
             ['zoom'],
-            14,
-            3.5,
-            15,
-            4.5,
-            16,
-            6,
-            17,
-            8,
-            18,
+            5,
+            4,
             10,
-          ],
-          // 'circle-opacity': 0.85,
-          'circle-opacity': [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            13,
-            0,
+            10,
+            12,
+            12,
             14,
-            0.85,
+            14,
+            15,
+            15,
+            16,
+            16,
+            17,
+            17,
+            18,
+            18,
           ],
-
-          // 'circle-color': [
-          //   'interpolate',
-          //   ['linear'],
-          //   ['get', 'magnitude'],
-          //   0,
-          //   '#440154',
-          //   0.1,
-          //   '#21918c',
-          //   0.2,
-          //   '#fde725',
-          // ],
-
           'circle-color': [
             'interpolate',
             ['linear'],
             ['get', 'magnitude'],
             0,
-            '#d6604d', // Medium red for 0
-            4,
-            '#f4a582', // Lighter red for 4
-            8,
-            '#fcbf57', // Yellow-orange for 8 (still a brief transition)
+            '#0000ff', // Blue for low wind
+            5,
+            '#00ffff', // Cyan
             10,
-            '#d1e5f0', // Light blue for 10
-            14,
-            '#67a9cf', // Medium blue for 14
-            18,
-            '#2166ac', // Strong blue for 18
-            23,
-            '#053061', // Deep blue for 23
-            33,
-            '#0000ff', // Bright blue for 33
+            '#00ff00', // Green
+            15,
+            '#ffff00', // Yellow
+            20,
+            '#ff8000', // Orange
+            25,
+            '#ff0000', // Red for high wind
           ],
-          // 'circle-color': '#0066ff',
-          'circle-blur': [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            14,
-            0.4,
-            16,
-            0.7,
-            18,
-            1.0,
-          ],
+          'circle-opacity': 0.5,
+          'circle-blur': 0.8, // Maximum blur for smoothness
+          'circle-pitch-alignment': 'map',
         },
       });
+      if (map.getLayer('rhino-detailed-sinchon')) {
+        map.moveLayer('wind-magnitude', 'rhino-detailed-sinchon');
+      }
     });
 
     map.on('click', (e) => {
