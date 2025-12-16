@@ -284,35 +284,32 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
             4,
             10,
             10,
-            12,
-            12,
             14,
-            14,
-            15,
-            15,
-            16,
-            16,
-            17,
-            17,
             18,
+            16,
+            26, // bigger jump
+            17,
+            32, // fill gaps
             18,
+            38,
           ],
+
           'circle-color': [
             'interpolate',
             ['linear'],
             ['get', 'magnitude'],
             0,
-            '#0000ff', // Blue for low wind
+            '#0000ff', // Deep blue (low)
             5,
-            '#00ffff', // Cyan
+            '#3366ff', // Blue
             10,
-            '#00ff00', // Green
+            '#6699ff', // Light blue
             15,
-            '#ffff00', // Yellow
+            '#9966ff', // Purple
             20,
-            '#ff8000', // Orange
+            '#cc3366', // Reddish-purple
             25,
-            '#ff0000', // Red for high wind
+            '#ff0000', // Red (high)
           ],
           'circle-opacity': 0.5,
           'circle-blur': 0.8, // Maximum blur for smoothness
@@ -322,6 +319,10 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
       if (map.getLayer('rhino-detailed-sinchon')) {
         map.moveLayer('wind-magnitude', 'rhino-detailed-sinchon');
       }
+    });
+
+    map.on('zoom', () => {
+      console.log('Zoom level:', map.getZoom());
     });
 
     map.on('click', (e) => {
