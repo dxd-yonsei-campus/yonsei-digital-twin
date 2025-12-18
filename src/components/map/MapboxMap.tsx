@@ -287,11 +287,11 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
             14,
             18,
             16,
-            26, // bigger jump
+            34, // bigger jump
             17,
-            32, // fill gaps
+            40, // fill gaps
             18,
-            38,
+            42,
           ],
 
           'circle-color': [
@@ -314,11 +314,9 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           'circle-opacity': 0.5,
           'circle-blur': 0.8, // Maximum blur for smoothness
           'circle-pitch-alignment': 'map',
+          'circle-pitch-scale': 'map',
         },
       });
-      if (map.getLayer('rhino-detailed-sinchon')) {
-        map.moveLayer('wind-magnitude', 'rhino-detailed-sinchon');
-      }
     });
 
     map.on('zoom', () => {
@@ -379,6 +377,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
       map.setLayoutProperty('rhino-simple-sinchon', 'visibility', 'none');
       map.setLayoutProperty('rhino-simple-songdo', 'visibility', 'none');
       map.setLayoutProperty('rhino-detailed-sinchon', 'visibility', 'none');
+      map.setLayoutProperty('wind-magnitude', 'visibility', 'none');
       if (layer === 'osm') {
         map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
         map.setLayoutProperty('selected-building', 'visibility', 'visible');
@@ -391,6 +390,10 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           'visibility',
           'visible',
         );
+        map.setLayoutProperty('wind-magnitude', 'visibility', 'visible');
+        if (map.getLayer('rhino-detailed-sinchon')) {
+          map.moveLayer('wind-magnitude', 'rhino-detailed-sinchon');
+        }
       }
     };
 
