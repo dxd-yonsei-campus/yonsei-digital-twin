@@ -271,7 +271,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
       });
 
       map.addLayer({
-        id: 'wind-magnitude',
+        id: 'pressure-cfd',
         type: 'circle',
         source: 'cfd',
         'source-layer': 'sinchonsamplendjson',
@@ -297,18 +297,18 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           'circle-color': [
             'interpolate',
             ['linear'],
-            ['get', 'magnitude'],
+            ['get', 'P'],
             0,
             '#0000ff', // Deep blue (low)
-            5,
+            0.1,
             '#3366ff', // Blue
-            10,
+            0.2,
             '#6699ff', // Light blue
-            15,
+            0.3,
             '#9966ff', // Purple
-            20,
+            0.4,
             '#cc3366', // Reddish-purple
-            25,
+            0.5,
             '#ff0000', // Red (high)
           ],
           'circle-opacity': 0.5,
@@ -377,7 +377,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
       map.setLayoutProperty('rhino-simple-sinchon', 'visibility', 'none');
       map.setLayoutProperty('rhino-simple-songdo', 'visibility', 'none');
       map.setLayoutProperty('rhino-detailed-sinchon', 'visibility', 'none');
-      map.setLayoutProperty('wind-magnitude', 'visibility', 'none');
+      map.setLayoutProperty('pressure-cfd', 'visibility', 'none');
       if (layer === 'osm') {
         map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
         map.setLayoutProperty('selected-building', 'visibility', 'visible');
@@ -390,9 +390,9 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           'visibility',
           'visible',
         );
-        map.setLayoutProperty('wind-magnitude', 'visibility', 'visible');
+        map.setLayoutProperty('pressure-cfd', 'visibility', 'visible');
         if (map.getLayer('rhino-detailed-sinchon')) {
-          map.moveLayer('wind-magnitude', 'rhino-detailed-sinchon');
+          map.moveLayer('pressure-cfd', 'rhino-detailed-sinchon');
         }
       }
     };
