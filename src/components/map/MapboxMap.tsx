@@ -263,6 +263,64 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoDetailedSinchon, labelLayerId);
+
+      map.addSource('cfd', {
+        type: 'vector',
+        tiles: ['http://localhost:8000/tiles/{z}/{x}/{y}'],
+        // url: 'mapbox://lesterong.0u0iaqw5'
+      });
+
+      map.addLayer({
+        id: 'pressure-cfd',
+        type: 'circle',
+        source: 'cfd',
+        'source-layer': 'sinchonsamplendjson',
+        paint: {
+          'circle-radius': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            5,
+            4,
+            10,
+            10,
+            14,
+            18,
+            16,
+            34, // bigger jump
+            17,
+            40, // fill gaps
+            18,
+            42,
+          ],
+
+          'circle-color': [
+            'interpolate',
+            ['linear'],
+            ['get', 'P'],
+            0,
+            '#0000ff', // Deep blue (low)
+            0.1,
+            '#3366ff', // Blue
+            0.2,
+            '#6699ff', // Light blue
+            0.3,
+            '#9966ff', // Purple
+            0.4,
+            '#cc3366', // Reddish-purple
+            0.5,
+            '#ff0000', // Red (high)
+          ],
+          'circle-opacity': 0.5,
+          'circle-blur': 0.8, // Maximum blur for smoothness
+          'circle-pitch-alignment': 'map',
+          'circle-pitch-scale': 'map',
+        },
+      });
+    });
+
+    map.on('zoom', () => {
+      console.log('Zoom level:', map.getZoom());
     });
 
     map.on('click', (e) => {
@@ -319,6 +377,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
       map.setLayoutProperty('rhino-simple-sinchon', 'visibility', 'none');
       map.setLayoutProperty('rhino-simple-songdo', 'visibility', 'none');
       map.setLayoutProperty('rhino-detailed-sinchon', 'visibility', 'none');
+      map.setLayoutProperty('pressure-cfd', 'visibility', 'none');
       if (layer === 'osm') {
         map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
         map.setLayoutProperty('selected-building', 'visibility', 'visible');
@@ -331,6 +390,10 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           'visibility',
           'visible',
         );
+        map.setLayoutProperty('pressure-cfd', 'visibility', 'visible');
+        if (map.getLayer('rhino-detailed-sinchon')) {
+          map.moveLayer('pressure-cfd', 'rhino-detailed-sinchon');
+        }
       }
     };
 
@@ -405,6 +468,13 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           }
         }, 25);
       }
+    });
+
+    map.on('click', (e) => {
+      const lng = e.lngLat.lng;
+      const lat = e.lngLat.lat;
+
+      console.log(`Longitude: ${lng}, Latitude: ${lat}`);
     });
 
     const hideHoverTooltip = () => {
