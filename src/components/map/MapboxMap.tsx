@@ -360,7 +360,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
               8.0,
               '#ff0000', // red (high wind)
             ],
-            'icon-opacity': 0.9,
+            'icon-opacity': 1,
           },
         });
       },
