@@ -110,7 +110,7 @@ Yonsei Digital Twin displays CFD data exported from Tecplot 360 through the foll
      });
      ```
 
-   - Displaying the data
+   - Displaying the data as a contour map
 
      ```js
      map.addLayer({
@@ -133,4 +133,55 @@ Yonsei Digital Twin displays CFD data exported from Tecplot 360 through the foll
          ],
        },
      });
+     ```
+
+   - Displaying the data as a wind arrow map
+
+     ```js
+     map.loadImage(
+       // ensure the image used is a png with transparent background and white content
+       // so sdf can be enabled
+       'https://upload.wikimedia.org/wikipedia/commons/3/3c/Arrow_right_dark.png',
+       (err, image) => {
+         if (err) throw err;
+         if (!image) return;
+
+         // enable sdf so the icon-color can apply
+         map.addImage('wind-arrow', image, { sdf: true });
+
+         map.addLayer({
+           id: 'wind-arrows',
+           type: 'symbol',
+           source: 'cfd', // corresponds to the source name in addSource
+           'source-layer': 'output', // corresponds to the input file name in tippecanoe, unless using the --layer flag
+
+           layout: {
+             'icon-image': 'wind-arrow',
+             'icon-size': 0.1, // set base on your image size
+             'icon-rotate': ['get', 'angle'],
+             'icon-rotation-alignment': 'map',
+             'icon-allow-overlap': true,
+             'icon-ignore-placement': true,
+           },
+           paint: {
+             'icon-color': [
+               'interpolate',
+               ['linear'],
+               ['get', 'magnitude'],
+               0.0,
+               '#0000ff',
+               2.0,
+               '#00ffff',
+               4.0,
+               '#ffff00',
+               6.0,
+               '#ff9900',
+               8.0,
+               '#ff0000',
+             ],
+             'icon-opacity': 1,
+           },
+         });
+       },
+     );
      ```
