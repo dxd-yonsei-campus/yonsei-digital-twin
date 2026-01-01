@@ -320,12 +320,14 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
     });
 
     // TODO: Setup SFD image
+    // SDF arrow, rotate based on wind angle
+    // But the PNG image must be white to begin with.
     map.loadImage(
-      'https://upload.wikimedia.org/wikipedia/commons/2/24/Arrow-right-512.png',
+      'https://upload.wikimedia.org/wikipedia/commons/3/3c/Arrow_right_dark.png',
       (err, image) => {
         if (err) throw err;
         if (!image) return;
-        map.addImage('wind-arrow', image);
+        map.addImage('wind-arrow', image, { sdf: true });
 
         map.addLayer({
           id: 'wind-arrows',
@@ -336,7 +338,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
 
           layout: {
             'icon-image': 'wind-arrow',
-            'icon-size': 0.02,
+            'icon-size': 0.1,
             'icon-rotate': ['-', ['get', 'angle'], 45],
             'icon-rotation-alignment': 'map',
             'icon-allow-overlap': true,
@@ -435,7 +437,9 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           'visibility',
           'visible',
         );
-        map.setLayoutProperty('pressure-cfd', 'visibility', 'visible');
+
+        // TODO: Allow users to toggle which layer to show in Rhino Detailed
+        map.setLayoutProperty('pressure-cfd', 'visibility', 'none');
         if (map.getLayer('rhino-detailed-sinchon')) {
           map.moveLayer('wind-arrows', 'rhino-detailed-sinchon');
           map.moveLayer('pressure-cfd', 'rhino-detailed-sinchon');
