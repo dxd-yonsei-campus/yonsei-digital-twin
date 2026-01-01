@@ -274,7 +274,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         id: 'pressure-cfd',
         type: 'circle',
         source: 'cfd',
-        'source-layer': 'sinchonsamplendjson',
+        'source-layer': 'sinchon',
         paint: {
           'circle-radius': [
             'interpolate',
@@ -318,6 +318,51 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         },
       });
     });
+
+    // TODO: Setup SFD image
+    map.loadImage(
+      'https://upload.wikimedia.org/wikipedia/commons/2/24/Arrow-right-512.png',
+      (err, image) => {
+        if (err) throw err;
+        if (!image) return;
+        map.addImage('wind-arrow', image);
+
+        map.addLayer({
+          id: 'wind-arrows',
+          type: 'symbol',
+          source: 'cfd',
+          'source-layer': 'sinchon',
+          minzoom: 8,
+
+          layout: {
+            'icon-image': 'wind-arrow',
+            'icon-size': 0.02,
+            'icon-rotate': ['-', ['get', 'angle'], 45],
+            'icon-rotation-alignment': 'map',
+            'icon-allow-overlap': true,
+            'icon-ignore-placement': true,
+          },
+          paint: {
+            'icon-color': [
+              'interpolate',
+              ['linear'],
+              ['get', 'magnitude'],
+              0.0,
+              '#0000ff', // blue (low wind)
+              2.0,
+              '#00ffff',
+              4.0,
+              '#ffff00',
+              6.0,
+              '#ff9900',
+              8.0,
+              '#ff0000', // red (high wind)
+            ],
+            'icon-opacity': 0.9,
+          },
+        });
+      },
+    );
 
     map.on('zoom', () => {
       console.log('Zoom level:', map.getZoom());
@@ -392,6 +437,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         );
         map.setLayoutProperty('pressure-cfd', 'visibility', 'visible');
         if (map.getLayer('rhino-detailed-sinchon')) {
+          map.moveLayer('wind-arrows', 'rhino-detailed-sinchon');
           map.moveLayer('pressure-cfd', 'rhino-detailed-sinchon');
         }
       }
