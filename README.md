@@ -64,3 +64,124 @@ To re-generate the decoders, run the following command:
 ```
 pnpm draco
 ```
+
+## CFD Simulations
+
+Yonsei Digital Twin displays CFD data exported from Tecplot 360 through the following process.
+
+1. Tecplot data is exported as a `.dat` file.
+2. The `.dat` file is processed to generate a `.csv` file with the columns: `X`, `Y`, `Z`, `U`, `V`, `W`, `P`.
+   - `X`, `Y`, `Z` are the coordinates relative to the middle of the simulation model.
+   - `U`, `V`, `W` are the velocity components in the x, y, and z directions.
+   - `P` is the pressure.
+3. The `.csv` file is processed to generate a `.geojson` file using a script. The coordinates can be obtained by adding the `X`, `Y`, and `Z` values to the `latitude` and `longitude` values of the building. The `.geojson` file looks like this:
+   ```json
+   {"type":"FeatureCollection","features":[
+      {"type":"Feature","geometry":{"type":"Point","coordinates":[126.94518967314733,37.57008159207998]},"properties":{"X":599.11471,"Y":599.07609,"Z":64.5,"U":10.0,"V":9.9419134,"W":-2.3716261,"magnitude":14.299169640622521,"P":0.075587698}},
+      {"type":"Feature","geometry":{"type":"Point","coordinates":[126.94523463778984,37.57008159207998]},"properties":{"X":603.08235,"Y":599.07609,"Z":64.5,"U":10.0,"V":11.376602,"W":-1.8296889,"magnitude":15.256960199764146,"P":0.11355485}},
+      {"type":"Feature","geometry":{"type":"Point","coordinates":[126.9452796025457,37.57008159207998]},"properties":{"X":607.05,"Y":599.07609,"Z":64.5,"U":10.0,"V":11.857287,"W":-0.71368451,"magnitude":15.527543288626921,"P":0.1008483}} ...]
+   }
+   ```
+4. The `.geojson` file is processed using [`tippecanoe`](https://github.com/mapbox/tippecanoe) to generate a `.mbtiles` file. The example shows how to convert a `input.geojson` file to a `output.mbtiles` file.
+   ```sh
+   tippecanoe -o output.mbtiles --drop-densest-as-needed -zg input.geojson
+   ```
+5. The `.mbtiles` file is served using a mbtiles server, such as using Mapbox Studio or a custom MBTiles server.
+   - Using Mapbox Studio
+     1. Login to [Mapbox account](https://account.mapbox.com)
+     2. Select 'Data manager'
+     3. Click 'New tileset'
+     4. Upload the `.mbtiles` file
+6. The `.mbtiles` file can be added into Mapbox GLJS using the following code:
+
+   - Adding the source
+
+     ```js
+     // Using Mapbox Studio
+     map.addSource('cfd', {
+       type: 'vector',
+       url: 'mapbox://<tileset-id>', // click the share button to see the tileset id
+     });
+
+     // Using a self-hosted server
+     map.addSource('cfd', {
+       type: 'vector',
+       tiles: ['http://<url>/tiles/{z}/{x}/{y}'],
+     });
+     ```
+
+   - Displaying the data as a contour map
+
+     ```js
+     map.addLayer({
+       id: 'points',
+       type: 'circle',
+       source: 'cfd', // corresponds to the source name in addSource
+       'source-layer': 'output', // corresponds to the input file name in tippecanoe, unless using the --layer flag
+       paint: {
+         'circle-radius': 3,
+         'circle-color': [
+           'interpolate',
+           ['linear'],
+           ['get', 'P'],
+           0,
+           '#440154',
+           0.1,
+           '#21918c',
+           0.2,
+           '#fde725',
+         ],
+       },
+     });
+     ```
+
+   - Displaying the data as a wind arrow map
+
+     ```js
+     map.loadImage(
+       // ensure the image used is a png with transparent background and white content
+       // so sdf can be enabled
+       'https://upload.wikimedia.org/wikipedia/commons/3/3c/Arrow_right_dark.png',
+       (err, image) => {
+         if (err) throw err;
+         if (!image) return;
+
+         // enable sdf so the icon-color can apply
+         map.addImage('wind-arrow', image, { sdf: true });
+
+         map.addLayer({
+           id: 'wind-arrows',
+           type: 'symbol',
+           source: 'cfd', // corresponds to the source name in addSource
+           'source-layer': 'output', // corresponds to the input file name in tippecanoe, unless using the --layer flag
+
+           layout: {
+             'icon-image': 'wind-arrow',
+             'icon-size': 0.1, // set base on your image size
+             'icon-rotate': ['get', 'angle'],
+             'icon-rotation-alignment': 'map',
+             'icon-allow-overlap': true,
+             'icon-ignore-placement': true,
+           },
+           paint: {
+             'icon-color': [
+               'interpolate',
+               ['linear'],
+               ['get', 'magnitude'],
+               0.0,
+               '#0000ff',
+               2.0,
+               '#00ffff',
+               4.0,
+               '#ffff00',
+               6.0,
+               '#ff9900',
+               8.0,
+               '#ff0000',
+             ],
+             'icon-opacity': 1,
+           },
+         });
+       },
+     );
+     ```
