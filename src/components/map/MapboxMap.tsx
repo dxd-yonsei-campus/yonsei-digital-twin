@@ -78,6 +78,16 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
     }) as Feature<Polygon, GeoJsonProperties>[];
 
     map.on('style.load', () => {
+      // Add terrain layer
+      map.addSource('mapbox-dem', {
+        type: 'raster-dem',
+        url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+        tileSize: 512,
+        maxzoom: 14,
+      });
+
+      map.setTerrain({ source: 'mapbox-dem', exaggeration: 1 });
+
       // Insert the layer beneath any symbol layer.
       const layers = map.getStyle().layers;
 
@@ -167,55 +177,55 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         labelLayerId,
       );
 
-      const buildingHeightsWithOffset = Object.fromEntries(
-        allBuildingData
-          .filter((building) => Boolean(building.height))
-          .map((building) => {
-            const height = building.height || 0;
-            const extrusionOffset = building.extrusionOffset || 0;
-            const terrainOffset = building.terrain_offset || 0;
-            const totalHeight = height + extrusionOffset + terrainOffset;
-            return [String(building.id), totalHeight];
-          }),
-      );
+      // const buildingHeightsWithOffset = Object.fromEntries(
+      //   allBuildingData
+      //     .filter((building) => Boolean(building.height))
+      //     .map((building) => {
+      //       const height = building.height || 0;
+      //       const extrusionOffset = building.extrusionOffset || 0;
+      //       const terrainOffset = building.terrain_offset || 0;
+      //       const totalHeight = height + extrusionOffset + terrainOffset;
+      //       return [String(building.id), totalHeight];
+      //     }),
+      // );
 
-      const totalOffsets = Object.fromEntries(
-        allBuildingData
-          .filter(
-            (building) =>
-              Boolean(building.terrain_offset) ||
-              Boolean(building.extrusionOffset),
-          )
-          .map((building) => {
-            const extrusionOffset = building?.extrusionOffset || 0;
-            const terrainOffset = building?.terrain_offset || 0;
-            return [String(building.id), terrainOffset + extrusionOffset];
-          }),
-      );
+      // const totalOffsets = Object.fromEntries(
+      //   allBuildingData
+      //     .filter(
+      //       (building) =>
+      //         Boolean(building.terrain_offset) ||
+      //         Boolean(building.extrusionOffset),
+      //     )
+      //     .map((building) => {
+      //       const extrusionOffset = building?.extrusionOffset || 0;
+      //       const terrainOffset = building?.terrain_offset || 0;
+      //       return [String(building.id), terrainOffset + extrusionOffset];
+      //     }),
+      // );
 
-      const fillExtrusionWithTerrainHeightExpression: DataDrivenPropertyValueSpecification<number> =
-        [
-          'case',
-          [
-            'has',
-            ['to-string', ['id']],
-            ['literal', buildingHeightsWithOffset],
-          ],
-          [
-            'get',
-            ['to-string', ['id']],
-            ['literal', buildingHeightsWithOffset],
-          ],
-          ['get', 'height'],
-        ];
+      // const fillExtrusionWithTerrainHeightExpression: DataDrivenPropertyValueSpecification<number> =
+      //   [
+      //     'case',
+      //     [
+      //       'has',
+      //       ['to-string', ['id']],
+      //       ['literal', buildingHeightsWithOffset],
+      //     ],
+      //     [
+      //       'get',
+      //       ['to-string', ['id']],
+      //       ['literal', buildingHeightsWithOffset],
+      //     ],
+      //     ['get', 'height'],
+      //   ];
 
-      const fillExtrusionBaseWithTerrainExpression: DataDrivenPropertyValueSpecification<number> =
-        [
-          'case',
-          ['has', ['to-string', ['id']], ['literal', totalOffsets]],
-          ['get', ['to-string', ['id']], ['literal', totalOffsets]],
-          ['get', 'min_height'],
-        ];
+      // const fillExtrusionBaseWithTerrainExpression: DataDrivenPropertyValueSpecification<number> =
+      //   [
+      //     'case',
+      //     ['has', ['to-string', ['id']], ['literal', totalOffsets]],
+      //     ['get', ['to-string', ['id']], ['literal', totalOffsets]],
+      //     ['get', 'min_height'],
+      //   ];
 
       map.addLayer(
         {
@@ -223,8 +233,9 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           type: 'fill-extrusion',
           source: 'custom-extrusions',
           paint: {
-            'fill-extrusion-height': fillExtrusionWithTerrainHeightExpression,
-            'fill-extrusion-base': fillExtrusionBaseWithTerrainExpression,
+            // TODO: Fix the selecting extrusions and use custom terrain
+            'fill-extrusion-height': fillExtrusionHeightExpression,
+            'fill-extrusion-base': fillExtrusionBaseExpression,
             'fill-extrusion-opacity': 0,
           },
         },
@@ -237,7 +248,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         latitude: 37.566086,
         modelUrl: '/models/rhino-simple/sinchon.gltf',
         id: 'rhino-simple-sinchon',
-        altitude: 108,
+        altitude: 143,
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoSimpleSinchonLayer, labelLayerId);
@@ -259,7 +270,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         latitude: 37.566086,
         modelUrl: '/models/rhino-detailed/sinchon.gltf',
         id: 'rhino-detailed-sinchon',
-        altitude: 108,
+        altitude: 143,
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoDetailedSinchon, labelLayerId);
