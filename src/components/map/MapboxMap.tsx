@@ -248,7 +248,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         latitude: 37.566086,
         modelUrl: '/models/rhino-simple/sinchon.gltf',
         id: 'rhino-simple-sinchon',
-        altitude: 143,
+        altitude: 154,
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoSimpleSinchonLayer, labelLayerId);
@@ -270,7 +270,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         latitude: 37.566086,
         modelUrl: '/models/rhino-detailed/sinchon.gltf',
         id: 'rhino-detailed-sinchon',
-        altitude: 143,
+        altitude: 154,
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoDetailedSinchon, labelLayerId);
