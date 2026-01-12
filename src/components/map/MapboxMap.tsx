@@ -78,6 +78,16 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
     }) as Feature<Polygon, GeoJsonProperties>[];
 
     map.on('style.load', () => {
+      // Add terrain layer
+      map.addSource('mapbox-dem', {
+        type: 'raster-dem',
+        url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+        tileSize: 512,
+        maxzoom: 14,
+      });
+
+      map.setTerrain({ source: 'mapbox-dem', exaggeration: 1 });
+
       // Insert the layer beneath any symbol layer.
       const layers = map.getStyle().layers;
 
@@ -167,55 +177,55 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         labelLayerId,
       );
 
-      const buildingHeightsWithOffset = Object.fromEntries(
-        allBuildingData
-          .filter((building) => Boolean(building.height))
-          .map((building) => {
-            const height = building.height || 0;
-            const extrusionOffset = building.extrusionOffset || 0;
-            const terrainOffset = building.terrain_offset || 0;
-            const totalHeight = height + extrusionOffset + terrainOffset;
-            return [String(building.id), totalHeight];
-          }),
-      );
+      // const buildingHeightsWithOffset = Object.fromEntries(
+      //   allBuildingData
+      //     .filter((building) => Boolean(building.height))
+      //     .map((building) => {
+      //       const height = building.height || 0;
+      //       const extrusionOffset = building.extrusionOffset || 0;
+      //       const terrainOffset = building.terrain_offset || 0;
+      //       const totalHeight = height + extrusionOffset + terrainOffset;
+      //       return [String(building.id), totalHeight];
+      //     }),
+      // );
 
-      const totalOffsets = Object.fromEntries(
-        allBuildingData
-          .filter(
-            (building) =>
-              Boolean(building.terrain_offset) ||
-              Boolean(building.extrusionOffset),
-          )
-          .map((building) => {
-            const extrusionOffset = building?.extrusionOffset || 0;
-            const terrainOffset = building?.terrain_offset || 0;
-            return [String(building.id), terrainOffset + extrusionOffset];
-          }),
-      );
+      // const totalOffsets = Object.fromEntries(
+      //   allBuildingData
+      //     .filter(
+      //       (building) =>
+      //         Boolean(building.terrain_offset) ||
+      //         Boolean(building.extrusionOffset),
+      //     )
+      //     .map((building) => {
+      //       const extrusionOffset = building?.extrusionOffset || 0;
+      //       const terrainOffset = building?.terrain_offset || 0;
+      //       return [String(building.id), terrainOffset + extrusionOffset];
+      //     }),
+      // );
 
-      const fillExtrusionWithTerrainHeightExpression: DataDrivenPropertyValueSpecification<number> =
-        [
-          'case',
-          [
-            'has',
-            ['to-string', ['id']],
-            ['literal', buildingHeightsWithOffset],
-          ],
-          [
-            'get',
-            ['to-string', ['id']],
-            ['literal', buildingHeightsWithOffset],
-          ],
-          ['get', 'height'],
-        ];
+      // const fillExtrusionWithTerrainHeightExpression: DataDrivenPropertyValueSpecification<number> =
+      //   [
+      //     'case',
+      //     [
+      //       'has',
+      //       ['to-string', ['id']],
+      //       ['literal', buildingHeightsWithOffset],
+      //     ],
+      //     [
+      //       'get',
+      //       ['to-string', ['id']],
+      //       ['literal', buildingHeightsWithOffset],
+      //     ],
+      //     ['get', 'height'],
+      //   ];
 
-      const fillExtrusionBaseWithTerrainExpression: DataDrivenPropertyValueSpecification<number> =
-        [
-          'case',
-          ['has', ['to-string', ['id']], ['literal', totalOffsets]],
-          ['get', ['to-string', ['id']], ['literal', totalOffsets]],
-          ['get', 'min_height'],
-        ];
+      // const fillExtrusionBaseWithTerrainExpression: DataDrivenPropertyValueSpecification<number> =
+      //   [
+      //     'case',
+      //     ['has', ['to-string', ['id']], ['literal', totalOffsets]],
+      //     ['get', ['to-string', ['id']], ['literal', totalOffsets]],
+      //     ['get', 'min_height'],
+      //   ];
 
       map.addLayer(
         {
@@ -223,8 +233,9 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           type: 'fill-extrusion',
           source: 'custom-extrusions',
           paint: {
-            'fill-extrusion-height': fillExtrusionWithTerrainHeightExpression,
-            'fill-extrusion-base': fillExtrusionBaseWithTerrainExpression,
+            // TODO: Fix the selecting extrusions and use custom terrain
+            'fill-extrusion-height': fillExtrusionHeightExpression,
+            'fill-extrusion-base': fillExtrusionBaseExpression,
             'fill-extrusion-opacity': 0,
           },
         },
@@ -237,7 +248,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         latitude: 37.566086,
         modelUrl: '/models/rhino-simple/sinchon.gltf',
         id: 'rhino-simple-sinchon',
-        altitude: 108,
+        altitude: 154,
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoSimpleSinchonLayer, labelLayerId);
@@ -259,10 +270,115 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         latitude: 37.566086,
         modelUrl: '/models/rhino-detailed/sinchon.gltf',
         id: 'rhino-detailed-sinchon',
-        altitude: 108,
+        altitude: 154,
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoDetailedSinchon, labelLayerId);
+
+      map.addSource('cfd', {
+        type: 'vector',
+        tiles: ['http://localhost:8000/tiles/{z}/{x}/{y}'],
+        // url: 'mapbox://lesterong.0u0iaqw5'
+      });
+
+      map.addLayer({
+        id: 'pressure-cfd',
+        type: 'circle',
+        source: 'cfd',
+        'source-layer': 'sinchon',
+        paint: {
+          'circle-radius': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            5,
+            4,
+            10,
+            10,
+            14,
+            18,
+            16,
+            34, // bigger jump
+            17,
+            40, // fill gaps
+            18,
+            42,
+          ],
+
+          'circle-color': [
+            'interpolate',
+            ['linear'],
+            ['get', 'P'],
+            0,
+            '#0000ff', // Deep blue (low)
+            0.1,
+            '#3366ff', // Blue
+            0.2,
+            '#6699ff', // Light blue
+            0.3,
+            '#9966ff', // Purple
+            0.4,
+            '#cc3366', // Reddish-purple
+            0.5,
+            '#ff0000', // Red (high)
+          ],
+          'circle-opacity': 0.5,
+          'circle-blur': 0.8, // Maximum blur for smoothness
+          'circle-pitch-alignment': 'map',
+          'circle-pitch-scale': 'map',
+        },
+      });
+    });
+
+    // TODO: Setup SFD image
+    // SDF arrow, rotate based on wind angle
+    // But the PNG image must be white to begin with.
+    map.loadImage(
+      'https://upload.wikimedia.org/wikipedia/commons/3/3c/Arrow_right_dark.png',
+      (err, image) => {
+        if (err) throw err;
+        if (!image) return;
+        map.addImage('wind-arrow', image, { sdf: true });
+
+        map.addLayer({
+          id: 'wind-arrows',
+          type: 'symbol',
+          source: 'cfd',
+          'source-layer': 'sinchon',
+          minzoom: 8,
+
+          layout: {
+            'icon-image': 'wind-arrow',
+            'icon-size': 0.1,
+            'icon-rotate': ['-', ['get', 'angle'], 45],
+            'icon-rotation-alignment': 'map',
+            'icon-allow-overlap': true,
+            'icon-ignore-placement': true,
+          },
+          paint: {
+            'icon-color': [
+              'interpolate',
+              ['linear'],
+              ['get', 'magnitude'],
+              0.0,
+              '#0000ff', // blue (low wind)
+              2.0,
+              '#00ffff',
+              4.0,
+              '#ffff00',
+              6.0,
+              '#ff9900',
+              8.0,
+              '#ff0000', // red (high wind)
+            ],
+            'icon-opacity': 1,
+          },
+        });
+      },
+    );
+
+    map.on('zoom', () => {
+      console.log('Zoom level:', map.getZoom());
     });
 
     map.on('click', (e) => {
@@ -319,6 +435,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
       map.setLayoutProperty('rhino-simple-sinchon', 'visibility', 'none');
       map.setLayoutProperty('rhino-simple-songdo', 'visibility', 'none');
       map.setLayoutProperty('rhino-detailed-sinchon', 'visibility', 'none');
+      map.setLayoutProperty('pressure-cfd', 'visibility', 'none');
       if (layer === 'osm') {
         map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
         map.setLayoutProperty('selected-building', 'visibility', 'visible');
@@ -331,6 +448,13 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           'visibility',
           'visible',
         );
+
+        // TODO: Allow users to toggle which layer to show in Rhino Detailed
+        map.setLayoutProperty('pressure-cfd', 'visibility', 'none');
+        if (map.getLayer('rhino-detailed-sinchon')) {
+          map.moveLayer('wind-arrows', 'rhino-detailed-sinchon');
+          map.moveLayer('pressure-cfd', 'rhino-detailed-sinchon');
+        }
       }
     };
 
@@ -405,6 +529,13 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           }
         }, 25);
       }
+    });
+
+    map.on('click', (e) => {
+      const lng = e.lngLat.lng;
+      const lat = e.lngLat.lat;
+
+      console.log(`Longitude: ${lng}, Latitude: ${lat}`);
     });
 
     const hideHoverTooltip = () => {
