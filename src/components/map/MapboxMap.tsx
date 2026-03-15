@@ -387,10 +387,6 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
       });
     });
 
-    map.on('zoom', () => {
-      console.log('Zoom level:', map.getZoom());
-    });
-
     map.on('click', (e) => {
       let currentSelectedId: number | string = '';
       const $buildingLayer = buildingLayer.get();
@@ -546,6 +542,10 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
       const lat = e.lngLat.lat;
 
       console.log(`Longitude: ${lng}, Latitude: ${lat}`);
+    });
+
+    map.on('zoom', () => {
+      console.log('Zoom level:', map.getZoom());
     });
 
     const hideHoverTooltip = () => {
