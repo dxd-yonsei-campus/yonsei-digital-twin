@@ -365,6 +365,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           'icon-rotation-alignment': 'map',
           'icon-allow-overlap': true,
           'icon-ignore-placement': true,
+          visibility: 'none',
         },
         paint: {
           'icon-color': [
@@ -436,12 +437,23 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
     });
 
     const setBuildingLayer = (layer: BuildingLayerType) => {
+      const hasWindArrowLayer = map.getLayer('wind-arrows');
+      const hasPressureLayer = map.getLayer('pressure-cfd');
+
       map.setLayoutProperty('osm-buildings', 'visibility', 'none');
       map.setLayoutProperty('selected-building', 'visibility', 'none');
       map.setLayoutProperty('rhino-simple-sinchon', 'visibility', 'none');
       map.setLayoutProperty('rhino-simple-songdo', 'visibility', 'none');
       map.setLayoutProperty('rhino-detailed-sinchon', 'visibility', 'none');
-      map.setLayoutProperty('pressure-cfd', 'visibility', 'none');
+
+      if (hasWindArrowLayer) {
+        map.setLayoutProperty('wind-arrows', 'visibility', 'none');
+      }
+
+      if (hasPressureLayer) {
+        map.setLayoutProperty('pressure-cfd', 'visibility', 'none');
+      }
+
       if (layer === 'osm') {
         map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
         map.setLayoutProperty('selected-building', 'visibility', 'visible');
@@ -454,9 +466,15 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           'visibility',
           'visible',
         );
+        if (hasWindArrowLayer) {
+          map.setLayoutProperty('wind-arrows', 'visibility', 'visible');
+        }
 
         // TODO: Allow users to toggle which layer to show in Rhino Detailed
-        map.setLayoutProperty('pressure-cfd', 'visibility', 'none');
+        if (hasPressureLayer) {
+          map.setLayoutProperty('pressure-cfd', 'visibility', 'none');
+        }
+
         if (map.getLayer('rhino-detailed-sinchon')) {
           map.moveLayer('wind-arrows', 'rhino-detailed-sinchon');
           map.moveLayer('pressure-cfd', 'rhino-detailed-sinchon');
