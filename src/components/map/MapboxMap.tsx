@@ -275,24 +275,17 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
       });
       map.addLayer(rhinoDetailedSinchon, labelLayerId);
 
-      map.addSource('cfd-pressure', {
+      map.addSource('cfd', {
         type: 'vector',
         // TODO: Update with the correct URL
-        tiles: ['http://localhost:8000/pressure-tiles/{z}/{x}/{y}'],
-        // url: 'mapbox://lesterong.0u0iaqw5'
-      });
-
-      map.addSource('cfd-wind', {
-        type: 'vector',
-        // TODO: Update with the correct URL
-        tiles: ['http://localhost:8000/wind-tiles/{z}/{x}/{y}'],
+        tiles: ['http://localhost:8000/tiles/{z}/{x}/{y}'],
         // url: 'mapbox://lesterong.0u0iaqw5'
       });
 
       map.addLayer({
         id: 'pressure-cfd',
         type: 'circle',
-        source: 'cfd-pressure',
+        source: 'cfd',
         'source-layer': 'sinchon',
         paint: {
           'circle-radius': [
@@ -351,7 +344,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         map.addLayer({
           id: 'wind-arrows',
           type: 'symbol',
-          source: 'cfd-wind',
+          source: 'cfd',
           'source-layer': 'sinchon',
           minzoom: 8,
 
