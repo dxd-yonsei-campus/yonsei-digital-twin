@@ -14,7 +14,7 @@ import { createCustomLayer } from '@/lib/modelUtils';
 import { toast } from 'sonner';
 import { useTranslations } from '@/i18n/utils';
 import type { Feature, Polygon, GeoJsonProperties } from 'geojson';
-import { findGroupForId } from '@/lib/mapUtils';
+import { findGroupForId, safeSetLayoutProperty } from '@/lib/mapUtils';
 import { ELEMENT_IDS } from '@/lib/consts';
 import { useEffect, useRef, type Ref } from 'react';
 import type { ui } from '@/i18n/ui';
@@ -47,6 +47,16 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
       language: lang,
       ...initialCamera,
     });
+
+    const safeSetLayoutPropertyWithMap = <
+      T extends keyof mapboxgl.LayoutSpecification,
+    >(
+      layerId: string,
+      name: T,
+      value: mapboxgl.LayoutSpecification[T],
+    ) => {
+      safeSetLayoutProperty(map, layerId, name, value);
+    };
 
     // Store map instance in ref
     mapRef.current = map;
@@ -428,56 +438,71 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         }
 
         if (buildingLayer.get() == 'osm') {
-          map.setLayoutProperty('selected-building', 'visibility', 'visible');
+          safeSetLayoutPropertyWithMap(
+            'selected-building',
+            'visibility',
+            'visible',
+          );
         }
       } else {
         map.setFilter('selected-building', ['==', ['id'], '']);
-        map.setLayoutProperty('selected-building', 'visibility', 'none');
+        safeSetLayoutPropertyWithMap('selected-building', 'visibility', 'none');
       }
     });
 
     const setBuildingLayer = (layer: BuildingLayerType) => {
-      const hasWindArrowLayer = map.getLayer('wind-arrows');
-      const hasPressureLayer = map.getLayer('pressure-cfd');
-
-      map.setLayoutProperty('osm-buildings', 'visibility', 'none');
-      map.setLayoutProperty('selected-building', 'visibility', 'none');
-      map.setLayoutProperty('rhino-simple-sinchon', 'visibility', 'none');
-      map.setLayoutProperty('rhino-simple-songdo', 'visibility', 'none');
-      map.setLayoutProperty('rhino-detailed-sinchon', 'visibility', 'none');
-
-      if (hasWindArrowLayer) {
-        map.setLayoutProperty('wind-arrows', 'visibility', 'none');
-      }
-
-      if (hasPressureLayer) {
-        map.setLayoutProperty('pressure-cfd', 'visibility', 'none');
-      }
+      safeSetLayoutPropertyWithMap('osm-buildings', 'visibility', 'none');
+      safeSetLayoutPropertyWithMap('selected-building', 'visibility', 'none');
+      safeSetLayoutPropertyWithMap(
+        'rhino-simple-sinchon',
+        'visibility',
+        'none',
+      );
+      safeSetLayoutPropertyWithMap('rhino-simple-songdo', 'visibility', 'none');
+      safeSetLayoutPropertyWithMap(
+        'rhino-detailed-sinchon',
+        'visibility',
+        'none',
+      );
+      safeSetLayoutPropertyWithMap('wind-arrows', 'visibility', 'none');
+      safeSetLayoutPropertyWithMap('pressure-cfd', 'visibility', 'none');
 
       if (layer === 'osm') {
-        map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
-        map.setLayoutProperty('selected-building', 'visibility', 'visible');
+        safeSetLayoutPropertyWithMap('osm-buildings', 'visibility', 'visible');
+        safeSetLayoutPropertyWithMap(
+          'selected-building',
+          'visibility',
+          'visible',
+        );
       } else if (layer === 'rhino-simple') {
-        map.setLayoutProperty('rhino-simple-sinchon', 'visibility', 'visible');
-        map.setLayoutProperty('rhino-simple-songdo', 'visibility', 'visible');
+        safeSetLayoutPropertyWithMap(
+          'rhino-simple-sinchon',
+          'visibility',
+          'visible',
+        );
+        safeSetLayoutPropertyWithMap(
+          'rhino-simple-songdo',
+          'visibility',
+          'visible',
+        );
       } else if (layer === 'rhino-detailed') {
-        map.setLayoutProperty(
+        safeSetLayoutPropertyWithMap(
           'rhino-detailed-sinchon',
           'visibility',
           'visible',
         );
-        if (hasWindArrowLayer) {
-          map.setLayoutProperty('wind-arrows', 'visibility', 'visible');
-        }
 
         // TODO: Allow users to toggle which layer to show in Rhino Detailed
-        if (hasPressureLayer) {
-          map.setLayoutProperty('pressure-cfd', 'visibility', 'none');
-        }
+        safeSetLayoutPropertyWithMap('pressure-cfd', 'visibility', 'none');
+        safeSetLayoutPropertyWithMap('wind-arrows', 'visibility', 'visible');
 
         if (map.getLayer('rhino-detailed-sinchon')) {
-          map.moveLayer('wind-arrows', 'rhino-detailed-sinchon');
-          map.moveLayer('pressure-cfd', 'rhino-detailed-sinchon');
+          if (map.getLayer('wind-arrows')) {
+            map.moveLayer('wind-arrows', 'rhino-detailed-sinchon');
+          }
+          if (map.getLayer('pressure-cfd')) {
+            map.moveLayer('pressure-cfd', 'rhino-detailed-sinchon');
+          }
         }
       }
     };

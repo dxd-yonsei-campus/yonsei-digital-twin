@@ -1,4 +1,5 @@
 import type { BuildingIdType } from '@/types/map';
+import type mapboxgl from 'mapbox-gl';
 
 const COLLEGE_OF_MEDICINE_IDS: Array<BuildingIdType> = [1178739301, 1178739302];
 const LIBERTAS_HALL_A_IDS: Array<BuildingIdType> = [1096854782, 478878023];
@@ -39,4 +40,17 @@ export function containsIdOrGroup(
   const targetGroup = BUILDING_LOOKUP.get(newId) || [newId];
   const idSet = new Set(idList);
   return targetGroup.some((id) => idSet.has(id));
+}
+
+export function safeSetLayoutProperty<
+  T extends keyof mapboxgl.LayoutSpecification,
+>(
+  map: mapboxgl.Map,
+  layerId: string,
+  name: T,
+  value: mapboxgl.LayoutSpecification[T],
+) {
+  if (map.getLayer(layerId)) {
+    map.setLayoutProperty(layerId, name, value);
+  }
 }
