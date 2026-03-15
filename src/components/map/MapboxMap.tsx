@@ -16,8 +16,9 @@ import { useTranslations } from '@/i18n/utils';
 import type { Feature, Polygon, GeoJsonProperties } from 'geojson';
 import {
   findGroupForId,
-  safeSetLayoutProperty,
-  safeMoveLayer,
+  safeSetLayoutPropertyForMap,
+  safeMoveLayerForMap,
+  setDebugToolsForMap,
 } from '@/lib/mapUtils';
 import { ELEMENT_IDS } from '@/lib/consts';
 import { useEffect, useRef, type Ref } from 'react';
@@ -53,31 +54,20 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
       ...initialCamera,
     });
 
-    if (isDev) {
-      map.on('click', (e) => {
-        const lng = e.lngLat.lng;
-        const lat = e.lngLat.lat;
+    setDebugToolsForMap(map, isDev);
 
-        console.log(`Longitude: ${lng}, Latitude: ${lat}`);
-      });
-
-      map.on('zoom', () => {
-        console.log('Zoom level:', map.getZoom());
-      });
-    }
-
-    const safeSetLayoutPropertyWithMap = <
+    const safeSetLayoutProperty = <
       T extends keyof mapboxgl.LayoutSpecification,
     >(
       layerId: string,
       name: T,
       value: mapboxgl.LayoutSpecification[T],
     ) => {
-      safeSetLayoutProperty(map, layerId, name, value);
+      safeSetLayoutPropertyForMap(map, layerId, name, value);
     };
 
-    const safeMoveLayerWithMap = (layerId: string, beforeLayerId: string) => {
-      safeMoveLayer(map, layerId, beforeLayerId);
+    const safeMoveLayer = (layerId: string, beforeLayerId: string) => {
+      safeMoveLayerForMap(map, layerId, beforeLayerId);
     };
 
     // Store map instance in ref
@@ -460,65 +450,41 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         }
 
         if (buildingLayer.get() == 'osm') {
-          safeSetLayoutPropertyWithMap(
-            'selected-building',
-            'visibility',
-            'visible',
-          );
+          safeSetLayoutProperty('selected-building', 'visibility', 'visible');
         }
       } else {
         map.setFilter('selected-building', ['==', ['id'], '']);
-        safeSetLayoutPropertyWithMap('selected-building', 'visibility', 'none');
+        safeSetLayoutProperty('selected-building', 'visibility', 'none');
       }
     });
 
     const setBuildingLayer = (layer: BuildingLayerType) => {
-      safeSetLayoutPropertyWithMap('osm-buildings', 'visibility', 'none');
-      safeSetLayoutPropertyWithMap('selected-building', 'visibility', 'none');
-      safeSetLayoutPropertyWithMap(
-        'rhino-simple-sinchon',
-        'visibility',
-        'none',
-      );
-      safeSetLayoutPropertyWithMap('rhino-simple-songdo', 'visibility', 'none');
-      safeSetLayoutPropertyWithMap(
-        'rhino-detailed-sinchon',
-        'visibility',
-        'none',
-      );
-      safeSetLayoutPropertyWithMap('wind-arrows', 'visibility', 'none');
-      safeSetLayoutPropertyWithMap('pressure-cfd', 'visibility', 'none');
+      safeSetLayoutProperty('osm-buildings', 'visibility', 'none');
+      safeSetLayoutProperty('selected-building', 'visibility', 'none');
+      safeSetLayoutProperty('rhino-simple-sinchon', 'visibility', 'none');
+      safeSetLayoutProperty('rhino-simple-songdo', 'visibility', 'none');
+      safeSetLayoutProperty('rhino-detailed-sinchon', 'visibility', 'none');
+      safeSetLayoutProperty('wind-arrows', 'visibility', 'none');
+      safeSetLayoutProperty('pressure-cfd', 'visibility', 'none');
 
       if (layer === 'osm') {
-        safeSetLayoutPropertyWithMap('osm-buildings', 'visibility', 'visible');
-        safeSetLayoutPropertyWithMap(
-          'selected-building',
-          'visibility',
-          'visible',
-        );
+        safeSetLayoutProperty('osm-buildings', 'visibility', 'visible');
+        safeSetLayoutProperty('selected-building', 'visibility', 'visible');
       } else if (layer === 'rhino-simple') {
-        safeSetLayoutPropertyWithMap(
-          'rhino-simple-sinchon',
-          'visibility',
-          'visible',
-        );
-        safeSetLayoutPropertyWithMap(
-          'rhino-simple-songdo',
-          'visibility',
-          'visible',
-        );
+        safeSetLayoutProperty('rhino-simple-sinchon', 'visibility', 'visible');
+        safeSetLayoutProperty('rhino-simple-songdo', 'visibility', 'visible');
       } else if (layer === 'rhino-detailed') {
-        safeSetLayoutPropertyWithMap(
+        safeSetLayoutProperty(
           'rhino-detailed-sinchon',
           'visibility',
           'visible',
         );
 
         // TODO: Allow users to toggle which layer to show in Rhino Detailed
-        safeSetLayoutPropertyWithMap('pressure-cfd', 'visibility', 'none');
-        safeSetLayoutPropertyWithMap('wind-arrows', 'visibility', 'visible');
-        safeMoveLayerWithMap('wind-arrows', 'rhino-detailed-sinchon');
-        safeMoveLayerWithMap('pressure-cfd', 'rhino-detailed-sinchon');
+        safeSetLayoutProperty('pressure-cfd', 'visibility', 'none');
+        safeSetLayoutProperty('wind-arrows', 'visibility', 'visible');
+        safeMoveLayer('wind-arrows', 'rhino-detailed-sinchon');
+        safeMoveLayer('pressure-cfd', 'rhino-detailed-sinchon');
       }
     };
 

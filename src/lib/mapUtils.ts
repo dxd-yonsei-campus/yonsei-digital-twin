@@ -42,7 +42,7 @@ export function containsIdOrGroup(
   return targetGroup.some((id) => idSet.has(id));
 }
 
-export function safeSetLayoutProperty<
+export function safeSetLayoutPropertyForMap<
   T extends keyof mapboxgl.LayoutSpecification,
 >(
   map: mapboxgl.Map,
@@ -55,7 +55,7 @@ export function safeSetLayoutProperty<
   }
 }
 
-export function safeMoveLayer(
+export function safeMoveLayerForMap(
   map: mapboxgl.Map,
   layerId: string,
   beforeLayerId: string,
@@ -63,4 +63,21 @@ export function safeMoveLayer(
   if (map.getLayer(layerId) && map.getLayer(beforeLayerId)) {
     map.moveLayer(layerId, beforeLayerId);
   }
+}
+
+export function setDebugToolsForMap(map: mapboxgl.Map, isDebugMode: boolean) {
+  if (!isDebugMode) {
+    return;
+  }
+
+  map.on('click', (e) => {
+    const lng = e.lngLat.lng;
+    const lat = e.lngLat.lat;
+
+    console.log(`Longitude: ${lng}, Latitude: ${lat}`);
+  });
+
+  map.on('zoom', () => {
+    console.log('Zoom level:', map.getZoom());
+  });
 }
