@@ -334,61 +334,58 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
     // TODO: Setup SFD image
     // SDF arrow, rotate based on wind angle
     // But the PNG image must be white to begin with.
-    map.loadImage(
-      'https://upload.wikimedia.org/wikipedia/commons/3/3c/Arrow_right_dark.png',
-      (err, image) => {
-        if (err) throw err;
-        if (!image) return;
-        map.addImage('wind-arrow', image, { sdf: true });
+    map.loadImage('/cfd/wind-arrow.png', (err, image) => {
+      if (err) throw err;
+      if (!image) return;
+      map.addImage('wind-arrow', image, { sdf: true });
 
-        map.addLayer({
-          id: 'wind-arrows',
-          type: 'symbol',
-          source: 'cfd',
-          'source-layer': 'sinchon',
-          minzoom: 8,
+      map.addLayer({
+        id: 'wind-arrows',
+        type: 'symbol',
+        source: 'cfd',
+        'source-layer': 'sinchon',
+        minzoom: 8,
 
-          layout: {
-            'icon-image': 'wind-arrow',
-            'icon-size': [
-              'interpolate',
-              ['linear'],
-              ['zoom'],
-              14,
-              0.05,
-              15,
-              0.05,
-              16,
-              0.08,
-              18,
-              0.09,
-            ],
-            'icon-rotate': ['-', ['get', 'angle'], 45],
-            'icon-rotation-alignment': 'map',
-            'icon-allow-overlap': true,
-            'icon-ignore-placement': true,
-          },
-          paint: {
-            'icon-color': [
-              'interpolate',
-              ['linear'],
-              ['get', 'magnitude'],
-              0.0,
-              '#0000ff', // blue (low wind)
-              2.0,
-              '#00ffff',
-              4.0,
-              '#ffff00',
-              6.0,
-              '#ff9900',
-              8.0,
-              '#ff0000', // red (high wind)
-            ],
-            'icon-opacity': 1,
-          },
-        });
-      },
-    );
+        layout: {
+          'icon-image': 'wind-arrow',
+          'icon-size': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            14,
+            0.05,
+            15,
+            0.05,
+            16,
+            0.08,
+            18,
+            0.09,
+          ],
+          'icon-rotate': ['-', ['get', 'angle'], 45],
+          'icon-rotation-alignment': 'map',
+          'icon-allow-overlap': true,
+          'icon-ignore-placement': true,
+        },
+        paint: {
+          'icon-color': [
+            'interpolate',
+            ['linear'],
+            ['get', 'magnitude'],
+            0.0,
+            '#0000ff', // blue (low wind)
+            2.0,
+            '#00ffff',
+            4.0,
+            '#ffff00',
+            6.0,
+            '#ff9900',
+            8.0,
+            '#ff0000', // red (high wind)
+          ],
+          'icon-opacity': 1,
+        },
+      });
+    });
 
     map.on('zoom', () => {
       console.log('Zoom level:', map.getZoom());
