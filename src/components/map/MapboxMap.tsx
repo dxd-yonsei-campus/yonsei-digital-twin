@@ -14,7 +14,11 @@ import { createCustomLayer } from '@/lib/modelUtils';
 import { toast } from 'sonner';
 import { useTranslations } from '@/i18n/utils';
 import type { Feature, Polygon, GeoJsonProperties } from 'geojson';
-import { findGroupForId, safeSetLayoutProperty } from '@/lib/mapUtils';
+import {
+  findGroupForId,
+  safeSetLayoutProperty,
+  safeMoveLayer,
+} from '@/lib/mapUtils';
 import { ELEMENT_IDS } from '@/lib/consts';
 import { useEffect, useRef, type Ref } from 'react';
 import type { ui } from '@/i18n/ui';
@@ -56,6 +60,10 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
       value: mapboxgl.LayoutSpecification[T],
     ) => {
       safeSetLayoutProperty(map, layerId, name, value);
+    };
+
+    const safeMoveLayerWithMap = (layerId: string, beforeLayerId: string) => {
+      safeMoveLayer(map, layerId, beforeLayerId);
     };
 
     // Store map instance in ref
@@ -495,15 +503,8 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         // TODO: Allow users to toggle which layer to show in Rhino Detailed
         safeSetLayoutPropertyWithMap('pressure-cfd', 'visibility', 'none');
         safeSetLayoutPropertyWithMap('wind-arrows', 'visibility', 'visible');
-
-        if (map.getLayer('rhino-detailed-sinchon')) {
-          if (map.getLayer('wind-arrows')) {
-            map.moveLayer('wind-arrows', 'rhino-detailed-sinchon');
-          }
-          if (map.getLayer('pressure-cfd')) {
-            map.moveLayer('pressure-cfd', 'rhino-detailed-sinchon');
-          }
-        }
+        safeMoveLayerWithMap('wind-arrows', 'rhino-detailed-sinchon');
+        safeMoveLayerWithMap('pressure-cfd', 'rhino-detailed-sinchon');
       }
     };
 

@@ -54,3 +54,13 @@ export function safeSetLayoutProperty<
     map.setLayoutProperty(layerId, name, value);
   }
 }
+
+export function safeMoveLayer(
+  map: mapboxgl.Map,
+  layerId: string,
+  beforeLayerId: string,
+) {
+  if (map.getLayer(layerId) && map.getLayer(beforeLayerId)) {
+    map.moveLayer(layerId, beforeLayerId);
+  }
+}
