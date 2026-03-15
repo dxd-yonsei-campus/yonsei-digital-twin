@@ -32,6 +32,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
   const { state } = useSidebar();
   const mapContainerRef = useRef<HTMLElement>(null);
   const mapRef = useRef<mapboxgl.Map>(null);
+  const isDev = process.env.NODE_ENV === 'development';
 
   useEffect(() => {
     const t = useTranslations(lang);
@@ -51,6 +52,19 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
       language: lang,
       ...initialCamera,
     });
+
+    if (isDev) {
+      map.on('click', (e) => {
+        const lng = e.lngLat.lng;
+        const lat = e.lngLat.lat;
+
+        console.log(`Longitude: ${lng}, Latitude: ${lat}`);
+      });
+
+      map.on('zoom', () => {
+        console.log('Zoom level:', map.getZoom());
+      });
+    }
 
     const safeSetLayoutPropertyWithMap = <
       T extends keyof mapboxgl.LayoutSpecification,
@@ -579,17 +593,6 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           }
         }, 25);
       }
-    });
-
-    map.on('click', (e) => {
-      const lng = e.lngLat.lng;
-      const lat = e.lngLat.lat;
-
-      console.log(`Longitude: ${lng}, Latitude: ${lat}`);
-    });
-
-    map.on('zoom', () => {
-      console.log('Zoom level:', map.getZoom());
     });
 
     const hideHoverTooltip = () => {
