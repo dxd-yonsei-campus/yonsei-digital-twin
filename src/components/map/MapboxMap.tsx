@@ -350,7 +350,19 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
 
           layout: {
             'icon-image': 'wind-arrow',
-            'icon-size': 0.1,
+            'icon-size': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
+              14,
+              0.05,
+              15,
+              0.05,
+              16,
+              0.08,
+              18,
+              0.09,
+            ],
             'icon-rotate': ['-', ['get', 'angle'], 45],
             'icon-rotation-alignment': 'map',
             'icon-allow-overlap': true,
