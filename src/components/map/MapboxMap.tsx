@@ -199,55 +199,55 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         labelLayerId,
       );
 
-      // const buildingHeightsWithOffset = Object.fromEntries(
-      //   allBuildingData
-      //     .filter((building) => Boolean(building.height))
-      //     .map((building) => {
-      //       const height = building.height || 0;
-      //       const extrusionOffset = building.extrusionOffset || 0;
-      //       const terrainOffset = building.terrain_offset || 0;
-      //       const totalHeight = height + extrusionOffset + terrainOffset;
-      //       return [String(building.id), totalHeight];
-      //     }),
-      // );
+      const buildingHeightsWithOffset = Object.fromEntries(
+        allBuildingData
+          .filter((building) => Boolean(building.height))
+          .map((building) => {
+            const height = building.height || 0;
+            const extrusionOffset = building.extrusionOffset || 0;
+            const terrainOffset = building.terrain_offset || 0;
+            const totalHeight = height + extrusionOffset + terrainOffset;
+            return [String(building.id), totalHeight];
+          }),
+      );
 
-      // const totalOffsets = Object.fromEntries(
-      //   allBuildingData
-      //     .filter(
-      //       (building) =>
-      //         Boolean(building.terrain_offset) ||
-      //         Boolean(building.extrusionOffset),
-      //     )
-      //     .map((building) => {
-      //       const extrusionOffset = building?.extrusionOffset || 0;
-      //       const terrainOffset = building?.terrain_offset || 0;
-      //       return [String(building.id), terrainOffset + extrusionOffset];
-      //     }),
-      // );
+      const totalOffsets = Object.fromEntries(
+        allBuildingData
+          .filter(
+            (building) =>
+              Boolean(building.terrain_offset) ||
+              Boolean(building.extrusionOffset),
+          )
+          .map((building) => {
+            const extrusionOffset = building?.extrusionOffset || 0;
+            const terrainOffset = building?.terrain_offset || 0;
+            return [String(building.id), terrainOffset + extrusionOffset];
+          }),
+      );
 
-      // const fillExtrusionWithTerrainHeightExpression: DataDrivenPropertyValueSpecification<number> =
-      //   [
-      //     'case',
-      //     [
-      //       'has',
-      //       ['to-string', ['id']],
-      //       ['literal', buildingHeightsWithOffset],
-      //     ],
-      //     [
-      //       'get',
-      //       ['to-string', ['id']],
-      //       ['literal', buildingHeightsWithOffset],
-      //     ],
-      //     ['get', 'height'],
-      //   ];
+      const fillExtrusionWithTerrainHeightExpression: DataDrivenPropertyValueSpecification<number> =
+        [
+          'case',
+          [
+            'has',
+            ['to-string', ['id']],
+            ['literal', buildingHeightsWithOffset],
+          ],
+          [
+            'get',
+            ['to-string', ['id']],
+            ['literal', buildingHeightsWithOffset],
+          ],
+          ['get', 'height'],
+        ];
 
-      // const fillExtrusionBaseWithTerrainExpression: DataDrivenPropertyValueSpecification<number> =
-      //   [
-      //     'case',
-      //     ['has', ['to-string', ['id']], ['literal', totalOffsets]],
-      //     ['get', ['to-string', ['id']], ['literal', totalOffsets]],
-      //     ['get', 'min_height'],
-      //   ];
+      const fillExtrusionBaseWithTerrainExpression: DataDrivenPropertyValueSpecification<number> =
+        [
+          'case',
+          ['has', ['to-string', ['id']], ['literal', totalOffsets]],
+          ['get', ['to-string', ['id']], ['literal', totalOffsets]],
+          ['get', 'min_height'],
+        ];
 
       map.addLayer(
         {
@@ -256,9 +256,9 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           source: 'custom-extrusions',
           paint: {
             // TODO: Fix the selecting extrusions and use custom terrain
-            'fill-extrusion-height': fillExtrusionHeightExpression,
-            'fill-extrusion-base': fillExtrusionBaseExpression,
-            'fill-extrusion-opacity': 0,
+            'fill-extrusion-height': fillExtrusionWithTerrainHeightExpression,
+            'fill-extrusion-base': fillExtrusionBaseWithTerrainExpression,
+            'fill-extrusion-opacity': 0.5,
           },
         },
         labelLayerId,
