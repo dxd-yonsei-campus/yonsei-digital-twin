@@ -396,13 +396,13 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
             ['get', 'magnitude'],
             0.0,
             '#0000ff', // blue (low wind)
-            2.0,
+            2.5,
             '#00ffff',
-            4.0,
+            5.0,
             '#ffff00',
-            6.0,
+            7.5,
             '#ff9900',
-            8.0,
+            10.0,
             '#ff0000', // red (high wind)
           ],
           'icon-opacity': 1,
