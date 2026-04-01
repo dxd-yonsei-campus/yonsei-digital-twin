@@ -933,7 +933,7 @@
     "latitude": 37.562309,
     "longitude": 126.932208,
     "height": 9,
-    "terrain_offset": 0,
+    "terrain_offset": 5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -968,7 +968,6 @@
     "latitude": 37.562737,
     "longitude": 126.932347,
     "height": 14.9,
-    "terrain_offset": 0,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1002,7 +1001,7 @@
     "latitude": 37.562783,
     "longitude": 126.933096,
     "height": 20,
-    "terrain_offset": 0,
+    "terrain_offset": -3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1080,7 +1079,7 @@
     "latitude": 37.56318,
     "longitude": 126.933803,
     "height": 23.9,
-    "terrain_offset": 0,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1120,6 +1119,7 @@
     "latitude": 37.561735,
     "longitude": 126.936647,
     "height": 24,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1198,7 +1198,7 @@
     "latitude": 37.562356,
     "longitude": 126.935265,
     "height": 28,
-    "terrain_offset": 0,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1244,7 +1244,7 @@
     "latitude": 37.562356,
     "longitude": 126.935265,
     "height": 6.6,
-    "terrain_offset": 0,
+    "terrain_offset": 4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1278,6 +1278,7 @@
     "latitude": 37.561723,
     "longitude": 126.935094,
     "height": 28.65,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1324,7 +1325,7 @@
     "latitude": 37.561824,
     "longitude": 126.936214,
     "height": 39.45,
-    "terrain_offset": 0,
+    "terrain_offset": 4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1363,7 +1364,6 @@
     "latitude": 37.561732,
     "longitude": 126.937895,
     "height": 21.1,
-    "terrain_offset": 0,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1407,7 +1407,7 @@
     "latitude": 37.562585,
     "longitude": 126.938795,
     "height": 3,
-    "terrain_offset": 0,
+    "terrain_offset": 10,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1440,7 +1440,7 @@
     "latitude": 37.562787,
     "longitude": 126.938638,
     "height": 9.2,
-    "terrain_offset": 0,
+    "terrain_offset": 9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1517,7 +1517,7 @@
     "latitude": 37.563293,
     "longitude": 126.939018,
     "height": 12.95,
-    "terrain_offset": 0,
+    "terrain_offset": 16,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1564,7 +1564,6 @@
     "latitude": 37.564268,
     "longitude": 126.938917,
     "height": 21.304,
-    "terrain_offset": 0,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1635,7 +1634,7 @@
     "yearly_energy_use": 125,
     "monthly_energy_use": "212-school-of-business",
     "height": 31.4,
-    "terrain_offset": 0,
+    "terrain_offset": 10,
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
     "construction_type_en": "Reinforced concrete",
@@ -1650,7 +1649,7 @@
     "latitude": 37.563996,
     "longitude": 126.940826,
     "height": 17.7,
-    "terrain_offset": 0,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1688,7 +1687,7 @@
     "latitude": 37.563971,
     "longitude": 126.940781,
     "height": 17.7,
-    "terrain_offset": 0,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1725,7 +1724,7 @@
     "latitude": 37.5637,
     "longitude": 126.936923,
     "height": 26.5,
-    "terrain_offset": 0,
+    "terrain_offset": 14,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1764,6 +1763,7 @@
     "latitude": 37.563901,
     "longitude": 126.936036,
     "height": 40.55,
+    "terrain_offset": -5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
