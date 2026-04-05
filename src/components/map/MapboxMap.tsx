@@ -35,6 +35,10 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
   const mapRef = useRef<mapboxgl.Map>(null);
   const isDev = process.env.NODE_ENV === 'development';
 
+  const CFD_TILES_LINK = isDev
+    ? 'http://localhost:8000/tiles/{z}/{x}/{y}'
+    : 'https://api.mappinest.com/tiles/lesterong.sinchon/{z}/{x}/{y}.pbf?key=a2ad386b-afcb-48d6-b48c-1a5eb3a26254';
+
   useEffect(() => {
     const t = useTranslations(lang);
 
@@ -298,9 +302,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
 
       map.addSource('cfd', {
         type: 'vector',
-        // TODO: Update with the correct URL
-        tiles: ['http://localhost:8000/tiles/{z}/{x}/{y}'],
-        // url: 'mapbox://lesterong.0u0iaqw5'
+        tiles: [CFD_TILES_LINK],
       });
 
       map.addLayer({
