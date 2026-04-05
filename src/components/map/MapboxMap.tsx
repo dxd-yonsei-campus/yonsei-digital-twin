@@ -255,10 +255,9 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
           type: 'fill-extrusion',
           source: 'custom-extrusions',
           paint: {
-            // TODO: Fix the selecting extrusions and use custom terrain
             'fill-extrusion-height': fillExtrusionWithTerrainHeightExpression,
             'fill-extrusion-base': fillExtrusionBaseWithTerrainExpression,
-            'fill-extrusion-opacity': 0.5,
+            'fill-extrusion-opacity': 0,
           },
         },
         labelLayerId,
