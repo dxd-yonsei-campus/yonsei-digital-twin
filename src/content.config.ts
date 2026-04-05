@@ -1,10 +1,10 @@
 import {
   defineCollection,
   reference,
-  z,
   type CollectionEntry,
   type SchemaContext,
 } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 const positionSchema = z.tuple([z.number(), z.number()]);
