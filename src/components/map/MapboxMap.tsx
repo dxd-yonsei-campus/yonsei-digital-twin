@@ -14,7 +14,12 @@ import { createCustomLayer } from '@/lib/modelUtils';
 import { toast } from 'sonner';
 import { useTranslations } from '@/i18n/utils';
 import type { Feature, Polygon, GeoJsonProperties } from 'geojson';
-import { findGroupForId } from '@/lib/mapUtils';
+import {
+  findGroupForId,
+  safeSetLayoutPropertyForMap,
+  safeMoveLayerForMap,
+  setDebugToolsForMap,
+} from '@/lib/mapUtils';
 import { ELEMENT_IDS } from '@/lib/consts';
 import { useEffect, useRef, type Ref } from 'react';
 import type { ui } from '@/i18n/ui';
@@ -28,6 +33,11 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
   const { state } = useSidebar();
   const mapContainerRef = useRef<HTMLElement>(null);
   const mapRef = useRef<mapboxgl.Map>(null);
+  const isDev = process.env.NODE_ENV === 'development';
+
+  const CFD_TILES_LINK = isDev
+    ? 'http://localhost:8000/tiles/{z}/{x}/{y}'
+    : 'https://api.mappinest.com/tiles/lesterong.sinchon/{z}/{x}/{y}.pbf?key=a2ad386b-afcb-48d6-b48c-1a5eb3a26254';
 
   useEffect(() => {
     const t = useTranslations(lang);
@@ -47,6 +57,22 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
       language: lang,
       ...initialCamera,
     });
+
+    setDebugToolsForMap(map, isDev);
+
+    const safeSetLayoutProperty = <
+      T extends keyof mapboxgl.LayoutSpecification,
+    >(
+      layerId: string,
+      name: T,
+      value: mapboxgl.LayoutSpecification[T],
+    ) => {
+      safeSetLayoutPropertyForMap(map, layerId, name, value);
+    };
+
+    const safeMoveLayer = (layerId: string, beforeLayerId: string) => {
+      safeMoveLayerForMap(map, layerId, beforeLayerId);
+    };
 
     // Store map instance in ref
     mapRef.current = map;
@@ -78,6 +104,16 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
     }) as Feature<Polygon, GeoJsonProperties>[];
 
     map.on('style.load', () => {
+      // Add terrain layer
+      map.addSource('mapbox-dem', {
+        type: 'raster-dem',
+        url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+        tileSize: 512,
+        maxzoom: 14,
+      });
+
+      map.setTerrain({ source: 'mapbox-dem', exaggeration: 1 });
+
       // Insert the layer beneath any symbol layer.
       const layers = map.getStyle().layers;
 
@@ -237,7 +273,7 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         latitude: 37.566086,
         modelUrl: '/models/rhino-simple/sinchon.gltf',
         id: 'rhino-simple-sinchon',
-        altitude: 108,
+        altitude: 154,
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoSimpleSinchonLayer, labelLayerId);
@@ -259,10 +295,120 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         latitude: 37.566086,
         modelUrl: '/models/rhino-detailed/sinchon.gltf',
         id: 'rhino-detailed-sinchon',
-        altitude: 108,
+        altitude: 154,
         rotateX: Math.PI / 2,
       });
       map.addLayer(rhinoDetailedSinchon, labelLayerId);
+
+      map.addSource('cfd', {
+        type: 'vector',
+        tiles: [CFD_TILES_LINK],
+      });
+
+      map.addLayer({
+        id: 'pressure-cfd',
+        type: 'circle',
+        source: 'cfd',
+        'source-layer': 'sinchon',
+        paint: {
+          'circle-radius': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            5,
+            4,
+            10,
+            10,
+            14,
+            18,
+            16,
+            34, // bigger jump
+            17,
+            40, // fill gaps
+            18,
+            42,
+          ],
+
+          'circle-color': [
+            'interpolate',
+            ['linear'],
+            ['get', 'P'],
+            0,
+            '#0000ff', // Deep blue (low)
+            0.1,
+            '#3366ff', // Blue
+            0.2,
+            '#6699ff', // Light blue
+            0.3,
+            '#9966ff', // Purple
+            0.4,
+            '#cc3366', // Reddish-purple
+            0.5,
+            '#ff0000', // Red (high)
+          ],
+          'circle-opacity': 0.5,
+          'circle-blur': 0.8, // Maximum blur for smoothness
+          'circle-pitch-alignment': 'map',
+          'circle-pitch-scale': 'map',
+        },
+      });
+    });
+
+    // TODO: Setup SFD image
+    // SDF arrow, rotate based on wind angle
+    // But the PNG image must be white to begin with.
+    map.loadImage('/cfd/wind-arrow.png', (err, image) => {
+      if (err) throw err;
+      if (!image) return;
+      map.addImage('wind-arrow', image, { sdf: true });
+
+      map.addLayer({
+        id: 'wind-arrows',
+        type: 'symbol',
+        source: 'cfd',
+        'source-layer': 'sinchon',
+        minzoom: 8,
+
+        layout: {
+          'icon-image': 'wind-arrow',
+          'icon-size': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            14,
+            0.05,
+            15,
+            0.05,
+            16,
+            0.08,
+            18,
+            0.09,
+          ],
+          'icon-rotate': ['-', ['get', 'angle'], 45],
+          'icon-rotation-alignment': 'map',
+          'icon-allow-overlap': true,
+          'icon-ignore-placement': true,
+          visibility: 'none',
+        },
+        paint: {
+          'icon-color': [
+            'interpolate',
+            ['linear'],
+            ['get', 'magnitude'],
+            0.0,
+            '#0000ff', // blue (low wind)
+            2.5,
+            '#00ffff',
+            5.0,
+            '#ffff00',
+            7.5,
+            '#ff9900',
+            10.0,
+            '#ff0000', // red (high wind)
+          ],
+          'icon-opacity': 1,
+        },
+      });
     });
 
     map.on('click', (e) => {
@@ -305,32 +451,41 @@ const MapboxMap = ({ lang }: MapboxMapProps) => {
         }
 
         if (buildingLayer.get() == 'osm') {
-          map.setLayoutProperty('selected-building', 'visibility', 'visible');
+          safeSetLayoutProperty('selected-building', 'visibility', 'visible');
         }
       } else {
         map.setFilter('selected-building', ['==', ['id'], '']);
-        map.setLayoutProperty('selected-building', 'visibility', 'none');
+        safeSetLayoutProperty('selected-building', 'visibility', 'none');
       }
     });
 
     const setBuildingLayer = (layer: BuildingLayerType) => {
-      map.setLayoutProperty('osm-buildings', 'visibility', 'none');
-      map.setLayoutProperty('selected-building', 'visibility', 'none');
-      map.setLayoutProperty('rhino-simple-sinchon', 'visibility', 'none');
-      map.setLayoutProperty('rhino-simple-songdo', 'visibility', 'none');
-      map.setLayoutProperty('rhino-detailed-sinchon', 'visibility', 'none');
+      safeSetLayoutProperty('osm-buildings', 'visibility', 'none');
+      safeSetLayoutProperty('selected-building', 'visibility', 'none');
+      safeSetLayoutProperty('rhino-simple-sinchon', 'visibility', 'none');
+      safeSetLayoutProperty('rhino-simple-songdo', 'visibility', 'none');
+      safeSetLayoutProperty('rhino-detailed-sinchon', 'visibility', 'none');
+      safeSetLayoutProperty('wind-arrows', 'visibility', 'none');
+      safeSetLayoutProperty('pressure-cfd', 'visibility', 'none');
+
       if (layer === 'osm') {
-        map.setLayoutProperty('osm-buildings', 'visibility', 'visible');
-        map.setLayoutProperty('selected-building', 'visibility', 'visible');
+        safeSetLayoutProperty('osm-buildings', 'visibility', 'visible');
+        safeSetLayoutProperty('selected-building', 'visibility', 'visible');
       } else if (layer === 'rhino-simple') {
-        map.setLayoutProperty('rhino-simple-sinchon', 'visibility', 'visible');
-        map.setLayoutProperty('rhino-simple-songdo', 'visibility', 'visible');
+        safeSetLayoutProperty('rhino-simple-sinchon', 'visibility', 'visible');
+        safeSetLayoutProperty('rhino-simple-songdo', 'visibility', 'visible');
       } else if (layer === 'rhino-detailed') {
-        map.setLayoutProperty(
+        safeSetLayoutProperty(
           'rhino-detailed-sinchon',
           'visibility',
           'visible',
         );
+
+        // TODO: Allow users to toggle which layer to show in Rhino Detailed
+        safeSetLayoutProperty('pressure-cfd', 'visibility', 'none');
+        safeSetLayoutProperty('wind-arrows', 'visibility', 'visible');
+        safeMoveLayer('wind-arrows', 'rhino-detailed-sinchon');
+        safeMoveLayer('pressure-cfd', 'rhino-detailed-sinchon');
       }
     };
 

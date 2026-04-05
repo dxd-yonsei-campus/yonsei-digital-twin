@@ -7,7 +7,7 @@
     "latitude": 37.560918,
     "longitude": 126.938647,
     "height": 85.9,
-    "terrain_offset": -30,
+    "terrain_offset": -24,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -52,7 +52,7 @@
     "latitude": 37.560795,
     "longitude": 126.939862,
     "height": 28.8,
-    "terrain_offset": -5,
+    "terrain_offset": 4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -84,7 +84,7 @@
     "latitude": 37.561027,
     "longitude": 126.940101,
     "height": 15,
-    "terrain_offset": 4,
+    "terrain_offset": 17,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -123,7 +123,7 @@
     "latitude": 37.560802,
     "longitude": 126.939779,
     "height": 15,
-    "terrain_offset": 4,
+    "terrain_offset": 17,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -159,7 +159,7 @@
     "longitude": 126.93945,
     "address": "South Korea, Seoul, Seodaemun-gu, Sinchon-dong",
     "height": 17,
-    "terrain_offset": 8,
+    "terrain_offset": 4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -212,7 +212,7 @@
     "latitude": 37.560762,
     "longitude": 126.940165,
     "height": 18,
-    "terrain_offset": 2,
+    "terrain_offset": 12,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -258,7 +258,7 @@
     "latitude": 37.562311,
     "longitude": 126.940876,
     "height": 104,
-    "terrain_offset": -25,
+    "terrain_offset": -22,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -332,7 +332,7 @@
     "latitude": 37.56304,
     "longitude": 126.940383,
     "height": 41.4,
-    "terrain_offset": 10,
+    "terrain_offset": 4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -380,7 +380,7 @@
     "latitude": 37.562519,
     "longitude": 126.939789,
     "height": 30,
-    "terrain_offset": 17,
+    "terrain_offset": 8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -433,7 +433,6 @@
     "latitude": 37.562767,
     "longitude": 126.939555,
     "height": 40.5,
-    "terrain_offset": 6,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -483,7 +482,7 @@
     "latitude": 37.562368,
     "longitude": 126.939115,
     "height": 21,
-    "terrain_offset": 8,
+    "terrain_offset": 5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -526,7 +525,6 @@
     "latitude": 37.561509,
     "longitude": 126.938255,
     "height": 25.47,
-    "terrain_offset": -2,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -573,7 +571,6 @@
     "latitude": 37.562953,
     "longitude": 126.941652,
     "height": 27.75,
-    "terrain_offset": 10,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -622,7 +619,7 @@
     "latitude": 37.563461,
     "longitude": 126.942361,
     "height": 26.77,
-    "terrain_offset": 12,
+    "terrain_offset": 1,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -672,7 +669,7 @@
     "yearly_energy_use": 165,
     "monthly_energy_use": "013-avison-biomedical-research-center",
     "height": 27.3,
-    "terrain_offset": 16,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -705,7 +702,6 @@
     "latitude": 37.563585,
     "longitude": 126.941844,
     "height": 27.57,
-    "terrain_offset": 14,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -743,7 +739,7 @@
     "latitude": 37.560528,
     "longitude": 126.939421,
     "height": 27.4,
-    "terrain_offset": -4,
+    "terrain_offset": -8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -788,6 +784,7 @@
     "latitude": 37.562884,
     "longitude": 126.942303,
     "height": 26.4,
+    "terrain_offset": -10,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -836,7 +833,7 @@
     "latitude": 37.563687,
     "longitude": 126.941348,
     "height": 12,
-    "terrain_offset": 26,
+    "terrain_offset": 11,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -869,7 +866,7 @@
     "latitude": 37.560822,
     "longitude": 126.935498,
     "height": 20.1,
-    "terrain_offset": -4,
+    "terrain_offset": 5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -906,7 +903,7 @@
     "longitude": 126.935694,
     "height": 3,
     "extrusionOffset": 9,
-    "terrain_offset": 2.5,
+    "terrain_offset": 9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -936,7 +933,7 @@
     "latitude": 37.562309,
     "longitude": 126.932208,
     "height": 9,
-    "terrain_offset": 8,
+    "terrain_offset": 5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -971,7 +968,6 @@
     "latitude": 37.562737,
     "longitude": 126.932347,
     "height": 14.9,
-    "terrain_offset": 8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1005,7 +1001,7 @@
     "latitude": 37.562783,
     "longitude": 126.933096,
     "height": 20,
-    "terrain_offset": 2,
+    "terrain_offset": -3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1083,7 +1079,7 @@
     "latitude": 37.56318,
     "longitude": 126.933803,
     "height": 23.9,
-    "terrain_offset": 8,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1123,6 +1119,7 @@
     "latitude": 37.561735,
     "longitude": 126.936647,
     "height": 24,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1201,7 +1198,7 @@
     "latitude": 37.562356,
     "longitude": 126.935265,
     "height": 28,
-    "terrain_offset": 1,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1247,7 +1244,7 @@
     "latitude": 37.562356,
     "longitude": 126.935265,
     "height": 6.6,
-    "terrain_offset": 8,
+    "terrain_offset": 4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1281,6 +1278,7 @@
     "latitude": 37.561723,
     "longitude": 126.935094,
     "height": 28.65,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1327,7 +1325,7 @@
     "latitude": 37.561824,
     "longitude": 126.936214,
     "height": 39.45,
-    "terrain_offset": -1,
+    "terrain_offset": 4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1366,7 +1364,6 @@
     "latitude": 37.561732,
     "longitude": 126.937895,
     "height": 21.1,
-    "terrain_offset": -2,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1443,7 +1440,7 @@
     "latitude": 37.562787,
     "longitude": 126.938638,
     "height": 9.2,
-    "terrain_offset": 5,
+    "terrain_offset": 9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1520,7 +1517,7 @@
     "latitude": 37.563293,
     "longitude": 126.939018,
     "height": 12.95,
-    "terrain_offset": 11,
+    "terrain_offset": 16,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1567,7 +1564,6 @@
     "latitude": 37.564268,
     "longitude": 126.938917,
     "height": 21.304,
-    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1638,7 +1634,7 @@
     "yearly_energy_use": 125,
     "monthly_energy_use": "212-school-of-business",
     "height": 31.4,
-    "terrain_offset": 5,
+    "terrain_offset": 10,
     "floor_level": 6,
     "construction_type": "철근콘크리트구조",
     "construction_type_en": "Reinforced concrete",
@@ -1653,7 +1649,7 @@
     "latitude": 37.563996,
     "longitude": 126.940826,
     "height": 17.7,
-    "terrain_offset": 25,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1691,7 +1687,7 @@
     "latitude": 37.563971,
     "longitude": 126.940781,
     "height": 17.7,
-    "terrain_offset": 25,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1728,7 +1724,7 @@
     "latitude": 37.5637,
     "longitude": 126.936923,
     "height": 26.5,
-    "terrain_offset": 2,
+    "terrain_offset": 14,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1767,6 +1763,7 @@
     "latitude": 37.563901,
     "longitude": 126.936036,
     "height": 40.55,
+    "terrain_offset": -5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1805,6 +1802,7 @@
     "latitude": 37.563104,
     "longitude": 126.935677,
     "height": 17,
+    "terrain_offset": -3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1840,7 +1838,7 @@
     "latitude": 37.562707,
     "longitude": 126.935494,
     "height": 16.61,
-    "terrain_offset": 2,
+    "terrain_offset": 0,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1879,7 +1877,7 @@
     "latitude": 37.563204,
     "longitude": 126.935185,
     "height": 9,
-    "terrain_offset": 18,
+    "terrain_offset": 12,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1909,7 +1907,7 @@
     "latitude": 37.564449,
     "longitude": 126.936254,
     "height": 6,
-    "terrain_offset": 16,
+    "terrain_offset": 10,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1939,7 +1937,7 @@
     "latitude": 37.564628,
     "longitude": 126.936716,
     "height": 27.4,
-    "terrain_offset": 6,
+    "terrain_offset": -4,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -1978,7 +1976,7 @@
     "latitude": 37.564686,
     "longitude": 126.937572,
     "height": 20.25,
-    "terrain_offset": 11,
+    "terrain_offset": 2,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2021,7 +2019,6 @@
     "latitude": 37.563902,
     "longitude": 126.934637,
     "height": 30.42,
-    "terrain_offset": 12,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2064,7 +2061,7 @@
     "latitude": 37.563409,
     "longitude": 126.934663,
     "height": 51.18,
-    "terrain_offset": -15,
+    "terrain_offset": -22,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2123,7 +2120,7 @@
     "latitude": 37.56504,
     "longitude": 126.934336,
     "height": 27.74,
-    "terrain_offset": 24,
+    "terrain_offset": 12,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2167,7 +2164,7 @@
     "latitude": 37.566042,
     "longitude": 126.93499,
     "height": 7.6,
-    "terrain_offset": 36,
+    "terrain_offset": 14,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2199,7 +2196,6 @@
     "latitude": 37.565302,
     "longitude": 126.939688,
     "height": 10.9,
-    "terrain_offset": 22,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2256,7 +2252,7 @@
     "latitude": 37.565003,
     "longitude": 126.940618,
     "height": 6.23,
-    "terrain_offset": 54,
+    "terrain_offset": 22,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2295,7 +2291,7 @@
     "latitude": 37.565816,
     "longitude": 126.942021,
     "height": 3,
-    "terrain_offset": 45,
+    "terrain_offset": 18,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2329,7 +2325,7 @@
     "latitude": 37.565564,
     "longitude": 126.942498,
     "height": 15,
-    "terrain_offset": 39,
+    "terrain_offset": 9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2359,7 +2355,7 @@
     "latitude": 37.5667,
     "longitude": 126.943485,
     "height": 12,
-    "terrain_offset": 45,
+    "terrain_offset": 10,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2400,7 +2396,7 @@
     "latitude": 37.565346,
     "longitude": 126.941575,
     "height": 11,
-    "terrain_offset": 41,
+    "terrain_offset": 9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2483,7 +2479,7 @@
     "latitude": 37.564803,
     "longitude": 126.941319,
     "height": 11.22,
-    "terrain_offset": 36,
+    "terrain_offset": 8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2516,7 +2512,7 @@
     "latitude": 37.56448,
     "longitude": 126.941477,
     "height": 10.6,
-    "terrain_offset": 27,
+    "terrain_offset": 7,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2563,7 +2559,7 @@
     "latitude": 37.564366,
     "longitude": 126.942312,
     "height": 9,
-    "terrain_offset": 31,
+    "terrain_offset": 12,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2601,7 +2597,7 @@
     "latitude": 37.566375,
     "longitude": 126.938726,
     "height": 15,
-    "terrain_offset": 22,
+    "terrain_offset": 18,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2634,7 +2630,7 @@
     "latitude": 37.566072,
     "longitude": 126.938189,
     "height": 6,
-    "terrain_offset": 18,
+    "terrain_offset": 15,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2669,7 +2665,7 @@
     "latitude": 37.56588,
     "longitude": 126.93901,
     "height": 9,
-    "terrain_offset": 18.5,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2701,7 +2697,7 @@
     "latitude": 37.566288,
     "longitude": 126.939348,
     "height": 3,
-    "terrain_offset": 23,
+    "terrain_offset": 8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2737,7 +2733,7 @@
     "latitude": 37.566803,
     "longitude": 126.93943,
     "height": 9,
-    "terrain_offset": 26,
+    "terrain_offset": 14,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2774,7 +2770,7 @@
     "latitude": 37.566968,
     "longitude": 126.938347,
     "height": 12,
-    "terrain_offset": 27,
+    "terrain_offset": 6,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2809,7 +2805,6 @@
     "latitude": 37.567344,
     "longitude": 126.939029,
     "height": 22.7,
-    "terrain_offset": 25,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2851,7 +2846,7 @@
     "latitude": 37.56782,
     "longitude": 126.938471,
     "height": 12,
-    "terrain_offset": 33,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2885,7 +2880,6 @@
     "latitude": 37.568368,
     "longitude": 126.939368,
     "height": 25.61,
-    "terrain_offset": 36,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2930,7 +2924,7 @@
     "latitude": 37.567745,
     "longitude": 126.939842,
     "height": 20.26,
-    "terrain_offset": 34,
+    "terrain_offset": 1,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2966,7 +2960,7 @@
     "latitude": 37.565433,
     "longitude": 126.937217,
     "height": 12,
-    "terrain_offset": 23,
+    "terrain_offset": 13,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2999,7 +2993,7 @@
     "latitude": 37.56596,
     "longitude": 126.937344,
     "height": 13,
-    "terrain_offset": 22,
+    "terrain_offset": -3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3039,7 +3033,7 @@
     "latitude": 37.565871,
     "longitude": 126.936679,
     "height": 22.4,
-    "terrain_offset": 26,
+    "terrain_offset": -3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3074,7 +3068,7 @@
     "latitude": 37.566365,
     "longitude": 126.937083,
     "height": 18,
-    "terrain_offset": 35,
+    "terrain_offset": 2,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3109,7 +3103,7 @@
     "latitude": 37.566552,
     "longitude": 126.93712,
     "height": 3,
-    "terrain_offset": 41,
+    "terrain_offset": 12,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3142,7 +3136,7 @@
     "latitude": 37.566683,
     "longitude": 126.937411,
     "height": 18,
-    "terrain_offset": 35,
+    "terrain_offset": 8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3176,7 +3170,7 @@
     "latitude": 37.567209,
     "longitude": 126.937866,
     "height": 27.9,
-    "terrain_offset": 29,
+    "terrain_offset": -8,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3212,7 +3206,7 @@
     "latitude": 37.565685,
     "longitude": 126.945657,
     "height": 26.99,
-    "terrain_offset": 22,
+    "terrain_offset": -5,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3247,7 +3241,6 @@
     "latitude": 37.565587,
     "longitude": 126.944576,
     "height": 27.61,
-    "terrain_offset": 17,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3296,7 +3289,7 @@
     "latitude": 37.565674,
     "longitude": 126.9439,
     "height": 27.76,
-    "terrain_offset": 23,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3334,7 +3327,7 @@
     "latitude": 37.566067,
     "longitude": 126.943854,
     "height": 15,
-    "terrain_offset": 33,
+    "terrain_offset": 9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3370,7 +3363,7 @@
     "latitude": 37.566221,
     "longitude": 126.943121,
     "height": 9,
-    "terrain_offset": 35,
+    "terrain_offset": 10,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3411,7 +3404,6 @@
     "latitude": 37.567022,
     "longitude": 126.942939,
     "height": 7.9,
-    "terrain_offset": 40,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3444,7 +3436,7 @@
     "latitude": 37.566961,
     "longitude": 126.942523,
     "height": 6,
-    "terrain_offset": 46,
+    "terrain_offset": 20,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3477,7 +3469,7 @@
     "latitude": 37.56726,
     "longitude": 126.941735,
     "height": 6,
-    "terrain_offset": 46,
+    "terrain_offset": 17,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3507,7 +3499,7 @@
     "latitude": 37.565293,
     "longitude": 126.943563,
     "height": 18,
-    "terrain_offset": 25,
+    "terrain_offset": 1,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3542,7 +3534,7 @@
     "latitude": 37.564644,
     "longitude": 126.943725,
     "height": 15,
-    "terrain_offset": 20,
+    "terrain_offset": 0,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3579,7 +3571,7 @@
     "latitude": 37.574644,
     "longitude": 126.939872,
     "height": 18,
-    "terrain_offset": 55,
+    "terrain_offset": 3,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3618,7 +3610,7 @@
     "latitude": 37.574577,
     "longitude": 126.939133,
     "height": 18,
-    "terrain_offset": 48,
+    "terrain_offset": 2,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3658,7 +3650,7 @@
     "latitude": 37.573747,
     "longitude": 126.93966,
     "height": 18,
-    "terrain_offset": 53,
+    "terrain_offset": 1,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3695,7 +3687,7 @@
     "latitude": 37.573403,
     "longitude": 126.939055,
     "height": 18,
-    "terrain_offset": 36,
+    "terrain_offset": 1,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3734,7 +3726,6 @@
     "latitude": 37.572006,
     "longitude": 126.939424,
     "height": 3,
-    "terrain_offset": 39,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3766,7 +3757,7 @@
     "latitude": 37.572281,
     "longitude": 126.940016,
     "height": 3,
-    "terrain_offset": 51,
+    "terrain_offset": 11,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3795,7 +3786,7 @@
     "latitude": 37.570738,
     "longitude": 126.939385,
     "height": 12,
-    "terrain_offset": 56,
+    "terrain_offset": 9,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3826,7 +3817,7 @@
     "latitude": 37.571202,
     "longitude": 126.939379,
     "height": 6,
-    "terrain_offset": 44,
+    "terrain_offset": 2,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -3855,7 +3846,7 @@
     "latitude": 37.570874,
     "longitude": 126.94089,
     "height": 12,
-    "terrain_offset": 60,
+    "terrain_offset": 10,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
