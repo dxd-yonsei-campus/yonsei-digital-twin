@@ -19,6 +19,9 @@ import {
 } from '@/components/ai-elements/prompt-input';
 import { nanoid } from 'nanoid';
 import type { UIMessage } from 'ai';
+import { useStore } from '@nanostores/react';
+import { selectedId } from '@/store';
+import { getBuildingWithId } from '@/lib/mapApi';
 
 type SidebarMessage = {
   key: string;
@@ -32,63 +35,77 @@ const Chatroom = () => {
     'submitted' | 'streaming' | 'ready' | 'error'
   >('ready');
 
-  const handleSubmit = useCallback(async (message: PromptInputMessage) => {
-    const hasText = Boolean(message.text);
-    const hasAttachments = Boolean(message.files?.length);
+  const currentId = useStore(selectedId);
+  const buildingData = getBuildingWithId(currentId);
 
-    if (!(hasText || hasAttachments)) return;
+  const handleSubmit = useCallback(
+    async (message: PromptInputMessage) => {
+      const hasText = Boolean(message.text);
+      const hasAttachments = Boolean(message.files?.length);
 
-    setStatus('submitted');
+      if (!(hasText || hasAttachments)) return;
 
-    const userMessage: SidebarMessage = {
-      content: message.text,
-      key: nanoid(),
-      role: 'user',
-    };
+      setStatus('submitted');
 
-    // Show user message immediately
-    setVisibleMessages((prev) => [...prev, userMessage]);
-
-    try {
-      setStatus('streaming');
-
-      const response = await fetch('http://localhost:8000/api/chat/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: message.text,
-          building_name: 'Engineering Hall I', // you can make this dynamic
-          building_info: 'Concrete structure, built in 1990', // dynamic too
-        }),
-      });
-
-      const data = await response.json();
-
-      const botMessage: SidebarMessage = {
-        content: data.response,
+      const userMessage: SidebarMessage = {
+        content: message.text,
         key: nanoid(),
-        role: 'assistant',
+        role: 'user',
       };
 
-      setVisibleMessages((prev) => [...prev, botMessage]);
-      setStatus('ready');
-    } catch (error) {
-      console.error('Error:', error);
+      // Show user message immediately
+      setVisibleMessages((prev) => [...prev, userMessage]);
 
-      setVisibleMessages((prev) => [
-        ...prev,
-        {
-          content: 'Error contacting server.',
+      try {
+        setStatus('streaming');
+
+        const apiURL =
+          import.meta.env.PUBLIC_CHAT_API_URL || 'http://localhost:8000';
+        const response = await fetch(`${apiURL}/api/chat/`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: message.text,
+            building_name: buildingData?.name_en || 'Unknown Building',
+            building_info: buildingData
+              ? `${buildingData.construction_type_en || 'Standard structure'}${
+                  buildingData.approval_date
+                    ? `, built in ${new Date(buildingData.approval_date).getFullYear()}`
+                    : ''
+                }`
+              : 'No building information available',
+          }),
+        });
+
+        const data = await response.json();
+
+        const botMessage: SidebarMessage = {
+          content: data.response,
           key: nanoid(),
-          role: 'system',
-        },
-      ]);
+          role: 'assistant',
+        };
 
-      setStatus('ready');
-    }
-  }, []);
+        setVisibleMessages((prev) => [...prev, botMessage]);
+        setStatus('ready');
+      } catch (error) {
+        console.error('Error:', error);
+
+        setVisibleMessages((prev) => [
+          ...prev,
+          {
+            content: 'Error contacting server.',
+            key: nanoid(),
+            role: 'system',
+          },
+        ]);
+
+        setStatus('ready');
+      }
+    },
+    [buildingData],
+  );
 
   return (
     <>
