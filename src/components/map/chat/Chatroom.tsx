@@ -39,7 +39,7 @@ const Chatroom = () => {
   const buildingData = getBuildingWithId(currentId);
 
   const handleSubmit = useCallback(
-    async (message: PromptInputMessage) => {
+    (message: PromptInputMessage) => {
       const hasText = Boolean(message.text);
       const hasAttachments = Boolean(message.files?.length);
 
@@ -56,53 +56,58 @@ const Chatroom = () => {
       // Show user message immediately
       setVisibleMessages((prev) => [...prev, userMessage]);
 
-      try {
-        setStatus('streaming');
+      // Execute fetch asynchronously to allow the input to clear immediately
+      void (async () => {
+        try {
+          setStatus('streaming');
 
-        const apiURL =
-          import.meta.env.PUBLIC_CHAT_API_URL || 'http://localhost:8000';
-        const response = await fetch(`${apiURL}/api/chat/`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            message: message.text,
-            building_name: buildingData?.name_en || 'Unknown Building',
-            building_info: buildingData
-              ? `${buildingData.construction_type_en || 'Standard structure'}${
-                  buildingData.approval_date
-                    ? `, built in ${new Date(buildingData.approval_date).getFullYear()}`
-                    : ''
-                }`
-              : 'No building information available',
-          }),
-        });
+          const apiURL =
+            import.meta.env.PUBLIC_CHAT_API_URL || 'http://localhost:8000';
+          const response = await fetch(`${apiURL}/api/chat/`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              message: message.text,
+              building_name: buildingData?.name_en || 'Unknown Building',
+              building_info: buildingData
+                ? `${buildingData.construction_type_en || 'Standard structure'}${
+                    buildingData.approval_date
+                      ? `, built in ${new Date(
+                          buildingData.approval_date,
+                        ).getFullYear()}`
+                      : ''
+                  }`
+                : 'No building information available',
+            }),
+          });
 
-        const data = await response.json();
+          const data = await response.json();
 
-        const botMessage: SidebarMessage = {
-          content: data.response,
-          key: nanoid(),
-          role: 'assistant',
-        };
-
-        setVisibleMessages((prev) => [...prev, botMessage]);
-        setStatus('ready');
-      } catch (error) {
-        console.error('Error:', error);
-
-        setVisibleMessages((prev) => [
-          ...prev,
-          {
-            content: 'Error contacting server.',
+          const botMessage: SidebarMessage = {
+            content: data.response,
             key: nanoid(),
-            role: 'system',
-          },
-        ]);
+            role: 'assistant',
+          };
 
-        setStatus('ready');
-      }
+          setVisibleMessages((prev) => [...prev, botMessage]);
+          setStatus('ready');
+        } catch (error) {
+          console.error('Error:', error);
+
+          setVisibleMessages((prev) => [
+            ...prev,
+            {
+              content: 'Error contacting server.',
+              key: nanoid(),
+              role: 'system',
+            },
+          ]);
+
+          setStatus('ready');
+        }
+      })();
     },
     [buildingData],
   );
