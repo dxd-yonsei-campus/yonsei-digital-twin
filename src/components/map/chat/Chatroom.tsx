@@ -26,47 +26,68 @@ type SidebarMessage = {
   role: UIMessage['role'];
 };
 
-const SUBMITTING_TIMEOUT = 200;
-const STREAMING_TIMEOUT = 2000;
-
 const Chatroom = () => {
   const [visibleMessages, setVisibleMessages] = useState<SidebarMessage[]>([]);
   const [status, setStatus] = useState<
     'submitted' | 'streaming' | 'ready' | 'error'
   >('ready');
 
-  const handleSubmit = useCallback((message: PromptInputMessage) => {
+  const handleSubmit = useCallback(async (message: PromptInputMessage) => {
     const hasText = Boolean(message.text);
     const hasAttachments = Boolean(message.files?.length);
 
-    if (!(hasText || hasAttachments)) {
-      return;
-    }
+    if (!(hasText || hasAttachments)) return;
 
     setStatus('submitted');
 
-    console.log('Submitting message:', message);
+    const userMessage: SidebarMessage = {
+      content: message.text,
+      key: nanoid(),
+      role: 'user',
+    };
 
-    setTimeout(() => {
+    // Show user message immediately
+    setVisibleMessages((prev) => [...prev, userMessage]);
+
+    try {
       setStatus('streaming');
-      const newMessage: SidebarMessage = {
-        content: message.text,
-        key: nanoid(),
-        role: 'user',
-      };
 
-      setVisibleMessages((prev) => [...prev, newMessage]);
-    }, SUBMITTING_TIMEOUT);
+      const response = await fetch('http://localhost:8000/api/chat/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: message.text,
+          building_name: 'Engineering Hall I', // you can make this dynamic
+          building_info: 'Concrete structure, built in 1990', // dynamic too
+        }),
+      });
 
-    setTimeout(() => {
-      setStatus('ready');
-      const newBotMessage: SidebarMessage = {
-        content: 'I am a bot.',
+      const data = await response.json();
+
+      const botMessage: SidebarMessage = {
+        content: data.response,
         key: nanoid(),
         role: 'assistant',
       };
-      setVisibleMessages((prev) => [...prev, newBotMessage]);
-    }, STREAMING_TIMEOUT);
+
+      setVisibleMessages((prev) => [...prev, botMessage]);
+      setStatus('ready');
+    } catch (error) {
+      console.error('Error:', error);
+
+      setVisibleMessages((prev) => [
+        ...prev,
+        {
+          content: 'Error contacting server.',
+          key: nanoid(),
+          role: 'system',
+        },
+      ]);
+
+      setStatus('ready');
+    }
   }, []);
 
   return (
