@@ -55,6 +55,8 @@ export const ui = {
     'chatroom.empty_conv_title': 'Ask about Yonsei University',
     'chatroom.empty_conv_description':
       'Messages will appear here as the conversation progresses.',
+    'chatroom.input_placeholder':
+      'What do you want to know about Yonsei University?',
   },
   ko: {
     'site.title': '연세 디지털 트윈',
@@ -105,5 +107,6 @@ export const ui = {
     'chatroom.empty_conv_title': '연세대학교에 대해 물어보세요',
     'chatroom.empty_conv_description':
       '대화가 진행되면 메시지가 여기에 표시됩니다',
+    'chatroom.input_placeholder': '연세대학교에 대해 무엇이 궁금하신가요?',
   },
 } as const;

@@ -147,7 +147,9 @@ const Chatroom = ({ lang }: ChatroomProps) => {
           onSubmit={handleSubmit}
         >
           <PromptInputBody>
-            <PromptInputTextarea />
+            <PromptInputTextarea
+              placeholder={t('chatroom.input_placeholder')}
+            />
           </PromptInputBody>
           <PromptInputFooter>
             <PromptInputTools>
