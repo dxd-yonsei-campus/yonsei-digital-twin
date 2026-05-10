@@ -125,7 +125,7 @@ const Chatroom = ({ lang }: ChatroomProps) => {
         <ConversationContent>
           {visibleMessages.length === 0 ? (
             <ConversationEmptyState
-              description="Messages will appear here as the conversation progresses."
+              description={t('chatroom.empty_conv_description')}
               icon={<MessageSquareIcon className="size-6" />}
               title={t('chatroom.empty_conv_title')}
             />
