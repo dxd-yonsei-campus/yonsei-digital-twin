@@ -77,7 +77,7 @@ const Chatroom = ({ lang }: ChatroomProps) => {
             },
             body: JSON.stringify({
               message: message.text,
-              building_name: buildingData?.name_en || 'Unknown Building',
+              building_name: buildingData?.name_en || null,
               building_info: buildingData
                 ? `${buildingData.construction_type_en || 'Standard structure'}${
                     buildingData.approval_date
@@ -86,7 +86,7 @@ const Chatroom = ({ lang }: ChatroomProps) => {
                         ).getFullYear()}`
                       : ''
                   }`
-                : 'No building information available',
+                : null,
               history: visibleMessages
                 .filter((m) => m.role === 'user' || m.role === 'assistant')
                 .slice(-10)
