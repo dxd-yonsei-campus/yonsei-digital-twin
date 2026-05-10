@@ -23,6 +23,7 @@ import { useStore } from '@nanostores/react';
 import { selectedId } from '@/store';
 import { getBuildingWithId } from '@/lib/mapApi';
 import type { ui } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
 
 type SidebarMessage = {
   key: string;
@@ -35,6 +36,7 @@ type ChatroomProps = {
 };
 
 const Chatroom = ({ lang }: ChatroomProps) => {
+  const t = useTranslations(lang);
   const [visibleMessages, setVisibleMessages] = useState<SidebarMessage[]>([]);
   const [status, setStatus] = useState<
     'submitted' | 'streaming' | 'ready' | 'error'
@@ -125,7 +127,7 @@ const Chatroom = ({ lang }: ChatroomProps) => {
             <ConversationEmptyState
               description="Messages will appear here as the conversation progresses."
               icon={<MessageSquareIcon className="size-6" />}
-              title="Start a conversation"
+              title={t('chatroom.empty_conv_title')}
             />
           ) : (
             visibleMessages.map(({ key, content, role }) => (
