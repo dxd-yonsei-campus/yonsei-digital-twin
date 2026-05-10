@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { MessageSquareIcon } from 'lucide-react';
+import { Building, MessageSquareIcon } from 'lucide-react';
 import {
   Conversation,
   ConversationContent,
@@ -22,6 +22,7 @@ import type { UIMessage } from 'ai';
 import { useStore } from '@nanostores/react';
 import { selectedId } from '@/store';
 import { getBuildingWithId } from '@/lib/mapApi';
+import type { ui } from '@/i18n/ui';
 
 type SidebarMessage = {
   key: string;
@@ -29,7 +30,11 @@ type SidebarMessage = {
   role: UIMessage['role'];
 };
 
-const Chatroom = () => {
+type ChatroomProps = {
+  lang: keyof typeof ui;
+};
+
+const Chatroom = ({ lang }: ChatroomProps) => {
   const [visibleMessages, setVisibleMessages] = useState<SidebarMessage[]>([]);
   const [status, setStatus] = useState<
     'submitted' | 'streaming' | 'ready' | 'error'
@@ -143,7 +148,16 @@ const Chatroom = () => {
             <PromptInputTextarea />
           </PromptInputBody>
           <PromptInputFooter>
-            <PromptInputTools />
+            <PromptInputTools>
+              {buildingData && (
+                <div className="inline-flex w-fit max-w-52 items-center gap-1.5 rounded-xs border border-white/30 px-1.5 py-1 text-xs overflow-ellipsis whitespace-nowrap opacity-70">
+                  <Building className="size-3.5 shrink-0" />
+                  <span className="truncate">
+                    {lang == 'ko' ? buildingData.name : buildingData.name_en}
+                  </span>
+                </div>
+              )}
+            </PromptInputTools>
             <PromptInputSubmit status={status} />
           </PromptInputFooter>
         </PromptInput>

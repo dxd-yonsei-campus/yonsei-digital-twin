@@ -83,7 +83,7 @@ const MapPage = ({ lang, monthlyEnergyUseCollection }: MapPageProps) => {
       </SidebarInset>
       {FEATURES.ENABLE_CHATBOT && (
         <AppSidebar id="sidebar" side="right" header="Ask AI">
-          <Chatroom />
+          <Chatroom lang={lang} />
         </AppSidebar>
       )}
     </SidebarProvider>
