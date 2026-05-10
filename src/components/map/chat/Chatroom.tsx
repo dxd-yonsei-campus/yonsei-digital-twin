@@ -87,6 +87,10 @@ const Chatroom = ({ lang }: ChatroomProps) => {
                       : ''
                   }`
                 : 'No building information available',
+              history: visibleMessages
+                .filter((m) => m.role === 'user' || m.role === 'assistant')
+                .slice(-10)
+                .map((m) => ({ role: m.role, content: m.content })),
             }),
           });
 
