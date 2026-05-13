@@ -24,6 +24,7 @@ import { selectedId } from '@/store';
 import { getBuildingWithId } from '@/lib/mapApi';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
+import { Shimmer } from '@/components/ai-elements/shimmer';
 
 type SidebarMessage = {
   key: string;
@@ -139,6 +140,13 @@ const Chatroom = ({ lang }: ChatroomProps) => {
                 <message.MessageContent>{content}</message.MessageContent>
               </message.Message>
             ))
+          )}
+          {(status === 'submitted' || status === 'streaming') && (
+            <message.Message from="assistant">
+              <message.MessageContent>
+                <Shimmer>{t('chatroom.thinking')}</Shimmer>
+              </message.MessageContent>
+            </message.Message>
           )}
         </ConversationContent>
         <ConversationScrollButton />
