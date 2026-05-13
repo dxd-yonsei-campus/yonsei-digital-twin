@@ -14,7 +14,7 @@ Yonsei Digital Twin is built using [Astro](https://astro.build/), [Mapbox GL JS]
    ```
    // .env
    PUBLIC_MAPBOX_TOKEN="pk.eyXXXXXXXXXX"
-   PUBLIC_CHAT_API_URL="http://localhost:8000"
+   PUBLIC_API_URL="http://localhost:8000"
    ```
 3. Run the application `pnpm dev`
 

@@ -69,7 +69,7 @@ const Chatroom = ({ lang }: ChatroomProps) => {
           setStatus('streaming');
 
           const apiURL =
-            import.meta.env.PUBLIC_CHAT_API_URL || 'http://localhost:8000';
+            import.meta.env.PUBLIC_API_URL || 'http://localhost:8000';
           const response = await fetch(`${apiURL}/api/chat/`, {
             method: 'POST',
             headers: {
