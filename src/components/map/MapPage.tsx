@@ -20,6 +20,7 @@ import { buildingLayer } from '@/store';
 import { useStore } from '@nanostores/react';
 import LanguagePicker from '@/components/map/navbar/LanguagePicker';
 import NavbarCredits from '@/components/map/navbar/NavbarCredits';
+import Chatroom from '@/components/map/chat/Chatroom';
 
 type MapPageProps = {
   lang: keyof typeof ui;
@@ -80,7 +81,11 @@ const MapPage = ({ lang, monthlyEnergyUseCollection }: MapPageProps) => {
         </div>
         <slot />
       </SidebarInset>
-      {FEATURES.ENABLE_CHATBOT && <AppSidebar id="sidebar" side="right" />}
+      {FEATURES.ENABLE_CHATBOT && (
+        <AppSidebar id="sidebar" side="right" header="Ask AI">
+          <Chatroom lang={lang} />
+        </AppSidebar>
+      )}
     </SidebarProvider>
   );
 };

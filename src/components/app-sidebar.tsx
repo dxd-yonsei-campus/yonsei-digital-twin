@@ -7,11 +7,19 @@ import {
   SidebarRail,
 } from '@/components/ui/sidebar';
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+type SideBarProps = {
+  header?: React.ReactNode;
+};
+
+export function AppSidebar({
+  children,
+  header,
+  ...props
+}: React.ComponentProps<typeof Sidebar> & SideBarProps) {
   return (
     <Sidebar {...props}>
-      <SidebarHeader>Ask AI</SidebarHeader>
-      <SidebarContent>Lorem Ipsum</SidebarContent>
+      <SidebarHeader>{header}</SidebarHeader>
+      <SidebarContent>{children}</SidebarContent>
       <SidebarRail />
     </Sidebar>
   );
