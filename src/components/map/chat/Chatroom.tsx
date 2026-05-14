@@ -185,7 +185,13 @@ const Chatroom = ({ lang }: ChatroomProps) => {
           ) : (
             visibleMessages.map(({ key, content, role }) => (
               <message.Message from={role} key={key}>
-                <message.MessageContent>{content}</message.MessageContent>
+                <message.MessageContent>
+                  {role === 'assistant' ? (
+                    <message.MessageResponse>{content}</message.MessageResponse>
+                  ) : (
+                    content
+                  )}
+                </message.MessageContent>
               </message.Message>
             ))
           )}
