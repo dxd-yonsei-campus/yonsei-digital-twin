@@ -20,7 +20,7 @@ import {
 import { nanoid } from 'nanoid';
 import type { UIMessage } from 'ai';
 import { useStore } from '@nanostores/react';
-import { selectedId } from '@/store';
+import { selectedCampus, selectedId } from '@/store';
 import { getBuildingWithId } from '@/lib/mapApi';
 import type { ui } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
@@ -45,6 +45,7 @@ const Chatroom = ({ lang }: ChatroomProps) => {
 
   const currentId = useStore(selectedId);
   const buildingData = getBuildingWithId(currentId);
+  const currentCampus = useStore(selectedCampus);
 
   const handleSubmit = useCallback(
     (message: PromptInputMessage) => {
@@ -61,44 +62,91 @@ const Chatroom = ({ lang }: ChatroomProps) => {
         role: 'user',
       };
 
-      // Show user message immediately
       setVisibleMessages((prev) => [...prev, userMessage]);
 
-      // Execute fetch asynchronously to allow the input to clear immediately
       void (async () => {
         try {
           setStatus('streaming');
 
           const apiURL =
             import.meta.env.PUBLIC_API_URL || 'http://localhost:8000';
+
+          const history = visibleMessages
+            .filter((m) => m.role === 'user' || m.role === 'assistant')
+            .slice(-16)
+            .map((m) => ({
+              role: m.role,
+              content: m.content,
+            }));
+
+          const requestBody = {
+            message: message.text,
+
+            platform_state: {
+              selected_campus: currentCampus ?? null,
+              selected_building_id: buildingData?.id ?? null,
+            },
+
+            building_context: buildingData
+              ? {
+                  id: buildingData.id,
+
+                  name: buildingData.name_en || buildingData.name,
+
+                  address: buildingData.address ?? null,
+
+                  location: {
+                    latitude: buildingData.latitude ?? null,
+
+                    longitude: buildingData.longitude ?? null,
+                  },
+
+                  physical: {
+                    height_m: buildingData.height ?? null,
+
+                    floors: buildingData.floor_level ?? null,
+
+                    total_floor_area_m2: buildingData.total_floor_area ?? null,
+
+                    total_building_area_m2:
+                      buildingData.total_building_area ?? null,
+                  },
+
+                  construction: {
+                    type:
+                      buildingData.construction_type_en ||
+                      buildingData.construction_type ||
+                      null,
+
+                    approval_year: buildingData.approval_date
+                      ? new Date(buildingData.approval_date).getFullYear()
+                      : null,
+                  },
+
+                  energy: {
+                    yearly_energy_use_kwh:
+                      buildingData.yearly_energy_use ?? null,
+                  },
+                }
+              : null,
+            history,
+          };
+
           const response = await fetch(`${apiURL}/api/chat/`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-              message: message.text,
-              building_name: buildingData?.name_en || null,
-              building_info: buildingData
-                ? `${buildingData.construction_type_en || 'Standard structure'}${
-                    buildingData.approval_date
-                      ? `, built in ${new Date(
-                          buildingData.approval_date,
-                        ).getFullYear()}`
-                      : ''
-                  }`
-                : null,
-              history: visibleMessages
-                .filter((m) => m.role === 'user' || m.role === 'assistant')
-                .slice(-10)
-                .map((m) => ({ role: m.role, content: m.content })),
-            }),
+            body: JSON.stringify(requestBody),
           });
 
-          const data = await response.json();
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
 
+          const data = await response.json();
           const botMessage: SidebarMessage = {
-            content: data.response,
+            content: data.response || 'No response received.',
             key: nanoid(),
             role: 'assistant',
           };
@@ -106,7 +154,7 @@ const Chatroom = ({ lang }: ChatroomProps) => {
           setVisibleMessages((prev) => [...prev, botMessage]);
           setStatus('ready');
         } catch (error) {
-          console.error('Error:', error);
+          console.error('Chat API Error:', error);
 
           setVisibleMessages((prev) => [
             ...prev,
@@ -121,7 +169,7 @@ const Chatroom = ({ lang }: ChatroomProps) => {
         }
       })();
     },
-    [buildingData],
+    [buildingData, visibleMessages],
   );
 
   return (
