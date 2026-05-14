@@ -90,24 +90,17 @@ const Chatroom = ({ lang }: ChatroomProps) => {
             building_context: buildingData
               ? {
                   id: buildingData.id,
-
                   name: buildingData.name_en || buildingData.name,
-
                   address: buildingData.address ?? null,
-
                   location: {
                     latitude: buildingData.latitude ?? null,
-
                     longitude: buildingData.longitude ?? null,
                   },
 
                   physical: {
                     height_m: buildingData.height ?? null,
-
                     floors: buildingData.floor_level ?? null,
-
                     total_floor_area_m2: buildingData.total_floor_area ?? null,
-
                     total_building_area_m2:
                       buildingData.total_building_area ?? null,
                   },
@@ -117,7 +110,6 @@ const Chatroom = ({ lang }: ChatroomProps) => {
                       buildingData.construction_type_en ||
                       buildingData.construction_type ||
                       null,
-
                     approval_year: buildingData.approval_date
                       ? new Date(buildingData.approval_date).getFullYear()
                       : null,
