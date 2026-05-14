@@ -187,7 +187,9 @@ const Chatroom = ({ lang }: ChatroomProps) => {
               <message.Message from={role} key={key}>
                 <message.MessageContent>
                   {role === 'assistant' ? (
-                    <message.MessageResponse>{content}</message.MessageResponse>
+                    <message.MessageResponse className="prose-custom">
+                      {content}
+                    </message.MessageResponse>
                   ) : (
                     content
                   )}
