@@ -153,6 +153,36 @@
   @apply bg-background/80 backdrop-blur-sm;
 }
 
+@utility prose-custom {
+  @apply max-w-none;
+  & ul {
+    @apply my-2 list-disc pl-5;
+  }
+  & ol {
+    @apply my-2 list-decimal pl-5;
+  }
+  & li {
+    @apply mb-1;
+  }
+  & p {
+    @apply mb-3;
+  }
+  & p:last-child {
+    @apply mb-0;
+  }
+  & strong {
+    @apply font-bold;
+  }
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    @apply mt-4 mb-2 font-bold;
+  }
+}
+
 @keyframes slideDown {
   from {
     height: 0;
