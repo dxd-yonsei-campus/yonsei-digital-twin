@@ -100,12 +100,25 @@ const SearchBar = ({ lang }: SearchBarProps) => {
     <>
       <Button
         onClick={toggleOpen}
+        variant="secondary"
+        className={cn(
+          'absolute block flex items-center rounded-full transition-all duration-300 @md/navbar:hidden',
+          $buildingLayer === 'rhino-simple' ? '-top-30' : '-top-11',
+        )}
+      >
+        <SearchIcon />
+        <span className="mr-1">{t('search.title')}</span>
+      </Button>
+      <Button
+        onClick={toggleOpen}
         variant="outline"
-        className="flex w-auto justify-between font-normal text-muted-foreground @3xl/navbar:w-52 @6xl/navbar:w-60"
+        className="hidden w-auto justify-between font-normal text-muted-foreground @md/navbar:flex @3xl/navbar:w-52 @6xl/navbar:w-60"
       >
         <div className="flex items-center gap-2 overflow-hidden">
           <SearchIcon />
-          <span className="sr-only @3xl/navbar:hidden">Search</span>
+          <span className="sr-only @3xl/navbar:hidden">
+            {t('search.title')}
+          </span>
           <span
             className={cn(
               'hidden overflow-hidden text-ellipsis @3xl/navbar:block',
