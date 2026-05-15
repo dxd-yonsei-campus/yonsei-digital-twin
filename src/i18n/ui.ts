@@ -12,7 +12,7 @@ export const ui = {
       "Discover Yonsei University's campuses and access detailed building information through the Yonsei Digital Twin.",
     'site.map': 'Map',
     'home.description': 'A digital twin of the Yonsei University Campus.',
-    'search.title': '검색',
+    'search.title': 'Search',
     'search.placeholder': 'Search for buildings...',
     sinchon: 'Sinchon',
     sinchon_long: 'Sinchon Campus',
