@@ -3,14 +3,16 @@ import Layout from '@/layouts/Layout.astro';
 import LanguagePicker from '@/components/landing/LanguagePicker';
 import MapLink from '@/components/landing/MapLink';
 import { campuses } from '@/types/map';
+import { languages } from '@/i18n/ui';
 
 export function getStaticPaths() {
-  return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }];
+  return Object.keys(languages).map((lang) => ({
+    params: { lang },
+  }));
 }
 
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { ChevronDown, Languages } from 'lucide-react';
-import { languages } from '@/i18n/ui';
 import ThemePicker from '@/components/ThemePicker';
 import Footer from '@/components/Footer.astro';
 import { Image } from 'astro:assets';
