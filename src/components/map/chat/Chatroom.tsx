@@ -214,7 +214,7 @@ const Chatroom = ({ lang }: ChatroomProps) => {
           <PromptInputFooter>
             <PromptInputTools>
               {buildingData && (
-                <div className="inline-flex w-fit max-w-52 items-center gap-1.5 rounded-xs border border-white/30 px-1.5 py-1 text-xs overflow-ellipsis whitespace-nowrap opacity-70">
+                <div className="inline-flex w-fit max-w-52 items-center gap-1.5 rounded-xs border border-muted-foreground/30 px-1.5 py-1 text-xs overflow-ellipsis whitespace-nowrap opacity-70">
                   <Building className="size-3.5 shrink-0" />
                   <span className="truncate">
                     {lang == 'ko' ? buildingData.name : buildingData.name_en}
